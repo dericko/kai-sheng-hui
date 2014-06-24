@@ -29,6 +29,8 @@
 		C1356032195952AE005DABED /* TempModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1356030195952AE005DABED /* TempModel.xcdatamodeld */; };
 		C135603819595523005DABED /* KSHMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603719595523005DABED /* KSHMappingProvider.m */; };
 		C135603B19595590005DABED /* KSHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603A19595590005DABED /* KSHObjectManager.m */; };
+		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
+		C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,10 @@
 		C135603719595523005DABED /* KSHMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMappingProvider.m; sourceTree = "<group>"; };
 		C135603919595590005DABED /* KSHObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHObjectManager.h; sourceTree = "<group>"; };
 		C135603A19595590005DABED /* KSHObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHObjectManager.m; sourceTree = "<group>"; };
+		C1F6FF8319596350006EE5F7 /* KSHUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserManager.h; sourceTree = "<group>"; };
+		C1F6FF8419596350006EE5F7 /* KSHUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserManager.m; sourceTree = "<group>"; };
+		C1F6FF861959635E006EE5F7 /* KSHArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleManager.h; sourceTree = "<group>"; };
+		C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,9 +185,8 @@
 		C135602B195950B9005DABED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C1F6FF91195963F8006EE5F7 /* ObjectModels */,
 				C135603C1959559C005DABED /* NetworkHelpers */,
-				C1356030195952AE005DABED /* TempModel.xcdatamodeld */,
-				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -217,12 +222,41 @@
 		C135603C1959559C005DABED /* NetworkHelpers */ = {
 			isa = PBXGroup;
 			children = (
-				C135603619595523005DABED /* KSHMappingProvider.h */,
-				C135603719595523005DABED /* KSHMappingProvider.m */,
-				C135603919595590005DABED /* KSHObjectManager.h */,
-				C135603A19595590005DABED /* KSHObjectManager.m */,
+				C1F6FF90195963D3006EE5F7 /* ObjectManagers */,
+				C1F6FF8F195963CC006EE5F7 /* MappingProvider */,
 			);
 			name = NetworkHelpers;
+			sourceTree = "<group>";
+		};
+		C1F6FF8F195963CC006EE5F7 /* MappingProvider */ = {
+			isa = PBXGroup;
+			children = (
+				C135603619595523005DABED /* KSHMappingProvider.h */,
+				C135603719595523005DABED /* KSHMappingProvider.m */,
+			);
+			name = MappingProvider;
+			sourceTree = "<group>";
+		};
+		C1F6FF90195963D3006EE5F7 /* ObjectManagers */ = {
+			isa = PBXGroup;
+			children = (
+				C135603919595590005DABED /* KSHObjectManager.h */,
+				C135603A19595590005DABED /* KSHObjectManager.m */,
+				C1F6FF8319596350006EE5F7 /* KSHUserManager.h */,
+				C1F6FF8419596350006EE5F7 /* KSHUserManager.m */,
+				C1F6FF861959635E006EE5F7 /* KSHArticleManager.h */,
+				C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */,
+			);
+			name = ObjectManagers;
+			sourceTree = "<group>";
+		};
+		C1F6FF91195963F8006EE5F7 /* ObjectModels */ = {
+			isa = PBXGroup;
+			children = (
+				C1356030195952AE005DABED /* TempModel.xcdatamodeld */,
+				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
+			);
+			name = ObjectModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,7 +393,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C135600419594FA9005DABED /* KaiShengHui.xcdatamodeld in Sources */,
+				C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */,
 				C135600A19594FA9005DABED /* KSHDetailViewController.m in Sources */,
+				C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */,
 				C135603819595523005DABED /* KSHMappingProvider.m in Sources */,
 				C135600719594FA9005DABED /* KSHMasterViewController.m in Sources */,
 				C1355FFA19594FA9005DABED /* main.m in Sources */,
