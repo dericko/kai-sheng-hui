@@ -27,6 +27,8 @@
 		C135601E19594FA9005DABED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C135601C19594FA9005DABED /* InfoPlist.strings */; };
 		C135602019594FA9005DABED /* KaiShengHuiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C135601F19594FA9005DABED /* KaiShengHuiTests.m */; };
 		C1356032195952AE005DABED /* TempModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1356030195952AE005DABED /* TempModel.xcdatamodeld */; };
+		C135603819595523005DABED /* KSHMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603719595523005DABED /* KSHMappingProvider.m */; };
+		C135603B19595590005DABED /* KSHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603A19595590005DABED /* KSHObjectManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,10 @@
 		C135601D19594FA9005DABED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C135601F19594FA9005DABED /* KaiShengHuiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KaiShengHuiTests.m; sourceTree = "<group>"; };
 		C1356031195952AE005DABED /* TempModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TempModel.xcdatamodel; sourceTree = "<group>"; };
+		C135603619595523005DABED /* KSHMappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHMappingProvider.h; sourceTree = "<group>"; };
+		C135603719595523005DABED /* KSHMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMappingProvider.m; sourceTree = "<group>"; };
+		C135603919595590005DABED /* KSHObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHObjectManager.h; sourceTree = "<group>"; };
+		C135603A19595590005DABED /* KSHObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHObjectManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +179,7 @@
 		C135602B195950B9005DABED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C135603C1959559C005DABED /* NetworkHelpers */,
 				C1356030195952AE005DABED /* TempModel.xcdatamodeld */,
 				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
 			);
@@ -205,6 +212,17 @@
 				C1355FFD19594FA9005DABED /* KSHAppDelegate.m */,
 			);
 			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C135603C1959559C005DABED /* NetworkHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				C135603619595523005DABED /* KSHMappingProvider.h */,
+				C135603719595523005DABED /* KSHMappingProvider.m */,
+				C135603919595590005DABED /* KSHObjectManager.h */,
+				C135603A19595590005DABED /* KSHObjectManager.m */,
+			);
+			name = NetworkHelpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,8 +360,10 @@
 			files = (
 				C135600419594FA9005DABED /* KaiShengHui.xcdatamodeld in Sources */,
 				C135600A19594FA9005DABED /* KSHDetailViewController.m in Sources */,
+				C135603819595523005DABED /* KSHMappingProvider.m in Sources */,
 				C135600719594FA9005DABED /* KSHMasterViewController.m in Sources */,
 				C1355FFA19594FA9005DABED /* main.m in Sources */,
+				C135603B19595590005DABED /* KSHObjectManager.m in Sources */,
 				C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */,
 				C1356032195952AE005DABED /* TempModel.xcdatamodeld in Sources */,
 			);
