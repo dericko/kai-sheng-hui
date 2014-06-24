@@ -31,6 +31,11 @@
 		C135603B19595590005DABED /* KSHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603A19595590005DABED /* KSHObjectManager.m */; };
 		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
 		C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */; };
+		C1F6FF9519597DAC006EE5F7 /* KSHSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF9419597DAC006EE5F7 /* KSHSignInViewController.m */; };
+		C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF9819597E0E006EE5F7 /* KSHArticleTableViewController.m */; };
+		C1F6FF9C19597E35006EE5F7 /* KSHArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF9B19597E35006EE5F7 /* KSHArticleTableViewCell.m */; };
+		C1F6FF9F19597E87006EE5F7 /* KSHArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF9E19597E87006EE5F7 /* KSHArticleDetailViewController.m */; };
+		C1F6FFA319597EB0006EE5F7 /* KSHProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FFA219597EB0006EE5F7 /* KSHProfileTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +83,16 @@
 		C1F6FF8419596350006EE5F7 /* KSHUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserManager.m; sourceTree = "<group>"; };
 		C1F6FF861959635E006EE5F7 /* KSHArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleManager.h; sourceTree = "<group>"; };
 		C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleManager.m; sourceTree = "<group>"; };
+		C1F6FF9319597DAC006EE5F7 /* KSHSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHSignInViewController.h; sourceTree = "<group>"; };
+		C1F6FF9419597DAC006EE5F7 /* KSHSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHSignInViewController.m; sourceTree = "<group>"; };
+		C1F6FF9719597E0E006EE5F7 /* KSHArticleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleTableViewController.h; sourceTree = "<group>"; };
+		C1F6FF9819597E0E006EE5F7 /* KSHArticleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleTableViewController.m; sourceTree = "<group>"; };
+		C1F6FF9A19597E35006EE5F7 /* KSHArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleTableViewCell.h; sourceTree = "<group>"; };
+		C1F6FF9B19597E35006EE5F7 /* KSHArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleTableViewCell.m; sourceTree = "<group>"; };
+		C1F6FF9D19597E87006EE5F7 /* KSHArticleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleDetailViewController.h; sourceTree = "<group>"; };
+		C1F6FF9E19597E87006EE5F7 /* KSHArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleDetailViewController.m; sourceTree = "<group>"; };
+		C1F6FFA119597EB0006EE5F7 /* KSHProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHProfileTableViewController.h; sourceTree = "<group>"; };
+		C1F6FFA219597EB0006EE5F7 /* KSHProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProfileTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,8 +200,8 @@
 		C135602B195950B9005DABED /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C1F6FF91195963F8006EE5F7 /* ObjectModels */,
-				C135603C1959559C005DABED /* NetworkHelpers */,
+				C1356030195952AE005DABED /* TempModel.xcdatamodeld */,
+				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -194,10 +209,8 @@
 		C135602C195950BF005DABED /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C135600519594FA9005DABED /* KSHMasterViewController.h */,
-				C135600619594FA9005DABED /* KSHMasterViewController.m */,
-				C135600819594FA9005DABED /* KSHDetailViewController.h */,
-				C135600919594FA9005DABED /* KSHDetailViewController.m */,
+				C135603C1959559C005DABED /* NetworkHelpers */,
+				C1F6FF9219597CCE006EE5F7 /* ViewControllers */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -250,13 +263,41 @@
 			name = ObjectManagers;
 			sourceTree = "<group>";
 		};
-		C1F6FF91195963F8006EE5F7 /* ObjectModels */ = {
+		C1F6FF9219597CCE006EE5F7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C1356030195952AE005DABED /* TempModel.xcdatamodeld */,
-				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
+				C1F6FFA019597E8E006EE5F7 /* Users */,
+				C1F6FF9619597DE8006EE5F7 /* Articles */,
+				C135600519594FA9005DABED /* KSHMasterViewController.h */,
+				C135600619594FA9005DABED /* KSHMasterViewController.m */,
+				C135600819594FA9005DABED /* KSHDetailViewController.h */,
+				C135600919594FA9005DABED /* KSHDetailViewController.m */,
 			);
-			name = ObjectModels;
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C1F6FF9619597DE8006EE5F7 /* Articles */ = {
+			isa = PBXGroup;
+			children = (
+				C1F6FF9719597E0E006EE5F7 /* KSHArticleTableViewController.h */,
+				C1F6FF9819597E0E006EE5F7 /* KSHArticleTableViewController.m */,
+				C1F6FF9A19597E35006EE5F7 /* KSHArticleTableViewCell.h */,
+				C1F6FF9B19597E35006EE5F7 /* KSHArticleTableViewCell.m */,
+				C1F6FF9D19597E87006EE5F7 /* KSHArticleDetailViewController.h */,
+				C1F6FF9E19597E87006EE5F7 /* KSHArticleDetailViewController.m */,
+			);
+			name = Articles;
+			sourceTree = "<group>";
+		};
+		C1F6FFA019597E8E006EE5F7 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				C1F6FF9319597DAC006EE5F7 /* KSHSignInViewController.h */,
+				C1F6FF9419597DAC006EE5F7 /* KSHSignInViewController.m */,
+				C1F6FFA119597EB0006EE5F7 /* KSHProfileTableViewController.h */,
+				C1F6FFA219597EB0006EE5F7 /* KSHProfileTableViewController.m */,
+			);
+			name = Users;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,15 +434,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C135600419594FA9005DABED /* KaiShengHui.xcdatamodeld in Sources */,
+				C1F6FFA319597EB0006EE5F7 /* KSHProfileTableViewController.m in Sources */,
 				C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */,
+				C1F6FF9F19597E87006EE5F7 /* KSHArticleDetailViewController.m in Sources */,
+				C1F6FF9519597DAC006EE5F7 /* KSHSignInViewController.m in Sources */,
 				C135600A19594FA9005DABED /* KSHDetailViewController.m in Sources */,
 				C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */,
 				C135603819595523005DABED /* KSHMappingProvider.m in Sources */,
 				C135600719594FA9005DABED /* KSHMasterViewController.m in Sources */,
+				C1F6FF9C19597E35006EE5F7 /* KSHArticleTableViewCell.m in Sources */,
 				C1355FFA19594FA9005DABED /* main.m in Sources */,
 				C135603B19595590005DABED /* KSHObjectManager.m in Sources */,
 				C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */,
 				C1356032195952AE005DABED /* TempModel.xcdatamodeld in Sources */,
+				C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

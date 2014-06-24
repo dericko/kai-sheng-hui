@@ -5,11 +5,13 @@
 //  Created by Derick Olson on 6/24/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
-/** Client manager base class to handle initial setup, requests, and responses. This class should be extended according to request and response behaviour of specific resources.
-*/
- 
+
 #import "RKObjectManager.h"
 
+/**
+ 'KSHObjectManager' Handles initial setup, requests, and responses as application network client. This class should be extended according to request and response behaviour of specific resources.
+ @see 'RKObjectManager'
+ */
 @interface KSHObjectManager : RKObjectManager
 
 /**

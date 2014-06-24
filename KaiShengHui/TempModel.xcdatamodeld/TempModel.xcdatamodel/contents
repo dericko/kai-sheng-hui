@@ -12,10 +12,17 @@
         <relationship name="tag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="article" inverseEntity="Tag" syncable="YES"/>
         <relationship name="type" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Type" inverseName="article" inverseEntity="Type" syncable="YES"/>
     </entity>
+    <entity name="Function" syncable="YES">
+        <attribute name="functionID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="industry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Industry" inverseName="function" inverseEntity="Industry" syncable="YES"/>
+        <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="function" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Industry" syncable="YES">
         <attribute name="industryID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="article" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="industry" inverseEntity="Article" syncable="YES"/>
+        <relationship name="function" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Function" inverseName="industry" inverseEntity="Function" syncable="YES"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="industry" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Tag" syncable="YES">
@@ -36,15 +43,17 @@
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="following" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="following" inverseEntity="User" syncable="YES"/>
+        <relationship name="function" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Function" inverseName="user" inverseEntity="Function" syncable="YES"/>
         <relationship name="industry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Industry" inverseName="user" inverseEntity="Industry" syncable="YES"/>
         <relationship name="interest" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
         <relationship name="starredArticle" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="likedBy" inverseEntity="Article" syncable="YES"/>
     </entity>
     <elements>
         <element name="Article" positionX="-72" positionY="-180" width="180" height="193"/>
-        <element name="Industry" positionX="-243" positionY="-9" width="92" height="103"/>
+        <element name="Industry" positionX="-252" positionY="-9" width="92" height="118"/>
         <element name="Tag" positionX="178" positionY="-22" width="92" height="103"/>
         <element name="Type" positionX="-29" positionY="-304" width="92" height="88"/>
-        <element name="User" positionX="-72" positionY="92" width="182" height="178"/>
+        <element name="User" positionX="-72" positionY="92" width="182" height="193"/>
+        <element name="Function" positionX="-252" positionY="180" width="90" height="103"/>
     </elements>
 </model>
