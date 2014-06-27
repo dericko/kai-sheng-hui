@@ -7,9 +7,7 @@
         <attribute name="datePublished" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="excerpt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imgURL" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="industryName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="publisher" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tags" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="typeID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="uID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -60,7 +58,7 @@
         <relationship name="performsFunction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Function" inverseName="hasUser" inverseEntity="Function" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Article" positionX="331" positionY="18" width="128" height="313"/>
+        <element name="Article" positionX="331" positionY="18" width="128" height="283"/>
         <element name="Function" positionX="142" positionY="432" width="128" height="103"/>
         <element name="Industry" positionX="151" positionY="225" width="128" height="118"/>
         <element name="Tag" positionX="592" positionY="450" width="128" height="118"/>
