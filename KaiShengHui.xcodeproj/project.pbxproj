@@ -174,7 +174,6 @@
 				C135602C195950BF005DABED /* Controllers */,
 				C1355FFC19594FA9005DABED /* KSHAppDelegate.h */,
 				C1355FFD19594FA9005DABED /* KSHAppDelegate.m */,
-				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
 				C1355FFF19594FA9005DABED /* Main.storyboard */,
 				C135600B19594FA9005DABED /* Images.xcassets */,
 				C1355FF419594FA9005DABED /* Supporting Files */,
@@ -214,6 +213,7 @@
 		C135602B195950B9005DABED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
 				C1ABFE36195C2135006560E7 /* Article */,
 				C1ABFE3A195C215F006560E7 /* Function */,
 				C1ABFE37195C2145006560E7 /* Industry */,
