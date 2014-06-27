@@ -7,7 +7,29 @@
 //
 
 #import "KSHUserManager.h"
+#import <RestKit/RestKit.h>
 
 @implementation KSHUserManager
+
+// TODO: implement KSHUserManager methods
+
+//- (void) loadAuthenticatedUser:(void (^)(KSHUser *user))success failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
+{
+    // implement user authentication
+}
+
+- (void)setupRequestDescriptors
+{
+    [super setupRequestDescriptors];
+    
+    // additional request descriptors
+}
+
+- (void)setupResponseDescriptors
+{
+    [super setupResponseDescriptors];
+    
+    // additional response descriptors
+}
 
 @end

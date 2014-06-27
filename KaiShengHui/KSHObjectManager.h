@@ -23,18 +23,7 @@
  The base URL access point for API
  @return an instance of itself (KSHObjectManager), with calls to request and response methods
  */
-+ (instancetype)sharedManager:(NSURL *)baseURL;
-
-/**
- Setup client with RestKit using base URL of RESTful API, formatted for JSON Serialization, and adding personal access token if available.
- @see http://restkit.org/ for more information
- @param baseURL
- The base URL access point for API
- @param personalAccessToken
- The secret user authorization token for API access
- @return an instance of itself (KSHObjectManager), with calls to request and response methods
- */
-+ (instancetype)sharedManager:(NSURL *)baseURL withAuthorizationToken:(NSString *)personalAccessToken;
++ (instancetype)sharedManager;
 
 /**
  Tells client how to make API requests

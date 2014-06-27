@@ -10,6 +10,10 @@
 //#import "KSHUser.h"
 #import <RestKit/RestKit.h>
 
+/**
+ 'KSHUserManager' Defines userObject-specific request and response behavior. It handles login authentication requests and responses, and calls an object mapping provider to map network responses to a user model.
+ @see 'KSHObjectManager'
+ */
 @interface KSHUserManager : KSHObjectManager
 
 // TODO: comment mapping methods , implement User model

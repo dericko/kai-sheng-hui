@@ -10,4 +10,20 @@
 
 @implementation KSHArticleManager
 
+// TODO: implement KSHArticleManager methods
+
+- (void)setupRequestDescriptors
+{
+    [super setupRequestDescriptors];
+    
+    // additional request descriptors
+}
+
+- (void)setupResponseDescriptors
+{
+    [super setupResponseDescriptors];
+    
+    // additional response descriptors
+}
+
 @end

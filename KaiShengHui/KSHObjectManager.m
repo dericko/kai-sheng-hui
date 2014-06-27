@@ -9,30 +9,35 @@
 #import "KSHObjectManager.h"
 #import <RestKit/RestKit.h>
 
+#define BASE_URL @"insert_base_url"
+#define PERSONAL_ACCESS_TOKEN @"insert_access_token"
+
+static KSHObjectManager *sharedManager = nil;
+
 @implementation KSHObjectManager
 
-+ (instancetype)sharedManager:(NSURL *)baseURL
++ (instancetype)sharedManager
 {
-    // instantiate object manager
-    KSHObjectManager *sharedManager = [self managerWithBaseURL:baseURL];
-    // define MIMEType as JSON
-    sharedManager.requestSerializationMIMEType = RKMIMETypeJSON;
+    // singleton pattern
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        // instantiate object manager with base url
+        NSURL *url = [NSURL URLWithString:BASE_URL];
+        sharedManager = [self managerWithBaseURL:url];
+        
+        // set MIMEType to JSON
+        sharedManager.requestSerializationMIMEType = RKMIMETypeJSON;
     
-    // Set up request and response behavior
-    [sharedManager setupRequestDescriptors];
-    [sharedManager setupResponseDescriptors];
+        // Set up request and response behavior
+        [sharedManager setupRequestDescriptors];
+        [sharedManager setupResponseDescriptors];
+        
+        // Add token
+        [sharedManager.HTTPClient setDefaultHeader:@"Authorization" value: [NSString stringWithFormat:@"token %@", PERSONAL_ACCESS_TOKEN]];
+    });
     
-    return sharedManager;
-}
-
-+ (instancetype)sharedManager:(NSURL *)baseURL withAuthorizationToken:(NSString *)personalAccessToken
-{
-    KSHObjectManager *sharedManager = [self sharedManager:baseURL];
-    
-    // set access token
-    [sharedManager.HTTPClient setDefaultHeader:@"Authorization" value: [NSString stringWithFormat:@"token %@", personalAccessToken]];
-    
-    return sharedManager;
+        return sharedManager;
 }
 
 - (void)setupRequestDescriptors
