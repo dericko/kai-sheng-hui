@@ -1,18 +1,18 @@
 //
-//  KSHSignInViewController.m
+//  KSHUserProfileDetailViewController.m
 //  KaiShengHui
 //
-//  Created by Derick Olson on 6/24/14.
+//  Created by Derick Olson on 6/27/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import "KSHSignInViewController.h"
+#import "KSHUserProfileDetailViewController.h"
 
-@interface KSHSignInViewController ()
+@interface KSHUserProfileDetailViewController ()
 
 @end
 
-@implementation KSHSignInViewController
+@implementation KSHUserProfileDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

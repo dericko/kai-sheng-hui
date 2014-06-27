@@ -1,18 +1,18 @@
 //
-//  KSHProfileTableViewController.m
+//  KSHSideBarTableViewController.m
 //  KaiShengHui
 //
-//  Created by Derick Olson on 6/24/14.
+//  Created by Derick Olson on 6/27/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import "KSHProfileTableViewController.h"
+#import "KSHSideBarTableViewController.h"
 
-@interface KSHProfileTableViewController ()
+@interface KSHSideBarTableViewController ()
 
 @end
 
-@implementation KSHProfileTableViewController
+@implementation KSHSideBarTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

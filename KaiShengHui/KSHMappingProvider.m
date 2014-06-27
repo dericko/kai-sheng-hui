@@ -10,6 +10,7 @@
 
 static RKEntityMapping *PLACEHOLDER = nil; // remove after implementation
 
+
 @implementation KSHMappingProvider
 
 // TODO: implement KSHMappingProvider methods
