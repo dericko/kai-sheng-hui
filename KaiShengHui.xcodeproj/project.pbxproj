@@ -28,6 +28,11 @@
 		C135602019594FA9005DABED /* KaiShengHuiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C135601F19594FA9005DABED /* KaiShengHuiTests.m */; };
 		C135603819595523005DABED /* KSHMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603719595523005DABED /* KSHMappingProvider.m */; };
 		C135603B19595590005DABED /* KSHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603A19595590005DABED /* KSHObjectManager.m */; };
+		C1B899D1195D5E2A008D0621 /* KSHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B899D0195D5E2A008D0621 /* KSHUser.m */; };
+		C1B899D4195D5E2B008D0621 /* KSHFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B899D3195D5E2B008D0621 /* KSHFunction.m */; };
+		C1B899D7195D5E2B008D0621 /* KSHIndustry.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B899D6195D5E2B008D0621 /* KSHIndustry.m */; };
+		C1B899DA195D5E2B008D0621 /* KSHArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B899D9195D5E2B008D0621 /* KSHArticle.m */; };
+		C1B899DD195D5E2B008D0621 /* KSHTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B899DC195D5E2B008D0621 /* KSHTag.m */; };
 		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
 		C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */; };
 		C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF9819597E0E006EE5F7 /* KSHArticleTableViewController.m */; };
@@ -81,6 +86,16 @@
 		C135603719595523005DABED /* KSHMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMappingProvider.m; sourceTree = "<group>"; };
 		C135603919595590005DABED /* KSHObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHObjectManager.h; sourceTree = "<group>"; };
 		C135603A19595590005DABED /* KSHObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHObjectManager.m; sourceTree = "<group>"; };
+		C1B899CF195D5E2A008D0621 /* KSHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUser.h; sourceTree = "<group>"; };
+		C1B899D0195D5E2A008D0621 /* KSHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUser.m; sourceTree = "<group>"; };
+		C1B899D2195D5E2B008D0621 /* KSHFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHFunction.h; sourceTree = "<group>"; };
+		C1B899D3195D5E2B008D0621 /* KSHFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHFunction.m; sourceTree = "<group>"; };
+		C1B899D5195D5E2B008D0621 /* KSHIndustry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHIndustry.h; sourceTree = "<group>"; };
+		C1B899D6195D5E2B008D0621 /* KSHIndustry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHIndustry.m; sourceTree = "<group>"; };
+		C1B899D8195D5E2B008D0621 /* KSHArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticle.h; sourceTree = "<group>"; };
+		C1B899D9195D5E2B008D0621 /* KSHArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticle.m; sourceTree = "<group>"; };
+		C1B899DB195D5E2B008D0621 /* KSHTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHTag.h; sourceTree = "<group>"; };
+		C1B899DC195D5E2B008D0621 /* KSHTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHTag.m; sourceTree = "<group>"; };
 		C1F6FF8319596350006EE5F7 /* KSHUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserManager.h; sourceTree = "<group>"; };
 		C1F6FF8419596350006EE5F7 /* KSHUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserManager.m; sourceTree = "<group>"; };
 		C1F6FF861959635E006EE5F7 /* KSHArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleManager.h; sourceTree = "<group>"; };
@@ -214,12 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
-				C1ABFE36195C2135006560E7 /* Article */,
-				C1ABFE3A195C215F006560E7 /* Function */,
-				C1ABFE37195C2145006560E7 /* Industry */,
-				C1ABFE39195C215A006560E7 /* Tag */,
-				C1ABFE38195C2153006560E7 /* Type */,
-				C1ABFE35195C2127006560E7 /* User */,
+				C1ABFE35195C2127006560E7 /* CoreDateManagedObjects */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -297,46 +307,21 @@
 			name = ObjectManager;
 			sourceTree = "<group>";
 		};
-		C1ABFE35195C2127006560E7 /* User */ = {
+		C1ABFE35195C2127006560E7 /* CoreDateManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				C1B899DB195D5E2B008D0621 /* KSHTag.h */,
+				C1B899DC195D5E2B008D0621 /* KSHTag.m */,
+				C1B899D8195D5E2B008D0621 /* KSHArticle.h */,
+				C1B899D9195D5E2B008D0621 /* KSHArticle.m */,
+				C1B899D5195D5E2B008D0621 /* KSHIndustry.h */,
+				C1B899D6195D5E2B008D0621 /* KSHIndustry.m */,
+				C1B899D2195D5E2B008D0621 /* KSHFunction.h */,
+				C1B899D3195D5E2B008D0621 /* KSHFunction.m */,
+				C1B899CF195D5E2A008D0621 /* KSHUser.h */,
+				C1B899D0195D5E2A008D0621 /* KSHUser.m */,
 			);
-			name = User;
-			sourceTree = "<group>";
-		};
-		C1ABFE36195C2135006560E7 /* Article */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Article;
-			sourceTree = "<group>";
-		};
-		C1ABFE37195C2145006560E7 /* Industry */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Industry;
-			sourceTree = "<group>";
-		};
-		C1ABFE38195C2153006560E7 /* Type */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Type;
-			sourceTree = "<group>";
-		};
-		C1ABFE39195C215A006560E7 /* Tag */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Tag;
-			sourceTree = "<group>";
-		};
-		C1ABFE3A195C215F006560E7 /* Function */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Function;
+			name = CoreDateManagedObjects;
 			sourceTree = "<group>";
 		};
 		C1F6FF8F195963CC006EE5F7 /* MappingProvider */ = {
@@ -534,8 +519,13 @@
 				C135603819595523005DABED /* KSHMappingProvider.m in Sources */,
 				C135600719594FA9005DABED /* KSHMasterViewController.m in Sources */,
 				C1F6FF9C19597E35006EE5F7 /* KSHArticleTableViewCell.m in Sources */,
+				C1B899D7195D5E2B008D0621 /* KSHIndustry.m in Sources */,
+				C1B899D4195D5E2B008D0621 /* KSHFunction.m in Sources */,
 				C1355FFA19594FA9005DABED /* main.m in Sources */,
+				C1B899D1195D5E2A008D0621 /* KSHUser.m in Sources */,
 				C135603B19595590005DABED /* KSHObjectManager.m in Sources */,
+				C1B899DD195D5E2B008D0621 /* KSHTag.m in Sources */,
+				C1B899DA195D5E2B008D0621 /* KSHArticle.m in Sources */,
 				C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */,
 				C1F87BA2195D3F4100DD300D /* KSHSidebarTableViewCell.m in Sources */,
 				C1F87B9F195D3F1800DD300D /* KSHSideBarTableViewController.m in Sources */,
