@@ -11,11 +11,6 @@
 #import "KSHMasterViewController.h"
 #import "KSHObjectManager.h"
 
-@interface KSHAppDelegate()
-@property (nonatomic, strong, readwrite) KSHObjectManager *objectManager;
-@property (nonatomic, strong, readwrite) RKManagedObjectStore *objectStore;
-@end
-
 @implementation KSHAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -24,15 +19,10 @@
 
 - (void)initializeRestkit // in progress..
 {
-    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"RKGist" ofType:@"momd"]];
-    NSURL *apiURL = [NSURL URLWithString:@"INSERT_BASE_URL"];
-    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
+//    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"RKGist" ofType:@"momd"]];
+//    NSURL *apiURL = [NSURL URLWithString:@"INSERT_BASE_URL"];
+//    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
     
-//    self.objectManager = [KSHObjectManager managerWithBaseURL:apiURL];
-//    self.objectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
-//    self.objectManager.objectStore = self.objectStore;
-//    self.objectManager.mappingProvider = [RKGHMappingProvider mappingProviderWithObjectStore:self.objectStore];
-
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
