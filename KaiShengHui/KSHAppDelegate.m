@@ -19,6 +19,7 @@
 
 - (void)initializeRestkit // in progress..
 {
+    
 //    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"RKGist" ofType:@"momd"]];
 //    NSURL *apiURL = [NSURL URLWithString:@"INSERT_BASE_URL"];
 //    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];

@@ -15,7 +15,6 @@
         <relationship name="dislikedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="dislikesArticle" inverseEntity="User" syncable="YES"/>
         <relationship name="hasIndustry" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Industry" inverseName="hasArticle" inverseEntity="Industry" syncable="YES"/>
         <relationship name="hasTag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="tags" inverseEntity="Tag" syncable="YES"/>
-        <relationship name="hasType" optional="YES" toMany="YES" deletionRule="Nullify" syncable="YES"/>
         <relationship name="likedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="likesArticle" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Function" representedClassName="KSHFunction" syncable="YES">
@@ -58,7 +57,7 @@
         <relationship name="performsFunction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Function" inverseName="hasUser" inverseEntity="Function" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Article" positionX="331" positionY="18" width="128" height="283"/>
+        <element name="Article" positionX="331" positionY="18" width="128" height="268"/>
         <element name="Function" positionX="142" positionY="432" width="128" height="103"/>
         <element name="Industry" positionX="151" positionY="225" width="128" height="118"/>
         <element name="Tag" positionX="592" positionY="450" width="128" height="118"/>
