@@ -169,12 +169,13 @@
 			isa = PBXGroup;
 			children = (
 				C1ABFE2F195C206E006560E7 /* Networking */,
-				C135602D195950C4005DABED /* Storyboards */,
 				C135602B195950B9005DABED /* Models */,
 				C1ABFE30195C20A5006560E7 /* Views */,
 				C135602C195950BF005DABED /* Controllers */,
-				C135602E195950CB005DABED /* AppDelegate */,
+				C1355FFC19594FA9005DABED /* KSHAppDelegate.h */,
+				C1355FFD19594FA9005DABED /* KSHAppDelegate.m */,
 				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
+				C1355FFF19594FA9005DABED /* Main.storyboard */,
 				C135600B19594FA9005DABED /* Images.xcassets */,
 				C1355FF419594FA9005DABED /* Supporting Files */,
 			);
@@ -236,23 +237,6 @@
 				C135600919594FA9005DABED /* KSHDetailViewController.m */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		C135602D195950C4005DABED /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				C1355FFF19594FA9005DABED /* Main.storyboard */,
-			);
-			name = Storyboards;
-			sourceTree = "<group>";
-		};
-		C135602E195950CB005DABED /* AppDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				C1355FFC19594FA9005DABED /* KSHAppDelegate.h */,
-				C1355FFD19594FA9005DABED /* KSHAppDelegate.m */,
-			);
-			name = AppDelegate;
 			sourceTree = "<group>";
 		};
 		C1ABFE2F195C206E006560E7 /* Networking */ = {

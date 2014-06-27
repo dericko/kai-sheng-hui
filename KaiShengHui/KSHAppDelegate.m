@@ -147,13 +147,13 @@
 //    
 //    return _persistentStoreCoordinator;
 //}
-//
-//#pragma mark - Application's Documents directory
-//
-//// Returns the URL to the application's Documents directory.
-//- (NSURL *)applicationDocumentsDirectory
-//{
-//    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-//}
+
+#pragma mark - Application's Documents directory
+
+// Returns the URL to the application's Documents directory.
+- (NSURL *)applicationDocumentsDirectory
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
 
 @end
