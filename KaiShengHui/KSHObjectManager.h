@@ -14,6 +14,8 @@
  */
 @interface KSHObjectManager : RKObjectManager
 
+@property (nonatomic, strong) RKManagedObjectStore *objectStore;
+
 /**
  Setup client with RestKit using base URL of RESTful API, formatted for JSON Serialization.
  @see http://restkit.org/ for more information

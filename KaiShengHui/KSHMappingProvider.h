@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KSHObjectManager.h"
-@class RKObjectMapping;
+@class RKEntityMapping;
 
 /**
  'KSHMappingProvider' Uses RestKit object mapping to define custom mapping between data objects and JSON-formatted network response information
@@ -17,10 +17,10 @@
 @interface KSHMappingProvider : NSObject
 
 // TODO: comment mapping methods
-+ (RKObjectMapping *) userMapping;
-+ (RKObjectMapping *) articleMapping;
-+ (RKObjectMapping *) industryMapping;
-+ (RKObjectMapping *) tagMapping;
-+ (RKObjectMapping *) typeMapping;
++ (RKEntityMapping *) userMapping;
++ (RKEntityMapping *) articleMapping;
++ (RKEntityMapping *) industryMapping;
++ (RKEntityMapping *) tagMapping;
++ (RKEntityMapping *) typeMapping;
 
 @end
