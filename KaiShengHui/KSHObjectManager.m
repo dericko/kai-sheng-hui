@@ -9,12 +9,14 @@
 #import "KSHObjectManager.h"
 #import <RestKit/RestKit.h>
 
-#define BASE_URL @"insert_base_url"
+// TODO: set real base url
+#define BASE_URL @"https://api.github.com" //edited for testing with github gist api
 #define PERSONAL_ACCESS_TOKEN @"insert_access_token"
 
 static KSHObjectManager *sharedManager = nil;
 
 @implementation KSHObjectManager
+
 
 + (instancetype)sharedManager
 {
@@ -26,15 +28,15 @@ static KSHObjectManager *sharedManager = nil;
         NSURL *url = [NSURL URLWithString:BASE_URL];
         sharedManager = [self managerWithBaseURL:url];
         
-        // set MIMEType to JSON
+        // Serialize for JSON
         sharedManager.requestSerializationMIMEType = RKMIMETypeJSON;
     
         // Set up request and response behavior
         [sharedManager setupRequestDescriptors];
         [sharedManager setupResponseDescriptors];
         
-        // Add token
-        [sharedManager.HTTPClient setDefaultHeader:@"Authorization" value: [NSString stringWithFormat:@"token %@", PERSONAL_ACCESS_TOKEN]];
+        // TODO: Add token
+//        [sharedManager.HTTPClient setDefaultHeader:@"Authorization" value: [NSString stringWithFormat:@"token %@", PERSONAL_ACCESS_TOKEN]];
     });
     
         return sharedManager;

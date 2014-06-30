@@ -7,9 +7,11 @@
 //
 
 #import "KSHMappingProvider.h"
+#import <RestKit/RestKit.h>
 
-static RKEntityMapping *PLACEHOLDER = nil; // remove after implementation
 
+// TODO: remove PLACEHOLDER after implementation
+static RKEntityMapping *PLACEHOLDER = nil;
 
 @implementation KSHMappingProvider
 
@@ -22,7 +24,16 @@ static RKEntityMapping *PLACEHOLDER = nil; // remove after implementation
 
 + (RKEntityMapping *) articleMapping
 {
-    return PLACEHOLDER;
+
+    RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [articleMapping addAttributeMappingsFromDictionary:@{
+                                                        @"id":             @"articleID",
+//                                                        @"title":            @"title",
+                                                        @"description":    @"excerpt",
+                                                        @"created_at":     @"datePublished"}]; //edited for testing with github gist api
+    articleMapping.identificationAttributes = @[ @"articleID" ];
+    
+    return articleMapping;
 }
 
 + (RKEntityMapping *) industryMapping

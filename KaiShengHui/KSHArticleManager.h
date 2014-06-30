@@ -7,11 +7,14 @@
 //
 
 #import "KSHObjectManager.h"
+#import <RestKit/RestKit.h>
 
 /**
  'KSHArticleManager' Defines articleObject-specific request and response behavior. It handles interactions with an object mapping provider to map network responses to an article model.
  @see 'KSHObjectManager'
  */
 @interface KSHArticleManager : KSHObjectManager
+
+@property (nonatomic, strong) NSString * const _Article_Path;
 
 @end

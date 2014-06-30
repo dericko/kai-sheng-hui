@@ -17,8 +17,6 @@
 		C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1355FFD19594FA9005DABED /* KSHAppDelegate.m */; };
 		C135600119594FA9005DABED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1355FFF19594FA9005DABED /* Main.storyboard */; };
 		C135600419594FA9005DABED /* KaiShengHui.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */; };
-		C135600719594FA9005DABED /* KSHMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C135600619594FA9005DABED /* KSHMasterViewController.m */; };
-		C135600A19594FA9005DABED /* KSHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C135600919594FA9005DABED /* KSHDetailViewController.m */; };
 		C135600C19594FA9005DABED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C135600B19594FA9005DABED /* Images.xcassets */; };
 		C135601319594FA9005DABED /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C135601219594FA9005DABED /* XCTest.framework */; };
 		C135601419594FA9005DABED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FEB19594FA9005DABED /* Foundation.framework */; };
@@ -72,10 +70,6 @@
 		C1355FFD19594FA9005DABED /* KSHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSHAppDelegate.m; sourceTree = "<group>"; };
 		C135600019594FA9005DABED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C135600319594FA9005DABED /* KaiShengHui.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KaiShengHui.xcdatamodel; sourceTree = "<group>"; };
-		C135600519594FA9005DABED /* KSHMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSHMasterViewController.h; sourceTree = "<group>"; };
-		C135600619594FA9005DABED /* KSHMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSHMasterViewController.m; sourceTree = "<group>"; };
-		C135600819594FA9005DABED /* KSHDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSHDetailViewController.h; sourceTree = "<group>"; };
-		C135600919594FA9005DABED /* KSHDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSHDetailViewController.m; sourceTree = "<group>"; };
 		C135600B19594FA9005DABED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C135601119594FA9005DABED /* KaiShengHuiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaiShengHuiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C135601219594FA9005DABED /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -241,10 +235,6 @@
 				C1ABFE31195C20B5006560E7 /* Login */,
 				C1F6FFA019597E8E006EE5F7 /* Users */,
 				C1F6FF9619597DE8006EE5F7 /* Articles */,
-				C135600519594FA9005DABED /* KSHMasterViewController.h */,
-				C135600619594FA9005DABED /* KSHMasterViewController.m */,
-				C135600819594FA9005DABED /* KSHDetailViewController.h */,
-				C135600919594FA9005DABED /* KSHDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -513,11 +503,9 @@
 				C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */,
 				C1F6FF9F19597E87006EE5F7 /* KSHArticleDetailViewController.m in Sources */,
 				C1F87B95195D3EAA00DD300D /* KSHUserProfileTableViewController.m in Sources */,
-				C135600A19594FA9005DABED /* KSHDetailViewController.m in Sources */,
 				C1F87B98195D3ECF00DD300D /* KSHUserProfileDetailViewController.m in Sources */,
 				C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */,
 				C135603819595523005DABED /* KSHMappingProvider.m in Sources */,
-				C135600719594FA9005DABED /* KSHMasterViewController.m in Sources */,
 				C1F6FF9C19597E35006EE5F7 /* KSHArticleTableViewCell.m in Sources */,
 				C1B899D7195D5E2B008D0621 /* KSHIndustry.m in Sources */,
 				C1B899D4195D5E2B008D0621 /* KSHFunction.m in Sources */,

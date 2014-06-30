@@ -7,14 +7,13 @@
 //
 
 #import "RKObjectManager.h"
+#import "KSHMappingProvider.h"
 
 /**
  'KSHObjectManager' Handles initial setup, requests, and responses as application network client. This class should be extended according to request and response behaviour of specific resources.
  @see 'RKObjectManager'
  */
 @interface KSHObjectManager : RKObjectManager
-
-@property (nonatomic, strong) RKManagedObjectStore *objectStore;
 
 /**
  Setup client with RestKit using base URL of RESTful API, formatted for JSON Serialization.

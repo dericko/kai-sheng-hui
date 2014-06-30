@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
+#import "KSHArticleManager.h"
 
-@interface KSHArticleTableViewController : UITableViewController
+@interface KSHArticleTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) KSHArticleManager *articleManager;
 
 @end
