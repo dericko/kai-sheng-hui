@@ -10,7 +10,7 @@
 #import "KSHArticle.h"
 #import "KSHArticleTableViewCell.h"
 
-NSString * const _ArticlePath = @"/gists/public"; //edited for testing with github gist api
+NSString * const _ArticlePath = @"/post/rest/gettopfivepost"; //edited for testing with github gist api
 
 @interface KSHArticleTableViewController ()
 @end

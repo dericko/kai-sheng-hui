@@ -10,7 +10,7 @@
 #import <RestKit/RestKit.h>
 
 // TODO: set real base url
-#define BASE_URL @"https://api.github.com" //edited for testing with github gist api
+#define BASE_URL @"http://test.i-ksh.net" //edited for testing with github gist api
 #define PERSONAL_ACCESS_TOKEN @"insert_access_token"
 
 static KSHObjectManager *sharedManager = nil;

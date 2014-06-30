@@ -8,7 +8,7 @@
 
 #import "KSHArticleManager.h"
 
-NSString * const _Article_Path = @"/gists/public"; //edited for testing with github gist api
+NSString * const _Article_Path = @"/post/rest/gettopfivepost"; //edited for testing with github gist api
 
 @implementation KSHArticleManager
 // TODO: implement KSHArticleManager methods
@@ -28,7 +28,7 @@ NSString * const _Article_Path = @"/gists/public"; //edited for testing with git
     RKResponseDescriptor *articleResponseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider articleMapping]
                                                          method:RKRequestMethodGET
-                                                         pathPattern:@"/gists/public"
+                                                         pathPattern:@"/post/rest/gettopfivepost"
                                                          keyPath:nil
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     

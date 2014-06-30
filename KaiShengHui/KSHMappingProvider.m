@@ -27,10 +27,10 @@ static RKEntityMapping *PLACEHOLDER = nil;
 
     RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [articleMapping addAttributeMappingsFromDictionary:@{
-                                                        @"id":             @"articleID",
-//                                                        @"title":            @"title",
-                                                        @"description":    @"excerpt",
-                                                        @"created_at":     @"datePublished"}]; //edited for testing with github gist api
+                                                        @"id":              @"articleID",
+                                                        @"title":           @"title",
+                                                        @"excerpt":         @"excerpt",
+                                                        @"publish_time":      @"datePublished"}]; //edited for testing with github gist api
     articleMapping.identificationAttributes = @[ @"articleID" ];
     
     return articleMapping;
