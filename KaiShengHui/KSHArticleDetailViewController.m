@@ -14,6 +14,11 @@
 
 @implementation KSHArticleDetailViewController
 
+@synthesize articleTitle;
+@synthesize articleContent;
+@synthesize articleImage;
+@synthesize article;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,6 +32,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    articleTitle.text = article.title;
+    articleContent.text = article.content;
+    articleImage.image = [UIImage imageNamed:@"placeholderPie.jpg"];
 }
 
 - (void)didReceiveMemoryWarning

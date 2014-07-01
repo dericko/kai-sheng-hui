@@ -34,7 +34,9 @@
 //    
 //    [self.window setRootViewController:initViewController];
     
-    
+    // Logs all JSON info
+    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+
     
     return YES;
 }

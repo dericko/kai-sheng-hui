@@ -10,7 +10,7 @@
 #import <RestKit/RestKit.h>
 
 
-// TODO: remove PLACEHOLDER after implementation
+# warning placeholder object
 static RKEntityMapping *PLACEHOLDER = nil;
 
 @implementation KSHMappingProvider
@@ -30,7 +30,8 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                                         @"id":              @"articleID",
                                                         @"title":           @"title",
                                                         @"excerpt":         @"excerpt",
-                                                        @"publish_time":      @"datePublished"}]; //edited for testing with github gist api
+                                                        @"publish_time":    @"datePublished",
+                                                        @"content":         @"content"}];
     articleMapping.identificationAttributes = @[ @"articleID" ];
     
     return articleMapping;

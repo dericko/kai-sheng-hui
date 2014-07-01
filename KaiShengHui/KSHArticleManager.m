@@ -8,8 +8,8 @@
 
 #import "KSHArticleManager.h"
 
-NSString * const _Article_Path = @"/post/rest/gettopfivepost"; //edited for testing with github gist api
-
+# warning Test URL for gettopfivepost
+NSString * const _Article_Path = @"/post/rest/gettopfivepost";
 @implementation KSHArticleManager
 // TODO: implement KSHArticleManager methods
 

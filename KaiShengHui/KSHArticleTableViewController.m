@@ -9,10 +9,14 @@
 #import "KSHArticleTableViewController.h"
 #import "KSHArticle.h"
 #import "KSHArticleTableViewCell.h"
+#import "KSHArticleDetailViewController.h"
 
+# warning Test URL for gettopfivepost
 NSString * const _ArticlePath = @"/post/rest/gettopfivepost"; //edited for testing with github gist api
 
 @interface KSHArticleTableViewController ()
+@property (nonatomic, strong) NSArray *imageArray;
+@property (nonatomic, strong) KSHArticle *article;
 @end
 
 @implementation KSHArticleTableViewController
@@ -36,18 +40,31 @@ NSString * const _ArticlePath = @"/post/rest/gettopfivepost"; //edited for testi
     // set managed object context to main queue
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     
+    // Placeholder image array
+    _imageArray = [NSArray arrayWithObjects: @"placeholderPie.jpg", @"placeholderBaby.jpg", @"placeholderBanner.jpg", @"placeholderMan.png", @"placeholderShop.jpg", nil];
     
-    // Add refresh control
-    UIRefreshControl *refreshControl = [UIRefreshControl new];
-    [refreshControl addTarget:self action:@selector(loadArticles) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refreshControl;
     
+    // Add gesture recognizer
+    [self addSwipeGestureRecognizer];
+    
+    [self addRefreshControl];
     [self loadArticles];
     [self.refreshControl beginRefreshing];
     
-    
 }
 
+# pragma mark - Initialization helpers
+
+- (void)addSwipeGestureRecognizer
+{
+    // TODO: implement swipe gesture for upvotes and downvotes
+}
+- (void)addRefreshControl
+{
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    [refreshControl addTarget:self action:@selector(loadArticles) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
+}
 - (void)loadArticles
 {
     if (_articleManager) {
@@ -95,9 +112,15 @@ NSString * const _ArticlePath = @"/post/rest/gettopfivepost"; //edited for testi
 
 - (void)configureCell:(KSHArticleTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    KSHArticle *article = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[article valueForKey:@"title"] description];
-    cell.detailTextLabel.text = [[article valueForKey:@"excerpt"] description];
+    _article = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    UILabel *articleTitleLabel = (UILabel *)[cell viewWithTag:100];
+    articleTitleLabel.text = [[_article valueForKey:@"title"] description];
+    
+    UILabel *articleExcerptLabel = (UILabel *)[cell viewWithTag:101];
+    articleExcerptLabel.text = [[_article valueForKey:@"excerpt"] description];;
+
+    UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
+    articleImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
 }
 
 // Override to support conditional editing of the table view.
@@ -144,6 +167,11 @@ NSString * const _ArticlePath = @"/post/rest/gettopfivepost"; //edited for testi
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"showArticleDetail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        KSHArticleDetailViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.article = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    }
 }
 
 

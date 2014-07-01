@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KSHArticle.h"
 
 @interface KSHArticleDetailViewController : UIViewController
-
+@property (nonatomic, strong) KSHArticle *article;
+@property (nonatomic, strong) IBOutlet UILabel *articleTitle;
+@property (nonatomic, strong) IBOutlet UITextView *articleContent;
+@property (nonatomic, strong) IBOutlet UIImageView *articleImage;
 @end
