@@ -14,7 +14,6 @@
 		C1197B381962567400868228 /* placeholderShop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1197B331962567400868228 /* placeholderShop.jpg */; };
 		C1197B3A19625A4500868228 /* placeholderMan.png in Resources */ = {isa = PBXBuildFile; fileRef = C1197B3919625A4500868228 /* placeholderMan.png */; };
 		C1197B4419628CDF00868228 /* KSHArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1197B4319628CDF00868228 /* KSHArticleTableViewCell.m */; };
-		C1197B471962953C00868228 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1197B461962953C00868228 /* SWRevealViewController.m */; };
 		C1355FEC19594FA9005DABED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FEB19594FA9005DABED /* Foundation.framework */; };
 		C1355FEE19594FA9005DABED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FED19594FA9005DABED /* CoreGraphics.framework */; };
 		C1355FF019594FA9005DABED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FEF19594FA9005DABED /* UIKit.framework */; };
@@ -70,8 +69,6 @@
 		C1197B3919625A4500868228 /* placeholderMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholderMan.png; sourceTree = "<group>"; };
 		C1197B4219628CDF00868228 /* KSHArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleTableViewCell.h; sourceTree = "<group>"; };
 		C1197B4319628CDF00868228 /* KSHArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleTableViewCell.m; sourceTree = "<group>"; };
-		C1197B451962953C00868228 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		C1197B461962953C00868228 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		C1355FE819594FA9005DABED /* KaiShengHui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaiShengHui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1355FEB19594FA9005DABED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C1355FED19594FA9005DABED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -191,15 +188,6 @@
 				C1F87BA1195D3F4100DD300D /* KSHSidebarTableViewCell.m */,
 			);
 			name = SidebarView;
-			sourceTree = "<group>";
-		};
-		C1197B481962955500868228 /* SWRevealController */ = {
-			isa = PBXGroup;
-			children = (
-				C1197B451962953C00868228 /* SWRevealViewController.h */,
-				C1197B461962953C00868228 /* SWRevealViewController.m */,
-			);
-			name = SWRevealController;
 			sourceTree = "<group>";
 		};
 		C1355FDF19594FA9005DABED = {
@@ -417,7 +405,6 @@
 		C1F87B99195D3EEB00DD300D /* SidebarControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C1197B481962955500868228 /* SWRevealController */,
 				C1F87B9D195D3F1800DD300D /* KSHSideBarTableViewController.h */,
 				C1F87B9E195D3F1800DD300D /* KSHSideBarTableViewController.m */,
 			);
@@ -581,7 +568,6 @@
 				C1B899DA195D5E2B008D0621 /* KSHArticle.m in Sources */,
 				C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */,
 				C1F87BA2195D3F4100DD300D /* KSHSidebarTableViewCell.m in Sources */,
-				C1197B471962953C00868228 /* SWRevealViewController.m in Sources */,
 				C1F87B9F195D3F1800DD300D /* KSHSideBarTableViewController.m in Sources */,
 				C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */,
 			);
