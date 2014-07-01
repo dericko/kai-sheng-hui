@@ -8,8 +8,6 @@
 
 #import "KSHArticleManager.h"
 
-# warning Test URL for gettopfivepost
-NSString * const _Article_Path = @"/post/rest/gettopfivepost";
 @implementation KSHArticleManager
 // TODO: implement KSHArticleManager methods
 
@@ -28,7 +26,7 @@ NSString * const _Article_Path = @"/post/rest/gettopfivepost";
     RKResponseDescriptor *articleResponseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider articleMapping]
                                                          method:RKRequestMethodGET
-                                                         pathPattern:@"/post/rest/gettopfivepost"
+                                                         pathPattern:@"/post/rest/gettopposts/15"
                                                          keyPath:nil
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     

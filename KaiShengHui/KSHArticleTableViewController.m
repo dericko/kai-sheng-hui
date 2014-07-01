@@ -10,11 +10,14 @@
 #import "KSHArticle.h"
 #import "KSHArticleTableViewCell.h"
 #import "KSHArticleDetailViewController.h"
+#import "SWRevealViewController.h"
 
-# warning Test URL for gettopfivepost
-NSString * const _ArticlePath = @"/post/rest/gettopfivepost"; //edited for testing with github gist api
+
+NSString * const _ArticlePath = @"/post/rest/gettopposts/15";
 
 @interface KSHArticleTableViewController ()
+@property (nonatomic) IBOutlet UIBarButtonItem* revealButtonItem;
+
 @property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, strong) KSHArticle *article;
 @end
@@ -43,10 +46,18 @@ NSString * const _ArticlePath = @"/post/rest/gettopfivepost"; //edited for testi
     // Placeholder image array
     _imageArray = [NSArray arrayWithObjects: @"placeholderPie.jpg", @"placeholderBaby.jpg", @"placeholderBanner.jpg", @"placeholderMan.png", @"placeholderShop.jpg", nil];
     
+    // Configure sidebar reveal button
+    _revealButtonItem.target = self.revealViewController;
+    _revealButtonItem.action = @selector(revealToggle:);
     
-    // Add gesture recognizer
-    [self addSwipeGestureRecognizer];
-    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+//    
+//    [self.revealButtonItem setTarget: self.revealViewController];
+//    [self.revealButtonItem setAction: @selector( revealToggle: )];
+//    [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+
+    // finish initialization
     [self addRefreshControl];
     [self loadArticles];
     [self.refreshControl beginRefreshing];
@@ -55,10 +66,6 @@ NSString * const _ArticlePath = @"/post/rest/gettopfivepost"; //edited for testi
 
 # pragma mark - Initialization helpers
 
-- (void)addSwipeGestureRecognizer
-{
-    // TODO: implement swipe gesture for upvotes and downvotes
-}
 - (void)addRefreshControl
 {
     UIRefreshControl *refreshControl = [UIRefreshControl new];
@@ -119,8 +126,8 @@ NSString * const _ArticlePath = @"/post/rest/gettopfivepost"; //edited for testi
     UILabel *articleExcerptLabel = (UILabel *)[cell viewWithTag:101];
     articleExcerptLabel.text = [[_article valueForKey:@"excerpt"] description];;
 
-    UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
-    articleImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
+    //UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
+    //articleImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
 }
 
 // Override to support conditional editing of the table view.
@@ -188,8 +195,8 @@ NSString * const _ArticlePath = @"/post/rest/gettopfivepost"; //edited for testi
     NSEntityDescription *article = [NSEntityDescription entityForName:@"Article" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:article];
     
-    // TODO: Set the batch size to a suitable number (currently 5)
-    [fetchRequest setFetchBatchSize:5];
+    // TODO: Set the batch size to a suitable number (currently 15)
+    [fetchRequest setFetchBatchSize:15];
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"datePublished" ascending:NO];

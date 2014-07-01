@@ -34,6 +34,10 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                                         @"content":         @"content"}];
     articleMapping.identificationAttributes = @[ @"articleID" ];
     
+    // TODO: set up image by concatenating:
+    // @"file.path" : @"imgURL"
+    // @"http://www.i-ksh.com/files/fileUpload/" + @"imgURL"
+    
     return articleMapping;
 }
 

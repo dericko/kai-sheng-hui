@@ -32,6 +32,7 @@
 		C135602019594FA9005DABED /* KaiShengHuiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C135601F19594FA9005DABED /* KaiShengHuiTests.m */; };
 		C135603819595523005DABED /* KSHMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603719595523005DABED /* KSHMappingProvider.m */; };
 		C135603B19595590005DABED /* KSHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603A19595590005DABED /* KSHObjectManager.m */; };
+		C1A4C39F196298E500603DC6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A4C39E196298E500603DC6 /* SWRevealViewController.m */; };
 		C1B899D1195D5E2A008D0621 /* KSHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B899D0195D5E2A008D0621 /* KSHUser.m */; };
 		C1B899D4195D5E2B008D0621 /* KSHFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B899D3195D5E2B008D0621 /* KSHFunction.m */; };
 		C1B899D7195D5E2B008D0621 /* KSHIndustry.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B899D6195D5E2B008D0621 /* KSHIndustry.m */; };
@@ -92,6 +93,8 @@
 		C135603719595523005DABED /* KSHMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMappingProvider.m; sourceTree = "<group>"; };
 		C135603919595590005DABED /* KSHObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHObjectManager.h; sourceTree = "<group>"; };
 		C135603A19595590005DABED /* KSHObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHObjectManager.m; sourceTree = "<group>"; };
+		C1A4C39D196298E500603DC6 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		C1A4C39E196298E500603DC6 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		C1B899CF195D5E2A008D0621 /* KSHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUser.h; sourceTree = "<group>"; };
 		C1B899D0195D5E2A008D0621 /* KSHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUser.m; sourceTree = "<group>"; };
 		C1B899D2195D5E2B008D0621 /* KSHFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHFunction.h; sourceTree = "<group>"; };
@@ -405,6 +408,8 @@
 		C1F87B99195D3EEB00DD300D /* SidebarControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C1A4C39D196298E500603DC6 /* SWRevealViewController.h */,
+				C1A4C39E196298E500603DC6 /* SWRevealViewController.m */,
 				C1F87B9D195D3F1800DD300D /* KSHSideBarTableViewController.h */,
 				C1F87B9E195D3F1800DD300D /* KSHSideBarTableViewController.m */,
 			);
@@ -568,6 +573,7 @@
 				C1B899DA195D5E2B008D0621 /* KSHArticle.m in Sources */,
 				C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */,
 				C1F87BA2195D3F4100DD300D /* KSHSidebarTableViewCell.m in Sources */,
+				C1A4C39F196298E500603DC6 /* SWRevealViewController.m in Sources */,
 				C1F87B9F195D3F1800DD300D /* KSHSideBarTableViewController.m in Sources */,
 				C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */,
 			);
