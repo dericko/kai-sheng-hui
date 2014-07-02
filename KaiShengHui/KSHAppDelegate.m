@@ -34,10 +34,6 @@
 //    
 //    [self.window setRootViewController:initViewController];
     
-    // Logs all JSON info
-    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
-
-    
     return YES;
 }
 							
@@ -73,7 +69,10 @@
 #pragma mark - Core Data stack with Restkit Overide
 
 - (void)initializeRestkitForCoreData
-{    
+{
+    // Logs all Restkit info
+    RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
+    
     _RKManagedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:[self managedObjectModel]];
     
     

@@ -8,7 +8,7 @@
 
 #import "KSHArticleManager.h"
 
-NSString * const kArticlePath = @"/post/rest/gettopposts/15";
+NSString * const kArticlePath = @"/post/rest/gettopposts/20";
 
 @implementation KSHArticleManager
 // TODO: implement KSHArticleManager methods
@@ -23,6 +23,8 @@ NSString * const kArticlePath = @"/post/rest/gettopposts/15";
 - (void)setupResponseDescriptors
 {
     [super setupResponseDescriptors];
+    
+    NSLog(@"-setUpResponseDescriptors: part of singleton--should only call once");
     
     // add additional response descriptors
     RKResponseDescriptor *articleResponseDescriptor =

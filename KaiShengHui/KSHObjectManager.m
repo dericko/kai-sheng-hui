@@ -23,6 +23,8 @@ static KSHObjectManager *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
+        NSLog(@"-sharedManager: part of singleton--should only call once");
+        
         // instantiate object manager with base url
         NSURL *url = [NSURL URLWithString:BASE_URL];
         sharedManager = [self managerWithBaseURL:url];

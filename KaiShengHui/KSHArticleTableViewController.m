@@ -10,6 +10,7 @@
 #import "KSHArticle.h"
 #import "KSHArticleDetailViewController.h"
 #import "SWRevealViewController.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface KSHArticleTableViewController ()
 @property (nonatomic) IBOutlet UIBarButtonItem* revealButtonItem;
@@ -34,7 +35,9 @@
     [super viewDidLoad];
     
     // Article manager instance
+    NSLog(@"instantiate article manager...");
     _articleManager = [KSHArticleManager sharedManager];
+    NSLog(@"instantiate article manager...DONE");
     _articleManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     // set managed object context to main queue
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
@@ -67,12 +70,14 @@
 - (void)loadArticles
 {
     if (_articleManager) {
-    [_articleManager getObjectsAtPath:kArticlePath parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [self.refreshControl endRefreshing];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [self.refreshControl endRefreshing];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
+        NSLog(@"make RK request to retrieve articles");
+        [_articleManager getObjectsAtPath:kArticlePath parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [self.refreshControl endRefreshing];
+        NSLog(@"Successfully retrieved articles");
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [self.refreshControl endRefreshing];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
     }];
     }
 }
@@ -111,6 +116,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
+    // Assign cell labels
     _article = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *articleTitleLabel = (UILabel *)[cell viewWithTag:100];
     articleTitleLabel.text = [[_article valueForKey:@"title"] description];
@@ -118,10 +124,23 @@
     UILabel *articleExcerptLabel = (UILabel *)[cell viewWithTag:101];
     articleExcerptLabel.text = [[_article valueForKey:@"excerpt"] description];;
 
-    # warning Don't leave this image dispatch on the main thread!
+    // Async request and assign cell image
+    NSLog(@"grabbing image...");
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURL"] description]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
+    
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
-    articleImageView.image = //[UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
-    [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURL"] description]]]]];
+    # warning temporary solution to retain cycle by using placeholderImageView to call request block
+    UIImageView *placeholderImageView = [UIImageView new];
+    [placeholderImageView setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        NSLog(@"grabbing image...DONE");
+        articleImageView.image = image;
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        NSLog(@"Error: %@", error);
+    }];
 
 }
 

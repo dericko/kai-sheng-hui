@@ -24,7 +24,7 @@ static RKEntityMapping *PLACEHOLDER = nil;
 
 + (RKEntityMapping *) articleMapping
 {
-
+    NSLog(@"-articleMapping: assign mapping for article manager");
     RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [articleMapping addAttributeMappingsFromDictionary:@{
                                                         @"id":              @"articleID",
@@ -38,7 +38,6 @@ static RKEntityMapping *PLACEHOLDER = nil;
     // TODO: set up image by concatenating:
     // @"file.path" : @"imgURL"
     // @"http://www.i-ksh.com/files/fileUpload/" + @"imgURL"
-    
     return articleMapping;
 }
 
