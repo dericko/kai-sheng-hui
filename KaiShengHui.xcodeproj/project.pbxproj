@@ -279,7 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
-				C1ABFE35195C2127006560E7 /* CoreDateManagedObjects */,
+				C1ABFE35195C2127006560E7 /* Entities */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -350,7 +350,7 @@
 			name = ObjectManager;
 			sourceTree = "<group>";
 		};
-		C1ABFE35195C2127006560E7 /* CoreDateManagedObjects */ = {
+		C1ABFE35195C2127006560E7 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				C1B899DB195D5E2B008D0621 /* KSHTag.h */,
@@ -364,7 +364,7 @@
 				C1B899CF195D5E2A008D0621 /* KSHUser.h */,
 				C1B899D0195D5E2A008D0621 /* KSHUser.m */,
 			);
-			name = CoreDateManagedObjects;
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		C1F6FF8F195963CC006EE5F7 /* MappingProvider */ = {
