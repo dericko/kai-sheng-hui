@@ -38,6 +38,7 @@
 		C1B899D7195D5E2B008D0621 /* KSHIndustry.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B899D6195D5E2B008D0621 /* KSHIndustry.m */; };
 		C1B899DA195D5E2B008D0621 /* KSHArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B899D9195D5E2B008D0621 /* KSHArticle.m */; };
 		C1B899DD195D5E2B008D0621 /* KSHTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B899DC195D5E2B008D0621 /* KSHTag.m */; };
+		C1EBCDD41963A3E900C04FC4 /* placeholder-square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1EBCDD31963A3E900C04FC4 /* placeholder-square.jpg */; };
 		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
 		C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */; };
 		C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF9819597E0E006EE5F7 /* KSHArticleTableViewController.m */; };
@@ -105,6 +106,7 @@
 		C1B899D9195D5E2B008D0621 /* KSHArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticle.m; sourceTree = "<group>"; };
 		C1B899DB195D5E2B008D0621 /* KSHTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHTag.h; sourceTree = "<group>"; };
 		C1B899DC195D5E2B008D0621 /* KSHTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHTag.m; sourceTree = "<group>"; };
+		C1EBCDD31963A3E900C04FC4 /* placeholder-square.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "placeholder-square.jpg"; sourceTree = "<group>"; };
 		C1F6FF8319596350006EE5F7 /* KSHUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserManager.h; sourceTree = "<group>"; };
 		C1F6FF8419596350006EE5F7 /* KSHUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserManager.m; sourceTree = "<group>"; };
 		C1F6FF861959635E006EE5F7 /* KSHArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleManager.h; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		C1197B2E196251EE00868228 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C1EBCDD31963A3E900C04FC4 /* placeholder-square.jpg */,
 				C1197B3919625A4500868228 /* placeholderMan.png */,
 				C1197B2F1962567400868228 /* placeholderPie.jpg */,
 				C1197B311962567400868228 /* placeholderBaby.jpg */,
@@ -496,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1197B381962567400868228 /* placeholderShop.jpg in Resources */,
+				C1EBCDD41963A3E900C04FC4 /* placeholder-square.jpg in Resources */,
 				C1197B341962567400868228 /* placeholderPie.jpg in Resources */,
 				C135600C19594FA9005DABED /* Images.xcassets in Resources */,
 				C1355FF819594FA9005DABED /* InfoPlist.strings in Resources */,

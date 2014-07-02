@@ -10,7 +10,7 @@
 #import <RestKit/RestKit.h>
 
 
-# warning placeholder object
+# warning using placeholder object! (set up the other entity mappings)
 static RKEntityMapping *PLACEHOLDER = nil;
 
 @implementation KSHMappingProvider
@@ -31,7 +31,8 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                                         @"title":           @"title",
                                                         @"excerpt":         @"excerpt",
                                                         @"publish_time":    @"datePublished",
-                                                        @"content":         @"content"}];
+                                                        @"content":         @"content",
+                                                        @"file.path":       @"imgURL"}];
     articleMapping.identificationAttributes = @[ @"articleID" ];
     
     // TODO: set up image by concatenating:

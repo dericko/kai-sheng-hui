@@ -33,8 +33,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     articleTitle.text = article.title;
-    articleContent.text = article.content;
-    articleImage.image = [UIImage imageNamed:@"placeholderPie.jpg"];
+    articleContent.text = article.content; // set up filter for html '&xxxxx' tags
+    # warning should be saving this image rather than redownloading it!
+    articleImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[article valueForKey:@"imgURL"] description]]]]];
+
 }
 
 - (void)didReceiveMemoryWarning

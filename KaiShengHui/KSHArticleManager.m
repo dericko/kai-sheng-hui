@@ -8,6 +8,8 @@
 
 #import "KSHArticleManager.h"
 
+NSString * const kArticlePath = @"/post/rest/gettopposts/15";
+
 @implementation KSHArticleManager
 // TODO: implement KSHArticleManager methods
 
@@ -25,9 +27,9 @@
     // add additional response descriptors
     RKResponseDescriptor *articleResponseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider articleMapping]
-                                                         method:RKRequestMethodGET
-                                                         pathPattern:@"/post/rest/gettopposts/15"
-                                                         keyPath:nil
+                                                 method:RKRequestMethodGET
+                                            pathPattern:kArticlePath
+                                                keyPath:nil
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
     [self addResponseDescriptor:articleResponseDescriptor];

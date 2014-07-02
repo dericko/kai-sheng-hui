@@ -8,12 +8,8 @@
 
 #import "KSHArticleTableViewController.h"
 #import "KSHArticle.h"
-#import "KSHArticleTableViewCell.h"
 #import "KSHArticleDetailViewController.h"
 #import "SWRevealViewController.h"
-
-
-NSString * const _ArticlePath = @"/post/rest/gettopposts/15";
 
 @interface KSHArticleTableViewController ()
 @property (nonatomic) IBOutlet UIBarButtonItem* revealButtonItem;
@@ -44,18 +40,13 @@ NSString * const _ArticlePath = @"/post/rest/gettopposts/15";
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     
     // Placeholder image array
+#warning remove placeholder images
     _imageArray = [NSArray arrayWithObjects: @"placeholderPie.jpg", @"placeholderBaby.jpg", @"placeholderBanner.jpg", @"placeholderMan.png", @"placeholderShop.jpg", nil];
     
-    // Configure sidebar reveal button
-    _revealButtonItem.target = self.revealViewController;
-    _revealButtonItem.action = @selector(revealToggle:);
-    
-    // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-//    
-//    [self.revealButtonItem setTarget: self.revealViewController];
-//    [self.revealButtonItem setAction: @selector( revealToggle: )];
-//    [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    // Configure sidebar reveal button    
+    [self.revealButtonItem setTarget: self.revealViewController];
+    [self.revealButtonItem setAction: @selector( revealToggle: )];
+    [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
 
     // finish initialization
     [self addRefreshControl];
@@ -72,10 +63,11 @@ NSString * const _ArticlePath = @"/post/rest/gettopposts/15";
     [refreshControl addTarget:self action:@selector(loadArticles) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
 }
+
 - (void)loadArticles
 {
     if (_articleManager) {
-    [_articleManager getObjectsAtPath:_ArticlePath parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [_articleManager getObjectsAtPath:kArticlePath parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self.refreshControl endRefreshing];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [self.refreshControl endRefreshing];
@@ -109,7 +101,7 @@ NSString * const _ArticlePath = @"/post/rest/gettopposts/15";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    KSHArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ArticleCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ArticleCell" forIndexPath:indexPath];
     
     // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];
@@ -117,7 +109,7 @@ NSString * const _ArticlePath = @"/post/rest/gettopposts/15";
     return cell;
 }
 
-- (void)configureCell:(KSHArticleTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     _article = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *articleTitleLabel = (UILabel *)[cell viewWithTag:100];
@@ -126,8 +118,11 @@ NSString * const _ArticlePath = @"/post/rest/gettopposts/15";
     UILabel *articleExcerptLabel = (UILabel *)[cell viewWithTag:101];
     articleExcerptLabel.text = [[_article valueForKey:@"excerpt"] description];;
 
-    //UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
-    //articleImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
+    # warning Don't leave this image dispatch on the main thread!
+    UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
+    articleImageView.image = //[UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
+    [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURL"] description]]]]];
+
 }
 
 // Override to support conditional editing of the table view.
@@ -196,6 +191,7 @@ NSString * const _ArticlePath = @"/post/rest/gettopposts/15";
     [fetchRequest setEntity:article];
     
     // TODO: Set the batch size to a suitable number (currently 15)
+#warning batch size does not determine number of cells returned
     [fetchRequest setFetchBatchSize:15];
     
     // Edit the sort key as appropriate.
@@ -206,7 +202,11 @@ NSString * const _ArticlePath = @"/post/rest/gettopposts/15";
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.managedObjectContext
+                                          sectionNameKeyPath:nil
+                                                   cacheName:@"Master"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
