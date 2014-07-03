@@ -2,7 +2,7 @@
 //  KSHUser.h
 //  KaiShengHui
 //
-//  Created by Derick Olson on 6/27/14.
+//  Created by Derick Olson on 7/3/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
@@ -19,7 +19,6 @@
 @property (nonatomic, retain) NSDate * lastLogin;
 @property (nonatomic, retain) NSString * location;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * password;
 @property (nonatomic, retain) NSDate * signUpDate;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * userID;
@@ -30,6 +29,7 @@
 @property (nonatomic, retain) NSSet *likesTag;
 @property (nonatomic, retain) KSHIndustry *ofIndustry;
 @property (nonatomic, retain) KSHFunction *performsFunction;
+@property (nonatomic, retain) NSManagedObject *login;
 @end
 
 @interface KSHUser (CoreDataGeneratedAccessors)

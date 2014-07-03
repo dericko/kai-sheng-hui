@@ -2,7 +2,7 @@
 //  KSHTag.m
 //  KaiShengHui
 //
-//  Created by Derick Olson on 6/27/14.
+//  Created by Derick Olson on 7/3/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 

@@ -30,6 +30,11 @@
         <relationship name="hasFunction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Function" inverseName="ofIndustry" inverseEntity="Function" syncable="YES"/>
         <relationship name="hasUser" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="ofIndustry" inverseEntity="User" syncable="YES"/>
     </entity>
+    <entity name="Login" representedClassName="KSHLogin" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="login" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="Tag" representedClassName="KSHTag" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tagID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -44,7 +49,6 @@
         <attribute name="lastLogin" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="signUpDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -53,6 +57,7 @@
         <relationship name="follows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="follows" inverseEntity="User" syncable="YES"/>
         <relationship name="likesArticle" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="likedBy" inverseEntity="Article" syncable="YES"/>
         <relationship name="likesTag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="likedBy" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="login" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Login" inverseName="user" inverseEntity="Login" syncable="YES"/>
         <relationship name="ofIndustry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Industry" inverseName="hasUser" inverseEntity="Industry" syncable="YES"/>
         <relationship name="performsFunction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Function" inverseName="hasUser" inverseEntity="Function" syncable="YES"/>
     </entity>
@@ -62,5 +67,6 @@
         <element name="Industry" positionX="151" positionY="225" width="128" height="118"/>
         <element name="Tag" positionX="592" positionY="450" width="128" height="118"/>
         <element name="User" positionX="333" positionY="405" width="128" height="298"/>
+        <element name="Login" positionX="153" positionY="614" width="128" height="88"/>
     </elements>
 </model>
