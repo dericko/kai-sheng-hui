@@ -40,6 +40,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)signOutButtonPressed:(id)sender
+{
+    // dealloc user and login objects
+    // set global SIGNED_IN to false
+}
+
 #pragma mark - Table view data source
 /*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
