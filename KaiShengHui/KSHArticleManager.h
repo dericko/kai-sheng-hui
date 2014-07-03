@@ -7,7 +7,6 @@
 //
 
 #import "KSHObjectManager.h"
-#import <RestKit/RestKit.h>
 #import "KSHArticle.h"
 
 extern NSString * const kArticlePath;

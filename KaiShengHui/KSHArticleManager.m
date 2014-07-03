@@ -15,14 +15,17 @@ NSString * const kArticlePath = @"/post/rest/gettopposts/15";
 
 - (void)loadArticles:(void (^)(void))success failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 {
-    [self getObjectsAtPath:kArticlePath parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        if (success) {
-            success();
-        }    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        if (failure) {
-            failure(operation, error);
-        }
-    }];
+    [self getObjectsAtPath:kArticlePath
+                parameters:nil
+                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                       if (success) {
+                           success();
+                       }}
+                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                       if (failure) {
+                           failure(operation, error);
+                       }
+                   }];
 }
 
 - (void)setupRequestDescriptors

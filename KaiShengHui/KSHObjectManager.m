@@ -7,7 +7,6 @@
 //
 
 #import "KSHObjectManager.h"
-#import <RestKit/RestKit.h>
 
 #define BASE_URL @"http://test.i-ksh.net" //edited for testing with github gist api
 #define PERSONAL_ACCESS_TOKEN @"insert_access_token"

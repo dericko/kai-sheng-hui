@@ -15,7 +15,6 @@
 @interface KSHArticleTableViewController ()
 @property (nonatomic) IBOutlet UIBarButtonItem* revealButtonItem;
 
-@property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, strong) KSHArticle *article;
 @end
 
@@ -41,10 +40,6 @@
     _articleManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     // set managed object context to main queue
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
-    
-    // Placeholder image array
-#warning remove placeholder images
-    _imageArray = [NSArray arrayWithObjects: @"placeholderPie.jpg", @"placeholderBaby.jpg", @"placeholderBanner.jpg", @"placeholderMan.png", @"placeholderShop.jpg", nil];
     
     // Configure sidebar reveal button    
     [self.revealButtonItem setTarget: self.revealViewController];

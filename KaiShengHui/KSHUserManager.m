@@ -7,10 +7,11 @@
 //
 
 #import "KSHUserManager.h"
-#import <RestKit/RestKit.h>
+#import "KSHMappingProvider.h"
+#import "KSHUser.h"
 
-# warning must add user login path url
-NSString * const kUserLogInPath = @"INSERT_USER_LOG_IN_PATH";
+NSString * const kUserPath = @"INSERT_USER_PATH";
+
 
 @implementation KSHUserManager
 
@@ -24,23 +25,16 @@ NSString * const kUserLogInPath = @"INSERT_USER_LOG_IN_PATH";
 - (void)setupResponseDescriptors
 {
     [super setupResponseDescriptors];
-    
+
     // add additional response descriptors
-    RKResponseDescriptor *userResponseDescriptor =
+    RKResponseDescriptor *articleResponseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider userMapping]
-                                                 method:RKRequestMethodPOST
-                                            pathPattern:kUserLogInPath
+                                                 method:RKRequestMethodGET
+                                            pathPattern:kUserPath
                                                 keyPath:nil
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
-    [self addResponseDescriptor:userResponseDescriptor];
+    [self addResponseDescriptor:articleResponseDescriptor];
 }
-
-// TODO: implement KSHUserManager methods
-
-//- (void) loadAuthenticatedUser:(void (^)(KSHUser *user))success failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure
-
-// implement user authentication
-
 
 @end

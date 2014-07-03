@@ -17,21 +17,21 @@ static RKEntityMapping *PLACEHOLDER = nil;
 
 // TODO: implement KSHMappingProvider methods
 
-+ (RKEntityMapping *) userMapping
++ (RKEntityMapping *)loginMapping
 {
-    NSLog(@"-articleMapping: assign mapping for article manager");
-    RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    // TODO: finalize user mapping dictionary
-    [userMapping addAttributeMappingsFromDictionary:@{
-                                                         @"id":              @"userID",
-                                                         @"user_name":       @"name",
-                                                         @"user_email":      @"email"}];
-    userMapping.identificationAttributes = @[ @"userID" ];
-    
-    return userMapping;
+    RKEntityMapping *loginMapping = [RKEntityMapping mappingForEntityForName:@"Login" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [loginMapping addAttributeMappingsFromDictionary:@{
+                                                      @"email":          @"email",
+                                                      @"password":       @"password"}];
+    return loginMapping;
 }
 
-+ (RKEntityMapping *) articleMapping
++ (RKEntityMapping *)userMapping
+{
+    return PLACEHOLDER;
+}
+
++ (RKEntityMapping *)articleMapping
 {
     NSLog(@"-articleMapping: assign mapping for article manager");
     RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
@@ -50,17 +50,17 @@ static RKEntityMapping *PLACEHOLDER = nil;
     return articleMapping;
 }
 
-+ (RKEntityMapping *) industryMapping
++ (RKEntityMapping *)industryMapping
 {
     return PLACEHOLDER;
 }
 
-+ (RKEntityMapping *) tagMapping
++ (RKEntityMapping *)tagMapping
 {
     return PLACEHOLDER;
 }
 
-+ (RKEntityMapping *) typeMapping
++ (RKEntityMapping *)typeMapping
 {
     return PLACEHOLDER;
 }

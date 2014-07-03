@@ -27,6 +27,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // Tap gesture to minimuze keyboard
+    UITapGestureRecognizer *tapBackground = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(backgroundTap:)];
+    [self.view addGestureRecognizer:tapBackground];
+    
+    // set textfield delegate for return button functionality
+    _email.delegate = self;
+    _password.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,43 +43,51 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UIButton actions
+
+- (IBAction)backgroundTap:(id)sender {
+    [self.view endEditing:YES];
+}
+
 - (IBAction)signInButtonPressed:(id)sender
 {
-    // Check for blank field
-    if ([_email.text isEqualToString:@""] || [_password.text isEqualToString:@""]) {
-        // TODO: Send an alert to user
-    }
-    // Hide keyboard
-    [self.email resignFirstResponder];
-    [self.password resignFirstResponder];
-    
-    // Build request: url, username, password
+    [self.view endEditing:YES];
     [self sendSignInRequest];
-    
-    // Send request (with user manager + JSON mapping): handle success-correct, success-wrong, failure
-    
-    // if (success-correct) reset username/password, instantiate user profile, set up segue
 }
 
 - (void)sendSignInRequest
 {
-//    if (_userManager) {
-//# warning consider using managedObjectRequestOperation to integrate Core Data persistence
-//        [_userManager postObject:<#(id)#> path:kUserLogInPath parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-//            // Check if password is correct
-//        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-//            // Networking error
-//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//            [alertView show];
-//        }];
-//    }
+    if ([_email.text isEqualToString:@""] || [_password.text isEqualToString:@""]) {
+        // TODO: send alert to user
+    } else {
+        if (_loginManager) {
+# warning consider using managedObjectRequestOperation to integrate Core Data persistence
+            [_loginManager loginWithEmail:_email.text password:_password.text success:^(RKMappingResult *result){
+                NSDictionary *resultData = [result dictionary];
+                NSInteger success = [(NSNumber *) [resultData objectForKey:@"success"] integerValue]; // TODO: check "success" key with Sky
+                if(success == 1) {
+                    [self loggedInSuccessfully];
+                    _password.text=@"";
+                } else {
+                    NSString *error_msg = (NSString *) [resultData objectForKey:@"error_message"]; // TODO: check "error_message" key with Sky
+                    // TODO: alert user
+                }
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                // failure message
+            }];
+        }
+
+    }
 }
 
-- (IBAction)backgroundTap:(id)sender {
-    // minimize keyboard if user clicks outside input fields
-    [self.view endEditing:YES];
+- (void)loggedInSuccessfully
+{
+    // Instantiate User entity with request
+    
+    // Link via userID, authToken/cookie(?)
+    
+    // Move to next scene
 }
-
 
 #pragma mark - Navigation
 
@@ -81,7 +97,16 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    // pass over the user object
+    // pass over the login object
+}
+
+#pragma mark - Delegate methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.view endEditing:YES];
+    [self sendSignInRequest];
+
+    return YES;
 }
 
 @end

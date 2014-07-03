@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
+#import <RestKit/RestKit.h>
 #import "RKObjectManager.h"
 #import "KSHMappingProvider.h"
 
