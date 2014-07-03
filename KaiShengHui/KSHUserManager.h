@@ -10,6 +10,8 @@
 //#import "KSHUser.h"
 #import <RestKit/RestKit.h>
 
+extern NSString * const kUserLogInPath;
+
 /**
  'KSHUserManager' Defines userObject-specific request and response behavior. It handles login authentication requests and responses, and calls an object mapping provider to map network responses to a user model.
  @see 'KSHObjectManager'

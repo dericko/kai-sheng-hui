@@ -8,6 +8,7 @@
 
 #import "KSHObjectManager.h"
 #import <RestKit/RestKit.h>
+#import "KSHArticle.h"
 
 extern NSString * const kArticlePath;
 
@@ -16,5 +17,7 @@ extern NSString * const kArticlePath;
  @see 'KSHObjectManager'
  */
 @interface KSHArticleManager : KSHObjectManager
+
+- (void)loadArticles:(void (^)(void))success failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
 
 @end

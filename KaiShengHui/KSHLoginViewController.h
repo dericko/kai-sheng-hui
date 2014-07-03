@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KSHUserManager.h"
 
 @interface KSHLoginViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *email;
+@property (strong, nonatomic) IBOutlet UITextField *password;
+@property (strong, nonatomic) KSHUserManager *userManager;
+
+- (IBAction)signInButtonPressed:(id)sender;
 
 @end

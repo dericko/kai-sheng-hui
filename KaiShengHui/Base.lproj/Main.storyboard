@@ -389,16 +389,23 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="signInButtonPressed:" destination="6Xm-am-yaV" eventType="touchUpInside" id="Eva-jH-K0Q"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="aE3-dg-xn5"/>
+                    <connections>
+                        <outlet property="email" destination="753-yN-BIq" id="0Wt-9o-7ai"/>
+                        <outlet property="password" destination="cPI-j7-lKh" id="Tlk-fd-FQY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2u-aM-zoo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="n04-R9-SAo">
                     <connections>
-                        <action selector="backgroundTap:" destination="6Xm-am-yaV" id="phP-7u-IHN"/>
+                        <action selector="backgroundTap:" destination="6Xm-am-yaV" id="XA7-bC-RQx"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

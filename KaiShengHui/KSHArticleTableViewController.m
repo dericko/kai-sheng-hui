@@ -69,16 +69,15 @@
 
 - (void)loadArticles
 {
+# warning consider using managedObjectRequestOperation to integrate Core Data persistence
     if (_articleManager) {
-        NSLog(@"make RK request to retrieve articles");
-        [_articleManager getObjectsAtPath:kArticlePath parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [_articleManager loadArticles:^(void) {
             [self.refreshControl endRefreshing];
-        NSLog(@"Successfully retrieved articles");
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [self.refreshControl endRefreshing];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alertView show];
-    }];
+        }];
     }
 }
 
@@ -130,6 +129,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
     
+# warning consider abstracting RestKit code to make generalized network request
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
     # warning temporary solution to retain cycle by using placeholderImageView to call request block
     UIImageView *placeholderImageView = [UIImageView new];

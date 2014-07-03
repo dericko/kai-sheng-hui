@@ -290,7 +290,7 @@
 				C1F6FF9619597DE8006EE5F7 /* ArticleControllers */,
 				C1ABFE31195C20B5006560E7 /* LoginControllers */,
 				C1F87B99195D3EEB00DD300D /* SidebarControllers */,
-				C1F6FFA019597E8E006EE5F7 /* UserControllers */,
+				C1F6FFA019597E8E006EE5F7 /* UserProfileControllers */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -397,7 +397,7 @@
 			name = ArticleControllers;
 			sourceTree = "<group>";
 		};
-		C1F6FFA019597E8E006EE5F7 /* UserControllers */ = {
+		C1F6FFA019597E8E006EE5F7 /* UserProfileControllers */ = {
 			isa = PBXGroup;
 			children = (
 				C1F87B93195D3EA900DD300D /* KSHUserProfileTableViewController.h */,
@@ -405,7 +405,7 @@
 				C1F87B96195D3ECF00DD300D /* KSHUserProfileDetailViewController.h */,
 				C1F87B97195D3ECF00DD300D /* KSHUserProfileDetailViewController.m */,
 			);
-			name = UserControllers;
+			name = UserProfileControllers;
 			sourceTree = "<group>";
 		};
 		C1F87B99195D3EEB00DD300D /* SidebarControllers */ = {

@@ -19,7 +19,16 @@ static RKEntityMapping *PLACEHOLDER = nil;
 
 + (RKEntityMapping *) userMapping
 {
-    return PLACEHOLDER;
+    NSLog(@"-articleMapping: assign mapping for article manager");
+    RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    // TODO: finalize user mapping dictionary
+    [userMapping addAttributeMappingsFromDictionary:@{
+                                                         @"id":              @"userID",
+                                                         @"user_name":       @"name",
+                                                         @"user_email":      @"email"}];
+    userMapping.identificationAttributes = @[ @"userID" ];
+    
+    return userMapping;
 }
 
 + (RKEntityMapping *) articleMapping
