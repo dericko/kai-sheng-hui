@@ -10,6 +10,7 @@
 #import "KSHArticle.h"
 #import "KSHArticleDetailViewController.h"
 #import "SWRevealViewController.h"
+#import "KSHArticleTableViewCell.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface KSHArticleTableViewController ()
@@ -100,12 +101,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ArticleCell" forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"ArticleCell";
+    KSHArticleTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:
+                                                cellIdentifier forIndexPath:indexPath];
+    
+    cell.rightUtilityButtons = [self rightButtons];
+    cell.delegate = self;
     
     // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
+}
+
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"-"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"+"];
+    
+    return rightUtilityButtons;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -123,7 +142,6 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURL"] description]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
-    
 # warning consider abstracting RestKit code to make generalized network request
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
     # warning temporary solution to retain cycle by using placeholderImageView to call request block
@@ -294,5 +312,39 @@
  [self.tableView reloadData];
  }
  */
+
+#pragma mark - SWTableViewDelegate
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    
+    switch (index) {
+        case 0:
+        {
+            // TODO: implement downvote
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Downvote" message:@"We'll show you fewer articles like this" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alertView show];
+            
+            [cell hideUtilityButtonsAnimated:YES];
+            
+            break;
+        }
+        case 1:
+        {
+            // TODO: implement upvote
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Upvote" message:@"We'll show you more articles like this" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alertView show];
+            
+            [cell hideUtilityButtonsAnimated:YES];
+            
+            break;
+        }
+    }
+}
+
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
+{
+    // allow just one cell's utility button to be open at once
+    return YES;
+}
 
 @end

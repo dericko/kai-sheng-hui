@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SWTableViewCell/SWTableViewCell.h>
 
-@interface KSHArticleTableViewCell : UITableViewCell
+@interface KSHArticleTableViewCell : SWTableViewCell
 @end

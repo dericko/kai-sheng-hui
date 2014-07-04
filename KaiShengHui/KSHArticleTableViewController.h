@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 #import "KSHArticleManager.h"
+#import <SWTableViewCell/SWTableViewCell.h>
 
-@interface KSHArticleTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface KSHArticleTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, SWTableViewCellDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

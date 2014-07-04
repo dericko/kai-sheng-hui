@@ -58,8 +58,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleCell" rowHeight="81" id="m0d-ak-lc9">
-                                <rect key="frame" x="0.0" y="86" width="320" height="81"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArticleCell" rowHeight="81" id="m0d-ak-lc9" customClass="KSHArticleTableViewCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
@@ -400,6 +400,7 @@
                     <connections>
                         <outlet property="email" destination="753-yN-BIq" id="0Wt-9o-7ai"/>
                         <outlet property="password" destination="cPI-j7-lKh" id="Tlk-fd-FQY"/>
+                        <segue destination="3mr-eN-9zg" kind="push" identifier="Profile" customClass="SWRevealViewControllerSegue" id="yuc-ue-9lZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2u-aM-zoo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -517,7 +518,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="6Xm-am-yaV" kind="custom" customClass="SWRevealViewControllerSegue" id="6iC-el-V3D"/>
+                                    <segue destination="3mr-eN-9zg" kind="custom" customClass="SWRevealViewControllerSegue" id="E35-w1-fIU"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="快消零售" id="203-Vk-yzw">
@@ -730,6 +731,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ZLl-WO-J4q"/>
+        <segue reference="w3y-9d-8ah"/>
+        <segue reference="E35-w1-fIU"/>
     </inferredMetricsTieBreakers>
 </document>
