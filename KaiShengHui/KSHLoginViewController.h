@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+
 #import "KSHLoginManager.h"
 
-@interface KSHLoginViewController : UIViewController <UITextFieldDelegate>
+@interface KSHLoginViewController : UIViewController <UITextFieldDelegate, MBProgressHUDDelegate>
+{
+	MBProgressHUD *HUD;
+}
 @property (strong, nonatomic) IBOutlet UITextField *email;
 @property (strong, nonatomic) IBOutlet UITextField *password;
-@property (strong, nonatomic) KSHLoginManager *loginManager;
 
-- (IBAction)sendLoginRequest:(id)sender;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) KSHLoginManager *loginManager;
 
 @end

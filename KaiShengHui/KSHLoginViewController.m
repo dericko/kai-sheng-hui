@@ -7,8 +7,13 @@
 //
 
 #import "KSHLoginViewController.h"
+#import "KSHMessage.h"
+
+#import "KSHLogin.h"
+
 
 @interface KSHLoginViewController ()
+@property (strong, nonatomic) IBOutlet UIButton *signInButton;
 
 @end
 
@@ -27,6 +32,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self enableSignInButton];
+    [KSHMessage displayMessageAlert:@"Hi There!" withSubtitle:@"Please sign in with your 凯盛汇 credentials"];
+    
+    // Login manager instance
+    NSLog(@"instantiate login manager...");
+    _loginManager = [KSHLoginManager sharedManager];
+    NSLog(@"instantiate login manager...DONE");
+    _loginManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+    // set managed object context to main queue
+    self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
+
     
     // Tap gesture to minimuze keyboard
     UITapGestureRecognizer *tapBackground = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(backgroundTap:)];
@@ -52,49 +69,123 @@
 - (IBAction)signInButtonPressed:(id)sender
 {
     NSLog(@"signin button pressed");
-    [self.view endEditing:YES];
+    [self disableSignInButton];
     
-#warning Tempory bypass of login request for demonstration purposes
-//    [self sendLoginRequest];
-    [self loggedInSuccessfully];
+    // The hud will disable all input on the view (use the higest view possible in the view hierarchy)
+	HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:HUD];
+    
+	// Regiser for HUD callbacks so we can remove it from the window at the right time
+	HUD.delegate = self;
+    HUD.labelText = @"Signing In";
+    
+    [HUD showWhileExecuting:@selector(sendLoginRequest) onTarget:self withObject:nil animated:YES];
+
 }
+
+- (void)disableSignInButton
+{
+    [self.view endEditing:YES];
+
+    [UIView animateWithDuration:0.5 animations:^{
+        _signInButton.alpha = .5;
+        [_signInButton setEnabled:NO];
+    }];
+}
+
+- (void)enableSignInButton
+{
+    [_signInButton setEnabled:YES];
+    _signInButton.alpha = 1;
+}
+
+# pragma mark - Login
 
 - (void)sendLoginRequest
 {
     if ([_email.text isEqualToString:@""] || [_password.text isEqualToString:@""]) {
-        // TODO: send alert to user
-        NSLog(@"Empty email or password field");
+        [KSHMessage displayWarningAlert:@"Empty Field" withSubtitle:@"Please check your email or password"];
+        [self enableSignInButton];
     } else {
         if (_loginManager) {
             NSLog(@"Making login request");
 # warning consider using managedObjectRequestOperation to integrate Core Data persistence
-            [_loginManager loginWithEmail:_email.text password:_password.text success:^(RKMappingResult *result){
-                NSDictionary *resultData = [result dictionary];
-                NSInteger success = [(NSNumber *) [resultData objectForKey:@"success"] integerValue]; // TODO: check "success" key with Sky
-                if(success == 1) {
-                    NSLog(@"Login successful");
-                    [self loggedInSuccessfully];
-                    _password.text=@"";
-                } else {
-                    NSString *error_msg = (NSString *) [resultData objectForKey:@"error_message"]; // TODO: check "error_message" key with Sky
-                    // TODO: alert user
-                }
-            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                // failure message
-            }];
-        }
+//            KSHLogin *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"Login" inManagedObjectContext:[self managedObjectContext]];
+//            [userLogin setEmail:_email.text];
+//            [userLogin setPassword:_password.text];
+//            
+//            [_loginManager loginWithEmail:userLogin success:^(RKMappingResult *result){
+//                NSDictionary *resultData = [result dictionary];
+//                NSInteger success = [(NSNumber *) [resultData objectForKey:@"success"] integerValue]; // TODO: check "success" key with Sky
+//                if(success == 1) {
+//                    NSLog(@"Login successful");
+//                    [self loggedInSuccessfully];
+//                    _password.text=@"";
+//                } else {
+//                    NSString *error_msg = (NSString *) [resultData objectForKey:@"error_message"]; // TODO: check "error_message" key with Sky
+//                    [KSHMessage displayErrorAlert:@"Login failed" withSubtitle:@"Please check your email and password"];
+//                }
+//            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+//                [KSHMessage displayErrorAlert:@"Error" withSubtitle:[error localizedDescription]];
+//            }];
+//        }
 
+            // Take 2....
+    
+            KSHLogin *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"Login" inManagedObjectContext:[self managedObjectContext]];
+    
+            [userLogin setEmail:_email.text];
+            [userLogin setPassword:_password.text];
+    
+            [_loginManager postObject:userLogin
+                                 path:kLoginPath
+                           parameters:nil
+                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                  NSDictionary *resultData = [mappingResult dictionary];
+                                  NSInteger success = [(NSNumber *) [resultData objectForKey:@"success"] integerValue]; // TODO: check "success" key with Sky
+                                  if(success == 1) {
+                                      NSLog(@"Login successful");
+                                      [self loggedInSuccessfully];
+                                      _password.text=@"";
+                                  } else {
+                                      NSString *error_msg = (NSString *) [resultData objectForKey:@"error_message"];
+                                      // TODO: check "error_message" key with Sky
+                                      [KSHMessage displayErrorAlert:@"Login failed" withSubtitle:@"Please check your email and password"];
+                                      
+                                      [KSHMessage displayMessageAlert:@"It appears that there was a problem logging in" withSubtitle:@"Would you like to try as a guest?" withButton:@"OK" forCallbackBlock:^{
+                                          [self loginAsGuest];
+                                      }];
+                                      
+                                      [self enableSignInButton];
+                                  }
+                              }
+                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                  [KSHMessage displayErrorAlert:@"Networking Error" withSubtitle:@""];
+                                  [KSHMessage displayMessageAlert:@"It appears that there was a problem logging in" withSubtitle:@"Would you like to try as a guest?" withButton:@"OK" forCallbackBlock:^{
+                                      [self loginAsGuest];
+                                  }];
+                                  [self enableSignInButton];
+                                  NSLog([NSString stringWithFormat:@"Error: %@", [error localizedDescription]]);
+                              }];
+        }
     }
+}
+
+- (void)loginAsGuest
+{
+    //TODO: implement guest login
+    NSLog(@"booooooom guest login!");
+    [self performSegueWithIdentifier:@"showProfile" sender:self.view];
 }
 
 - (void)loggedInSuccessfully
 {
+    sleep(3);
     // Instantiate User entity with request
     
     // Link via userID, authToken/cookie(?)
     
     // Move to next scene
-    [self performSegueWithIdentifier:@"Profile" sender:self];
 }
 
 #pragma mark - Navigation
@@ -111,10 +202,19 @@
 #pragma mark - Delegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self.view endEditing:YES];
+    [self disableSignInButton];
+    
     [self sendLoginRequest];
 
     return YES;
+}
+
+#pragma mark MBProgressHUDDelegate methods
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+	// Remove HUD from screen when the HUD was hidded
+	[HUD removeFromSuperview];
+	HUD = nil;
 }
 
 @end

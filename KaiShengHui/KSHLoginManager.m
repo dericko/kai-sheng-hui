@@ -7,19 +7,14 @@
 //
 
 #import "KSHLoginManager.h"
-#import "KSHLogin.h"
 
 # warning must add user login path url
 NSString * const kLoginPath = @"INSERT_USER_LOGIN_PATH";
 
 @implementation KSHLoginManager
 
-- (void)loginWithEmail:(NSString *)email password:(NSString *)password success:(void (^)(RKMappingResult *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure
+- (void)loginWithEmail:(KSHLogin *)userLogin success:(void (^)(RKMappingResult *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure
 {
-    KSHLogin *userLogin = [[KSHLogin alloc] init];
-    [userLogin setEmail:email];
-    [userLogin setPassword:password];
-    
     [self postObject:userLogin
                 path:kLoginPath
           parameters:nil

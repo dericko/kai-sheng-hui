@@ -7,11 +7,12 @@
 //
 
 #import "KSHObjectManager.h"
+#import "KSHLogin.h"
 
 extern NSString * const kLoginPath;
 
 @interface KSHLoginManager : KSHObjectManager
 
--(void)loginWithEmail:(NSString *)email password:(NSString*)password success:(void (^)(RKMappingResult *))success failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
+- (void)loginWithEmail:(KSHLogin *)loginEntity success:(void (^)(RKMappingResult *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure;
 
 @end
