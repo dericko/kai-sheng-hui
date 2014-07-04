@@ -10,7 +10,10 @@
 #import "KSHMessage.h"
 
 #import "KSHLogin.h"
-
+#import "KSHIndustry.h"
+#import "KSHFunction.h"
+#import "KSHArticle.h"
+#import "KSHUserProfileTableViewController.h"
 
 @interface KSHLoginViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *signInButton;
@@ -79,6 +82,7 @@
 	HUD.delegate = self;
     HUD.labelText = @"Signing In";
     
+# warning internal HUD selector method "sendLoginRequest" uses async blocks, so stops loading signal before blocks are executed
     [HUD showWhileExecuting:@selector(sendLoginRequest) onTarget:self withObject:nil animated:YES];
 
 }
@@ -109,7 +113,8 @@
     } else {
         if (_loginManager) {
             NSLog(@"Making login request");
-# warning consider using managedObjectRequestOperation to integrate Core Data persistence
+            
+# warning better to send this off to the login manager...
 //            KSHLogin *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"Login" inManagedObjectContext:[self managedObjectContext]];
 //            [userLogin setEmail:_email.text];
 //            [userLogin setPassword:_password.text];
@@ -130,8 +135,7 @@
 //            }];
 //        }
 
-            // Take 2....
-    
+        // Make request here (rather than _loginManager method) due to error with block pasing
             KSHLogin *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"Login" inManagedObjectContext:[self managedObjectContext]];
     
             [userLogin setEmail:_email.text];
@@ -173,6 +177,23 @@
 
 - (void)loginAsGuest
 {
+    KSHFunction *guestFunction = [NSEntityDescription insertNewObjectForEntityForName:@"Function" inManagedObjectContext:[self managedObjectContext]];
+    guestFunction.name = @"Example Function";
+    
+    KSHIndustry *guestIndustry = [NSEntityDescription insertNewObjectForEntityForName:@"Industry" inManagedObjectContext:[self managedObjectContext]];
+    guestIndustry.name = @"Example Industry";
+    
+    
+    KSHUser *guestUser = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
+    guestUser.name = @"Guest";
+    guestUser.email = @"johnsmith@guest.com";
+    [guestUser setOfIndustry:guestIndustry];
+    [guestIndustry setHasUser:[NSSet setWithObject:guestUser]];
+    [guestUser setPerformsFunction:guestFunction];
+    [guestFunction setHasUser:[NSSet setWithObject:guestUser]];
+    
+    _user = guestUser;
+    
     //TODO: implement guest login
     NSLog(@"booooooom guest login!");
     [self performSegueWithIdentifier:@"showProfile" sender:self.view];
@@ -197,6 +218,10 @@
     // Pass the selected object to the new view controller.
     
     // pass over the login object
+    if ([segue.identifier isEqualToString:@"showProfile"]) {
+        KSHUserProfileTableViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.user = _user;
+    }
 }
 
 #pragma mark - Delegate methods

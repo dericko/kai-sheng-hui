@@ -10,6 +10,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 
 #import "KSHLoginManager.h"
+#import "KSHUser.h"
 
 @interface KSHLoginViewController : UIViewController <UITextFieldDelegate, MBProgressHUDDelegate>
 {
@@ -20,5 +21,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) KSHLoginManager *loginManager;
+@property (strong, nonatomic) KSHUser *user;
 
 @end

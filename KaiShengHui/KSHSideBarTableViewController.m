@@ -73,6 +73,18 @@
     menuItemImage.image = [UIImage imageNamed:@"placeholder-square.jpg"];
 }
 
+- (void)profileIsClicked
+{
+    // TODO: set up routing for profile or login view
+    NSString *controllerId = NO ? @"Profile" : @"Login";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controllerId];
+    
+    if (NO) {
+    } else {
+
+    }
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -83,8 +95,9 @@
     UINavigationController *destinationViewController = (UINavigationController*)segue.destinationViewController;
     destinationViewController.title = [[menuItems objectAtIndex:indexPath.row] capitalizedString];
 
-    // TODO: set the HTTP call parameters for displaying articles according to industry
+    // TODO: set the HTTP call parameters for displaying articles according to industry    
     
+    // handle segues
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
         SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
         

@@ -25,6 +25,16 @@
 {
     [self initializeRestkitForCoreData];
     
+    // Set up user login defaults
+    // TODO: persist log in status
+    if (!_defaults) {
+        _defaults = [NSUserDefaults standardUserDefaults];
+        [_defaults setObject:@"" forKey:@"username"];
+        [_defaults setObject:@"" forKey:@"password"];
+        [_defaults setBool:NO forKey:@"signedIn"];
+        [_defaults synchronize];
+    }
+    
     // Set up initial view controller (can add login auth screen here)
 //    NSString *controllerID = @"ArticleTable"; // can add multiple options with ? operator
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
