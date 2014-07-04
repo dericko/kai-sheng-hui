@@ -296,12 +296,33 @@
 		C135602C195950BF005DABED /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C182851C1966B29B0080F2DD /* Helpers */,
 				C1F6FF9619597DE8006EE5F7 /* ArticleControllers */,
 				C1ABFE31195C20B5006560E7 /* LoginControllers */,
 				C1F87B99195D3EEB00DD300D /* SidebarControllers */,
 				C1F6FFA019597E8E006EE5F7 /* UserProfileControllers */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C182851B1966B2330080F2DD /* LoginManager */ = {
+			isa = PBXGroup;
+			children = (
+				C14924451965491F00DD1478 /* KSHLoginManager.h */,
+				C14924461965491F00DD1478 /* KSHLoginManager.m */,
+			);
+			name = LoginManager;
+			sourceTree = "<group>";
+		};
+		C182851C1966B29B0080F2DD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C1828518196679210080F2DD /* KSHMessage.h */,
+				C1828519196679210080F2DD /* KSHMessage.m */,
+				C1A4C39D196298E500603DC6 /* SWRevealViewController.h */,
+				C1A4C39E196298E500603DC6 /* SWRevealViewController.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		C1ABFE2F195C206E006560E7 /* Networking */ = {
@@ -316,8 +337,6 @@
 		C1ABFE30195C20A5006560E7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C1828518196679210080F2DD /* KSHMessage.h */,
-				C1828519196679210080F2DD /* KSHMessage.m */,
 				C1197B40196286CA00868228 /* ArticleView */,
 				C1197B41196286D200868228 /* SidebarView */,
 				C1197B3F196286BF00868228 /* UserView */,
@@ -339,8 +358,6 @@
 			children = (
 				C1F6FF8319596350006EE5F7 /* KSHUserManager.h */,
 				C1F6FF8419596350006EE5F7 /* KSHUserManager.m */,
-				C14924451965491F00DD1478 /* KSHLoginManager.h */,
-				C14924461965491F00DD1478 /* KSHLoginManager.m */,
 			);
 			name = UserManager;
 			sourceTree = "<group>";
@@ -395,8 +412,9 @@
 			isa = PBXGroup;
 			children = (
 				C1ABFE34195C210B006560E7 /* ObjectManager */,
-				C1ABFE32195C20ED006560E7 /* UserManager */,
 				C1ABFE33195C20F3006560E7 /* ArticleManager */,
+				C182851B1966B2330080F2DD /* LoginManager */,
+				C1ABFE32195C20ED006560E7 /* UserManager */,
 			);
 			name = ObjectManagers;
 			sourceTree = "<group>";
@@ -426,8 +444,6 @@
 		C1F87B99195D3EEB00DD300D /* SidebarControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C1A4C39D196298E500603DC6 /* SWRevealViewController.h */,
-				C1A4C39E196298E500603DC6 /* SWRevealViewController.m */,
 				C1F87B9D195D3F1800DD300D /* KSHSideBarTableViewController.h */,
 				C1F87B9E195D3F1800DD300D /* KSHSideBarTableViewController.m */,
 			);
