@@ -7,6 +7,7 @@
 //
 
 #import "KSHArticle.h"
+#import "KSHTag.h"
 #import "KSHArticleTableViewController.h"
 #import "KSHArticleDetailViewController.h"
 #import "KSHMessage.h"
