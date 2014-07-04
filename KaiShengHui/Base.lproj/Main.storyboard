@@ -123,7 +123,7 @@
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <segue destination="Ah7-4n-0Wa" kind="push" identifier="showArticleDetail" id="jUr-3t-vfg"/>
+                                    <segue destination="Ah7-4n-0Wa" kind="push" identifier="showArticleDetail" id="7UT-a3-8xh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -415,7 +415,7 @@
         <!--Article Detail View Controller-->
         <scene sceneID="Cn3-H9-jdl">
             <objects>
-                <viewController id="Ah7-4n-0Wa" customClass="KSHArticleDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="articleDetail" id="Ah7-4n-0Wa" customClass="KSHArticleDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cIm-e0-J51"/>
                         <viewControllerLayoutGuide type="bottom" id="a0L-h9-sNL"/>

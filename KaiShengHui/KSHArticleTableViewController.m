@@ -10,7 +10,6 @@
 #import "KSHArticle.h"
 #import "KSHArticleDetailViewController.h"
 #import "SWRevealViewController.h"
-#import "KSHArticleTableViewCell.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface KSHArticleTableViewController ()
@@ -102,7 +101,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"ArticleCell";
-    KSHArticleTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:
+    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                                                 cellIdentifier forIndexPath:indexPath];
     
     cell.rightUtilityButtons = [self rightButtons];
@@ -121,7 +120,7 @@
      [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
                                                 title:@"-"];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+     [UIColor colorWithRed:0.07 green:0.75f blue:0.16f alpha:1.0]
                                                 title:@"+"];
     
     return rightUtilityButtons;
@@ -157,43 +156,6 @@
 
 }
 
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return NO;
-}
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -201,6 +163,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSLog(@"Segue to article detail view");
     if ([segue.identifier isEqualToString:@"showArticleDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         KSHArticleDetailViewController *destinationViewController = segue.destinationViewController;
@@ -302,16 +265,6 @@
 {
     [self.tableView endUpdates];
 }
-
-/*
- // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
- {
- // In the simplest, most efficient, case, reload the table view.
- [self.tableView reloadData];
- }
- */
 
 #pragma mark - SWTableViewDelegate
 
