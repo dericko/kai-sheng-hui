@@ -6,11 +6,13 @@
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import "KSHArticleTableViewController.h"
 #import "KSHArticle.h"
+#import "KSHArticleTableViewController.h"
 #import "KSHArticleDetailViewController.h"
-#import "SWRevealViewController.h"
+#import "KSHMessage.h"
+
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import "SWRevealViewController.h"
 
 @interface KSHArticleTableViewController ()
 @property (nonatomic) IBOutlet UIBarButtonItem* revealButtonItem;
@@ -70,9 +72,8 @@
             [self.refreshControl endRefreshing];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [self.refreshControl endRefreshing];
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alertView show];
-        }];
+            [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
+             }];
     }
 }
 
@@ -141,7 +142,7 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURL"] description]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
-# warning consider abstracting RestKit code to make generalized network request
+# warning should save these images for reuse (can use array with indexPath)
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
     # warning temporary solution to retain cycle by using placeholderImageView to call request block
     UIImageView *placeholderImageView = [UIImageView new];
@@ -149,8 +150,7 @@
         NSLog(@"grabbing image...DONE");
         articleImageView.image = image;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
+        [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
         NSLog(@"Error: %@", error);
     }];
 
@@ -158,16 +158,20 @@
 
 #pragma mark - Navigation
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"showArticleDetail" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
+}
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    NSLog(@"Segue to article detail view");
     if ([segue.identifier isEqualToString:@"showArticleDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         KSHArticleDetailViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.article = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        destinationViewController.articleImage = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     }
 }
 
@@ -274,8 +278,7 @@
         case 0:
         {
             // TODO: implement downvote
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Downvote" message:@"We'll show you fewer articles like this" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alertView show];
+            [KSHMessage displayMessageAlert:@"Downvote" withSubtitle:@"We'll show you fewer articles like this"];
             
             [cell hideUtilityButtonsAnimated:YES];
             
@@ -284,8 +287,7 @@
         case 1:
         {
             // TODO: implement upvote
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Upvote" message:@"We'll show you more articles like this" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alertView show];
+            [KSHMessage displayMessageAlert:@"Upvote" withSubtitle:@"We'll show you more articles like this"];
             
             [cell hideUtilityButtonsAnimated:YES];
             

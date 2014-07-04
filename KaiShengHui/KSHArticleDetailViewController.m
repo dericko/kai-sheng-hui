@@ -7,17 +7,13 @@
 //
 
 #import "KSHArticleDetailViewController.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface KSHArticleDetailViewController ()
 
 @end
 
 @implementation KSHArticleDetailViewController
-
-@synthesize articleTitle;
-@synthesize articleContent;
-@synthesize articleImage;
-@synthesize article;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,10 +28,23 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    articleTitle.text = article.title;
-    articleContent.text = article.content; // set up filter for html '&xxxxx' tags
-    # warning should be saving this image rather than redownloading it!
-    articleImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[article valueForKey:@"imgURL"] description]]]]];
+    _articleTitle.text = _article.title;
+    _articleContent.text = _article.content; // set up filter for html '&xxxxx' tags
+
+    # warning should be pushing this image rather than redownloading it!
+    NSLog(@"grabbing image...");
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURL"] description]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
+    UIImageView *placeholderImageView = [UIImageView new];
+    [placeholderImageView setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        NSLog(@"grabbing image...DONE");
+        _articleImage.image = image;
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        NSLog(@"Error: %@", error);
+    }];
 
 }
 
