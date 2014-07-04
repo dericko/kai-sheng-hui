@@ -39,6 +39,7 @@
 		C149243B196547A100DD1478 /* KSHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C149243A196547A100DD1478 /* KSHUser.m */; };
 		C14924441965482F00DD1478 /* KSHLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = C14924431965482F00DD1478 /* KSHLogin.m */; };
 		C14924471965491F00DD1478 /* KSHLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C14924461965491F00DD1478 /* KSHLoginManager.m */; };
+		C182851A196679210080F2DD /* KSHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C1828519196679210080F2DD /* KSHMessage.m */; };
 		C1A4C39F196298E500603DC6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A4C39E196298E500603DC6 /* SWRevealViewController.m */; };
 		C1EBCDD41963A3E900C04FC4 /* placeholder-square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1EBCDD31963A3E900C04FC4 /* placeholder-square.jpg */; };
 		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
@@ -110,6 +111,8 @@
 		C14924431965482F00DD1478 /* KSHLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLogin.m; sourceTree = "<group>"; };
 		C14924451965491F00DD1478 /* KSHLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLoginManager.h; sourceTree = "<group>"; };
 		C14924461965491F00DD1478 /* KSHLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLoginManager.m; sourceTree = "<group>"; };
+		C1828518196679210080F2DD /* KSHMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHMessage.h; sourceTree = "<group>"; };
+		C1828519196679210080F2DD /* KSHMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMessage.m; sourceTree = "<group>"; };
 		C1A4C39D196298E500603DC6 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		C1A4C39E196298E500603DC6 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		C1EBCDD31963A3E900C04FC4 /* placeholder-square.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "placeholder-square.jpg"; sourceTree = "<group>"; };
@@ -313,6 +316,8 @@
 		C1ABFE30195C20A5006560E7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C1828518196679210080F2DD /* KSHMessage.h */,
+				C1828519196679210080F2DD /* KSHMessage.m */,
 				C1197B40196286CA00868228 /* ArticleView */,
 				C1197B41196286D200868228 /* SidebarView */,
 				C1197B3F196286BF00868228 /* UserView */,
@@ -579,6 +584,7 @@
 				C1197B4419628CDF00868228 /* KSHArticleTableViewCell.m in Sources */,
 				C1F87B95195D3EAA00DD300D /* KSHUserProfileTableViewController.m in Sources */,
 				C1F87B98195D3ECF00DD300D /* KSHUserProfileDetailViewController.m in Sources */,
+				C182851A196679210080F2DD /* KSHMessage.m in Sources */,
 				C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */,
 				C135603819595523005DABED /* KSHMappingProvider.m in Sources */,
 				C1355FFA19594FA9005DABED /* main.m in Sources */,
