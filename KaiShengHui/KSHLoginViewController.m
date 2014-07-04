@@ -51,21 +51,28 @@
 
 - (IBAction)signInButtonPressed:(id)sender
 {
+    NSLog(@"signin button pressed");
     [self.view endEditing:YES];
-    [self sendSignInRequest];
+    
+#warning Tempory bypass of login request for demonstration purposes
+//    [self sendLoginRequest];
+    [self loggedInSuccessfully];
 }
 
-- (void)sendSignInRequest
+- (void)sendLoginRequest
 {
     if ([_email.text isEqualToString:@""] || [_password.text isEqualToString:@""]) {
         // TODO: send alert to user
+        NSLog(@"Empty email or password field");
     } else {
         if (_loginManager) {
+            NSLog(@"Making login request");
 # warning consider using managedObjectRequestOperation to integrate Core Data persistence
             [_loginManager loginWithEmail:_email.text password:_password.text success:^(RKMappingResult *result){
                 NSDictionary *resultData = [result dictionary];
                 NSInteger success = [(NSNumber *) [resultData objectForKey:@"success"] integerValue]; // TODO: check "success" key with Sky
                 if(success == 1) {
+                    NSLog(@"Login successful");
                     [self loggedInSuccessfully];
                     _password.text=@"";
                 } else {
@@ -87,6 +94,7 @@
     // Link via userID, authToken/cookie(?)
     
     // Move to next scene
+    [self performSegueWithIdentifier:@"Profile" sender:self];
 }
 
 #pragma mark - Navigation
@@ -104,7 +112,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.view endEditing:YES];
-    [self sendSignInRequest];
+    [self sendLoginRequest];
 
     return YES;
 }

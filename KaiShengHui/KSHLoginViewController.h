@@ -14,6 +14,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *password;
 @property (strong, nonatomic) KSHLoginManager *loginManager;
 
-- (IBAction)signInButtonPressed:(id)sender;
+- (IBAction)sendLoginRequest:(id)sender;
 
 @end
