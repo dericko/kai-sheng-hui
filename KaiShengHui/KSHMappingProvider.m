@@ -17,18 +17,46 @@ static RKEntityMapping *PLACEHOLDER = nil;
 
 // TODO: implement KSHMappingProvider methods
 
-+ (RKEntityMapping *)loginMapping
++ (RKEntityMapping *)loginRequestMapping
 {
-    RKEntityMapping *loginMapping = [RKEntityMapping mappingForEntityForName:@"Login" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    [loginMapping addAttributeMappingsFromDictionary:@{
+    RKEntityMapping *loginRequestMapping = [RKEntityMapping mappingForEntityForName:@"Login" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [loginRequestMapping addAttributeMappingsFromDictionary:@{
                                                       @"email":          @"email",
                                                       @"password":       @"password"}];
-    return loginMapping;
+    
+    return loginRequestMapping;
 }
 
 + (RKEntityMapping *)userMapping
 {
-    return PLACEHOLDER;
+    RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [userMapping addAttributeMappingsFromDictionary:@{
+                                                      @"id":                @"userID",
+                                                      @"username":          @"username",
+                                                      @"email":             @"email",
+                                                      @"first_name":        @"firstName",
+                                                      @"last_name":         @"lastName",
+                                                      @"last_login":        @"lastLogin",
+                                                      @"sign_up_date":      @"signupDate",
+                                                      @"industry.id":       @"industryID",
+                                                      @"industry.value":    @"industry"
+                                                         // TODO: get user mapping
+                                                         }];
+    userMapping.identificationAttributes = @[ @"userID" ];
+    
+    
+    /* Wait until db has POST api for like/dislike Articles
+     [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"liked"
+     toKeyPath:@"likesArticle"
+     withMapping:[self likeMapping]]];
+     
+     [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"disliked"
+     toKeyPath:@"dislikesArticle"
+     withMapping:[self likeMapping]]];
+     */
+    
+    return userMapping;
+
 }
 
 + (RKEntityMapping *)articleMapping
@@ -39,28 +67,57 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                                         @"id":              @"articleID",
                                                         @"title":           @"title",
                                                         @"excerpt":         @"excerpt",
-                                                        @"publish_time":    @"datePublished",
                                                         @"content":         @"content",
-                                                        @"file.path":       @"imgURL"}];
+                                                        @"editor":          @"author",
+                                                        @"publish_time":    @"datePublished",
+                                                        @"update_time":     @"dateUpdated",
+                                                        @"type":            @"typeID",
+                                                        @"view_count":      @"viewCount",
+                                                        @"industry.id":     @"industryID",
+                                                        @"industry.value":  @"industry",
+                                                        @"function.id":     @"functionID",
+                                                        @"function.value":  @"function",
+                                                        @"file.path":       @"imgURLString"}];
     articleMapping.identificationAttributes = @[ @"articleID" ];
     
-    // TODO: set up image by concatenating:
-    // @"file.path" : @"imgURL"
-    // @"http://www.i-ksh.com/files/fileUpload/" + @"imgURL"
+    
+    [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"hasTags"
+                                                                                   toKeyPath:@"ofArticle"
+                                                                                 withMapping:[self tagMapping]]];
+    
+    /* Wait until db has POST api for like/dislike Articles
+    [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"liked"
+                                                                                   toKeyPath:@"likesArticle"
+                                                                                 withMapping:[self likeMapping]]];
+    
+    [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"disliked"
+                                                                                   toKeyPath:@"dislikesArticle"
+                                                                                 withMapping:[self likeMapping]]];
+    */
+    
     return articleMapping;
-}
-
-+ (RKEntityMapping *)industryMapping
-{
-    return PLACEHOLDER;
 }
 
 + (RKEntityMapping *)tagMapping
 {
-    return PLACEHOLDER;
+    RKEntityMapping *tagMapping = [RKEntityMapping mappingForEntityForName:@"Tag" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [tagMapping addAttributeMappingsFromDictionary:@{
+                                                     @"tags":              @"tag"}];
+    
+    /* Wait until db has POST api for like/dislike Tags
+    [tagMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"liked"
+                                                                                   toKeyPath:@"likesTag"
+                                                                                 withMapping:[self likeMapping]]];
+    
+    [tagMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"disliked"
+                                                                                   toKeyPath:@"dislikesTag"
+                                                                                 withMapping:[self likeMapping]]];
+     */
+    
+    return tagMapping;
 }
 
-+ (RKEntityMapping *)typeMapping
++ (RKEntityMapping *)likeMapping
 {
     return PLACEHOLDER;
 }

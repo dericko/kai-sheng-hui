@@ -17,11 +17,10 @@
 @interface KSHMappingProvider : NSObject
 
 // TODO: comment mapping methods
-+ (RKEntityMapping *)loginMapping;
++ (RKEntityMapping *)loginRequestMapping;
 + (RKEntityMapping *)userMapping;
 + (RKEntityMapping *)articleMapping;
-+ (RKEntityMapping *)industryMapping;
 + (RKEntityMapping *)tagMapping;
-+ (RKEntityMapping *)typeMapping;
++ (RKEntityMapping *)likeMapping;
 
 @end
