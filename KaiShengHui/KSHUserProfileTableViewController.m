@@ -9,8 +9,6 @@
 #import "KSHUserProfileTableViewController.h"
 #import "SWRevealViewController.h"
 #import "KSHUser.h"
-#import "KSHIndustry.h"
-#import "KSHFunction.h"
 
 @interface KSHUserProfileTableViewController ()
 @property (nonatomic) IBOutlet UIBarButtonItem* revealButtonItem;
@@ -37,12 +35,14 @@
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
     if (_user) {
-        _nameLabel.text = _user.name;
+        _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
+        _usernameLabel.text = _user.username;
         _emailLabel.text = _user.email;
-        _industryLabel.text = _user.ofIndustry.name;
-        _functionLabel.text = _user.performsFunction.name;
-        _starredCount.text = [NSString stringWithFormat:@"%i", [_user.likesArticle count]];
-        _followingCount.text = [NSString stringWithFormat:@"%i", [_user.follows count]];
+        _industryLabel.text = _user.industry;
+        _functionLabel.text = _user.function;
+        _likesCount.text = [NSString stringWithFormat:@"%i", [_user.likes count]];
+        _dislikesCount.text = [NSString stringWithFormat:@"%i", [_user.dislikes count]];
+        _followingCount.text = 0;
     }
 }
 

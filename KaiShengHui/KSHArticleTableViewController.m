@@ -7,6 +7,7 @@
 //
 
 #import "KSHArticle.h"
+#import "KSHArticle+helper.h"
 #import "KSHTag.h"
 #import "KSHArticleTableViewController.h"
 #import "KSHArticleDetailViewController.h"
@@ -138,24 +139,38 @@
     UILabel *articleExcerptLabel = (UILabel *)[cell viewWithTag:101];
     articleExcerptLabel.text = [[_article valueForKey:@"excerpt"] description];;
 
-    // Async request and assign cell image
-    NSLog(@"grabbing image...");
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURL"] description]]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
-# warning should save these images for reuse (can use array with indexPath)
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
-    # warning temporary solution to retain cycle by using placeholderImageView to call request block
+
+    // Async request and assign cell image
+    if (!_article.imgFile) {
+        [self setImageAsync: articleImageView atIndexPath:indexPath];
+    } else {
+        articleImageView.image = [[self.fetchedResultsController objectAtIndexPath:indexPath] getImage];
+    }
+}
+
+- (void)setImageAsync:(UIImageView *)articleImageView atIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"grabbing image...");
+    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
     UIImageView *placeholderImageView = [UIImageView new];
-    [placeholderImageView setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURLString"] description]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    [placeholderImageView
+     setImageWithURLRequest:request
+     placeholderImage:placeholderImage
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         NSLog(@"grabbing image...DONE");
         articleImageView.image = image;
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
+        [[self.fetchedResultsController objectAtIndexPath:indexPath] setImage:image];
+     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error  localizedDescription]];
         NSLog(@"Error: %@", error);
-    }];
-
+     }];
 }
+
 
 #pragma mark - Navigation
 

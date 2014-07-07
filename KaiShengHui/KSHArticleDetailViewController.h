@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "KSHArticle.h"
+#import "KSHArticle+helper.h"
 
 @interface KSHArticleDetailViewController : UIViewController
 @property (nonatomic, strong) KSHArticle *article;

@@ -32,8 +32,8 @@
     </entity>
     <entity name="Likeable" representedClassName="KSHLikeable" isAbstract="YES" syncable="YES">
         <attribute name="deletedAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="likedID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="likedName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="syncedAt" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="LoginRequest" representedClassName="KSHLoginRequest" syncable="YES">
@@ -50,6 +50,8 @@
     <entity name="User" representedClassName="KSHUser" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="function" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="functionID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="imgFile" optional="YES" attributeType="Binary" valueTransformerName="ImageToDataTransformer" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="imgURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="industry" optional="YES" attributeType="String" syncable="YES"/>
@@ -63,12 +65,12 @@
         <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="likedBy" inverseEntity="Like" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LoginRequest" positionX="547" positionY="648" width="128" height="73"/>
+        <element name="LoginRequest" positionX="601" positionY="603" width="128" height="73"/>
         <element name="Likeable" positionX="369" positionY="198" width="128" height="103"/>
         <element name="Tag" positionX="153" positionY="630" width="128" height="118"/>
-        <element name="User" positionX="547" positionY="378" width="128" height="238"/>
-        <element name="Article" positionX="180" positionY="243" width="128" height="313"/>
-        <element name="Like" positionX="376" positionY="567" width="128" height="88"/>
-        <element name="Dislike" positionX="358" positionY="405" width="128" height="88"/>
+        <element name="User" positionX="601" positionY="216" width="128" height="268"/>
+        <element name="Article" positionX="144" positionY="216" width="128" height="313"/>
+        <element name="Like" positionX="342" positionY="477" width="128" height="88"/>
+        <element name="Dislike" positionX="376" positionY="360" width="128" height="88"/>
     </elements>
 </model>

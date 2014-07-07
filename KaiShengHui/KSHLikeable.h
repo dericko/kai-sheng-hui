@@ -14,7 +14,7 @@
 
 @property (nonatomic, retain) NSDate * syncedAt;
 @property (nonatomic, retain) NSDate * deletedAt;
-@property (nonatomic, retain) NSNumber * likedID;
-@property (nonatomic, retain) NSString * likedName;
+@property (nonatomic, retain) NSNumber * itemID;
+@property (nonatomic, retain) NSString * itemName;
 
 @end

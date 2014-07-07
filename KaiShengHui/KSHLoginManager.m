@@ -35,7 +35,7 @@ NSString * const kLoginPath = @"INSERT_USER_LOGIN_PATH";
     
     // add additional response descriptors
     RKResponseDescriptor *userResponseDescriptor =
-    [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider loginMapping]
+    [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider loginRequestMapping]
                                                  method:RKRequestMethodPOST
                                             pathPattern:kLoginPath
                                                 keyPath:nil

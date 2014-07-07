@@ -13,7 +13,7 @@
 
 @dynamic syncedAt;
 @dynamic deletedAt;
-@dynamic likedID;
-@dynamic likedName;
+@dynamic itemID;
+@dynamic itemName;
 
 @end

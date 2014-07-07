@@ -10,9 +10,10 @@
 #import "KSHMessage.h"
 
 #import "KSHLogin.h"
-#import "KSHIndustry.h"
-#import "KSHFunction.h"
 #import "KSHArticle.h"
+#import "KSHLike.h"
+#import "KSHDislike.h"
+
 #import "KSHUserProfileTableViewController.h"
 
 @interface KSHLoginViewController ()
@@ -136,7 +137,7 @@
 //        }
 
         // Make request here (rather than _loginManager method) due to error with block pasing
-            KSHLogin *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"Login" inManagedObjectContext:[self managedObjectContext]];
+            KSHLogin *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"LoginRequest" inManagedObjectContext:[self managedObjectContext]];
     
             [userLogin setEmail:_email.text];
             [userLogin setPassword:_password.text];
@@ -165,7 +166,7 @@
                               }
                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                   [KSHMessage displayErrorAlert:@"Networking Error" withSubtitle:@""];
-                                  [KSHMessage displayMessageAlert:@"It appears that there was a problem logging in" withSubtitle:@"Would you like to try as a guest?" withButton:@"OK" forCallbackBlock:^{
+                                  [KSHMessage displayMessageAlert:@"It appears that there was a problem logging in" withSubtitle:@"Would you like to try as a guest?" withButton:@" OK " forCallbackBlock:^{
                                       [self loginAsGuest];
                                   }];
                                   [self enableSignInButton];
@@ -177,20 +178,21 @@
 
 - (void)loginAsGuest
 {
-    KSHFunction *guestFunction = [NSEntityDescription insertNewObjectForEntityForName:@"Function" inManagedObjectContext:[self managedObjectContext]];
-    guestFunction.name = @"Example Function";
+    KSHLike *sampleLike = [NSEntityDescription insertNewObjectForEntityForName:@"Like" inManagedObjectContext:[self managedObjectContext]];
+    sampleLike.itemName = @"Today's Top Headlines";
     
-    KSHIndustry *guestIndustry = [NSEntityDescription insertNewObjectForEntityForName:@"Industry" inManagedObjectContext:[self managedObjectContext]];
-    guestIndustry.name = @"Example Industry";
-    
+    KSHDislike *sampleDislike = [NSEntityDescription insertNewObjectForEntityForName:@"Dislike" inManagedObjectContext:[self managedObjectContext]];
+    sampleDislike.itemName = @"Last Week's Old News";
     
     KSHUser *guestUser = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
-    guestUser.name = @"Guest";
+    guestUser.firstName = @"Guest";
+    guestUser.lastName = @"User";
+    guestUser.username = @"guest";
     guestUser.email = @"johnsmith@guest.com";
-    [guestUser setOfIndustry:guestIndustry];
-    [guestIndustry setHasUser:[NSSet setWithObject:guestUser]];
-    [guestUser setPerformsFunction:guestFunction];
-    [guestFunction setHasUser:[NSSet setWithObject:guestUser]];
+    guestUser.industry = @"Sample Industry";
+    guestUser.function = @"Sample Function";
+    [guestUser addLikesObject:sampleLike];
+    [guestUser addDislikesObject:sampleDislike];
     
     _user = guestUser;
     

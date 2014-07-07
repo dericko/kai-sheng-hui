@@ -30,4 +30,9 @@ static KSHUser *sharedUser = nil;
     return self;
 }
 
+ - (void)setImage:(UIImage *)image
+{
+    [self setValue:UIImagePNGRepresentation(image) forKey:@"imgFile"];
+}
+
 @end

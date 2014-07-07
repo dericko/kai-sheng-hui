@@ -24,6 +24,8 @@
 @dynamic signupDate;
 @dynamic userID;
 @dynamic username;
+@dynamic function;
+@dynamic functionID;
 @dynamic likes;
 @dynamic dislikes;
 

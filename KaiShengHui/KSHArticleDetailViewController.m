@@ -30,21 +30,22 @@
     // Do any additional setup after loading the view.
     _articleTitle.text = _article.title;
     _articleContent.text = _article.content; // set up filter for html '&xxxxx' tags
-
-    # warning should be pushing this image rather than redownloading it!
-    NSLog(@"grabbing image...");
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURL"] description]]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
-    UIImageView *placeholderImageView = [UIImageView new];
-    [placeholderImageView setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        NSLog(@"grabbing image...DONE");
-        _articleImage.image = image;
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-        NSLog(@"Error: %@", error);
-    }];
+    _articleImage.image = [_article getImage];
+    
+//    # warning should be pushing this image rather than redownloading it!
+//    NSLog(@"grabbing image...");
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURLString"] description]]];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
+//    UIImageView *placeholderImageView = [UIImageView new];
+//    [placeholderImageView setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+//        NSLog(@"grabbing image...DONE");
+//        _articleImage.image = image;
+//    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alertView show];
+//        NSLog(@"Error: %@", error);
+//    }];
 
 }
 

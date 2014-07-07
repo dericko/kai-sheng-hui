@@ -24,6 +24,8 @@
 @property (nonatomic, retain) NSDate * signupDate;
 @property (nonatomic, retain) NSNumber * userID;
 @property (nonatomic, retain) NSString * username;
+@property (nonatomic, retain) NSString * function;
+@property (nonatomic, retain) NSNumber * functionID;
 @property (nonatomic, retain) NSSet *likes;
 @property (nonatomic, retain) NSSet *dislikes;
 @end
