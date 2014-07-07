@@ -2,14 +2,14 @@
 //  KSHArticle.m
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/3/14.
+//  Created by Derick Olson on 7/7/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
 #import "KSHArticle.h"
-#import "KSHIndustry.h"
+#import "KSHDislike.h"
+#import "KSHLike.h"
 #import "KSHTag.h"
-#import "KSHUser.h"
 
 
 @implementation KSHArticle
@@ -18,16 +18,19 @@
 @dynamic author;
 @dynamic content;
 @dynamic datePublished;
+@dynamic dateUpdated;
 @dynamic excerpt;
-@dynamic imgURL;
-@dynamic publisher;
+@dynamic function;
+@dynamic functionID;
+@dynamic imgFile;
+@dynamic imgURLString;
+@dynamic industry;
+@dynamic industryID;
 @dynamic title;
 @dynamic typeID;
-@dynamic uID;
 @dynamic viewCount;
-@dynamic dislikedBy;
-@dynamic hasIndustry;
-@dynamic hasTag;
-@dynamic likedBy;
+@dynamic liked;
+@dynamic disliked;
+@dynamic hasTags;
 
 @end

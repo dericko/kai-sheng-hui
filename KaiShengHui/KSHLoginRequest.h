@@ -1,5 +1,5 @@
 //
-//  KSHLogin.h
+//  KSHLoginRequest.h
 //  KaiShengHui
 //
 //  Created by Derick Olson on 7/7/14.
@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 
 
-@interface KSHLogin : NSManagedObject
+@interface KSHLoginRequest : NSManagedObject
 
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * password;

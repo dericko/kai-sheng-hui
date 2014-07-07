@@ -2,54 +2,52 @@
 //  KSHArticle.h
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/3/14.
+//  Created by Derick Olson on 7/7/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class KSHIndustry, KSHTag, KSHUser;
+@class KSHDislike, KSHLike, KSHTag;
 
 @interface KSHArticle : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * articleID;
-@property (nonatomic, retain) NSString * author;
+@property (nonatomic, retain) NSNumber * author;
 @property (nonatomic, retain) NSString * content;
 @property (nonatomic, retain) NSDate * datePublished;
+@property (nonatomic, retain) NSDate * dateUpdated;
 @property (nonatomic, retain) NSString * excerpt;
-@property (nonatomic, retain) id imgURL;
-@property (nonatomic, retain) NSString * publisher;
+@property (nonatomic, retain) NSString * function;
+@property (nonatomic, retain) NSNumber * functionID;
+@property (nonatomic, retain) NSData * imgFile;
+@property (nonatomic, retain) NSString * imgURLString;
+@property (nonatomic, retain) NSString * industry;
+@property (nonatomic, retain) NSNumber * industryID;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * typeID;
-@property (nonatomic, retain) NSNumber * uID;
 @property (nonatomic, retain) NSNumber * viewCount;
-@property (nonatomic, retain) NSSet *dislikedBy;
-@property (nonatomic, retain) NSSet *hasIndustry;
-@property (nonatomic, retain) NSSet *hasTag;
-@property (nonatomic, retain) NSSet *likedBy;
+@property (nonatomic, retain) NSSet *liked;
+@property (nonatomic, retain) NSSet *disliked;
+@property (nonatomic, retain) NSSet *hasTags;
 @end
 
 @interface KSHArticle (CoreDataGeneratedAccessors)
 
-- (void)addDislikedByObject:(KSHUser *)value;
-- (void)removeDislikedByObject:(KSHUser *)value;
-- (void)addDislikedBy:(NSSet *)values;
-- (void)removeDislikedBy:(NSSet *)values;
+- (void)addLikedObject:(KSHLike *)value;
+- (void)removeLikedObject:(KSHLike *)value;
+- (void)addLiked:(NSSet *)values;
+- (void)removeLiked:(NSSet *)values;
 
-- (void)addHasIndustryObject:(KSHIndustry *)value;
-- (void)removeHasIndustryObject:(KSHIndustry *)value;
-- (void)addHasIndustry:(NSSet *)values;
-- (void)removeHasIndustry:(NSSet *)values;
+- (void)addDislikedObject:(KSHDislike *)value;
+- (void)removeDislikedObject:(KSHDislike *)value;
+- (void)addDisliked:(NSSet *)values;
+- (void)removeDisliked:(NSSet *)values;
 
-- (void)addHasTagObject:(KSHTag *)value;
-- (void)removeHasTagObject:(KSHTag *)value;
-- (void)addHasTag:(NSSet *)values;
-- (void)removeHasTag:(NSSet *)values;
-
-- (void)addLikedByObject:(KSHUser *)value;
-- (void)removeLikedByObject:(KSHUser *)value;
-- (void)addLikedBy:(NSSet *)values;
-- (void)removeLikedBy:(NSSet *)values;
+- (void)addHasTagsObject:(KSHTag *)value;
+- (void)removeHasTagsObject:(KSHTag *)value;
+- (void)addHasTags:(NSSet *)values;
+- (void)removeHasTags:(NSSet *)values;
 
 @end

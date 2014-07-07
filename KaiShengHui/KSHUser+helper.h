@@ -1,17 +1,15 @@
 //
-//  KSHLogin.m
+//  KSHUser+helper.h
 //  KaiShengHui
 //
 //  Created by Derick Olson on 7/7/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import "KSHLogin.h"
+#import "KSHUser.h"
 
+@interface KSHUser (helper)
 
-@implementation KSHLogin
-
-@dynamic email;
-@dynamic password;
++ (instancetype)sharedUser;
 
 @end

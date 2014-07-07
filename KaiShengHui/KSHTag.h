@@ -2,39 +2,34 @@
 //  KSHTag.h
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/3/14.
+//  Created by Derick Olson on 7/7/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class KSHArticle, KSHUser;
+@class Dislike, KSHArticle, Like;
 
 @interface KSHTag : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * tagID;
-@property (nonatomic, retain) NSSet *dislikedBy;
-@property (nonatomic, retain) NSSet *likedBy;
-@property (nonatomic, retain) NSSet *tags;
+@property (nonatomic, retain) NSString * tag;
+@property (nonatomic, retain) NSSet *liked;
+@property (nonatomic, retain) NSSet *disliked;
+@property (nonatomic, retain) KSHArticle *ofArticle;
 @end
 
 @interface KSHTag (CoreDataGeneratedAccessors)
 
-- (void)addDislikedByObject:(KSHUser *)value;
-- (void)removeDislikedByObject:(KSHUser *)value;
-- (void)addDislikedBy:(NSSet *)values;
-- (void)removeDislikedBy:(NSSet *)values;
+- (void)addLikedObject:(Like *)value;
+- (void)removeLikedObject:(Like *)value;
+- (void)addLiked:(NSSet *)values;
+- (void)removeLiked:(NSSet *)values;
 
-- (void)addLikedByObject:(KSHUser *)value;
-- (void)removeLikedByObject:(KSHUser *)value;
-- (void)addLikedBy:(NSSet *)values;
-- (void)removeLikedBy:(NSSet *)values;
-
-- (void)addTagsObject:(KSHArticle *)value;
-- (void)removeTagsObject:(KSHArticle *)value;
-- (void)addTags:(NSSet *)values;
-- (void)removeTags:(NSSet *)values;
+- (void)addDislikedObject:(Dislike *)value;
+- (void)removeDislikedObject:(Dislike *)value;
+- (void)addDisliked:(NSSet *)values;
+- (void)removeDisliked:(NSSet *)values;
 
 @end
