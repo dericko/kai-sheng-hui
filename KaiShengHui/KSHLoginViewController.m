@@ -8,12 +8,12 @@
 
 #import "KSHLoginViewController.h"
 #import "KSHMessage.h"
+#import "SWRevealViewController.h"
 
-#import "KSHLogin.h"
-#import "KSHUser+guestUser.h"
+#import "KSHLoginRequest.h"
 #import "KSHArticle.h"
 #import "KSHLikeDislike.h"
-
+#import "KSHUserDefaultsHelper.h"
 #import "KSHUserProfileTableViewController.h"
 
 @interface KSHLoginViewController ()
@@ -116,7 +116,7 @@
             NSLog(@"Making login request");
             
 # warning better to send this off to the login manager...
-//            KSHLogin *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"Login" inManagedObjectContext:[self managedObjectContext]];
+//            KSHLoginRequest *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"Login" inManagedObjectContext:[self managedObjectContext]];
 //            [userLogin setEmail:_email.text];
 //            [userLogin setPassword:_password.text];
 //            
@@ -137,7 +137,7 @@
 //        }
 
         // Make request here (rather than _loginManager method) due to error with block pasing
-            KSHLogin *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"LoginRequest" inManagedObjectContext:[self managedObjectContext]];
+            KSHLoginRequest *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"LoginRequest" inManagedObjectContext:[self managedObjectContext]];
     
             [userLogin setEmail:_email.text];
             [userLogin setPassword:_password.text];
@@ -178,6 +178,8 @@
 
 - (void)loginAsGuest
 {
+    [KSHUserDefaultsHelper userLogin];
+    
     KSHUser *guestUser = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
    
     [guestUser setupGuestUserWithContext:[self managedObjectContext]];
@@ -186,32 +188,49 @@
     
     //TODO: implement guest login
     NSLog(@"booooooom guest login!");
-    [self performSegueWithIdentifier:@"showProfile" sender:self.view];
+    [self showNextView];
+    
+    [KSHMessage displaySuccessAlert:@"Success!" withSubtitle:@"Logged in as Guest."];
+
 }
 
 - (void)loggedInSuccessfully
 {
-    sleep(3);
+    [KSHUserDefaultsHelper userLogin];
     // Instantiate User entity with request
     
     // Link via userID, authToken/cookie(?)
     
     // Move to next scene
+    [self showNextView];
 }
 
 #pragma mark - Navigation
+
+- (void)showNextView
+{
+    NSString *controllerId = @"UserProfile";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    KSHUserProfileTableViewController *nextViewController = [storyboard instantiateViewControllerWithIdentifier:controllerId];
+    
+    SWRevealViewControllerSegue *showNextView = [SWRevealViewControllerSegue segueWithIdentifier:controllerId source:self destination:nextViewController performHandler:^{
+    }];
+    showNextView.performBlock = ^(SWRevealViewControllerSegue *rvc_segue, UIViewController *svc, UIViewController *dvc) {
+        
+        UINavigationController *navController = (UINavigationController *)self.revealViewController.frontViewController;
+        [navController setViewControllers: @[dvc] animated: NO ];
+        [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
+    };
+    
+    nextViewController.user = _user;
+    [showNextView perform];
+}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    // pass over the login object
-    if ([segue.identifier isEqualToString:@"showProfile"]) {
-        KSHUserProfileTableViewController *destinationViewController = segue.destinationViewController;
-        destinationViewController.user = _user;
-    }
 }
 
 #pragma mark - Delegate methods

@@ -6,13 +6,22 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		C1E2AC8D196BE96B00B6A7AF /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C1E2AC8E196BE96B00B6A7AF /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				C1E2AC91196BE98800B6A7AF /* Run Script */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		2D4CF66EF926450F920E3365 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7255E48F6D14CE185DFC1DE /* libPods.a */; };
-		C1197B341962567400868228 /* placeholderPie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1197B2F1962567400868228 /* placeholderPie.jpg */; };
-		C1197B361962567400868228 /* placeholderBaby.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1197B311962567400868228 /* placeholderBaby.jpg */; };
-		C1197B371962567400868228 /* placeholderBanner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1197B321962567400868228 /* placeholderBanner.jpg */; };
-		C1197B381962567400868228 /* placeholderShop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1197B331962567400868228 /* placeholderShop.jpg */; };
-		C1197B3A19625A4500868228 /* placeholderMan.png in Resources */ = {isa = PBXBuildFile; fileRef = C1197B3919625A4500868228 /* placeholderMan.png */; };
 		C1197B4419628CDF00868228 /* KSHArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1197B4319628CDF00868228 /* KSHArticleTableViewCell.m */; };
 		C1355FEC19594FA9005DABED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FEB19594FA9005DABED /* Foundation.framework */; };
 		C1355FEE19594FA9005DABED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FED19594FA9005DABED /* CoreGraphics.framework */; };
@@ -35,20 +44,21 @@
 		C14924471965491F00DD1478 /* KSHLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C14924461965491F00DD1478 /* KSHLoginManager.m */; };
 		C182851A196679210080F2DD /* KSHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C1828519196679210080F2DD /* KSHMessage.m */; };
 		C1A4C39F196298E500603DC6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A4C39E196298E500603DC6 /* SWRevealViewController.m */; };
-		C1E2ABE8196A846600B6A7AF /* KSHUser+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2ABE7196A846600B6A7AF /* KSHUser+helper.m */; };
-		C1E2AC25196AAA3A00B6A7AF /* KSHArticle+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC24196AAA3A00B6A7AF /* KSHArticle+helper.m */; };
-		C1E2AC3D196B924400B6A7AF /* KSHLikeDislike+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC3C196B924400B6A7AF /* KSHLikeDislike+helper.m */; };
-		C1E2AC43196B9AD700B6A7AF /* KSHUser+guestUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC42196B9AD700B6A7AF /* KSHUser+guestUser.m */; };
-		C1E2AC64196BA60900B6A7AF /* KSHLike+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC63196BA60900B6A7AF /* KSHLike+helper.m */; };
-		C1E2AC67196BA63000B6A7AF /* KSHDislike+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC66196BA63000B6A7AF /* KSHDislike+helper.m */; };
-		C1E2AC6A196BA77500B6A7AF /* KSHArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC69196BA77500B6A7AF /* KSHArticle.m */; };
-		C1E2AC6D196BA77500B6A7AF /* KSHTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC6C196BA77500B6A7AF /* KSHTag.m */; };
-		C1E2AC70196BA77500B6A7AF /* KSHDislike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC6F196BA77500B6A7AF /* KSHDislike.m */; };
-		C1E2AC73196BA77600B6A7AF /* KSHLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC72196BA77600B6A7AF /* KSHLoginRequest.m */; };
-		C1E2AC76196BA77600B6A7AF /* KSHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC75196BA77600B6A7AF /* KSHUser.m */; };
-		C1E2AC79196BA77600B6A7AF /* KSHLikeDislike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC78196BA77600B6A7AF /* KSHLikeDislike.m */; };
-		C1E2AC7C196BA77600B6A7AF /* KSHLike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC7B196BA77600B6A7AF /* KSHLike.m */; };
-		C1EBCDD41963A3E900C04FC4 /* placeholder-square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1EBCDD31963A3E900C04FC4 /* placeholder-square.jpg */; };
+		C1E2AC7F196BC70D00B6A7AF /* KSHUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */; };
+		C1E2AD0F196BF16900B6A7AF /* _KSHArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2ACF3196BF16900B6A7AF /* _KSHArticle.m */; };
+		C1E2AD10196BF16900B6A7AF /* _KSHDislike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2ACF5196BF16900B6A7AF /* _KSHDislike.m */; };
+		C1E2AD11196BF16900B6A7AF /* _KSHLike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2ACF7196BF16900B6A7AF /* _KSHLike.m */; };
+		C1E2AD12196BF16900B6A7AF /* _KSHLikeDislike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2ACF9196BF16900B6A7AF /* _KSHLikeDislike.m */; };
+		C1E2AD13196BF16900B6A7AF /* _KSHLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2ACFB196BF16900B6A7AF /* _KSHLoginRequest.m */; };
+		C1E2AD14196BF16900B6A7AF /* _KSHTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2ACFD196BF16900B6A7AF /* _KSHTag.m */; };
+		C1E2AD15196BF16900B6A7AF /* _KSHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2ACFF196BF16900B6A7AF /* _KSHUser.m */; };
+		C1E2AD16196BF16900B6A7AF /* KSHArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AD02196BF16900B6A7AF /* KSHArticle.m */; };
+		C1E2AD17196BF16900B6A7AF /* KSHDislike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AD04196BF16900B6A7AF /* KSHDislike.m */; };
+		C1E2AD18196BF16900B6A7AF /* KSHLike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AD06196BF16900B6A7AF /* KSHLike.m */; };
+		C1E2AD19196BF16900B6A7AF /* KSHLikeDislike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AD08196BF16900B6A7AF /* KSHLikeDislike.m */; };
+		C1E2AD1A196BF16900B6A7AF /* KSHLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AD0A196BF16900B6A7AF /* KSHLoginRequest.m */; };
+		C1E2AD1B196BF16900B6A7AF /* KSHTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AD0C196BF16900B6A7AF /* KSHTag.m */; };
+		C1E2AD1C196BF16900B6A7AF /* KSHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AD0E196BF16900B6A7AF /* KSHUser.m */; };
 		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
 		C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */; };
 		C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF9819597E0E006EE5F7 /* KSHArticleTableViewController.m */; };
@@ -69,16 +79,18 @@
 			remoteGlobalIDString = C1355FE719594FA9005DABED;
 			remoteInfo = KaiShengHui;
 		};
+		C1E2ACC1196BEFE100B6A7AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1355FE019594FA9005DABED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1E2AC8D196BE96B00B6A7AF;
+			remoteInfo = Mogenerator;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		07AC7ED80DC44FFAADF56747 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A7255E48F6D14CE185DFC1DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1197B2F1962567400868228 /* placeholderPie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholderPie.jpg; sourceTree = "<group>"; };
-		C1197B311962567400868228 /* placeholderBaby.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholderBaby.jpg; sourceTree = "<group>"; };
-		C1197B321962567400868228 /* placeholderBanner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholderBanner.jpg; sourceTree = "<group>"; };
-		C1197B331962567400868228 /* placeholderShop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholderShop.jpg; sourceTree = "<group>"; };
-		C1197B3919625A4500868228 /* placeholderMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholderMan.png; sourceTree = "<group>"; };
 		C1197B4219628CDF00868228 /* KSHArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleTableViewCell.h; sourceTree = "<group>"; };
 		C1197B4319628CDF00868228 /* KSHArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleTableViewCell.m; sourceTree = "<group>"; };
 		C1355FE819594FA9005DABED /* KaiShengHui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaiShengHui.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,33 +122,36 @@
 		C1828519196679210080F2DD /* KSHMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMessage.m; sourceTree = "<group>"; };
 		C1A4C39D196298E500603DC6 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		C1A4C39E196298E500603DC6 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		C1E2ABE6196A846600B6A7AF /* KSHUser+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHUser+helper.h"; sourceTree = "<group>"; };
-		C1E2ABE7196A846600B6A7AF /* KSHUser+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHUser+helper.m"; sourceTree = "<group>"; };
-		C1E2AC23196AAA3A00B6A7AF /* KSHArticle+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHArticle+helper.h"; sourceTree = "<group>"; };
-		C1E2AC24196AAA3A00B6A7AF /* KSHArticle+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHArticle+helper.m"; sourceTree = "<group>"; };
-		C1E2AC3B196B924400B6A7AF /* KSHLikeDislike+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHLikeDislike+helper.h"; sourceTree = "<group>"; };
-		C1E2AC3C196B924400B6A7AF /* KSHLikeDislike+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHLikeDislike+helper.m"; sourceTree = "<group>"; };
-		C1E2AC41196B9AD700B6A7AF /* KSHUser+guestUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHUser+guestUser.h"; sourceTree = "<group>"; };
-		C1E2AC42196B9AD700B6A7AF /* KSHUser+guestUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHUser+guestUser.m"; sourceTree = "<group>"; };
-		C1E2AC62196BA60900B6A7AF /* KSHLike+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHLike+helper.h"; sourceTree = "<group>"; };
-		C1E2AC63196BA60900B6A7AF /* KSHLike+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHLike+helper.m"; sourceTree = "<group>"; };
-		C1E2AC65196BA63000B6A7AF /* KSHDislike+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHDislike+helper.h"; sourceTree = "<group>"; };
-		C1E2AC66196BA63000B6A7AF /* KSHDislike+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHDislike+helper.m"; sourceTree = "<group>"; };
-		C1E2AC68196BA77500B6A7AF /* KSHArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticle.h; sourceTree = "<group>"; };
-		C1E2AC69196BA77500B6A7AF /* KSHArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticle.m; sourceTree = "<group>"; };
-		C1E2AC6B196BA77500B6A7AF /* KSHTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHTag.h; sourceTree = "<group>"; };
-		C1E2AC6C196BA77500B6A7AF /* KSHTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHTag.m; sourceTree = "<group>"; };
-		C1E2AC6E196BA77500B6A7AF /* KSHDislike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHDislike.h; sourceTree = "<group>"; };
-		C1E2AC6F196BA77500B6A7AF /* KSHDislike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHDislike.m; sourceTree = "<group>"; };
-		C1E2AC71196BA77600B6A7AF /* KSHLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLoginRequest.h; sourceTree = "<group>"; };
-		C1E2AC72196BA77600B6A7AF /* KSHLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLoginRequest.m; sourceTree = "<group>"; };
-		C1E2AC74196BA77600B6A7AF /* KSHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUser.h; sourceTree = "<group>"; };
-		C1E2AC75196BA77600B6A7AF /* KSHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUser.m; sourceTree = "<group>"; };
-		C1E2AC77196BA77600B6A7AF /* KSHLikeDislike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLikeDislike.h; sourceTree = "<group>"; };
-		C1E2AC78196BA77600B6A7AF /* KSHLikeDislike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLikeDislike.m; sourceTree = "<group>"; };
-		C1E2AC7A196BA77600B6A7AF /* KSHLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLike.h; sourceTree = "<group>"; };
-		C1E2AC7B196BA77600B6A7AF /* KSHLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLike.m; sourceTree = "<group>"; };
-		C1EBCDD31963A3E900C04FC4 /* placeholder-square.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "placeholder-square.jpg"; sourceTree = "<group>"; };
+		C1E2AC7D196BC70D00B6A7AF /* KSHUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserDefaultsHelper.h; sourceTree = "<group>"; };
+		C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserDefaultsHelper.m; sourceTree = "<group>"; };
+		C1E2ACF2196BF16900B6A7AF /* _KSHArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _KSHArticle.h; sourceTree = "<group>"; };
+		C1E2ACF3196BF16900B6A7AF /* _KSHArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _KSHArticle.m; sourceTree = "<group>"; };
+		C1E2ACF4196BF16900B6A7AF /* _KSHDislike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _KSHDislike.h; sourceTree = "<group>"; };
+		C1E2ACF5196BF16900B6A7AF /* _KSHDislike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _KSHDislike.m; sourceTree = "<group>"; };
+		C1E2ACF6196BF16900B6A7AF /* _KSHLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _KSHLike.h; sourceTree = "<group>"; };
+		C1E2ACF7196BF16900B6A7AF /* _KSHLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _KSHLike.m; sourceTree = "<group>"; };
+		C1E2ACF8196BF16900B6A7AF /* _KSHLikeDislike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _KSHLikeDislike.h; sourceTree = "<group>"; };
+		C1E2ACF9196BF16900B6A7AF /* _KSHLikeDislike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _KSHLikeDislike.m; sourceTree = "<group>"; };
+		C1E2ACFA196BF16900B6A7AF /* _KSHLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _KSHLoginRequest.h; sourceTree = "<group>"; };
+		C1E2ACFB196BF16900B6A7AF /* _KSHLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _KSHLoginRequest.m; sourceTree = "<group>"; };
+		C1E2ACFC196BF16900B6A7AF /* _KSHTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _KSHTag.h; sourceTree = "<group>"; };
+		C1E2ACFD196BF16900B6A7AF /* _KSHTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _KSHTag.m; sourceTree = "<group>"; };
+		C1E2ACFE196BF16900B6A7AF /* _KSHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _KSHUser.h; sourceTree = "<group>"; };
+		C1E2ACFF196BF16900B6A7AF /* _KSHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _KSHUser.m; sourceTree = "<group>"; };
+		C1E2AD01196BF16900B6A7AF /* KSHArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticle.h; sourceTree = "<group>"; };
+		C1E2AD02196BF16900B6A7AF /* KSHArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticle.m; sourceTree = "<group>"; };
+		C1E2AD03196BF16900B6A7AF /* KSHDislike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHDislike.h; sourceTree = "<group>"; };
+		C1E2AD04196BF16900B6A7AF /* KSHDislike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHDislike.m; sourceTree = "<group>"; };
+		C1E2AD05196BF16900B6A7AF /* KSHLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLike.h; sourceTree = "<group>"; };
+		C1E2AD06196BF16900B6A7AF /* KSHLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLike.m; sourceTree = "<group>"; };
+		C1E2AD07196BF16900B6A7AF /* KSHLikeDislike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLikeDislike.h; sourceTree = "<group>"; };
+		C1E2AD08196BF16900B6A7AF /* KSHLikeDislike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLikeDislike.m; sourceTree = "<group>"; };
+		C1E2AD09196BF16900B6A7AF /* KSHLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLoginRequest.h; sourceTree = "<group>"; };
+		C1E2AD0A196BF16900B6A7AF /* KSHLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLoginRequest.m; sourceTree = "<group>"; };
+		C1E2AD0B196BF16900B6A7AF /* KSHTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHTag.h; sourceTree = "<group>"; };
+		C1E2AD0C196BF16900B6A7AF /* KSHTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHTag.m; sourceTree = "<group>"; };
+		C1E2AD0D196BF16900B6A7AF /* KSHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUser.h; sourceTree = "<group>"; };
+		C1E2AD0E196BF16900B6A7AF /* KSHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUser.m; sourceTree = "<group>"; };
 		C1F6FF8319596350006EE5F7 /* KSHUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserManager.h; sourceTree = "<group>"; };
 		C1F6FF8419596350006EE5F7 /* KSHUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserManager.m; sourceTree = "<group>"; };
 		C1F6FF861959635E006EE5F7 /* KSHArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleManager.h; sourceTree = "<group>"; };
@@ -186,19 +201,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C1197B2E196251EE00868228 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				C1EBCDD31963A3E900C04FC4 /* placeholder-square.jpg */,
-				C1197B3919625A4500868228 /* placeholderMan.png */,
-				C1197B2F1962567400868228 /* placeholderPie.jpg */,
-				C1197B311962567400868228 /* placeholderBaby.jpg */,
-				C1197B321962567400868228 /* placeholderBanner.jpg */,
-				C1197B331962567400868228 /* placeholderShop.jpg */,
-			);
-			name = Assets;
-			sourceTree = "<group>";
-		};
 		C1197B3F196286BF00868228 /* UserView */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,14 +265,13 @@
 			isa = PBXGroup;
 			children = (
 				C1ABFE2F195C206E006560E7 /* Networking */,
-				C135602B195950B9005DABED /* Models */,
+				C1E2ACF0196BF16900B6A7AF /* Model */,
 				C1ABFE30195C20A5006560E7 /* Views */,
 				C135602C195950BF005DABED /* Controllers */,
 				C1355FFC19594FA9005DABED /* KSHAppDelegate.h */,
 				C1355FFD19594FA9005DABED /* KSHAppDelegate.m */,
 				C1355FFF19594FA9005DABED /* Main.storyboard */,
 				C135600B19594FA9005DABED /* Images.xcassets */,
-				C1197B2E196251EE00868228 /* Assets */,
 				C1355FF419594FA9005DABED /* Supporting Files */,
 			);
 			path = KaiShengHui;
@@ -305,16 +306,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C135602B195950B9005DABED /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
-				C1E2ABE5196A838500B6A7AF /* Entity+helpers */,
-				C1ABFE35195C2127006560E7 /* Entities_DO_NOT_EDIT */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		C135602C195950BF005DABED /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +330,8 @@
 		C182851C1966B29B0080F2DD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C1E2AC7D196BC70D00B6A7AF /* KSHUserDefaultsHelper.h */,
+				C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */,
 				C1828518196679210080F2DD /* KSHMessage.h */,
 				C1828519196679210080F2DD /* KSHMessage.m */,
 				C1A4C39D196298E500603DC6 /* SWRevealViewController.h */,
@@ -402,44 +395,56 @@
 			name = ObjectManager;
 			sourceTree = "<group>";
 		};
-		C1ABFE35195C2127006560E7 /* Entities_DO_NOT_EDIT */ = {
+		C1E2ACF0196BF16900B6A7AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C1E2AC7A196BA77600B6A7AF /* KSHLike.h */,
-				C1E2AC7B196BA77600B6A7AF /* KSHLike.m */,
-				C1E2AC77196BA77600B6A7AF /* KSHLikeDislike.h */,
-				C1E2AC78196BA77600B6A7AF /* KSHLikeDislike.m */,
-				C1E2AC74196BA77600B6A7AF /* KSHUser.h */,
-				C1E2AC75196BA77600B6A7AF /* KSHUser.m */,
-				C1E2AC71196BA77600B6A7AF /* KSHLoginRequest.h */,
-				C1E2AC72196BA77600B6A7AF /* KSHLoginRequest.m */,
-				C1E2AC6E196BA77500B6A7AF /* KSHDislike.h */,
-				C1E2AC6F196BA77500B6A7AF /* KSHDislike.m */,
-				C1E2AC6B196BA77500B6A7AF /* KSHTag.h */,
-				C1E2AC6C196BA77500B6A7AF /* KSHTag.m */,
-				C1E2AC68196BA77500B6A7AF /* KSHArticle.h */,
-				C1E2AC69196BA77500B6A7AF /* KSHArticle.m */,
+				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
+				C1E2ACF1196BF16900B6A7AF /* CoreDataEntities_DO_NOT_EDIT */,
+				C1E2AD00196BF16900B6A7AF /* CoreDataSubclasses */,
 			);
-			name = Entities_DO_NOT_EDIT;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		C1E2ABE5196A838500B6A7AF /* Entity+helpers */ = {
+		C1E2ACF1196BF16900B6A7AF /* CoreDataEntities_DO_NOT_EDIT */ = {
 			isa = PBXGroup;
 			children = (
-				C1E2ABE6196A846600B6A7AF /* KSHUser+helper.h */,
-				C1E2ABE7196A846600B6A7AF /* KSHUser+helper.m */,
-				C1E2AC41196B9AD700B6A7AF /* KSHUser+guestUser.h */,
-				C1E2AC42196B9AD700B6A7AF /* KSHUser+guestUser.m */,
-				C1E2AC23196AAA3A00B6A7AF /* KSHArticle+helper.h */,
-				C1E2AC24196AAA3A00B6A7AF /* KSHArticle+helper.m */,
-				C1E2AC3B196B924400B6A7AF /* KSHLikeDislike+helper.h */,
-				C1E2AC3C196B924400B6A7AF /* KSHLikeDislike+helper.m */,
-				C1E2AC62196BA60900B6A7AF /* KSHLike+helper.h */,
-				C1E2AC63196BA60900B6A7AF /* KSHLike+helper.m */,
-				C1E2AC65196BA63000B6A7AF /* KSHDislike+helper.h */,
-				C1E2AC66196BA63000B6A7AF /* KSHDislike+helper.m */,
+				C1E2ACF2196BF16900B6A7AF /* _KSHArticle.h */,
+				C1E2ACF3196BF16900B6A7AF /* _KSHArticle.m */,
+				C1E2ACF4196BF16900B6A7AF /* _KSHDislike.h */,
+				C1E2ACF5196BF16900B6A7AF /* _KSHDislike.m */,
+				C1E2ACF6196BF16900B6A7AF /* _KSHLike.h */,
+				C1E2ACF7196BF16900B6A7AF /* _KSHLike.m */,
+				C1E2ACF8196BF16900B6A7AF /* _KSHLikeDislike.h */,
+				C1E2ACF9196BF16900B6A7AF /* _KSHLikeDislike.m */,
+				C1E2ACFA196BF16900B6A7AF /* _KSHLoginRequest.h */,
+				C1E2ACFB196BF16900B6A7AF /* _KSHLoginRequest.m */,
+				C1E2ACFC196BF16900B6A7AF /* _KSHTag.h */,
+				C1E2ACFD196BF16900B6A7AF /* _KSHTag.m */,
+				C1E2ACFE196BF16900B6A7AF /* _KSHUser.h */,
+				C1E2ACFF196BF16900B6A7AF /* _KSHUser.m */,
 			);
-			name = "Entity+helpers";
+			path = CoreDataEntities_DO_NOT_EDIT;
+			sourceTree = "<group>";
+		};
+		C1E2AD00196BF16900B6A7AF /* CoreDataSubclasses */ = {
+			isa = PBXGroup;
+			children = (
+				C1E2AD01196BF16900B6A7AF /* KSHArticle.h */,
+				C1E2AD02196BF16900B6A7AF /* KSHArticle.m */,
+				C1E2AD03196BF16900B6A7AF /* KSHDislike.h */,
+				C1E2AD04196BF16900B6A7AF /* KSHDislike.m */,
+				C1E2AD05196BF16900B6A7AF /* KSHLike.h */,
+				C1E2AD06196BF16900B6A7AF /* KSHLike.m */,
+				C1E2AD07196BF16900B6A7AF /* KSHLikeDislike.h */,
+				C1E2AD08196BF16900B6A7AF /* KSHLikeDislike.m */,
+				C1E2AD09196BF16900B6A7AF /* KSHLoginRequest.h */,
+				C1E2AD0A196BF16900B6A7AF /* KSHLoginRequest.m */,
+				C1E2AD0B196BF16900B6A7AF /* KSHTag.h */,
+				C1E2AD0C196BF16900B6A7AF /* KSHTag.m */,
+				C1E2AD0D196BF16900B6A7AF /* KSHUser.h */,
+				C1E2AD0E196BF16900B6A7AF /* KSHUser.m */,
+			);
+			path = CoreDataSubclasses;
 			sourceTree = "<group>";
 		};
 		C1F6FF8F195963CC006EE5F7 /* MappingProvider */ = {
@@ -509,6 +514,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C1E2ACC2196BEFE100B6A7AF /* PBXTargetDependency */,
 			);
 			name = KaiShengHui;
 			productName = KaiShengHui;
@@ -563,6 +569,7 @@
 			targets = (
 				C1355FE719594FA9005DABED /* KaiShengHui */,
 				C135601019594FA9005DABED /* KaiShengHuiTests */,
+				C1E2AC8D196BE96B00B6A7AF /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -572,14 +579,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1197B381962567400868228 /* placeholderShop.jpg in Resources */,
-				C1EBCDD41963A3E900C04FC4 /* placeholder-square.jpg in Resources */,
-				C1197B341962567400868228 /* placeholderPie.jpg in Resources */,
 				C135600C19594FA9005DABED /* Images.xcassets in Resources */,
 				C1355FF819594FA9005DABED /* InfoPlist.strings in Resources */,
-				C1197B3A19625A4500868228 /* placeholderMan.png in Resources */,
-				C1197B361962567400868228 /* placeholderBaby.jpg in Resources */,
-				C1197B371962567400868228 /* placeholderBanner.jpg in Resources */,
 				C135600119594FA9005DABED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,6 +626,20 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		C1E2AC91196BE98800B6A7AF /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd KaiShengHui\nmogenerator --template-var arc=true -m KaiShengHui.xcdatamodeld -M Model/CoreDataEntities_DO_NOT_EDIT/ -H Model/CoreDataSubclasses/";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -632,38 +647,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1E2AD11196BF16900B6A7AF /* _KSHLike.m in Sources */,
+				C1E2AD1C196BF16900B6A7AF /* KSHUser.m in Sources */,
 				C135600419594FA9005DABED /* KaiShengHui.xcdatamodeld in Sources */,
+				C1E2AD1B196BF16900B6A7AF /* KSHTag.m in Sources */,
 				C1F87B9C195D3F0900DD300D /* KSHLoginViewController.m in Sources */,
-				C1E2AC70196BA77500B6A7AF /* KSHDislike.m in Sources */,
+				C1E2AD10196BF16900B6A7AF /* _KSHDislike.m in Sources */,
 				C1F87B92195D3E9700DD300D /* KSHUserProfileTableViewCell.m in Sources */,
-				C1E2AC79196BA77600B6A7AF /* KSHLikeDislike.m in Sources */,
-				C1E2AC67196BA63000B6A7AF /* KSHDislike+helper.m in Sources */,
-				C1E2AC25196AAA3A00B6A7AF /* KSHArticle+helper.m in Sources */,
-				C1E2AC64196BA60900B6A7AF /* KSHLike+helper.m in Sources */,
-				C1E2AC43196B9AD700B6A7AF /* KSHUser+guestUser.m in Sources */,
+				C1E2AD14196BF16900B6A7AF /* _KSHTag.m in Sources */,
+				C1E2AD16196BF16900B6A7AF /* KSHArticle.m in Sources */,
 				C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */,
+				C1E2AD1A196BF16900B6A7AF /* KSHLoginRequest.m in Sources */,
 				C14924471965491F00DD1478 /* KSHLoginManager.m in Sources */,
 				C1F6FF9F19597E87006EE5F7 /* KSHArticleDetailViewController.m in Sources */,
 				C1197B4419628CDF00868228 /* KSHArticleTableViewCell.m in Sources */,
-				C1E2AC6D196BA77500B6A7AF /* KSHTag.m in Sources */,
+				C1E2AD0F196BF16900B6A7AF /* _KSHArticle.m in Sources */,
 				C1F87B95195D3EAA00DD300D /* KSHUserProfileTableViewController.m in Sources */,
-				C1E2AC7C196BA77600B6A7AF /* KSHLike.m in Sources */,
-				C1E2AC3D196B924400B6A7AF /* KSHLikeDislike+helper.m in Sources */,
-				C1E2ABE8196A846600B6A7AF /* KSHUser+helper.m in Sources */,
+				C1E2AC7F196BC70D00B6A7AF /* KSHUserDefaultsHelper.m in Sources */,
+				C1E2AD12196BF16900B6A7AF /* _KSHLikeDislike.m in Sources */,
 				C1F87B98195D3ECF00DD300D /* KSHUserProfileDetailViewController.m in Sources */,
-				C1E2AC6A196BA77500B6A7AF /* KSHArticle.m in Sources */,
 				C182851A196679210080F2DD /* KSHMessage.m in Sources */,
+				C1E2AD17196BF16900B6A7AF /* KSHDislike.m in Sources */,
 				C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */,
 				C135603819595523005DABED /* KSHMappingProvider.m in Sources */,
-				C1E2AC76196BA77600B6A7AF /* KSHUser.m in Sources */,
+				C1E2AD13196BF16900B6A7AF /* _KSHLoginRequest.m in Sources */,
+				C1E2AD18196BF16900B6A7AF /* KSHLike.m in Sources */,
 				C1355FFA19594FA9005DABED /* main.m in Sources */,
-				C1E2AC73196BA77600B6A7AF /* KSHLoginRequest.m in Sources */,
 				C135603B19595590005DABED /* KSHObjectManager.m in Sources */,
 				C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */,
+				C1E2AD15196BF16900B6A7AF /* _KSHUser.m in Sources */,
 				C1F87BA2195D3F4100DD300D /* KSHSidebarTableViewCell.m in Sources */,
 				C1A4C39F196298E500603DC6 /* SWRevealViewController.m in Sources */,
 				C1F87B9F195D3F1800DD300D /* KSHSideBarTableViewController.m in Sources */,
 				C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */,
+				C1E2AD19196BF16900B6A7AF /* KSHLikeDislike.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +699,11 @@
 			isa = PBXTargetDependency;
 			target = C1355FE719594FA9005DABED /* KaiShengHui */;
 			targetProxy = C135601719594FA9005DABED /* PBXContainerItemProxy */;
+		};
+		C1E2ACC2196BEFE100B6A7AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1E2AC8D196BE96B00B6A7AF /* Mogenerator */;
+			targetProxy = C1E2ACC1196BEFE100B6A7AF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -851,6 +873,20 @@
 			};
 			name = Release;
 		};
+		C1E2AC8F196BE96B00B6A7AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C1E2AC90196BE96B00B6A7AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -881,6 +917,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		C1E2AC8E196BE96B00B6A7AF /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1E2AC8F196BE96B00B6A7AF /* Debug */,
+				C1E2AC90196BE96B00B6A7AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
@@ -890,7 +935,8 @@
 				C135600319594FA9005DABED /* KaiShengHui.xcdatamodel */,
 			);
 			currentVersion = C135600319594FA9005DABED /* KaiShengHui.xcdatamodel */;
-			path = KaiShengHui.xcdatamodeld;
+			name = KaiShengHui.xcdatamodeld;
+			path = ../KaiShengHui.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

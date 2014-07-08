@@ -38,6 +38,7 @@
     <entity name="LoginRequest" representedClassName="KSHLoginRequest" syncable="YES">
         <attribute name="email" attributeType="String" syncable="YES"/>
         <attribute name="password" attributeType="String" syncable="YES"/>
+        <attribute name="sessionID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="KSHTag" syncable="YES">
         <attribute name="tag" attributeType="String" syncable="YES"/>
@@ -64,12 +65,12 @@
         <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="user" inverseEntity="Like" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LoginRequest" positionX="511" positionY="504" width="128" height="73"/>
-        <element name="LikeDislike" positionX="331" positionY="162" width="128" height="88"/>
-        <element name="Tag" positionX="160" positionY="558" width="128" height="118"/>
-        <element name="User" positionX="513" positionY="216" width="128" height="268"/>
         <element name="Article" positionX="135" positionY="189" width="128" height="313"/>
         <element name="Dislike" positionX="315" positionY="324" width="128" height="88"/>
         <element name="Like" positionX="333" positionY="450" width="128" height="88"/>
+        <element name="LikeDislike" positionX="331" positionY="162" width="128" height="88"/>
+        <element name="LoginRequest" positionX="511" positionY="504" width="128" height="88"/>
+        <element name="Tag" positionX="160" positionY="558" width="128" height="118"/>
+        <element name="User" positionX="513" positionY="216" width="128" height="268"/>
     </elements>
 </model>

@@ -13,7 +13,7 @@ NSString * const kLoginPath = @"INSERT_USER_LOGIN_PATH";
 
 @implementation KSHLoginManager
 
-- (void)loginWithEmail:(KSHLogin *)userLogin success:(void (^)(RKMappingResult *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure
+- (void)loginWithEmail:(KSHLoginRequest *)userLogin success:(void (^)(RKMappingResult *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure
 {
     [self postObject:userLogin
                 path:kLoginPath

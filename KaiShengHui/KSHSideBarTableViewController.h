@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KSHUser.h"
 
 @interface KSHSideBarTableViewController : UITableViewController
 

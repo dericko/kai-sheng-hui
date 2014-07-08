@@ -11,6 +11,7 @@
 #import "KSHArticleManager.h"
 #import "KSHUserManager.h"
 #import "KSHArticleTableViewController.h"
+#import "KSHUserDefaultsHelper.h"
 
 @interface KSHAppDelegate ()
 @end
@@ -28,11 +29,7 @@
     // Set up user login defaults
     // TODO: persist log in status
     if (!_defaults) {
-        _defaults = [NSUserDefaults standardUserDefaults];
-        [_defaults setObject:@"" forKey:@"username"];
-        [_defaults setObject:@"" forKey:@"password"];
-        [_defaults setBool:NO forKey:@"signedIn"];
-        [_defaults synchronize];
+        [KSHUserDefaultsHelper initUserDefaults:_defaults];
     }
     
     // Set up initial view controller (can add login auth screen here)
