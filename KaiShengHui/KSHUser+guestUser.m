@@ -24,18 +24,22 @@
 //    KSHTag *coolTag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:managedObjectContext];
 //    KSHTag *lameTag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:managedObjectContext];
     
-    self.firstName = @"Guest";
-    self.lastName = @"User";
-    self.username = @"guestuser";
-    self.email = @"johnsmith@guest.com";
-    self.industry = @"Sample Industry";
-    self.function = @"Sample Function";
     
-    [sampleLike likeWithUser:self forArticle:coolArticle];
-    [sampleDislike dislikeWithUser:self forArticle:lameArticle];
     
-    [self addLikesObject:sampleLike];
-    [self addDislikesObject:sampleDislike];
+    if (self) {
+        self.firstName = @"Guest";
+        self.lastName = @"User";
+        self.username = @"guestuser";
+        self.email = @"johnsmith@guest.com";
+        self.industry = @"Sample Industry";
+        self.function = @"Sample Function";
+        
+        [sampleLike likeWithUser:self forArticle:coolArticle];
+        [sampleDislike dislikeWithUser:self forArticle:lameArticle];
+        
+        [self addLikesObject:sampleLike];
+        [self addDislikesObject:sampleDislike];
+    }
 }
 
 @end
