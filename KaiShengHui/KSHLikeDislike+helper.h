@@ -1,17 +1,13 @@
 //
-//  KSHLoginRequest.m
+//  KSHLikeDislike+helper.h
 //  KaiShengHui
 //
 //  Created by Derick Olson on 7/8/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import "KSHLoginRequest.h"
+#import "KSHLikeDislike.h"
 
-
-@implementation KSHLoginRequest
-
-@dynamic email;
-@dynamic password;
+@interface KSHLikeDislike (helper)
 
 @end

@@ -10,9 +10,9 @@
 #import "KSHMessage.h"
 
 #import "KSHLogin.h"
+#import "KSHUser+guestUser.h"
 #import "KSHArticle.h"
-#import "KSHLike.h"
-#import "KSHDislike.h"
+#import "KSHLikeDislike.h"
 
 #import "KSHUserProfileTableViewController.h"
 
@@ -178,21 +178,9 @@
 
 - (void)loginAsGuest
 {
-    KSHLike *sampleLike = [NSEntityDescription insertNewObjectForEntityForName:@"Like" inManagedObjectContext:[self managedObjectContext]];
-    sampleLike.itemName = @"Today's Top Headlines";
-    
-    KSHDislike *sampleDislike = [NSEntityDescription insertNewObjectForEntityForName:@"Dislike" inManagedObjectContext:[self managedObjectContext]];
-    sampleDislike.itemName = @"Last Week's Old News";
-    
     KSHUser *guestUser = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
-    guestUser.firstName = @"Guest";
-    guestUser.lastName = @"User";
-    guestUser.username = @"guest";
-    guestUser.email = @"johnsmith@guest.com";
-    guestUser.industry = @"Sample Industry";
-    guestUser.function = @"Sample Function";
-    [guestUser addLikesObject:sampleLike];
-    [guestUser addDislikesObject:sampleDislike];
+   
+    [guestUser setupGuestUserWithContext:[self managedObjectContext]];
     
     _user = guestUser;
     

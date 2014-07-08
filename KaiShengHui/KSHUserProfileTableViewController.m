@@ -9,6 +9,7 @@
 #import "KSHUserProfileTableViewController.h"
 #import "SWRevealViewController.h"
 #import "KSHUser.h"
+#import "KSHLikeDislike.h"
 
 @interface KSHUserProfileTableViewController ()
 @property (nonatomic) IBOutlet UIBarButtonItem* revealButtonItem;
@@ -40,6 +41,7 @@
         _emailLabel.text = _user.email;
         _industryLabel.text = _user.industry;
         _functionLabel.text = _user.function;
+        
         _likesCount.text = [NSString stringWithFormat:@"%i", [_user.likes count]];
         _dislikesCount.text = [NSString stringWithFormat:@"%i", [_user.dislikes count]];
         _followingCount.text = 0;

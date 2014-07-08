@@ -2,22 +2,22 @@
 //  KSHTag.m
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/7/14.
+//  Created by Derick Olson on 7/8/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
 #import "KSHTag.h"
-#import "Dislike.h"
 #import "KSHArticle.h"
-#import "Like.h"
+#import "KSHDislike.h"
+#import "KSHLike.h"
 
 
 @implementation KSHTag
 
 @dynamic tagID;
 @dynamic tag;
-@dynamic liked;
-@dynamic disliked;
 @dynamic ofArticle;
+@dynamic disliked;
+@dynamic liked;
 
 @end

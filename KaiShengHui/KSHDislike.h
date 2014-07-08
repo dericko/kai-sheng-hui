@@ -2,20 +2,20 @@
 //  KSHDislike.h
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/7/14.
+//  Created by Derick Olson on 7/8/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "KSHLikeable.h"
+#import "KSHLikeDislike.h"
 
 @class KSHArticle, KSHTag, KSHUser;
 
-@interface KSHDislike : KSHLikeable
+@interface KSHDislike : KSHLikeDislike
 
-@property (nonatomic, retain) KSHUser *dislikedBy;
-@property (nonatomic, retain) KSHArticle *dislikesArticle;
-@property (nonatomic, retain) KSHTag *dislikesTag;
+@property (nonatomic, retain) KSHUser *user;
+@property (nonatomic, retain) KSHArticle *article;
+@property (nonatomic, retain) KSHTag *tag;
 
 @end

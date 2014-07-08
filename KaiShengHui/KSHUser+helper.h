@@ -10,7 +10,7 @@
 
 @interface KSHUser (helper)
 
-+ (instancetype)sharedUser;
++ (instancetype)currentUser;
 
 - (void)setImage:(UIImage *)image;
 

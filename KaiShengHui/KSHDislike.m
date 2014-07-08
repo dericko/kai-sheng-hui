@@ -2,7 +2,7 @@
 //  KSHDislike.m
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/7/14.
+//  Created by Derick Olson on 7/8/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
@@ -14,8 +14,8 @@
 
 @implementation KSHDislike
 
-@dynamic dislikedBy;
-@dynamic dislikesArticle;
-@dynamic dislikesTag;
+@dynamic user;
+@dynamic article;
+@dynamic tag;
 
 @end

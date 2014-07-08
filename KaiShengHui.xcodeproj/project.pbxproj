@@ -36,14 +36,18 @@
 		C182851A196679210080F2DD /* KSHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C1828519196679210080F2DD /* KSHMessage.m */; };
 		C1A4C39F196298E500603DC6 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A4C39E196298E500603DC6 /* SWRevealViewController.m */; };
 		C1E2ABE8196A846600B6A7AF /* KSHUser+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2ABE7196A846600B6A7AF /* KSHUser+helper.m */; };
-		C1E2AC03196A9F5700B6A7AF /* KSHTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC02196A9F5700B6A7AF /* KSHTag.m */; };
-		C1E2AC09196A9F5700B6A7AF /* KSHArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC08196A9F5700B6A7AF /* KSHArticle.m */; };
-		C1E2AC0C196A9FB700B6A7AF /* KSHDislike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC0B196A9FB700B6A7AF /* KSHDislike.m */; };
-		C1E2AC0F196A9FB700B6A7AF /* KSHLike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC0E196A9FB700B6A7AF /* KSHLike.m */; };
-		C1E2AC15196A9FF800B6A7AF /* KSHLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC14196A9FF800B6A7AF /* KSHLoginRequest.m */; };
-		C1E2AC22196AA64100B6A7AF /* KSHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC21196AA64100B6A7AF /* KSHUser.m */; };
 		C1E2AC25196AAA3A00B6A7AF /* KSHArticle+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC24196AAA3A00B6A7AF /* KSHArticle+helper.m */; };
-		C1E2AC28196AE12000B6A7AF /* KSHLikeable.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC27196AE12000B6A7AF /* KSHLikeable.m */; };
+		C1E2AC3D196B924400B6A7AF /* KSHLikeDislike+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC3C196B924400B6A7AF /* KSHLikeDislike+helper.m */; };
+		C1E2AC43196B9AD700B6A7AF /* KSHUser+guestUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC42196B9AD700B6A7AF /* KSHUser+guestUser.m */; };
+		C1E2AC64196BA60900B6A7AF /* KSHLike+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC63196BA60900B6A7AF /* KSHLike+helper.m */; };
+		C1E2AC67196BA63000B6A7AF /* KSHDislike+helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC66196BA63000B6A7AF /* KSHDislike+helper.m */; };
+		C1E2AC6A196BA77500B6A7AF /* KSHArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC69196BA77500B6A7AF /* KSHArticle.m */; };
+		C1E2AC6D196BA77500B6A7AF /* KSHTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC6C196BA77500B6A7AF /* KSHTag.m */; };
+		C1E2AC70196BA77500B6A7AF /* KSHDislike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC6F196BA77500B6A7AF /* KSHDislike.m */; };
+		C1E2AC73196BA77600B6A7AF /* KSHLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC72196BA77600B6A7AF /* KSHLoginRequest.m */; };
+		C1E2AC76196BA77600B6A7AF /* KSHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC75196BA77600B6A7AF /* KSHUser.m */; };
+		C1E2AC79196BA77600B6A7AF /* KSHLikeDislike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC78196BA77600B6A7AF /* KSHLikeDislike.m */; };
+		C1E2AC7C196BA77600B6A7AF /* KSHLike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC7B196BA77600B6A7AF /* KSHLike.m */; };
 		C1EBCDD41963A3E900C04FC4 /* placeholder-square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1EBCDD31963A3E900C04FC4 /* placeholder-square.jpg */; };
 		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
 		C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */; };
@@ -108,22 +112,30 @@
 		C1A4C39E196298E500603DC6 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		C1E2ABE6196A846600B6A7AF /* KSHUser+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHUser+helper.h"; sourceTree = "<group>"; };
 		C1E2ABE7196A846600B6A7AF /* KSHUser+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHUser+helper.m"; sourceTree = "<group>"; };
-		C1E2AC01196A9F5700B6A7AF /* KSHTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHTag.h; sourceTree = "<group>"; };
-		C1E2AC02196A9F5700B6A7AF /* KSHTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHTag.m; sourceTree = "<group>"; };
-		C1E2AC07196A9F5700B6A7AF /* KSHArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticle.h; sourceTree = "<group>"; };
-		C1E2AC08196A9F5700B6A7AF /* KSHArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticle.m; sourceTree = "<group>"; };
-		C1E2AC0A196A9FB700B6A7AF /* KSHDislike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHDislike.h; sourceTree = "<group>"; };
-		C1E2AC0B196A9FB700B6A7AF /* KSHDislike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHDislike.m; sourceTree = "<group>"; };
-		C1E2AC0D196A9FB700B6A7AF /* KSHLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLike.h; sourceTree = "<group>"; };
-		C1E2AC0E196A9FB700B6A7AF /* KSHLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLike.m; sourceTree = "<group>"; };
-		C1E2AC13196A9FF800B6A7AF /* KSHLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLoginRequest.h; sourceTree = "<group>"; };
-		C1E2AC14196A9FF800B6A7AF /* KSHLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLoginRequest.m; sourceTree = "<group>"; };
-		C1E2AC20196AA64100B6A7AF /* KSHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUser.h; sourceTree = "<group>"; };
-		C1E2AC21196AA64100B6A7AF /* KSHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUser.m; sourceTree = "<group>"; };
 		C1E2AC23196AAA3A00B6A7AF /* KSHArticle+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHArticle+helper.h"; sourceTree = "<group>"; };
 		C1E2AC24196AAA3A00B6A7AF /* KSHArticle+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHArticle+helper.m"; sourceTree = "<group>"; };
-		C1E2AC26196AE12000B6A7AF /* KSHLikeable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLikeable.h; sourceTree = "<group>"; };
-		C1E2AC27196AE12000B6A7AF /* KSHLikeable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLikeable.m; sourceTree = "<group>"; };
+		C1E2AC3B196B924400B6A7AF /* KSHLikeDislike+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHLikeDislike+helper.h"; sourceTree = "<group>"; };
+		C1E2AC3C196B924400B6A7AF /* KSHLikeDislike+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHLikeDislike+helper.m"; sourceTree = "<group>"; };
+		C1E2AC41196B9AD700B6A7AF /* KSHUser+guestUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHUser+guestUser.h"; sourceTree = "<group>"; };
+		C1E2AC42196B9AD700B6A7AF /* KSHUser+guestUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHUser+guestUser.m"; sourceTree = "<group>"; };
+		C1E2AC62196BA60900B6A7AF /* KSHLike+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHLike+helper.h"; sourceTree = "<group>"; };
+		C1E2AC63196BA60900B6A7AF /* KSHLike+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHLike+helper.m"; sourceTree = "<group>"; };
+		C1E2AC65196BA63000B6A7AF /* KSHDislike+helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSHDislike+helper.h"; sourceTree = "<group>"; };
+		C1E2AC66196BA63000B6A7AF /* KSHDislike+helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSHDislike+helper.m"; sourceTree = "<group>"; };
+		C1E2AC68196BA77500B6A7AF /* KSHArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticle.h; sourceTree = "<group>"; };
+		C1E2AC69196BA77500B6A7AF /* KSHArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticle.m; sourceTree = "<group>"; };
+		C1E2AC6B196BA77500B6A7AF /* KSHTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHTag.h; sourceTree = "<group>"; };
+		C1E2AC6C196BA77500B6A7AF /* KSHTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHTag.m; sourceTree = "<group>"; };
+		C1E2AC6E196BA77500B6A7AF /* KSHDislike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHDislike.h; sourceTree = "<group>"; };
+		C1E2AC6F196BA77500B6A7AF /* KSHDislike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHDislike.m; sourceTree = "<group>"; };
+		C1E2AC71196BA77600B6A7AF /* KSHLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLoginRequest.h; sourceTree = "<group>"; };
+		C1E2AC72196BA77600B6A7AF /* KSHLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLoginRequest.m; sourceTree = "<group>"; };
+		C1E2AC74196BA77600B6A7AF /* KSHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUser.h; sourceTree = "<group>"; };
+		C1E2AC75196BA77600B6A7AF /* KSHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUser.m; sourceTree = "<group>"; };
+		C1E2AC77196BA77600B6A7AF /* KSHLikeDislike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLikeDislike.h; sourceTree = "<group>"; };
+		C1E2AC78196BA77600B6A7AF /* KSHLikeDislike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLikeDislike.m; sourceTree = "<group>"; };
+		C1E2AC7A196BA77600B6A7AF /* KSHLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLike.h; sourceTree = "<group>"; };
+		C1E2AC7B196BA77600B6A7AF /* KSHLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLike.m; sourceTree = "<group>"; };
 		C1EBCDD31963A3E900C04FC4 /* placeholder-square.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "placeholder-square.jpg"; sourceTree = "<group>"; };
 		C1F6FF8319596350006EE5F7 /* KSHUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserManager.h; sourceTree = "<group>"; };
 		C1F6FF8419596350006EE5F7 /* KSHUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserManager.m; sourceTree = "<group>"; };
@@ -297,7 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
-				C1E2ABE5196A838500B6A7AF /* Entity+categories */,
+				C1E2ABE5196A838500B6A7AF /* Entity+helpers */,
 				C1ABFE35195C2127006560E7 /* Entities_DO_NOT_EDIT */,
 			);
 			name = Models;
@@ -393,33 +405,41 @@
 		C1ABFE35195C2127006560E7 /* Entities_DO_NOT_EDIT */ = {
 			isa = PBXGroup;
 			children = (
-				C1E2AC07196A9F5700B6A7AF /* KSHArticle.h */,
-				C1E2AC08196A9F5700B6A7AF /* KSHArticle.m */,
-				C1E2AC0A196A9FB700B6A7AF /* KSHDislike.h */,
-				C1E2AC0B196A9FB700B6A7AF /* KSHDislike.m */,
-				C1E2AC01196A9F5700B6A7AF /* KSHTag.h */,
-				C1E2AC02196A9F5700B6A7AF /* KSHTag.m */,
-				C1E2AC0D196A9FB700B6A7AF /* KSHLike.h */,
-				C1E2AC0E196A9FB700B6A7AF /* KSHLike.m */,
-				C1E2AC26196AE12000B6A7AF /* KSHLikeable.h */,
-				C1E2AC27196AE12000B6A7AF /* KSHLikeable.m */,
-				C1E2AC13196A9FF800B6A7AF /* KSHLoginRequest.h */,
-				C1E2AC14196A9FF800B6A7AF /* KSHLoginRequest.m */,
-				C1E2AC20196AA64100B6A7AF /* KSHUser.h */,
-				C1E2AC21196AA64100B6A7AF /* KSHUser.m */,
+				C1E2AC7A196BA77600B6A7AF /* KSHLike.h */,
+				C1E2AC7B196BA77600B6A7AF /* KSHLike.m */,
+				C1E2AC77196BA77600B6A7AF /* KSHLikeDislike.h */,
+				C1E2AC78196BA77600B6A7AF /* KSHLikeDislike.m */,
+				C1E2AC74196BA77600B6A7AF /* KSHUser.h */,
+				C1E2AC75196BA77600B6A7AF /* KSHUser.m */,
+				C1E2AC71196BA77600B6A7AF /* KSHLoginRequest.h */,
+				C1E2AC72196BA77600B6A7AF /* KSHLoginRequest.m */,
+				C1E2AC6E196BA77500B6A7AF /* KSHDislike.h */,
+				C1E2AC6F196BA77500B6A7AF /* KSHDislike.m */,
+				C1E2AC6B196BA77500B6A7AF /* KSHTag.h */,
+				C1E2AC6C196BA77500B6A7AF /* KSHTag.m */,
+				C1E2AC68196BA77500B6A7AF /* KSHArticle.h */,
+				C1E2AC69196BA77500B6A7AF /* KSHArticle.m */,
 			);
 			name = Entities_DO_NOT_EDIT;
 			sourceTree = "<group>";
 		};
-		C1E2ABE5196A838500B6A7AF /* Entity+categories */ = {
+		C1E2ABE5196A838500B6A7AF /* Entity+helpers */ = {
 			isa = PBXGroup;
 			children = (
 				C1E2ABE6196A846600B6A7AF /* KSHUser+helper.h */,
 				C1E2ABE7196A846600B6A7AF /* KSHUser+helper.m */,
+				C1E2AC41196B9AD700B6A7AF /* KSHUser+guestUser.h */,
+				C1E2AC42196B9AD700B6A7AF /* KSHUser+guestUser.m */,
 				C1E2AC23196AAA3A00B6A7AF /* KSHArticle+helper.h */,
 				C1E2AC24196AAA3A00B6A7AF /* KSHArticle+helper.m */,
+				C1E2AC3B196B924400B6A7AF /* KSHLikeDislike+helper.h */,
+				C1E2AC3C196B924400B6A7AF /* KSHLikeDislike+helper.m */,
+				C1E2AC62196BA60900B6A7AF /* KSHLike+helper.h */,
+				C1E2AC63196BA60900B6A7AF /* KSHLike+helper.m */,
+				C1E2AC65196BA63000B6A7AF /* KSHDislike+helper.h */,
+				C1E2AC66196BA63000B6A7AF /* KSHDislike+helper.m */,
 			);
-			name = "Entity+categories";
+			name = "Entity+helpers";
 			sourceTree = "<group>";
 		};
 		C1F6FF8F195963CC006EE5F7 /* MappingProvider */ = {
@@ -614,32 +634,36 @@
 			files = (
 				C135600419594FA9005DABED /* KaiShengHui.xcdatamodeld in Sources */,
 				C1F87B9C195D3F0900DD300D /* KSHLoginViewController.m in Sources */,
+				C1E2AC70196BA77500B6A7AF /* KSHDislike.m in Sources */,
 				C1F87B92195D3E9700DD300D /* KSHUserProfileTableViewCell.m in Sources */,
+				C1E2AC79196BA77600B6A7AF /* KSHLikeDislike.m in Sources */,
+				C1E2AC67196BA63000B6A7AF /* KSHDislike+helper.m in Sources */,
 				C1E2AC25196AAA3A00B6A7AF /* KSHArticle+helper.m in Sources */,
+				C1E2AC64196BA60900B6A7AF /* KSHLike+helper.m in Sources */,
+				C1E2AC43196B9AD700B6A7AF /* KSHUser+guestUser.m in Sources */,
 				C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */,
-				C1E2AC03196A9F5700B6A7AF /* KSHTag.m in Sources */,
 				C14924471965491F00DD1478 /* KSHLoginManager.m in Sources */,
 				C1F6FF9F19597E87006EE5F7 /* KSHArticleDetailViewController.m in Sources */,
 				C1197B4419628CDF00868228 /* KSHArticleTableViewCell.m in Sources */,
-				C1E2AC09196A9F5700B6A7AF /* KSHArticle.m in Sources */,
-				C1E2AC22196AA64100B6A7AF /* KSHUser.m in Sources */,
-				C1E2AC0F196A9FB700B6A7AF /* KSHLike.m in Sources */,
+				C1E2AC6D196BA77500B6A7AF /* KSHTag.m in Sources */,
 				C1F87B95195D3EAA00DD300D /* KSHUserProfileTableViewController.m in Sources */,
+				C1E2AC7C196BA77600B6A7AF /* KSHLike.m in Sources */,
+				C1E2AC3D196B924400B6A7AF /* KSHLikeDislike+helper.m in Sources */,
 				C1E2ABE8196A846600B6A7AF /* KSHUser+helper.m in Sources */,
 				C1F87B98195D3ECF00DD300D /* KSHUserProfileDetailViewController.m in Sources */,
+				C1E2AC6A196BA77500B6A7AF /* KSHArticle.m in Sources */,
 				C182851A196679210080F2DD /* KSHMessage.m in Sources */,
-				C1E2AC0C196A9FB700B6A7AF /* KSHDislike.m in Sources */,
 				C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */,
 				C135603819595523005DABED /* KSHMappingProvider.m in Sources */,
+				C1E2AC76196BA77600B6A7AF /* KSHUser.m in Sources */,
 				C1355FFA19594FA9005DABED /* main.m in Sources */,
-				C1E2AC15196A9FF800B6A7AF /* KSHLoginRequest.m in Sources */,
+				C1E2AC73196BA77600B6A7AF /* KSHLoginRequest.m in Sources */,
 				C135603B19595590005DABED /* KSHObjectManager.m in Sources */,
 				C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */,
 				C1F87BA2195D3F4100DD300D /* KSHSidebarTableViewCell.m in Sources */,
 				C1A4C39F196298E500603DC6 /* SWRevealViewController.m in Sources */,
 				C1F87B9F195D3F1800DD300D /* KSHSideBarTableViewController.m in Sources */,
 				C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */,
-				C1E2AC28196AE12000B6A7AF /* KSHLikeable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

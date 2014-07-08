@@ -8,26 +8,18 @@
 
 #import "KSHUser+helper.h"
 
-static KSHUser *sharedUser = nil;
+static KSHUser *currentUser = nil;
 
 @implementation KSHUser (helper)
 
-+ (instancetype)sharedUser
++ (instancetype)currentUser
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedUser = [[self alloc] init];
+        currentUser = [[self alloc] init];
     });
     
-    return sharedUser;
-}
-
-- (id)init
-{
-    self = [super init];
-    if (self){
-    }
-    return self;
+    return currentUser;
 }
 
  - (void)setImage:(UIImage *)image

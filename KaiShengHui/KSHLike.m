@@ -2,7 +2,7 @@
 //  KSHLike.m
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/7/14.
+//  Created by Derick Olson on 7/8/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
@@ -14,8 +14,8 @@
 
 @implementation KSHLike
 
-@dynamic likedBy;
-@dynamic likesTag;
-@dynamic likesArticle;
+@dynamic user;
+@dynamic article;
+@dynamic tag;
 
 @end

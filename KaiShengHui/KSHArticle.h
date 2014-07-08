@@ -2,7 +2,7 @@
 //  KSHArticle.h
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/7/14.
+//  Created by Derick Olson on 7/8/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
@@ -28,26 +28,26 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * typeID;
 @property (nonatomic, retain) NSNumber * viewCount;
-@property (nonatomic, retain) NSSet *liked;
-@property (nonatomic, retain) NSSet *disliked;
 @property (nonatomic, retain) NSSet *hasTags;
+@property (nonatomic, retain) NSSet *disliked;
+@property (nonatomic, retain) NSSet *liked;
 @end
 
 @interface KSHArticle (CoreDataGeneratedAccessors)
 
-- (void)addLikedObject:(KSHLike *)value;
-- (void)removeLikedObject:(KSHLike *)value;
-- (void)addLiked:(NSSet *)values;
-- (void)removeLiked:(NSSet *)values;
+- (void)addHasTagsObject:(KSHTag *)value;
+- (void)removeHasTagsObject:(KSHTag *)value;
+- (void)addHasTags:(NSSet *)values;
+- (void)removeHasTags:(NSSet *)values;
 
 - (void)addDislikedObject:(KSHDislike *)value;
 - (void)removeDislikedObject:(KSHDislike *)value;
 - (void)addDisliked:(NSSet *)values;
 - (void)removeDisliked:(NSSet *)values;
 
-- (void)addHasTagsObject:(KSHTag *)value;
-- (void)removeHasTagsObject:(KSHTag *)value;
-- (void)addHasTags:(NSSet *)values;
-- (void)removeHasTags:(NSSet *)values;
+- (void)addLikedObject:(KSHLike *)value;
+- (void)removeLikedObject:(KSHLike *)value;
+- (void)addLiked:(NSSet *)values;
+- (void)removeLiked:(NSSet *)values;
 
 @end

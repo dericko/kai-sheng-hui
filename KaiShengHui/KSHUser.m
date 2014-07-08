@@ -2,7 +2,7 @@
 //  KSHUser.m
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/7/14.
+//  Created by Derick Olson on 7/8/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
@@ -19,7 +19,7 @@
 @dynamic imgURLString;
 @dynamic industry;
 @dynamic industryID;
-@dynamic lastLogin;
+@dynamic lastLoginDate;
 @dynamic lastName;
 @dynamic signupDate;
 @dynamic userID;

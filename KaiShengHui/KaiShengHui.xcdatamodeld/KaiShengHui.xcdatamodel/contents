@@ -3,7 +3,7 @@
     <entity name="Article" representedClassName="KSHArticle" syncable="YES">
         <attribute name="articleID" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="author" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="content" attributeType="String" syncable="YES"/>
+        <attribute name="content" attributeType="String" defaultValueString="@&quot;Default Content&quot;" syncable="YES"/>
         <attribute name="datePublished" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateUpdated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="excerpt" optional="YES" attributeType="String" syncable="YES"/>
@@ -13,28 +13,27 @@
         <attribute name="imgURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="industry" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="industryID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" defaultValueString="@&quot;Default Title&quot;" syncable="YES"/>
         <attribute name="typeID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="viewCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="disliked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dislike" inverseName="dislikesArticle" inverseEntity="Dislike" syncable="YES"/>
+        <relationship name="disliked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dislike" inverseName="article" inverseEntity="Dislike" syncable="YES"/>
         <relationship name="hasTags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="ofArticle" inverseEntity="Tag" syncable="YES"/>
-        <relationship name="liked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="likesArticle" inverseEntity="Like" syncable="YES"/>
+        <relationship name="liked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="article" inverseEntity="Like" syncable="YES"/>
     </entity>
-    <entity name="Dislike" representedClassName="KSHDislike" parentEntity="Likeable" syncable="YES">
-        <relationship name="dislikedBy" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="dislikes" inverseEntity="User" syncable="YES"/>
-        <relationship name="dislikesArticle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="disliked" inverseEntity="Article" syncable="YES"/>
-        <relationship name="dislikesTag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="disliked" inverseEntity="Tag" syncable="YES"/>
+    <entity name="Dislike" representedClassName="KSHDislike" parentEntity="LikeDislike" syncable="YES">
+        <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="disliked" inverseEntity="Article" syncable="YES"/>
+        <relationship name="tag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="disliked" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="dislikes" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Like" representedClassName="KSHLike" parentEntity="Likeable" syncable="YES">
-        <relationship name="likedBy" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="likes" inverseEntity="User" syncable="YES"/>
-        <relationship name="likesArticle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="liked" inverseEntity="Article" syncable="YES"/>
-        <relationship name="likesTag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="liked" inverseEntity="Tag" syncable="YES"/>
+    <entity name="Like" representedClassName="KSHLike" parentEntity="LikeDislike" syncable="YES">
+        <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="liked" inverseEntity="Article" syncable="YES"/>
+        <relationship name="tag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="liked" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="likes" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Likeable" representedClassName="KSHLikeable" isAbstract="YES" syncable="YES">
+    <entity name="LikeDislike" representedClassName="KSHLikeDislike" isAbstract="YES" syncable="YES">
+        <attribute name="createdAt" attributeType="Date" defaultDateTimeInterval="0" defaultValueString="currentDate" syncable="YES"/>
         <attribute name="deletedAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="itemID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="syncedAt" attributeType="Date" syncable="YES"/>
+        <attribute name="flag" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="LoginRequest" representedClassName="KSHLoginRequest" syncable="YES">
         <attribute name="email" attributeType="String" syncable="YES"/>
@@ -43,8 +42,8 @@
     <entity name="Tag" representedClassName="KSHTag" syncable="YES">
         <attribute name="tag" attributeType="String" syncable="YES"/>
         <attribute name="tagID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="disliked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dislike" inverseName="dislikesTag" inverseEntity="Dislike" syncable="YES"/>
-        <relationship name="liked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="likesTag" inverseEntity="Like" syncable="YES"/>
+        <relationship name="disliked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dislike" inverseName="tag" inverseEntity="Dislike" syncable="YES"/>
+        <relationship name="liked" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="tag" inverseEntity="Like" syncable="YES"/>
         <relationship name="ofArticle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="hasTags" inverseEntity="Article" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="KSHUser" syncable="YES">
@@ -56,21 +55,21 @@
         <attribute name="imgURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="industry" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="industryID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="lastLogin" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastLoginDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="signupDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="dislikes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dislike" inverseName="dislikedBy" inverseEntity="Dislike" syncable="YES"/>
-        <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="likedBy" inverseEntity="Like" syncable="YES"/>
+        <relationship name="dislikes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dislike" inverseName="user" inverseEntity="Dislike" syncable="YES"/>
+        <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="user" inverseEntity="Like" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LoginRequest" positionX="601" positionY="603" width="128" height="73"/>
-        <element name="Likeable" positionX="369" positionY="198" width="128" height="103"/>
-        <element name="Tag" positionX="153" positionY="630" width="128" height="118"/>
-        <element name="User" positionX="601" positionY="216" width="128" height="268"/>
-        <element name="Article" positionX="144" positionY="216" width="128" height="313"/>
-        <element name="Like" positionX="342" positionY="477" width="128" height="88"/>
-        <element name="Dislike" positionX="376" positionY="360" width="128" height="88"/>
+        <element name="LoginRequest" positionX="511" positionY="504" width="128" height="73"/>
+        <element name="LikeDislike" positionX="331" positionY="162" width="128" height="88"/>
+        <element name="Tag" positionX="160" positionY="558" width="128" height="118"/>
+        <element name="User" positionX="513" positionY="216" width="128" height="268"/>
+        <element name="Article" positionX="135" positionY="189" width="128" height="313"/>
+        <element name="Dislike" positionX="315" positionY="324" width="128" height="88"/>
+        <element name="Like" positionX="333" positionY="450" width="128" height="88"/>
     </elements>
 </model>

@@ -2,7 +2,7 @@
 //  KSHUser.h
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/7/14.
+//  Created by Derick Olson on 7/8/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
@@ -19,7 +19,7 @@
 @property (nonatomic, retain) NSString * imgURLString;
 @property (nonatomic, retain) NSString * industry;
 @property (nonatomic, retain) NSNumber * industryID;
-@property (nonatomic, retain) NSDate * lastLogin;
+@property (nonatomic, retain) NSDate * lastLoginDate;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSDate * signupDate;
 @property (nonatomic, retain) NSNumber * userID;
