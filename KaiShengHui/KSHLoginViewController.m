@@ -136,7 +136,7 @@
 //        }
 
         // Make request here (rather than _loginManager method) due to error with block pasing
-            KSHLoginRequest *userLogin = [KSHLoginRequest initWithUsername:_email.text withPassword:_password.text];
+            KSHLoginRequest *userLogin = [[KSHLoginRequest alloc] initWithUsername:_email.text withPassword:_password.text];
     
             [_loginManager postObject:userLogin
                                  path:kLoginPath
