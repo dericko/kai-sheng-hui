@@ -7,6 +7,7 @@
 //
 
 #import "KSHLoginManager.h"
+#import "KSHLoginRequest.h"
 
 # warning must add user login path url
 NSString * const kLoginPath = @"INSERT_USER_LOGIN_PATH";
