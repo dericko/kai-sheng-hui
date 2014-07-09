@@ -6,7 +6,6 @@
 const struct KSHLikeDislikeAttributes KSHLikeDislikeAttributes = {
 	.createdAt = @"createdAt",
 	.deletedAt = @"deletedAt",
-	.flag = @"flag",
 };
 
 const struct KSHLikeDislikeRelationships KSHLikeDislikeRelationships = {
@@ -41,11 +40,6 @@ const struct KSHLikeDislikeFetchedProperties KSHLikeDislikeFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"flagValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"flag"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
 
 	return keyPaths;
 }
@@ -62,32 +56,6 @@ const struct KSHLikeDislikeFetchedProperties KSHLikeDislikeFetchedProperties = {
 
 @dynamic deletedAt;
 
-
-
-
-
-
-@dynamic flag;
-
-
-
-- (BOOL)flagValue {
-	NSNumber *result = [self flag];
-	return [result boolValue];
-}
-
-- (void)setFlagValue:(BOOL)value_ {
-	[self setFlag:[NSNumber numberWithBool:value_]];
-}
-
-- (BOOL)primitiveFlagValue {
-	NSNumber *result = [self primitiveFlag];
-	return [result boolValue];
-}
-
-- (void)setPrimitiveFlagValue:(BOOL)value_ {
-	[self setPrimitiveFlag:[NSNumber numberWithBool:value_]];
-}
 
 
 

@@ -18,8 +18,8 @@ extern const struct KSHTagRelationships {
 extern const struct KSHTagFetchedProperties {
 } KSHTagFetchedProperties;
 
-@class KSHDislike;
 @class KSHLike;
+@class KSHDislike;
 @class KSHArticle;
 
 
@@ -90,13 +90,13 @@ extern const struct KSHTagFetchedProperties {
 
 - (void)addDisliked:(NSSet*)value_;
 - (void)removeDisliked:(NSSet*)value_;
-- (void)addDislikedObject:(KSHDislike*)value_;
-- (void)removeDislikedObject:(KSHDislike*)value_;
+- (void)addDislikedObject:(KSHLike*)value_;
+- (void)removeDislikedObject:(KSHLike*)value_;
 
 - (void)addLiked:(NSSet*)value_;
 - (void)removeLiked:(NSSet*)value_;
-- (void)addLikedObject:(KSHLike*)value_;
-- (void)removeLikedObject:(KSHLike*)value_;
+- (void)addLikedObject:(KSHDislike*)value_;
+- (void)removeLikedObject:(KSHDislike*)value_;
 
 @end
 

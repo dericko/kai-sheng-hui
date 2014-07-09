@@ -4,6 +4,7 @@
 #import "_KSHLike.h"
 
 const struct KSHLikeAttributes KSHLikeAttributes = {
+	.flag = @"flag",
 };
 
 const struct KSHLikeRelationships KSHLikeRelationships = {
@@ -41,9 +42,40 @@ const struct KSHLikeFetchedProperties KSHLikeFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"flagValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"flag"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic flag;
+
+
+
+- (BOOL)flagValue {
+	NSNumber *result = [self flag];
+	return [result boolValue];
+}
+
+- (void)setFlagValue:(BOOL)value_ {
+	[self setFlag:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveFlagValue {
+	NSNumber *result = [self primitiveFlag];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveFlagValue:(BOOL)value_ {
+	[self setPrimitiveFlag:[NSNumber numberWithBool:value_]];
+}
+
 
 
 

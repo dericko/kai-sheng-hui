@@ -23,8 +23,9 @@ const struct KSHArticleAttributes KSHArticleAttributes = {
 
 const struct KSHArticleRelationships KSHArticleRelationships = {
 	.disliked = @"disliked",
-	.hasTags = @"hasTags",
+	.hasTag = @"hasTag",
 	.liked = @"liked",
+	.starred = @"starred",
 };
 
 const struct KSHArticleFetchedProperties KSHArticleFetchedProperties = {
@@ -325,15 +326,15 @@ const struct KSHArticleFetchedProperties KSHArticleFetchedProperties = {
 }
 	
 
-@dynamic hasTags;
+@dynamic hasTag;
 
 	
-- (NSMutableSet*)hasTagsSet {
-	[self willAccessValueForKey:@"hasTags"];
+- (NSMutableSet*)hasTagSet {
+	[self willAccessValueForKey:@"hasTag"];
   
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"hasTags"];
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"hasTag"];
   
-	[self didAccessValueForKey:@"hasTags"];
+	[self didAccessValueForKey:@"hasTag"];
 	return result;
 }
 	
@@ -347,6 +348,19 @@ const struct KSHArticleFetchedProperties KSHArticleFetchedProperties = {
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"liked"];
   
 	[self didAccessValueForKey:@"liked"];
+	return result;
+}
+	
+
+@dynamic starred;
+
+	
+- (NSMutableSet*)starredSet {
+	[self willAccessValueForKey:@"starred"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"starred"];
+  
+	[self didAccessValueForKey:@"starred"];
 	return result;
 }
 	

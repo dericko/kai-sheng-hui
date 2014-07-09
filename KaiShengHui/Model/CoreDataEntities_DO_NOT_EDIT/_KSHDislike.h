@@ -5,6 +5,7 @@
 #import "KSHLikeDislike.h"
 
 extern const struct KSHDislikeAttributes {
+	__unsafe_unretained NSString *flag;
 } KSHDislikeAttributes;
 
 extern const struct KSHDislikeRelationships {
@@ -21,6 +22,7 @@ extern const struct KSHDislikeFetchedProperties {
 @class KSHUser;
 
 
+
 @interface KSHDislikeID : NSManagedObjectID {}
 @end
 
@@ -29,6 +31,20 @@ extern const struct KSHDislikeFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (KSHDislikeID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* flag;
+
+
+
+@property BOOL flagValue;
+- (BOOL)flagValue;
+- (void)setFlagValue:(BOOL)value_;
+
+//- (BOOL)validateFlag:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -63,6 +79,15 @@ extern const struct KSHDislikeFetchedProperties {
 @end
 
 @interface _KSHDislike (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSNumber*)primitiveFlag;
+- (void)setPrimitiveFlag:(NSNumber*)value;
+
+- (BOOL)primitiveFlagValue;
+- (void)setPrimitiveFlagValue:(BOOL)value_;
+
+
 
 
 

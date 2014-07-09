@@ -24,16 +24,18 @@ extern const struct KSHArticleAttributes {
 
 extern const struct KSHArticleRelationships {
 	__unsafe_unretained NSString *disliked;
-	__unsafe_unretained NSString *hasTags;
+	__unsafe_unretained NSString *hasTag;
 	__unsafe_unretained NSString *liked;
+	__unsafe_unretained NSString *starred;
 } KSHArticleRelationships;
 
 extern const struct KSHArticleFetchedProperties {
 } KSHArticleFetchedProperties;
 
-@class KSHDislike;
-@class KSHTag;
 @class KSHLike;
+@class KSHTag;
+@class KSHDislike;
+@class KSHStar;
 
 
 
@@ -245,9 +247,9 @@ extern const struct KSHArticleFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet *hasTags;
+@property (nonatomic, strong) NSSet *hasTag;
 
-- (NSMutableSet*)hasTagsSet;
+- (NSMutableSet*)hasTagSet;
 
 
 
@@ -259,6 +261,13 @@ extern const struct KSHArticleFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet *starred;
+
+- (NSMutableSet*)starredSet;
+
+
+
+
 
 @end
 
@@ -266,18 +275,23 @@ extern const struct KSHArticleFetchedProperties {
 
 - (void)addDisliked:(NSSet*)value_;
 - (void)removeDisliked:(NSSet*)value_;
-- (void)addDislikedObject:(KSHDislike*)value_;
-- (void)removeDislikedObject:(KSHDislike*)value_;
+- (void)addDislikedObject:(KSHLike*)value_;
+- (void)removeDislikedObject:(KSHLike*)value_;
 
-- (void)addHasTags:(NSSet*)value_;
-- (void)removeHasTags:(NSSet*)value_;
-- (void)addHasTagsObject:(KSHTag*)value_;
-- (void)removeHasTagsObject:(KSHTag*)value_;
+- (void)addHasTag:(NSSet*)value_;
+- (void)removeHasTag:(NSSet*)value_;
+- (void)addHasTagObject:(KSHTag*)value_;
+- (void)removeHasTagObject:(KSHTag*)value_;
 
 - (void)addLiked:(NSSet*)value_;
 - (void)removeLiked:(NSSet*)value_;
-- (void)addLikedObject:(KSHLike*)value_;
-- (void)removeLikedObject:(KSHLike*)value_;
+- (void)addLikedObject:(KSHDislike*)value_;
+- (void)removeLikedObject:(KSHDislike*)value_;
+
+- (void)addStarred:(NSSet*)value_;
+- (void)removeStarred:(NSSet*)value_;
+- (void)addStarredObject:(KSHStar*)value_;
+- (void)removeStarredObject:(KSHStar*)value_;
 
 @end
 
@@ -398,13 +412,18 @@ extern const struct KSHArticleFetchedProperties {
 
 
 
-- (NSMutableSet*)primitiveHasTags;
-- (void)setPrimitiveHasTags:(NSMutableSet*)value;
+- (NSMutableSet*)primitiveHasTag;
+- (void)setPrimitiveHasTag:(NSMutableSet*)value;
 
 
 
 - (NSMutableSet*)primitiveLiked;
 - (void)setPrimitiveLiked:(NSMutableSet*)value;
+
+
+
+- (NSMutableSet*)primitiveStarred;
+- (void)setPrimitiveStarred:(NSMutableSet*)value;
 
 
 @end

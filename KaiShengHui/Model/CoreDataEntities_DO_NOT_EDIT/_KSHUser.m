@@ -22,6 +22,7 @@ const struct KSHUserAttributes KSHUserAttributes = {
 const struct KSHUserRelationships KSHUserRelationships = {
 	.dislikes = @"dislikes",
 	.likes = @"likes",
+	.stars = @"stars",
 };
 
 const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
@@ -245,6 +246,19 @@ const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"likes"];
   
 	[self didAccessValueForKey:@"likes"];
+	return result;
+}
+	
+
+@dynamic stars;
+
+	
+- (NSMutableSet*)starsSet {
+	[self willAccessValueForKey:@"stars"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"stars"];
+  
+	[self didAccessValueForKey:@"stars"];
 	return result;
 }
 	

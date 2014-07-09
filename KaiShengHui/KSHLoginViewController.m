@@ -12,7 +12,6 @@
 
 #import "KSHLoginRequest.h"
 #import "KSHArticle.h"
-#import "KSHLikeDislike.h"
 #import "KSHUserDefaultsHelper.h"
 #import "KSHUserProfileTableViewController.h"
 
@@ -137,10 +136,7 @@
 //        }
 
         // Make request here (rather than _loginManager method) due to error with block pasing
-            KSHLoginRequest *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"LoginRequest" inManagedObjectContext:[self managedObjectContext]];
-    
-            [userLogin setEmail:_email.text];
-            [userLogin setPassword:_password.text];
+            KSHLoginRequest *userLogin = [KSHLoginRequest initWithUsername:_email.text withPassword:_password.text];
     
             [_loginManager postObject:userLogin
                                  path:kLoginPath

@@ -7,7 +7,6 @@
 extern const struct KSHLikeDislikeAttributes {
 	__unsafe_unretained NSString *createdAt;
 	__unsafe_unretained NSString *deletedAt;
-	__unsafe_unretained NSString *flag;
 } KSHLikeDislikeAttributes;
 
 extern const struct KSHLikeDislikeRelationships {
@@ -15,7 +14,6 @@ extern const struct KSHLikeDislikeRelationships {
 
 extern const struct KSHLikeDislikeFetchedProperties {
 } KSHLikeDislikeFetchedProperties;
-
 
 
 
@@ -54,20 +52,6 @@ extern const struct KSHLikeDislikeFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* flag;
-
-
-
-@property BOOL flagValue;
-- (BOOL)flagValue;
-- (void)setFlagValue:(BOOL)value_;
-
-//- (BOOL)validateFlag:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
 
 @end
 
@@ -86,15 +70,6 @@ extern const struct KSHLikeDislikeFetchedProperties {
 
 - (NSDate*)primitiveDeletedAt;
 - (void)setPrimitiveDeletedAt:(NSDate*)value;
-
-
-
-
-- (NSNumber*)primitiveFlag;
-- (void)setPrimitiveFlag:(NSNumber*)value;
-
-- (BOOL)primitiveFlagValue;
-- (void)setPrimitiveFlagValue:(BOOL)value_;
 
 
 

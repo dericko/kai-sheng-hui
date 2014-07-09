@@ -23,13 +23,15 @@ extern const struct KSHUserAttributes {
 extern const struct KSHUserRelationships {
 	__unsafe_unretained NSString *dislikes;
 	__unsafe_unretained NSString *likes;
+	__unsafe_unretained NSString *stars;
 } KSHUserRelationships;
 
 extern const struct KSHUserFetchedProperties {
 } KSHUserFetchedProperties;
 
-@class KSHDislike;
 @class KSHLike;
+@class KSHDislike;
+@class KSHStar;
 
 
 
@@ -214,6 +216,13 @@ extern const struct KSHUserFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet *stars;
+
+- (NSMutableSet*)starsSet;
+
+
+
+
 
 @end
 
@@ -221,13 +230,18 @@ extern const struct KSHUserFetchedProperties {
 
 - (void)addDislikes:(NSSet*)value_;
 - (void)removeDislikes:(NSSet*)value_;
-- (void)addDislikesObject:(KSHDislike*)value_;
-- (void)removeDislikesObject:(KSHDislike*)value_;
+- (void)addDislikesObject:(KSHLike*)value_;
+- (void)removeDislikesObject:(KSHLike*)value_;
 
 - (void)addLikes:(NSSet*)value_;
 - (void)removeLikes:(NSSet*)value_;
-- (void)addLikesObject:(KSHLike*)value_;
-- (void)removeLikesObject:(KSHLike*)value_;
+- (void)addLikesObject:(KSHDislike*)value_;
+- (void)removeLikesObject:(KSHDislike*)value_;
+
+- (void)addStars:(NSSet*)value_;
+- (void)removeStars:(NSSet*)value_;
+- (void)addStarsObject:(KSHStar*)value_;
+- (void)removeStarsObject:(KSHStar*)value_;
 
 @end
 
@@ -329,6 +343,11 @@ extern const struct KSHUserFetchedProperties {
 
 - (NSMutableSet*)primitiveLikes;
 - (void)setPrimitiveLikes:(NSMutableSet*)value;
+
+
+
+- (NSMutableSet*)primitiveStars;
+- (void)setPrimitiveStars:(NSMutableSet*)value;
 
 
 @end

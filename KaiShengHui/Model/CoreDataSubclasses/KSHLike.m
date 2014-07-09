@@ -12,7 +12,6 @@
 
 - (void)likeWithUser:(KSHUser *)user forArticle:(KSHArticle *)article
 {
-    self.flag = @YES;
     self.user = user;
     self.article = article;
     
@@ -26,14 +25,8 @@
 
 - (void)likeWithUser:(KSHUser *)user forTag:(KSHTag *)tag
 {
-    self.flag = @YES;
     self.user = user;
     self.tag = tag;
 }
 
-- (void) awakeFromInsert
-{
-    [super awakeFromInsert];
-    self.flag = @YES;
-}
 @end
