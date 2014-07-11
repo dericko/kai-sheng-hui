@@ -16,12 +16,17 @@
 #import "SWRevealViewController.h"
 
 @interface KSHArticleTableViewController ()
+@property (nonatomic, strong) KSHArticle *article;
+
 @property (nonatomic) IBOutlet UIBarButtonItem* revealButtonItem;
 
-@property (nonatomic, strong) KSHArticle *article;
 @end
 
+
 @implementation KSHArticleTableViewController
+{
+    NSArray *industryMenuItems;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,6 +40,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Collection View setup
+    industryMenuItems = @[@"Retail", @"TMT", @"Ag+Food", @"Energy", @"Chemicals", @"Finance", @"Healthcare", @"Transport"];
+    
     
     // Article manager instance
     NSLog(@"instantiate article manager...");
@@ -55,8 +64,14 @@
     [self addRefreshControl];
     [self loadArticles];
     [self.refreshControl beginRefreshing];
-    
 }
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 # pragma mark - Initialization helpers
 
@@ -80,10 +95,16 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)loadMoreArticles {
+//    [self.fetchedResultsController.fetchRequest setFetchLimit:newFetchLimit];
+//    [NSFetchedResultsController deleteCacheWithName:@"cache name"];
+//    NSError *error;
+//    if (![self.fetchedResultsController performFetch:&error]) {
+//        // Update to handle the error appropriately.
+//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//    }
+//    
+//    [self.tableView reloadData];
 }
 
 #pragma mark - Table view
@@ -107,12 +128,19 @@
     static NSString *cellIdentifier = @"ArticleCell";
     SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                                                 cellIdentifier forIndexPath:indexPath];
+   
+    
     
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;
     
     // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];
+    
+
+    // Check scroll to bottom to load more articles
+//    if (indexPath.row == [self.dataArray count] - 1)
+//        [self loadMoreArticles];
     
     return cell;
 }
@@ -313,10 +341,38 @@
     }
 }
 
+#pragma mark - CollectionViewDataSource/Delegate
+
 - (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
 {
     // allow just one cell's utility button to be open at once
     return YES;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
+    return [industryMenuItems count];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
+    return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"IndustryCell" forIndexPath:indexPath];
+    
+    UILabel *industryLabel = (UILabel *)[cell viewWithTag:110];
+    industryLabel.text = [industryMenuItems objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    // TODO: Select Item
+}
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // TODO: Deselect item
 }
 
 @end

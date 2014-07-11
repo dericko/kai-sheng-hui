@@ -23,7 +23,6 @@
 /* Begin PBXBuildFile section */
 		2D4CF66EF926450F920E3365 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7255E48F6D14CE185DFC1DE /* libPods.a */; };
 		C111FECA196D50B40043E983 /* version2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C111FEC9196D50B40043E983 /* version2.storyboard */; };
-		C111FECD196D8DB00043E983 /* KSHArticleDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C111FECC196D8DB00043E983 /* KSHArticleDetailTableViewController.m */; };
 		C111FECF196D97FC0043E983 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C111FECE196D97FC0043E983 /* CoreText.framework */; };
 		C111FED2196E2C810043E983 /* KSHTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C111FED1196E2C810043E983 /* KSHTextView.m */; };
 		C111FED5196E31A10043E983 /* KSHArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C111FED4196E31A10043E983 /* KSHArticleDetailViewController.m */; };
@@ -97,8 +96,6 @@
 		07AC7ED80DC44FFAADF56747 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A7255E48F6D14CE185DFC1DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C111FEC9196D50B40043E983 /* version2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = version2.storyboard; sourceTree = "<group>"; };
-		C111FECB196D8DB00043E983 /* KSHArticleDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleDetailTableViewController.h; sourceTree = "<group>"; };
-		C111FECC196D8DB00043E983 /* KSHArticleDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleDetailTableViewController.m; sourceTree = "<group>"; };
 		C111FECE196D97FC0043E983 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		C111FED0196E2C810043E983 /* KSHTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHTextView.h; sourceTree = "<group>"; };
 		C111FED1196E2C810043E983 /* KSHTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHTextView.m; sourceTree = "<group>"; };
@@ -517,8 +514,6 @@
 			children = (
 				C1F6FF9719597E0E006EE5F7 /* KSHArticleTableViewController.h */,
 				C1F6FF9819597E0E006EE5F7 /* KSHArticleTableViewController.m */,
-				C111FECB196D8DB00043E983 /* KSHArticleDetailTableViewController.h */,
-				C111FECC196D8DB00043E983 /* KSHArticleDetailTableViewController.m */,
 				C111FED3196E31A10043E983 /* KSHArticleDetailViewController.h */,
 				C111FED4196E31A10043E983 /* KSHArticleDetailViewController.m */,
 			);
@@ -699,7 +694,6 @@
 				C1E2AD1C196BF16900B6A7AF /* KSHUser.m in Sources */,
 				C135600419594FA9005DABED /* KaiShengHui.xcdatamodeld in Sources */,
 				C1E2AD3A196CE66200B6A7AF /* _KSHLike.m in Sources */,
-				C111FECD196D8DB00043E983 /* KSHArticleDetailTableViewController.m in Sources */,
 				C1E2AD1B196BF16900B6A7AF /* KSHTag.m in Sources */,
 				C1F87B9C195D3F0900DD300D /* KSHLoginViewController.m in Sources */,
 				C1F87B92195D3E9700DD300D /* KSHUserProfileTableViewCell.m in Sources */,

@@ -11,7 +11,7 @@
 #import "KSHArticleManager.h"
 #import <SWTableViewCell/SWTableViewCell.h>
 
-@interface KSHArticleTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, SWTableViewCellDelegate>
+@interface KSHArticleTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, SWTableViewCellDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

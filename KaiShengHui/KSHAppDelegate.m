@@ -73,7 +73,7 @@
     // Restkit automatically saves context when calling success block :)
 }
 
-#pragma mark - Core Data stack with Restkit Overide
+#pragma mark - Restkit + CoreData
 
 - (void)initializeRestkitForCoreData
 {
@@ -82,16 +82,14 @@
     
     _RKManagedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:[self managedObjectModel]];
     
-    
     // Initialize Core Data Stack
     [_RKManagedObjectStore createPersistentStoreCoordinator];
     NSError *error = nil;
     NSPersistentStore __unused *persistentStore = [_RKManagedObjectStore addInMemoryPersistentStore:&error];
     NSAssert(persistentStore, @"Failed to add persistent store: %@", error);
     
+    // Set up Managed Object Context
     [_RKManagedObjectStore createManagedObjectContexts];
-    
-    // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:_RKManagedObjectStore];
     
 }
