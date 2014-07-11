@@ -17,6 +17,6 @@ extern NSString * const kArticlePath;
  */
 @interface KSHArticleManager : KSHObjectManager
 
-- (void)loadArticles:(void (^)(void))success failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
+- (void)loadArticles:(NSNumber *)numberToLoad success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
 
 @end

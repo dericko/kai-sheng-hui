@@ -6,14 +6,17 @@
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import "KSHArticle.h"
-#import "KSHTag.h"
 #import "KSHArticleTableViewController.h"
-#import "KSHArticleDetailViewController.h"
-#import "KSHMessage.h"
 
+#import <RestKit/RestKit.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "SWRevealViewController.h"
+
+#import "KSHArticle.h"
+#import "KSHTag.h"
+#import "KSHMessage.h"
+
+#import "KSHArticleDetailViewController.h"
 
 @interface KSHArticleTableViewController ()
 @property (nonatomic, strong) KSHArticle *article;
@@ -26,6 +29,7 @@
 @implementation KSHArticleTableViewController
 {
     NSArray *industryMenuItems;
+    NSNumber *numberToLoad;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -49,6 +53,7 @@
     NSLog(@"instantiate article manager...");
     _articleManager = [KSHArticleManager sharedManager];
     NSLog(@"instantiate article manager...DONE");
+    // TODO: handle all RK-Classes with single KSH-wrapper
     _articleManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     // set managed object context to main queue
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
@@ -62,7 +67,8 @@
     
     // finish initialization
     [self addRefreshControl];
-    [self loadArticles];
+    numberToLoad = @15;
+    [self loadArticles:numberToLoad];
     [self.refreshControl beginRefreshing];
 }
 
@@ -82,32 +88,21 @@
     self.refreshControl = refreshControl;
 }
 
-- (void)loadArticles
+- (void)loadArticles:(NSNumber *)number
 {
-# warning consider using managedObjectRequestOperation to integrate Core Data persistence
     if (_articleManager) {
-        [_articleManager loadArticles:^(void) {
-            [self.refreshControl endRefreshing];
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [self.refreshControl endRefreshing];
-            [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
-             }];
+        [_articleManager loadArticles:number
+                              success:^(void) {
+                                  [self.refreshControl endRefreshing];
+                              }
+                              failure:^(NSError *error) {
+                                  [self.refreshControl endRefreshing];
+                                  [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
+                              }];
     }
 }
 
-- (void)loadMoreArticles {
-//    [self.fetchedResultsController.fetchRequest setFetchLimit:newFetchLimit];
-//    [NSFetchedResultsController deleteCacheWithName:@"cache name"];
-//    NSError *error;
-//    if (![self.fetchedResultsController performFetch:&error]) {
-//        // Update to handle the error appropriately.
-//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//    }
-//    
-//    [self.tableView reloadData];
-}
-
-#pragma mark - Table view
+#pragma mark - Table view layout
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -129,18 +124,17 @@
     SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                                                 cellIdentifier forIndexPath:indexPath];
    
-    
-    
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;
     
     // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];
     
-
-    // Check scroll to bottom to load more articles
-//    if (indexPath.row == [self.dataArray count] - 1)
-//        [self loadMoreArticles];
+    if (indexPath.row >= numberToLoad.intValue - 1) {
+        NSLog(@"more articles!");
+        numberToLoad = [NSNumber numberWithInt:(numberToLoad.intValue + 10)];
+        [self loadArticles:numberToLoad];
+    }
     
     return cell;
 }

@@ -8,22 +8,28 @@
 
 #import "KSHArticleManager.h"
 
-NSString * const kArticlePath = @"/post/rest/gettopposts/15";
+NSString * const kArticlePath = @"/post/rest/gettopposts/:articleCount";
 
 @implementation KSHArticleManager
 // TODO: implement KSHArticleManager methods
 
-- (void)loadArticles:(void (^)(void))success failure:(void (^)(RKObjectRequestOperation *operation, NSError *error))failure;
+- (void)loadArticles:(NSNumber *)numberToLoad success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
 {
+    /*
+     This method automatically checks for Core Data by checking response descriptors 
+     for an EntityMapping object and returns an RKManagedObjectRequestOperation if so
+     */
+    NSDictionary *parameters = @{@"articleCount": numberToLoad};
+    
     [self getObjectsAtPath:kArticlePath
-                parameters:nil
+                parameters:parameters
                    success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                        if (success) {
                            success();
                        }}
                    failure:^(RKObjectRequestOperation *operation, NSError *error) {
                        if (failure) {
-                           failure(operation, error);
+                           failure(error);
                        }
                    }];
 }
@@ -38,8 +44,6 @@ NSString * const kArticlePath = @"/post/rest/gettopposts/15";
 - (void)setupResponseDescriptors
 {
     [super setupResponseDescriptors];
-    
-    NSLog(@"-setUpResponseDescriptors: part of singleton--should only call once");
     
     // add additional response descriptors
     RKResponseDescriptor *articleResponseDescriptor =

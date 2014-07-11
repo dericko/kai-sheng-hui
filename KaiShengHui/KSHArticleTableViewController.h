@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <RestKit/RestKit.h>
 #import "KSHArticleManager.h"
 #import <SWTableViewCell/SWTableViewCell.h>
 

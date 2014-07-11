@@ -77,19 +77,22 @@
 
 - (void)initializeRestkitForCoreData
 {
-    // Logs all Restkit info
-    RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
+    // Log all Restkit info
+    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     
+    // Restkit managed object store
     _RKManagedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:[self managedObjectModel]];
     
-    // Initialize Core Data Stack
+    // Set up persistent store
     [_RKManagedObjectStore createPersistentStoreCoordinator];
+    NSString *storeURL = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"KaiShengHui.sqlite"];
     NSError *error = nil;
-    NSPersistentStore __unused *persistentStore = [_RKManagedObjectStore addInMemoryPersistentStore:&error];
+    NSPersistentStore *persistentStore = [_RKManagedObjectStore addSQLitePersistentStoreAtPath:storeURL fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
     NSAssert(persistentStore, @"Failed to add persistent store: %@", error);
     
-    // Set up Managed Object Context
+    // Managed object context
     [_RKManagedObjectStore createManagedObjectContexts];
+    
     [RKManagedObjectStore setDefaultStore:_RKManagedObjectStore];
     
 }
@@ -101,6 +104,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
+    // Use default Core Data model
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"KaiShengHui" withExtension:@"momd"];
     _managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
     return _managedObjectModel;
