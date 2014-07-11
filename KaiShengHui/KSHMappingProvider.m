@@ -66,7 +66,7 @@ static RKEntityMapping *PLACEHOLDER = nil;
     [articleMapping addAttributeMappingsFromDictionary:@{
                                                         @"id":              @"articleID",
                                                         @"title":           @"title",
-                                                        @"excerpt":         @"excerpt",
+                                                        @"tags":         @"excerpt",
                                                         @"content":         @"content",
                                                         @"editor":          @"author",
                                                         @"publish_time":    @"datePublished",

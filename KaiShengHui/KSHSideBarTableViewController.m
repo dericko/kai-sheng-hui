@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    menuItems = @[@"Profile", @"快消零售", @"通讯网络技术", @"农业食品饮料", @"能源矿产", @"化工工业制造", @"金融地产", @"医疗卫生", @"汽车交通运输"];
+    menuItems = @[@"myKSH", @"Profile", @"Content", @"Projects", @"Events", @"Contacts", @"Jobs", @"Opportunities"];
 }
 
 - (void)didReceiveMemoryWarning
