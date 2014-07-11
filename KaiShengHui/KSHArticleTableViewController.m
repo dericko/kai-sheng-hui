@@ -68,7 +68,7 @@
     // finish initialization
     [self addRefreshControl];
     numberToLoad = @15;
-    [self loadArticles:numberToLoad];
+    [self loadArticles];
     [self.refreshControl beginRefreshing];
 }
 
@@ -88,10 +88,10 @@
     self.refreshControl = refreshControl;
 }
 
-- (void)loadArticles:(NSNumber *)number
+- (void)loadArticles
 {
     if (_articleManager) {
-        [_articleManager loadArticles:number
+        [_articleManager loadArticles:numberToLoad
                               success:^(void) {
                                   [self.refreshControl endRefreshing];
                               }
@@ -130,13 +130,20 @@
     // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];
     
+    // Add more cells
     if (indexPath.row >= numberToLoad.intValue - 1) {
         NSLog(@"more articles!");
         numberToLoad = [NSNumber numberWithInt:(numberToLoad.intValue + 10)];
-        [self loadArticles:numberToLoad];
+        [self loadArticles];
+        [self.tableView reloadData];
     }
     
     return cell;
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
 }
 
 - (NSArray *)rightButtons
@@ -302,11 +309,6 @@
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView endUpdates];
 }
 
 #pragma mark - SWTableViewDelegate

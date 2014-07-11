@@ -8,7 +8,7 @@
 
 #import "KSHArticleManager.h"
 
-NSString * const kArticlePath = @"/post/rest/gettopposts/:articleCount";
+NSString * const kArticlePath = @"/post/rest/gettopposts/";
 
 @implementation KSHArticleManager
 // TODO: implement KSHArticleManager methods
@@ -19,6 +19,7 @@ NSString * const kArticlePath = @"/post/rest/gettopposts/:articleCount";
      This method automatically checks for Core Data by checking response descriptors 
      for an EntityMapping object and returns an RKManagedObjectRequestOperation if so
      */
+#warning check API for correct GET parameters (search, industry, token, etc)
     NSDictionary *parameters = @{@"articleCount": numberToLoad};
     
     [self getObjectsAtPath:kArticlePath
