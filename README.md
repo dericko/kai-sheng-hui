@@ -1,4 +1,4 @@
-Kai Sheng Hui Specifications. Updated 14 July 2014 by Derick Olson.
+Kai Sheng Hui Specifications.
 
 Application Spec:
 iOS: 7.1+
@@ -9,7 +9,7 @@ Branches: master, development(dataModelDevelopment, networkingDevelopment, viewD
 
 Description:
 iOS Application for 凯盛汇 platform. A multiple-function hub for Capvision Experts.
--check and share news curated for their industry and interests with offline reading
+-check and share news curated for user's industry and interests with offline reading
 -check current project and event status in real time
 -browse project opportunities
 -browse upcoming events
@@ -19,11 +19,14 @@ Structure:
 -Networking
 	Object Managers - parent class handles general networking API requests
 			- subclasses handle individual request/response options
-	Mapping Provider - handles JSON-to-ManagedObject mapping with dictionaries
+	Mapping Provider - handles JSON-to-ManagedObject mapping
 -Model
 	User > RegisteredUser, Member
-	UserItem > Article, Project, Event 
+	MemberItem > Project, Event
+    Content > Article
 -Controllers
+-Views
+    primarily handled in storyboard
 
 Libraries/Dependencies: (managed by CocoaPods, see Podfile)
 Core Data - Apple’s object mapping system + persistent store api
