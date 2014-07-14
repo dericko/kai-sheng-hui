@@ -63,6 +63,17 @@ static RKEntityMapping *PLACEHOLDER = nil;
 
 + (RKEntityMapping *)articleMapping
 {
+//    
+//    NSDictionary *attributes = [[myObj entity] attributesByName];
+//    for (NSString *attribute in attributes) {
+//        id value = [jsonDict objectForKey:attribute];
+//        if (value == nil) {
+//            continue;
+//        }
+//        [myObj setValue:value forKey:attribute];
+//    }
+    
+    
     NSLog(@"-articleMapping: assign mapping for article manager");
     RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [articleMapping addAttributeMappingsFromDictionary:@{
