@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+    <entity name="Article" parentEntity="Content" syncable="YES"/>
+    <entity name="Content" isAbstract="YES" syncable="YES"/>
+    <entity name="Entity" syncable="YES"/>
+    <entity name="Event" parentEntity="MemberItem">
+        <attribute name="timeStamp" optional="YES" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <userInfo/>
+    </entity>
+    <entity name="Member" parentEntity="User" syncable="YES"/>
+    <entity name="MemberItem" isAbstract="YES" syncable="YES"/>
+    <entity name="Project" parentEntity="MemberItem" syncable="YES"/>
+    <entity name="RegisteredUser" parentEntity="User" syncable="YES"/>
+    <entity name="Tag" syncable="YES"/>
+    <entity name="ThirdPartyArticle" parentEntity="Content" syncable="YES"/>
+    <entity name="User" isAbstract="YES" syncable="YES"/>
+    <entity name="Video" parentEntity="Content" syncable="YES"/>
+    <elements>
+        <element name="Content" positionX="-288" positionY="-153" width="128" height="45"/>
+        <element name="User" positionX="583" positionY="-153" width="128" height="45"/>
+        <element name="Tag" positionX="-290" positionY="9" width="128" height="45"/>
+        <element name="MemberItem" positionX="151" positionY="-153" width="128" height="45"/>
+        <element name="Project" positionX="225" positionY="-72" width="128" height="45"/>
+        <element name="ThirdPartyArticle" positionX="-146" positionY="-72" width="128" height="45"/>
+        <element name="Video" positionX="-288" positionY="-72" width="128" height="45"/>
+        <element name="Article" positionX="-425" positionY="-72" width="128" height="45"/>
+        <element name="Event" positionX="79" positionY="-72" width="128" height="58"/>
+        <element name="Member" positionX="655" positionY="-72" width="128" height="45"/>
+        <element name="RegisteredUser" positionX="513" positionY="-72" width="128" height="45"/>
+        <element name="Entity" positionX="135" positionY="45" width="128" height="45"/>
+    </elements>
 </model>
