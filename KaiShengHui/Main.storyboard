@@ -511,7 +511,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fD-uX-fKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2712" y="3380"/>
+            <point key="canvasLocation" x="2709" y="3404"/>
         </scene>
         <!--Navigation Controller - 我的凯盛汇-->
         <scene sceneID="Xfp-L1-2cI">
@@ -527,7 +527,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gK2-lw-XrY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2184" y="3380"/>
+            <point key="canvasLocation" x="2156" y="3404"/>
         </scene>
         <!--Navigation Controller - 观点汇-->
         <scene sceneID="h26-ru-4yo">
@@ -624,7 +624,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSc-Jx-16z" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2709" y="-124"/>
+            <point key="canvasLocation" x="2715" y="426"/>
         </scene>
         <!--Article Detail View Controller-->
         <scene sceneID="evN-Cx-Fuh">
@@ -894,9 +894,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
-                                        <connections>
-                                            <segue destination="FWE-IM-QWC" kind="push" id="Nzk-wK-j0A"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -907,7 +904,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Abx-XQ-PJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2709" y="534"/>
+            <point key="canvasLocation" x="2715" y="-272"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="hh4-SO-r0W">
@@ -1275,7 +1272,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAq-d1-aS1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3456" y="3380"/>
+            <point key="canvasLocation" x="3456" y="3404"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="fyq-4o-cFY">
@@ -1437,7 +1434,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xkt-hD-0eF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2712" y="2720"/>
+            <point key="canvasLocation" x="2709" y="2720"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="1Zg-jP-Omj">
@@ -1586,7 +1583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMd-bg-yKT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3354" y="1364"/>
+            <point key="canvasLocation" x="3456" y="1364"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XQc-vC-d1J">
@@ -1623,7 +1620,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gRx-WH-QIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3322" y="2368"/>
+            <point key="canvasLocation" x="3456" y="2368"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -1631,7 +1628,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="Nzk-wK-j0A"/>
-    </inferredMetricsTieBreakers>
 </document>
