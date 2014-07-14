@@ -55,6 +55,7 @@
     [self.refreshControl beginRefreshing];
     
     // load articles
+    // FIXME: only load articles if they do not already exist (past articles are already saved in SQLite db by Core Data)
     numberToLoad = @15;
     [self loadArticles];
 }
@@ -77,6 +78,7 @@
 
 - (void)loadArticles
 {
+    NSLog(@"loading Articles");
     if (_articleManager) {
         [_articleManager loadArticles:numberToLoad
                               success:^(void) {
@@ -118,7 +120,7 @@
     // Configure the cell
     [self configureCell:cell atIndexPath:indexPath];
     
-    // FIXME: Add more cells when scrolling to bottom, see KSHArticleManager
+    // FIXME: Add more cells when scrolling to bottom, see KSHArticleManager (currently only loads 5 already existing articles)
     if (indexPath.row >= numberToLoad.intValue - 1) {
         NSLog(@"more articles!");
         numberToLoad = [NSNumber numberWithInt:(numberToLoad.intValue + 10)];

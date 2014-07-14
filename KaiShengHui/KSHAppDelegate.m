@@ -32,15 +32,16 @@
         [KSHUserDefaultsHelper initUserDefaults:_defaults];
     }
     
-    // Set up initial view controller (can add login auth screen here)
-//    NSString *controllerID = @"ArticleTable"; // can add multiple options with ? operator
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    KSHArticleTableViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controllerID];
-//    
-//    initViewController.managedObjectStore = _RKManagedObjectStore;
-//    
-//    [self.window setRootViewController:initViewController];
+// TODO: Set up initial view controller to check: loggedin ? LOGIN vs FIRSTVIEW
+/* former code (edit and reimplement)
+    NSString *controllerID = @"ArticleTable"; // can add multiple options with ? operator
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    KSHArticleTableViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controllerID];
     
+    initViewController.managedObjectStore = _RKManagedObjectStore;
+    
+    [self.window setRootViewController:initViewController];
+*/
     return YES;
 }
 							

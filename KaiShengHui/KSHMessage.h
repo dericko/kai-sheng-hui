@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <TSMessages/TSMessage.h>
 
+/** Wrapper class for TSMessages Library. Displays Alerts (yellow), Errors (red),
+ Messages (white), with an option for Message w/ button + callback
+ @see 'TSMessage'
+ */
 @interface KSHMessage : TSMessage
 
 + (void)displayErrorAlert:(NSString *)title withSubtitle:(NSString *)subtitle;

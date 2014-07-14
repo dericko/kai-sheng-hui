@@ -10,6 +10,8 @@
 #import "KSHArticleManager.h"
 #import <SWTableViewCell/SWTableViewCell.h>
 
+/** Displays a table of Articles using a KSHArticleManager
+ */
 @interface KSHArticleTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, SWTableViewCellDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;

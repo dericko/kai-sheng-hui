@@ -17,7 +17,7 @@ NSString * const kArticlePath = @"/post/rest/gettopposts/";
 
 - (void)loadArticles:(NSNumber *)numberToLoad success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
 {
-// FIXME
+// FIXME: parameter appends "?articleCount="+numberToLoad, but only returns 5 JSON objects each time
     NSDictionary *parameters = @{@"articleCount": numberToLoad};
     
     [self getObjectsAtPath:kArticlePath
@@ -37,6 +37,7 @@ NSString * const kArticlePath = @"/post/rest/gettopposts/";
 {
     [super setupRequestDescriptors];
     
+    // Check objects by comparing existing articleIDs with incoming calls and delete orphaned objects
     [self addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:kArticlePath];
         

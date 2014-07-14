@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+// ???: Is there an Apple Library or PList for this?
+/** Helper for storing user login status in NSUserDefaults dictionary
+ */
 @interface KSHUserDefaultsHelper : NSUserDefaults
 
 + (void)initUserDefaults:(NSUserDefaults *)defaults;
