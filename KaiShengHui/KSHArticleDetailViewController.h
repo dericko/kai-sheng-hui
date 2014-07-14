@@ -15,7 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *titleAreaHeightConstraint;
-
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomAreaHeightConstraint;
 
 @property (nonatomic, strong) KSHArticle *article;
 @property (nonatomic, strong) IBOutlet UILabel *articleTitle;

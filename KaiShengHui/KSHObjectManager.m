@@ -8,7 +8,8 @@
 
 #import "KSHObjectManager.h"
 
-#define BASE_URL @"http://test.i-ksh.net" //edited for testing with github gist api
+// !!!: part of test URL
+#define BASE_URL @"http://test.i-ksh.net"
 #define PERSONAL_ACCESS_TOKEN @"insert_access_token"
 
 static KSHObjectManager *sharedManager = nil;
@@ -22,8 +23,6 @@ static KSHObjectManager *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        NSLog(@"-sharedManager: part of singleton--should only call once");
-        
         // instantiate object manager with base url
         NSURL *url = [NSURL URLWithString:BASE_URL];
         sharedManager = [self managerWithBaseURL:url];
@@ -35,7 +34,7 @@ static KSHObjectManager *sharedManager = nil;
         [sharedManager setupRequestDescriptors];
         [sharedManager setupResponseDescriptors];
         
-        // TODO: Add token
+        // TODO: Add token to request (after JSON API is implemented)
 //        [sharedManager.HTTPClient setDefaultHeader:@"Authorization" value: [NSString stringWithFormat:@"token %@", PERSONAL_ACCESS_TOKEN]];
     });
     
@@ -44,12 +43,12 @@ static KSHObjectManager *sharedManager = nil;
 
 - (void)setupRequestDescriptors
 {
-  // any general code for requests
+  // any common code for requests
 }
 
 - (void)setupResponseDescriptors
 {
-  // any general code for responses
+  // any common code for responses
 }
 
 @end

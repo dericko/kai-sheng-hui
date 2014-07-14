@@ -17,6 +17,13 @@ extern NSString * const kArticlePath;
  */
 @interface KSHArticleManager : KSHObjectManager
 
+/** Wrapper for a RestKit network request.
+ Loads Article JSON from API and executes provided success: and failure: blocks.
+ 
+ Note: The internal RestKit automatically checks for Core Data by checking response descriptors
+ for an EntityMapping object (from KSHMappingProvider) and returns an RKManagedObjectRequestOperation if so. 
+ Be sure to implement similar behaviour if switching away from Restkit.
+ */
 - (void)loadArticles:(NSNumber *)numberToLoad success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
 
 @end

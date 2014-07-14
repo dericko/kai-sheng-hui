@@ -45,22 +45,18 @@
     // Collection View setup
     industryMenuItems = @[@"Retail", @"TMT", @"Ag+Food", @"Energy", @"Chemicals", @"Finance", @"Healthcare", @"Transport"];
     
-    
-    // Article manager instance
-    NSLog(@"instantiate article manager...");
+    // Instantiate articleManager with main managed object context (for Core Data)
     _articleManager = [KSHArticleManager sharedManager];
-    NSLog(@"instantiate article manager...DONE");
-    // TODO: handle all RK-Classes with single KSH-wrapper
     _articleManager.managedObjectStore = [RKManagedObjectStore defaultStore];
-    // set managed object context to main queue
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     
-    
-    // finish initialization
+    // set up refresh control
     [self addRefreshControl];
+    [self.refreshControl beginRefreshing];
+    
+    // load articles
     numberToLoad = @15;
     [self loadArticles];
-    [self.refreshControl beginRefreshing];
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,16 +108,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"ArticleCell";
+    
+    // Use SWTableViewCell for slider buttons
     SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                                                 cellIdentifier forIndexPath:indexPath];
-   
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;
     
-    // Configure the cell...
+    // Configure the cell
     [self configureCell:cell atIndexPath:indexPath];
     
-    // Add more cells
+    // FIXME: Add more cells when scrolling to bottom, see KSHArticleManager
     if (indexPath.row >= numberToLoad.intValue - 1) {
         NSLog(@"more articles!");
         numberToLoad = [NSNumber numberWithInt:(numberToLoad.intValue + 10)];
@@ -132,37 +129,24 @@
     return cell;
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView endUpdates];
-}
-
-- (NSArray *)rightButtons
-{
-    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:@"-"];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.07 green:0.75f blue:0.16f alpha:1.0]
-                                                title:@"+"];
-    
-    return rightUtilityButtons;
-}
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    // Assign cell labels
+    // Set Title
     _article = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *articleTitleLabel = (UILabel *)[cell viewWithTag:100];
     articleTitleLabel.text = [[_article valueForKey:@"title"] description];
     
+    // Set Excerpt
+    // FIXME: removed Excerpt label in Storyboard, probably remove implementation here
     UILabel *articleExcerptLabel = (UILabel *)[cell viewWithTag:101];
     articleExcerptLabel.text = [[_article valueForKey:@"excerpt"] description];;
 
+    // TODO: set Industry
+    // TODO: set Tags
+    
+    // Set Image
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
-
-    // Async request and assign cell image
+    // Check if image has been downloaded
     if (!_article.imgFile) {
         [self setImageAsync: articleImageView atIndexPath:indexPath];
     } else {
@@ -172,6 +156,8 @@
 
 - (void)setImageAsync:(UIImageView *)articleImageView atIndexPath:(NSIndexPath *)indexPath
 {
+    // Async request and assign cell image
+    // TODO: remove NSLogs after debugging
     NSLog(@"grabbing image...");
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
     UIImageView *placeholderImageView = [UIImageView new];
@@ -179,6 +165,7 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURLString"] description]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
+    // Use UIImageView+AFNetworking to make request and save image
     [placeholderImageView
      setImageWithURLRequest:request
      placeholderImage:placeholderImage
@@ -192,26 +179,19 @@
      }];
 }
 
-
-#pragma mark - Navigation
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSArray *)rightButtons
 {
-    [self performSegueWithIdentifier:@"showArticleDetail" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
+    // Set utility buttons for SWTableViewCell
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"-"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.07 green:0.75f blue:0.16f alpha:1.0]
+                                                title:@"+"];
+    
+    return rightUtilityButtons;
 }
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"showArticleDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        KSHArticleDetailViewController *destinationViewController = segue.destinationViewController;
-        destinationViewController.article = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        destinationViewController.articleImage = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    }
-}
-
 
 #pragma mark - Fetched results controller
 
@@ -226,8 +206,7 @@
     NSEntityDescription *article = [NSEntityDescription entityForName:@"Article" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:article];
     
-    // TODO: Set the batch size to a suitable number (currently 15)
-#warning batch size does not determine number of cells returned
+// FIXME: batch size does not determine number of cells returned
     [fetchRequest setFetchBatchSize:15];
     
     // Edit the sort key as appropriate.
@@ -302,6 +281,30 @@
     }
 }
 
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
+}
+
+#pragma mark - Navigation
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"showArticleDetail" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
+}
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"showArticleDetail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        KSHArticleDetailViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.article = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        destinationViewController.articleImage = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    }
+}
+
 #pragma mark - SWTableViewDelegate
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
@@ -309,8 +312,8 @@
     switch (index) {
         case 0:
         {
-            // TODO: implement downvote
-            [KSHMessage displayMessageAlert:@"Downvote" withSubtitle:@"We'll show you fewer articles like this"];
+            // TODO: implement Dislike
+            [KSHMessage displayMessageAlert:@"Dislike" withSubtitle:@"We'll show you fewer articles like this"];
             
             [cell hideUtilityButtonsAnimated:YES];
             
@@ -318,8 +321,8 @@
         }
         case 1:
         {
-            // TODO: implement upvote
-            [KSHMessage displayMessageAlert:@"Upvote" withSubtitle:@"We'll show you more articles like this"];
+            // TODO: implement Like
+            [KSHMessage displayMessageAlert:@"Like" withSubtitle:@"We'll show you more articles like this"];
             
             [cell hideUtilityButtonsAnimated:YES];
             
@@ -328,13 +331,14 @@
     }
 }
 
-#pragma mark - CollectionViewDataSource/Delegate
-
 - (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
 {
     // allow just one cell's utility button to be open at once
     return YES;
 }
+
+
+#pragma mark - CollectionViewDataSource/Delegate
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
     return [industryMenuItems count];
@@ -344,6 +348,7 @@
     return 1;
 }
 
+// FIXME: does not create cells, should allow for more types of cells (e.g. most recent, favorites, industry trends)
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"IndustryCell" forIndexPath:indexPath];
     
@@ -356,10 +361,8 @@
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO: Select Item
+    // TODO: implement Select Item behaviour (click)
 }
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
-}
+
 
 @end

@@ -27,19 +27,23 @@
 {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view.
+    // Set content fields
     _articleTitle.text = _article.title;
-    _articleContent.text = _article.content; // set up filter for html '&xxxxx' tags
+    _articleContent.text = _article.content;
+    // TODO: set up filter for html '&xxxx' tags
     _articleImage.image = [_article getImage];
+    // TODO: set Industry
+    // TODO: set Tags
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
     
-    _heightConstraint.constant = _articleContent.contentSize.height + _titleAreaHeightConstraint.constant + 500;
+    // Update content container to fit Title Content, Article Content, and Bottom Bar Controls
+    _heightConstraint.constant = _articleContent.contentSize.height + _titleAreaHeightConstraint.constant + _bottomAreaHeightConstraint.constant;
     
-    [_scrollView layoutIfNeeded];
+    // Update content size of scroll view
     _scrollView.contentSize = self.containerView.frame.size;
     
 }
@@ -50,15 +54,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+# pragma mark - Bottom Bar Buttons
+// TODO: implement interaction buttons - Like, Unlike, Star, Share
 
 @end

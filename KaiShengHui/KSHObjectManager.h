@@ -12,6 +12,7 @@
 
 /**
  'KSHObjectManager' Handles initial setup, requests, and responses as application network client. This class should be extended according to request and response behaviour of specific resources.
+ Dependencies: RestKit 0.20.0
  @see 'RKObjectManager'
  */
 @interface KSHObjectManager : RKObjectManager

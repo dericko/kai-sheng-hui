@@ -7,14 +7,12 @@
 //
 
 #import "KSHUserProfileTableViewController.h"
-#import "SWRevealViewController.h"
 #import "KSHUser.h"
 #import "KSHLikeDislike.h"
 #import "KSHMessage.h"
 #import "KSHUserDefaultsHelper.h"
 
 @interface KSHUserProfileTableViewController ()
-@property (nonatomic) IBOutlet UIBarButtonItem* revealButtonItem;
 @end
 
 @implementation KSHUserProfileTableViewController
@@ -31,12 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Configure sidebar reveal button
-    [self.revealButtonItem setTarget: self.revealViewController];
-    [self.revealButtonItem setAction: @selector( revealToggle: )];
-    [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-    
     
     if (_user) {        
         _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
@@ -63,24 +55,7 @@
     // set global SIGNED_IN to false
     [KSHUserDefaultsHelper userLogout];
     
-    //[self performSegueWithIdentifier:@"showProfile" sender:self.view];
-    
-    NSString *controllerId = @"ArticleTable";
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *nextViewController = [storyboard instantiateViewControllerWithIdentifier:controllerId];
-    SWRevealViewControllerSegue *showNextView = [SWRevealViewControllerSegue segueWithIdentifier:controllerId source:self destination:nextViewController performHandler:^{
-    }];
-    showNextView.performBlock = ^(SWRevealViewControllerSegue *rvc_segue, UIViewController *svc, UIViewController *dvc) {
-        
-        UINavigationController *navController = (UINavigationController *)self.revealViewController.frontViewController;
-        [navController setViewControllers: @[dvc] animated: NO ];
-        [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
-    };
-    
-    [KSHMessage displayWarningAlert:@"You have signed out." withSubtitle:@""];
-    
-    [showNextView perform];
-    
+    // TODO: implement user Logout
     
 }
 

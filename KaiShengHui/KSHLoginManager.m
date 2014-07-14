@@ -14,6 +14,7 @@ NSString * const kLoginPath = @"INSERT_USER_LOGIN_PATH";
 
 @implementation KSHLoginManager
 
+// FIXME: loginRequest is no longer a Core Data Object. Revise this method as necessary
 - (void)loginWithEmail:(KSHLoginRequest *)userLogin success:(void (^)(RKMappingResult *))success failure:(void (^)(RKObjectRequestOperation *, NSError *))failure
 {
     [self postObject:userLogin

@@ -12,6 +12,13 @@
 
 /**
  'KSHMappingProvider' Uses RestKit object mapping to define custom mapping between data objects and JSON-formatted network response information
+ 
+ Attribute Mapping Dictionary Format: {@"JSONKey" : @"CoreDataPropertyName"}
+ Note: Keep track of (orphaned) objects by setting identificationAttributes:
+ (e.g. userMapping.identificationAttributes = @[ @"userID" ];)
+ 
+ 
+ Dependencies: RestKit 0.20.0
  @see 'RKObjectMapping'
  */
 @interface KSHMappingProvider : NSObject

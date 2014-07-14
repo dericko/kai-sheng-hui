@@ -10,13 +10,13 @@
 #import <RestKit/RestKit.h>
 
 
-# warning using placeholder object! (set up the other entity mappings)
+// !!!: Placeholder object for compilation, remove after implementing all methods
 static RKEntityMapping *PLACEHOLDER = nil;
 
 @implementation KSHMappingProvider
 
-// TODO: implement KSHMappingProvider methods
 
+// FIXME: LoginRequest is no longer a Core Data object, fix this method (use RKMapping, determine appropriate mapping)
 + (RKEntityMapping *)loginRequestMapping
 {
     RKEntityMapping *loginRequestMapping = [RKEntityMapping mappingForEntityForName:@"Login" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
@@ -30,6 +30,7 @@ static RKEntityMapping *PLACEHOLDER = nil;
 + (RKEntityMapping *)userMapping
 {
     RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    // TODO: match this mapping with User API
     [userMapping addAttributeMappingsFromDictionary:@{
                                                       @"id":                @"userID",
                                                       @"username":          @"username",
@@ -40,12 +41,13 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                                       @"sign_up_date":      @"signupDate",
                                                       @"industry.id":       @"industryID",
                                                       @"industry.value":    @"industry"
-                                                         // TODO: get user mapping
                                                          }];
     userMapping.identificationAttributes = @[ @"userID" ];
     
     
-    /* Wait until db has POST api for like/dislike Articles
+    // TODO: implement like/dislike/follow/comment/etc Functionality (need POST API)
+    
+    /* Example for adding related objects through JSON mapping
      [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"liked"
      toKeyPath:@"likesArticle"
      withMapping:[self likeMapping]]];
@@ -85,7 +87,7 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                                                                    toKeyPath:@"ofArticle"
                                                                                  withMapping:[self tagMapping]]];
     
-    /* Wait until db has POST api for like/dislike Articles
+    /* Example for adding related objects through JSON mapping
     [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"liked"
                                                                                    toKeyPath:@"likesArticle"
                                                                                  withMapping:[self likeMapping]]];
@@ -104,7 +106,7 @@ static RKEntityMapping *PLACEHOLDER = nil;
     [tagMapping addAttributeMappingsFromDictionary:@{
                                                      @"tags":              @"tag"}];
     
-    /* Wait until db has POST api for like/dislike Tags
+    /* Example for adding related objects through JSON mapping
     [tagMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"liked"
                                                                                    toKeyPath:@"likesTag"
                                                                                  withMapping:[self likeMapping]]];

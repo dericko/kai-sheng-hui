@@ -27,14 +27,6 @@ NSString * const kUserPath = @"INSERT_USER_PATH";
     [super setupResponseDescriptors];
 
     // add additional response descriptors
-    RKResponseDescriptor *articleResponseDescriptor =
-    [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider userMapping]
-                                                 method:RKRequestMethodGET
-                                            pathPattern:kUserPath
-                                                keyPath:nil
-                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    
-    [self addResponseDescriptor:articleResponseDescriptor];
 }
 
 @end

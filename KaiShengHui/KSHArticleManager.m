@@ -8,18 +8,16 @@
 
 #import "KSHArticleManager.h"
 
+// !!!: part of test URL
 NSString * const kArticlePath = @"/post/rest/gettopposts/";
 
 @implementation KSHArticleManager
 // TODO: implement KSHArticleManager methods
 
+
 - (void)loadArticles:(NSNumber *)numberToLoad success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
 {
-    /*
-     This method automatically checks for Core Data by checking response descriptors 
-     for an EntityMapping object and returns an RKManagedObjectRequestOperation if so
-     */
-#warning check API for correct GET parameters (search, industry, token, etc)
+// FIXME
     NSDictionary *parameters = @{@"articleCount": numberToLoad};
     
     [self getObjectsAtPath:kArticlePath
@@ -39,7 +37,24 @@ NSString * const kArticlePath = @"/post/rest/gettopposts/";
 {
     [super setupRequestDescriptors];
     
-    // additional request descriptors
+    [self addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:kArticlePath];
+        
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
+        NSString *articleID;
+        if (match) {
+            articleID = [argsDict objectForKey:@"id"];
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"articleID = %@", @([articleID integerValue])]; // NOTE: Coerced from string to number
+            fetchRequest.sortDescriptors = @[ [NSSortDescriptor sortDescriptorWithKey:@"publish_time" ascending:YES] ];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
+
+
 }
 
 - (void)setupResponseDescriptors
