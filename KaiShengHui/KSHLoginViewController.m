@@ -8,7 +8,6 @@
 
 #import "KSHLoginViewController.h"
 #import "KSHMessage.h"
-#import "SWRevealViewController.h"
 
 #import "KSHLoginRequest.h"
 #import "KSHArticle.h"
@@ -209,17 +208,12 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     KSHUserProfileTableViewController *nextViewController = [storyboard instantiateViewControllerWithIdentifier:controllerId];
     
-    SWRevealViewControllerSegue *showNextView = [SWRevealViewControllerSegue segueWithIdentifier:controllerId source:self destination:nextViewController performHandler:^{
+    UIStoryboardSegue *destinationViewController = [UIStoryboardSegue segueWithIdentifier:controllerId source:self destination:nextViewController performHandler:^{
     }];
-    showNextView.performBlock = ^(SWRevealViewControllerSegue *rvc_segue, UIViewController *svc, UIViewController *dvc) {
-        
-        UINavigationController *navController = (UINavigationController *)self.revealViewController.frontViewController;
-        [navController setViewControllers: @[dvc] animated: NO ];
-        [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
-    };
+    
     
     nextViewController.user = _user;
-    [showNextView perform];
+    [destinationViewController perform];
 }
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

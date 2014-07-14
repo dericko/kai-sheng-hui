@@ -10,7 +10,6 @@
 
 #import <RestKit/RestKit.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
-#import "SWRevealViewController.h"
 
 #import "KSHArticle.h"
 #import "KSHTag.h"
@@ -20,8 +19,6 @@
 
 @interface KSHArticleTableViewController ()
 @property (nonatomic, strong) KSHArticle *article;
-
-@property (nonatomic) IBOutlet UIBarButtonItem* revealButtonItem;
 
 @end
 
@@ -58,12 +55,6 @@
     // set managed object context to main queue
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     
-    if (self.revealButtonItem){
-        // Configure sidebar reveal button
-        [self.revealButtonItem setTarget: self.revealViewController];
-        [self.revealButtonItem setAction: @selector( revealToggle: )];
-        [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-    }
     
     // finish initialization
     [self addRefreshControl];
