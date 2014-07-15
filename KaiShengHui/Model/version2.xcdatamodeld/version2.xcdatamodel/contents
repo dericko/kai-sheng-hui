@@ -1,34 +1,278 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Article" parentEntity="Content" syncable="YES"/>
-    <entity name="Content" isAbstract="YES" syncable="YES"/>
-    <entity name="Entity" syncable="YES"/>
-    <entity name="Event" parentEntity="MemberItem">
-        <attribute name="timeStamp" optional="YES" attributeType="Date">
-            <userInfo/>
+    <entity name="Article" parentEntity="Post" syncable="YES"/>
+    <entity name="Consultant" syncable="YES">
+        <attribute name="birthday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="consultantID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="consultantID" value="ndbID"/>
+            </userInfo>
         </attribute>
-        <userInfo/>
+        <attribute name="education" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="7" syncable="YES">
+            <userInfo>
+                <entry key="1" value="大专"/>
+                <entry key="2" value="本科"/>
+                <entry key="3" value="硕士"/>
+                <entry key="4" value="MBA/EMBA"/>
+                <entry key="5" value="博士"/>
+                <entry key="6" value="博士后"/>
+                <entry key="7" value="其他"/>
+            </userInfo>
+        </attribute>
+        <attribute name="gender" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="2" syncable="YES">
+            <userInfo>
+                <entry key="1" value="male"/>
+                <entry key="2" value="female"/>
+            </userInfo>
+        </attribute>
+        <attribute name="industry" optional="YES" attributeType="Integer 32" minValueString="0" syncable="YES"/>
+        <attribute name="profile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="residence" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="specialty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vestaAccountType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Member" parentEntity="User" syncable="YES"/>
-    <entity name="MemberItem" isAbstract="YES" syncable="YES"/>
-    <entity name="Project" parentEntity="MemberItem" syncable="YES"/>
-    <entity name="RegisteredUser" parentEntity="User" syncable="YES"/>
+    <entity name="Consultation" parentEntity="DBProject" syncable="YES">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="revealClientName" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="2" defaultValueString="2" syncable="YES">
+            <userInfo>
+                <entry key="1" value="YES"/>
+                <entry key="2" value="NO"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="ConsultationTask" parentEntity="Task" syncable="YES">
+        <attribute name="approved" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="clientID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="contactID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="industry" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="interviewType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="7" syncable="YES"/>
+        <attribute name="inteviewContent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="positionID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="DBProject" isAbstract="YES" syncable="YES">
+        <attribute name="categoryID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="description" value="project type ID"/>
+            </userInfo>
+        </attribute>
+        <attribute name="createTime" attributeType="Date" syncable="YES"/>
+        <attribute name="currencyUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="industryID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="priority" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" syncable="YES">
+            <userInfo>
+                <entry key="1" value="low"/>
+                <entry key="2" value="medium"/>
+                <entry key="3" value="high"/>
+            </userInfo>
+        </attribute>
+        <attribute name="projectDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectID" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" defaultValueString="1" syncable="YES">
+            <userInfo>
+                <entry key="1" value="In Progress"/>
+                <entry key="2" value="On Hold"/>
+                <entry key="3" value="Complete"/>
+            </userInfo>
+        </attribute>
+        <attribute name="statusTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timeframe" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="hasFeedback" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Feedback" inverseName="ofProject" inverseEntity="Feedback" syncable="YES"/>
+        <relationship name="hasTask" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="ofProject" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="DBUser" isAbstract="YES" syncable="YES">
+        <attribute name="accountStatus" optional="YES" attributeType="Boolean" syncable="YES">
+            <userInfo>
+                <entry key="0" value="inactive"/>
+                <entry key="1" value="active"/>
+            </userInfo>
+        </attribute>
+        <attribute name="accountType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="1" value="internal"/>
+                <entry key="2" value="external"/>
+            </userInfo>
+        </attribute>
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastLoginIP" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastLoginTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="loginCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="ndbID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Event" parentEntity="Post" syncable="YES">
+        <attribute name="chargeType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" syncable="YES">
+            <userInfo>
+                <entry key="1" value="凯盛会员价"/>
+                <entry key="2" value="收费"/>
+                <entry key="3" value="免费"/>
+            </userInfo>
+        </attribute>
+        <attribute name="contactEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactTelephone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="eventURLString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="memberPrice" optional="YES" attributeType="Decimal" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="mustApply" optional="YES" attributeType="Binary" syncable="YES">
+            <userInfo>
+                <entry key="0" value="NO"/>
+                <entry key="1" value="YES"/>
+            </userInfo>
+        </attribute>
+        <attribute name="nonmemberPrice" optional="YES" attributeType="Decimal" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Feedback" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="feedbackID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="paymentScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="0" syncable="YES"/>
+        <attribute name="projectName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="qualityScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="0" syncable="YES"/>
+        <attribute name="serviceScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="0" syncable="YES"/>
+        <attribute name="willing" optional="YES" attributeType="Boolean" syncable="YES">
+            <userInfo>
+                <entry key="1" value="YES"/>
+                <entry key="2" value="NO"/>
+            </userInfo>
+        </attribute>
+        <relationship name="ofProject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBProject" inverseName="hasFeedback" inverseEntity="DBProject" syncable="YES"/>
+    </entity>
+    <entity name="KSHItem" syncable="YES"/>
+    <entity name="KSHProject" parentEntity="KSHItem" syncable="YES"/>
+    <entity name="Member" syncable="YES">
+        <attribute name="business" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="joinTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="responsibility" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Post" isAbstract="YES" parentEntity="KSHItem" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creator" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="editor" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="excerpt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="1" value="列表图片"/>
+                <entry key="2" value="侧边栏图片"/>
+            </userInfo>
+        </attribute>
+        <attribute name="guestContent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="homePage" optional="YES" attributeType="Boolean" syncable="YES">
+            <userInfo>
+                <entry key="0" value="否"/>
+                <entry key="1" value="是"/>
+            </userInfo>
+        </attribute>
+        <attribute name="postID" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="postType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="1" value="观点汇"/>
+                <entry key="2" value="行业活动"/>
+                <entry key="3" value="页面管理"/>
+            </userInfo>
+        </attribute>
+        <attribute name="publishTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="viewCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Tag" syncable="YES"/>
-    <entity name="ThirdPartyArticle" parentEntity="Content" syncable="YES"/>
-    <entity name="User" isAbstract="YES" syncable="YES"/>
-    <entity name="Video" parentEntity="Content" syncable="YES"/>
+    <entity name="Task" syncable="YES">
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="listID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paid" optional="YES" attributeType="Boolean" minValueString="0" maxValueString="1" syncable="YES">
+            <userInfo>
+                <entry key="0" value="NO"/>
+                <entry key="1" value="YES"/>
+            </userInfo>
+        </attribute>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="20" syncable="YES"/>
+        <attribute name="statusTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="taskID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="timezone" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="ofProject" maxCount="1" deletionRule="Nullify" destinationEntity="DBProject" inverseName="hasTask" inverseEntity="DBProject" syncable="YES"/>
+    </entity>
+    <entity name="ThirdPartyArticle" parentEntity="Article" syncable="YES"/>
+    <entity name="User" syncable="YES">
+        <attribute name="birthday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="business" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="consultantID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="consultantID" value="ndbID"/>
+            </userInfo>
+        </attribute>
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="education" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="7" syncable="YES">
+            <userInfo>
+                <entry key="1" value="大专"/>
+                <entry key="2" value="本科"/>
+                <entry key="3" value="硕士"/>
+                <entry key="4" value="MBA/EMBA"/>
+                <entry key="5" value="博士"/>
+                <entry key="6" value="博士后"/>
+                <entry key="7" value="其他"/>
+            </userInfo>
+        </attribute>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="2" syncable="YES">
+            <userInfo>
+                <entry key="1" value="male"/>
+                <entry key="2" value="female"/>
+            </userInfo>
+        </attribute>
+        <attribute name="industry" optional="YES" attributeType="Integer 32" minValueString="0" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="residence" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="specialty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Content" positionX="-288" positionY="-153" width="128" height="45"/>
-        <element name="User" positionX="583" positionY="-153" width="128" height="45"/>
-        <element name="Tag" positionX="-290" positionY="9" width="128" height="45"/>
-        <element name="MemberItem" positionX="151" positionY="-153" width="128" height="45"/>
-        <element name="Project" positionX="225" positionY="-72" width="128" height="45"/>
-        <element name="ThirdPartyArticle" positionX="-146" positionY="-72" width="128" height="45"/>
-        <element name="Video" positionX="-288" positionY="-72" width="128" height="45"/>
-        <element name="Article" positionX="-425" positionY="-72" width="128" height="45"/>
-        <element name="Event" positionX="79" positionY="-72" width="128" height="58"/>
-        <element name="Member" positionX="655" positionY="-72" width="128" height="45"/>
-        <element name="RegisteredUser" positionX="513" positionY="-72" width="128" height="45"/>
-        <element name="Entity" positionX="135" positionY="45" width="128" height="45"/>
+        <element name="Post" positionX="88" positionY="387" width="128" height="238"/>
+        <element name="DBUser" positionX="520" positionY="-25" width="128" height="223"/>
+        <element name="Tag" positionX="315" positionY="666" width="128" height="45"/>
+        <element name="DBProject" positionX="115" positionY="-369" width="128" height="313"/>
+        <element name="Consultation" positionX="115" positionY="-496" width="128" height="73"/>
+        <element name="ThirdPartyArticle" positionX="153" positionY="731" width="128" height="43"/>
+        <element name="Article" positionX="153" positionY="668" width="128" height="43"/>
+        <element name="Consultant" positionX="189" positionY="-0" width="128" height="178"/>
+        <element name="Member" positionX="27" positionY="2" width="128" height="178"/>
+        <element name="KSHProject" positionX="-56" positionY="387" width="128" height="43"/>
+        <element name="Event" positionX="9" positionY="666" width="128" height="253"/>
+        <element name="KSHItem" positionX="-2" positionY="261" width="128" height="43"/>
+        <element name="ConsultationTask" positionX="-54" positionY="-567" width="128" height="148"/>
+        <element name="Task" positionX="-56" positionY="-367" width="128" height="223"/>
+        <element name="Feedback" positionX="279" positionY="-367" width="128" height="178"/>
+        <element name="User" positionX="340" positionY="-0" width="128" height="328"/>
     </elements>
 </model>
