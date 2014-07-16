@@ -3,29 +3,12 @@
 
 @interface KSHArticle ()
 
-// Private interface goes here.
-
 @end
 
 
 @implementation KSHArticle
 
-
--(void) awakeFromFetch
-{
-    [super awakeFromFetch];
-    
-    // Compute derived values from the persisted properties
-    [self setIndustry];
-
-}
-
--(void) awakeFromInsert
-{
-    [super awakeFromFetch];
-    // Initialize default settings
-
-}
+@synthesize contentCleaned;
 
 - (void)setImage:(UIImage *)image
 {
@@ -35,6 +18,25 @@
 - (UIImage *)getImage
 {
     return [UIImage imageWithData:[self valueForKey:@"imgFile"]];
+}
+
+#pragma mark - Override methods
+
+-(void) awakeFromFetch
+{
+    [super awakeFromFetch];
+    
+    // Compute derived values from the persisted properties
+    [self setIndustry];
+    contentCleaned = NO;
+
+}
+
+-(void) awakeFromInsert
+{
+    [super awakeFromFetch];
+    // Initialize default settings
+//    contentCleaned = NO;
 }
 
 - (void)setIndustry

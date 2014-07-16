@@ -9,7 +9,6 @@
 #import "KSHArticleDetailViewController.h"
 
 @interface KSHArticleDetailViewController ()
-
 @end
 
 @implementation KSHArticleDetailViewController
@@ -27,10 +26,14 @@
 {
     [super viewDidLoad];
     
+    // Clean up content for html remnants
+    if (!_article.contentCleaned) {
+        [self cleanUpContent];
+    }
+    
     // Set content fields
     _articleTitle.text = _article.title;
     _articleContent.text = _article.content;
-    // TODO: set up filter for html '&xxxx' tags
     _articleIndustry.text = _article.industry;
     _articleTags.text = [NSString stringWithFormat:@"Tags: %@", _article.tags];
     _articleImage.image = [_article getImage];
@@ -52,6 +55,20 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)cleanUpContent
+{
+    // TODO: Use Regex to support full html-to-plaintext cleanup
+    // FIXME: This should probably be in the Article class as part of initialization, but ran into bugs
+    NSLog(@"Cleaning up content");
+    
+    _article.content = [_article.content stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"&rdquo"] withString:@"\""];
+    _article.content = [_article.content stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"&ldquo"] withString:@"\""];
+    _article.content= [_article.content stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"&nbsp;"] withString:@""];
+    _article.content = [_article.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    _article.contentCleaned = YES;
 }
 
 # pragma mark - Bottom Bar Buttons

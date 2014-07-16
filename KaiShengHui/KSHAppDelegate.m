@@ -79,7 +79,7 @@
 - (void)initializeRestkitForCoreData
 {
     // Log all Restkit info
-    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
     
     // Restkit managed object store
     _RKManagedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:[self managedObjectModel]];

@@ -119,29 +119,35 @@
     // Configure the cell
     [self configureCell:cell atIndexPath:indexPath];
     
-    // FIXME: Add more cells when scrolling to bottom, see KSHArticleManager (currently only loads 5 already existing articles)
+    // TODO: add progress indicator
     if (indexPath.row >= numberToLoad.intValue - 1) {
-        NSLog(@"more articles!");
+        NSLog(@"more articles! %@", numberToLoad);
         numberToLoad = [NSNumber numberWithInt:(numberToLoad.intValue + 10)];
-        [self loadArticles];
+        [self.refreshControl beginRefreshing];
+        [self loadArticles];\
         [self.tableView reloadData];
     }
     
     return cell;
 }
 
-- (void)configureCell:(KSHArticleTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    // Set Labels
     _article = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    cell.titleLabel.text = [[_article valueForKey:@"title"] description];
-    cell.tagsLabel.text = [[_article valueForKey:@"tags"] description];
-    cell.industryLabel.text = [[_article valueForKey:@"industry"] description];;
+
+    /* Keep cell type UITableViewCell in declaration to satisfy the implementation of
+     controller:didChangeObject:atIndexPath:forChangeType:newIndexPath: (part of
+     fetched results controller)
+     Can typecast below because we know it is a KSHArticleTableViewCell
+     */
+    ((KSHArticleTableViewCell *)cell).titleLabel.text = [[_article valueForKey:@"title"] description];
+    ((KSHArticleTableViewCell *)cell).tagsLabel.text = [[_article valueForKey:@"tags"] description];
+    ((KSHArticleTableViewCell *)cell).industryLabel.text = [[_article valueForKey:@"industry"] description];;
 
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];
     // Check if image has been downloaded
     if (!_article.imgFile) {
+        NSLog(@"Setting image");
         [self setImageAsync: articleImageView atIndexPath:indexPath];
     } else {
         articleImageView.image = [[self.fetchedResultsController objectAtIndexPath:indexPath] getImage];
@@ -151,7 +157,7 @@
 - (void)setImageAsync:(UIImageView *)articleImageView atIndexPath:(NSIndexPath *)indexPath
 {
     // Async request and assign cell image
-    // TODO: remove NSLogs after debugging
+    // FIXME: Displays most recent image instead of Placeholder while loading
     NSLog(@"grabbing image...");
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
     UIImageView *placeholderImageView = [UIImageView new];
@@ -230,11 +236,6 @@
     return _fetchedResultsController;
 }
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView beginUpdates];
-}
-
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
 {
@@ -275,6 +276,11 @@
     }
 }
 
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView beginUpdates];
+}
+
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
@@ -295,7 +301,6 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         KSHArticleDetailViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.article = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        destinationViewController.articleImage = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     }
 }
 
@@ -313,8 +318,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"IndustryCell" forIndexPath:indexPath];
     
-    UILabel *industryLabel = (UILabel *)[cell viewWithTag:110];
-    industryLabel.text = [industryMenuItems objectAtIndex:indexPath.row];
+    // TODO: Setup CollectionViewCell
     
     return cell;
 }

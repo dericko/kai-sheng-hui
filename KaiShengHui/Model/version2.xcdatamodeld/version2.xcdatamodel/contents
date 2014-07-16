@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Article" parentEntity="Post" syncable="YES">
-        <attribute name="industry" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="industryID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="typeID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="hasTopic" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="ofArticle" inverseEntity="Topic" syncable="YES"/>
     </entity>
     <entity name="Consultant" parentEntity="User" syncable="YES">
@@ -108,7 +103,12 @@
         <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="2" syncable="YES">
+            <userInfo>
+                <entry key="1" value="online"/>
+                <entry key="2" value="offline"/>
+            </userInfo>
+        </attribute>
         <userInfo>
             <entry key="source" value="vesta_post_event"/>
         </userInfo>
@@ -129,17 +129,17 @@
                 <entry key="source" value="vesta_project_feedback"/>
             </userInfo>
         </attribute>
-        <attribute name="paymentScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="0" syncable="YES">
+        <attribute name="paymentScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_project_feedback"/>
             </userInfo>
         </attribute>
-        <attribute name="qualityScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="0" syncable="YES">
+        <attribute name="qualityScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_project_feedback"/>
             </userInfo>
         </attribute>
-        <attribute name="serviceScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="0" syncable="YES">
+        <attribute name="serviceScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_project_feedback"/>
             </userInfo>
@@ -153,8 +153,7 @@
         </attribute>
         <relationship name="ofProject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="hasFeedback" inverseEntity="Project" syncable="YES"/>
     </entity>
-    <entity name="KSHItem" syncable="YES"/>
-    <entity name="Post" isAbstract="YES" parentEntity="KSHItem" syncable="YES">
+    <entity name="Post" isAbstract="YES" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_post"/>
@@ -199,7 +198,7 @@
                 <entry key="source" value="vesta_post"/>
             </userInfo>
         </attribute>
-        <attribute name="postType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" defaultValueString="0" syncable="YES">
+        <attribute name="postType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" syncable="YES">
             <userInfo>
                 <entry key="1" value="观点汇"/>
                 <entry key="2" value="行业活动"/>
@@ -313,16 +312,14 @@
             <entry key="source" value="project"/>
         </userInfo>
     </entity>
-    <entity name="ProjectOpportunity" parentEntity="KSHItem" syncable="YES">
-        <attribute name="background" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="ProjectOpportunity" syncable="YES">
+        <attribute name="contacts" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="deadlineTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="industry" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="keyIssues" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idealBackground" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="opportunityID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="publishTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="referenceContent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="favoritedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Consultant" inverseName="favoritesOpportunity" inverseEntity="Consultant" syncable="YES"/>
     </entity>
     <entity name="Task" isAbstract="YES" syncable="YES">
@@ -420,19 +417,18 @@
         <relationship name="userProfile" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Profile" inverseName="user" inverseEntity="Profile" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Article" positionX="171" positionY="605" width="128" height="133"/>
+        <element name="Article" positionX="171" positionY="605" width="128" height="58"/>
         <element name="Consultant" positionX="106" positionY="18" width="128" height="178"/>
         <element name="Consultation" positionX="115" positionY="-496" width="128" height="73"/>
         <element name="ConsultationTask" positionX="-54" positionY="-567" width="128" height="133"/>
-        <element name="Project" positionX="115" positionY="-369" width="128" height="328"/>
         <element name="Event" positionX="27" positionY="603" width="128" height="253"/>
         <element name="Feedback" positionX="279" positionY="-367" width="128" height="163"/>
-        <element name="KSHItem" positionX="-153" positionY="522" width="128" height="45"/>
-        <element name="ProjectOpportunity" positionX="-56" positionY="288" width="128" height="193"/>
         <element name="Post" positionX="124" positionY="288" width="128" height="253"/>
-        <element name="Topic" positionX="349" positionY="603" width="128" height="133"/>
-        <element name="Task" positionX="-56" positionY="-367" width="128" height="223"/>
-        <element name="User" positionX="304" positionY="26" width="128" height="163"/>
         <element name="Profile" positionX="504" positionY="27" width="128" height="193"/>
+        <element name="Project" positionX="115" positionY="-369" width="128" height="328"/>
+        <element name="ProjectOpportunity" positionX="-56" positionY="288" width="128" height="163"/>
+        <element name="Task" positionX="-56" positionY="-367" width="128" height="223"/>
+        <element name="Topic" positionX="349" positionY="603" width="128" height="133"/>
+        <element name="User" positionX="304" positionY="26" width="128" height="163"/>
     </elements>
 </model>
