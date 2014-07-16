@@ -84,6 +84,8 @@
     // Restkit managed object store
     _RKManagedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:[self managedObjectModel]];
     
+
+    // FIXME: need to support migrations here
     // Set up persistent store
     [_RKManagedObjectStore createPersistentStoreCoordinator];
     NSString *storeURL = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"KaiShengHui.sqlite"];
@@ -94,8 +96,8 @@
     // Managed object context
     [_RKManagedObjectStore createManagedObjectContexts];
     
-    [RKManagedObjectStore setDefaultStore:_RKManagedObjectStore];
     
+    [RKManagedObjectStore setDefaultStore:_RKManagedObjectStore];
 }
 
 // Returns the managed object model for the application.
@@ -110,6 +112,7 @@
     _managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
     return _managedObjectModel;
 }
+
 
 #pragma mark - Application's Documents directory
 

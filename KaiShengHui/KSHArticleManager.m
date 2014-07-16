@@ -11,17 +11,18 @@
 // !!!: part of test URL
 NSString * const kArticlePath = @"/post/rest/gettopposts/";
 
+@interface KSHArticleManager()
+@property NSString *articlePath;
+@end
+
 @implementation KSHArticleManager
 // TODO: implement KSHArticleManager methods
 
-
 - (void)loadArticles:(NSNumber *)numberToLoad success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
 {
-// FIXME: parameter appends "?articleCount="+numberToLoad, but only returns 5 JSON objects each time
-    NSDictionary *parameters = @{@"articleCount": numberToLoad};
-    
-    [self getObjectsAtPath:kArticlePath
-                parameters:parameters
+    _articlePath = [NSString stringWithFormat:@"%@%@", kArticlePath, numberToLoad];
+    [self getObjectsAtPath:_articlePath
+                parameters:nil
                    success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                        if (success) {
                            success();
@@ -66,7 +67,7 @@ NSString * const kArticlePath = @"/post/rest/gettopposts/";
     RKResponseDescriptor *articleResponseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider articleMapping]
                                                  method:RKRequestMethodGET
-                                            pathPattern:kArticlePath
+                                            pathPattern:_articlePath
                                                 keyPath:nil
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     

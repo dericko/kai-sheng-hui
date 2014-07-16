@@ -20,5 +20,8 @@
 @property (nonatomic, strong) KSHArticle *article;
 @property (nonatomic, strong) IBOutlet UILabel *articleTitle;
 @property (nonatomic, strong) IBOutlet UITextView *articleContent;
+@property (strong, nonatomic) IBOutlet UILabel *articleTags;
+@property (strong, nonatomic) IBOutlet UILabel *articleIndustry;
+@property (strong, nonatomic) IBOutlet UILabel *articleSource;
 @property (nonatomic, strong) IBOutlet UIImageView *articleImage;
 @end

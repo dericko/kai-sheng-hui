@@ -79,7 +79,8 @@ static RKEntityMapping *PLACEHOLDER = nil;
     [articleMapping addAttributeMappingsFromDictionary:@{
                                                         @"id":              @"articleID",
                                                         @"title":           @"title",
-                                                        @"tags":         @"excerpt",
+                                                        @"excerpt":         @"excerpt",
+                                                        @"tags":            @"tags",
                                                         @"content":         @"content",
                                                         @"editor":          @"author",
                                                         @"publish_time":    @"datePublished",
@@ -87,7 +88,6 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                                         @"type":            @"typeID",
                                                         @"view_count":      @"viewCount",
                                                         @"industry.id":     @"industryID",
-                                                        @"industry.value":  @"industry",
                                                         @"function.id":     @"functionID",
                                                         @"function.value":  @"function",
                                                         @"file.path":       @"imgURLString"}];

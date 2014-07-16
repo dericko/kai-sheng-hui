@@ -15,6 +15,7 @@
 #import "KSHTag.h"
 #import "KSHMessage.h"
 
+#import "KSHArticleTableViewCell.h"
 #import "KSHArticleDetailViewController.h"
 
 @interface KSHArticleTableViewController ()
@@ -111,11 +112,9 @@
 {
     static NSString *cellIdentifier = @"ArticleCell";
     
-    // Use SWTableViewCell for slider buttons
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+    KSHArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                                                 cellIdentifier forIndexPath:indexPath];
     cell.rightUtilityButtons = [self rightButtons];
-    cell.delegate = self;
     
     // Configure the cell
     [self configureCell:cell atIndexPath:indexPath];
@@ -131,23 +130,16 @@
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(KSHArticleTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    // Set Title
+    // Set Labels
     _article = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *articleTitleLabel = (UILabel *)[cell viewWithTag:100];
-    articleTitleLabel.text = [[_article valueForKey:@"title"] description];
     
-    // Set Excerpt
-    // FIXME: removed Excerpt label in Storyboard, probably remove implementation here
-    UILabel *articleExcerptLabel = (UILabel *)[cell viewWithTag:101];
-    articleExcerptLabel.text = [[_article valueForKey:@"excerpt"] description];;
+    cell.titleLabel.text = [[_article valueForKey:@"title"] description];
+    cell.tagsLabel.text = [[_article valueForKey:@"tags"] description];
+    cell.industryLabel.text = [[_article valueForKey:@"industry"] description];;
 
-    // TODO: set Industry
-    // TODO: set Tags
-    
-    // Set Image
-    UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:102];
+    UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];
     // Check if image has been downloaded
     if (!_article.imgFile) {
         [self setImageAsync: articleImageView atIndexPath:indexPath];
@@ -306,39 +298,6 @@
         destinationViewController.articleImage = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     }
 }
-
-#pragma mark - SWTableViewDelegate
-
-- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
-    
-    switch (index) {
-        case 0:
-        {
-            // TODO: implement Dislike
-            [KSHMessage displayMessageAlert:@"Dislike" withSubtitle:@"We'll show you fewer articles like this"];
-            
-            [cell hideUtilityButtonsAnimated:YES];
-            
-            break;
-        }
-        case 1:
-        {
-            // TODO: implement Like
-            [KSHMessage displayMessageAlert:@"Like" withSubtitle:@"We'll show you more articles like this"];
-            
-            [cell hideUtilityButtonsAnimated:YES];
-            
-            break;
-        }
-    }
-}
-
-- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
-{
-    // allow just one cell's utility button to be open at once
-    return YES;
-}
-
 
 #pragma mark - CollectionViewDataSource/Delegate
 

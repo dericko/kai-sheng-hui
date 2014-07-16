@@ -31,9 +31,9 @@
     _articleTitle.text = _article.title;
     _articleContent.text = _article.content;
     // TODO: set up filter for html '&xxxx' tags
+    _articleIndustry.text = _article.industry;
+    _articleTags.text = [NSString stringWithFormat:@"Tags: %@", _article.tags];
     _articleImage.image = [_article getImage];
-    // TODO: set Industry
-    // TODO: set Tags
 }
 
 - (void)viewDidAppear:(BOOL)animated

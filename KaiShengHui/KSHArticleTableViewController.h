@@ -12,7 +12,7 @@
 
 /** Displays a table of Articles using a KSHArticleManager
  */
-@interface KSHArticleTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, SWTableViewCellDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface KSHArticleTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
