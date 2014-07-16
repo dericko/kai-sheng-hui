@@ -17,6 +17,7 @@ extern const struct KSHArticleAttributes {
 	__unsafe_unretained NSString *imgURLString;
 	__unsafe_unretained NSString *industry;
 	__unsafe_unretained NSString *industryID;
+	__unsafe_unretained NSString *tags;
 	__unsafe_unretained NSString *title;
 	__unsafe_unretained NSString *typeID;
 	__unsafe_unretained NSString *viewCount;
@@ -36,6 +37,7 @@ extern const struct KSHArticleFetchedProperties {
 @class KSHTag;
 @class KSHDislike;
 @class KSHStar;
+
 
 
 
@@ -197,6 +199,16 @@ extern const struct KSHArticleFetchedProperties {
 - (void)setIndustryIDValue:(int16_t)value_;
 
 //- (BOOL)validateIndustryID:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* tags;
+
+
+
+//- (BOOL)validateTags:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -378,6 +390,12 @@ extern const struct KSHArticleFetchedProperties {
 
 - (int16_t)primitiveIndustryIDValue;
 - (void)setPrimitiveIndustryIDValue:(int16_t)value_;
+
+
+
+
+- (NSString*)primitiveTags;
+- (void)setPrimitiveTags:(NSString*)value;
 
 
 

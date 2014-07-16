@@ -16,6 +16,7 @@ const struct KSHArticleAttributes KSHArticleAttributes = {
 	.imgURLString = @"imgURLString",
 	.industry = @"industry",
 	.industryID = @"industryID",
+	.tags = @"tags",
 	.title = @"title",
 	.typeID = @"typeID",
 	.viewCount = @"viewCount",
@@ -249,6 +250,13 @@ const struct KSHArticleFetchedProperties KSHArticleFetchedProperties = {
 - (void)setPrimitiveIndustryIDValue:(int16_t)value_ {
 	[self setPrimitiveIndustryID:[NSNumber numberWithShort:value_]];
 }
+
+
+
+
+
+@dynamic tags;
+
 
 
 

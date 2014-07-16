@@ -13,6 +13,7 @@
         <attribute name="imgURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="industry" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="industryID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" defaultValueString="@&quot;Default Title&quot;" syncable="YES"/>
         <attribute name="typeID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="viewCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -67,12 +68,12 @@
         <relationship name="stars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Star" inverseName="user" inverseEntity="Star" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Article" positionX="90" positionY="90" width="128" height="328"/>
-        <element name="Like" positionX="304" positionY="198" width="128" height="103"/>
+        <element name="Article" positionX="90" positionY="90" width="128" height="345"/>
         <element name="Dislike" positionX="306" positionY="324" width="128" height="103"/>
+        <element name="Like" positionX="304" positionY="198" width="128" height="103"/>
         <element name="LikeDislike" positionX="304" positionY="18" width="128" height="73"/>
+        <element name="Star" positionX="306" positionY="459" width="128" height="73"/>
         <element name="Tag" positionX="124" positionY="531" width="128" height="118"/>
         <element name="User" positionX="504" positionY="153" width="128" height="283"/>
-        <element name="Star" positionX="306" positionY="459" width="128" height="73"/>
     </elements>
 </model>
