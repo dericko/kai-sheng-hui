@@ -26,17 +26,15 @@
 {
     [super awakeFromFetch];
     
+    NSLog(@"Wake up: %@", self.title);
     // Compute derived values from the persisted properties
     [self setIndustry];
-    contentCleaned = NO;
-
 }
 
 -(void) awakeFromInsert
 {
-    [super awakeFromFetch];
+    [super awakeFromInsert];
     // Initialize default settings
-//    contentCleaned = NO;
 }
 
 - (void)setIndustry

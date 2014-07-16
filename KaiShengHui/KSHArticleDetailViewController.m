@@ -27,9 +27,7 @@
     [super viewDidLoad];
     
     // Clean up content for html remnants
-    if (!_article.contentCleaned) {
-        [self cleanUpContent];
-    }
+    [self cleanUpContent];
     
     // Set content fields
     _articleTitle.text = _article.title;
@@ -60,15 +58,14 @@
 - (void)cleanUpContent
 {
     // TODO: Use Regex to support full html-to-plaintext cleanup
-    // FIXME: This should probably be in the Article class as part of initialization, but ran into bugs
+    // FIXME: This should probably be in the Article class as part of initialization, but ran into bugs since Article is fetched multiple times (can't override init with CoreData)
     NSLog(@"Cleaning up content");
     
     _article.content = [_article.content stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"&rdquo"] withString:@"\""];
     _article.content = [_article.content stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"&ldquo"] withString:@"\""];
+    _article.content= [_article.content stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"&mdash;"] withString:@"-"];
     _article.content= [_article.content stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"&nbsp;"] withString:@""];
     _article.content = [_article.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    _article.contentCleaned = YES;
 }
 
 # pragma mark - Bottom Bar Buttons
