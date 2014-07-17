@@ -2,8 +2,6 @@
 
 @interface KSHUser : _KSHUser {}
 
-+ (instancetype)currentUser;
-
 - (void)setupGuestUserWithContext:(NSManagedObjectContext *)managedObjectContext;
 
 - (void)setImage:(UIImage *)image;

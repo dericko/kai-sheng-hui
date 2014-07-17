@@ -30,12 +30,12 @@
  Tells client how to make API requests
  @see http://restkit.org/ for more information
  */
-- (void) setupRequestDescriptors;
+- (void)setupRequestDescriptors;
 
 /**
  Tells client how to deal with API responses
  @see http://restkit.org/ for more information
  */
-- (void) setupResponseDescriptors;
+- (void)setupResponseDescriptors;
 
 @end

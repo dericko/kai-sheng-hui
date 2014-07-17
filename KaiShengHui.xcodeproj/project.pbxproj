@@ -28,6 +28,7 @@
 		C134459119735CDE003940CE /* version2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C134458F19735CDE003940CE /* version2.xcdatamodeld */; };
 		C134459319738CDC003940CE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C134459219738CDC003940CE /* README.md */; };
 		C134459A1976637C003940CE /* KSHArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C13445991976637C003940CE /* KSHArticleTableViewCell.m */; };
+		C13445AA197781E7003940CE /* KSHCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C13445A9197781E7003940CE /* KSHCurrentUser.m */; };
 		C1355FEC19594FA9005DABED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FEB19594FA9005DABED /* Foundation.framework */; };
 		C1355FEE19594FA9005DABED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FED19594FA9005DABED /* CoreGraphics.framework */; };
 		C1355FF019594FA9005DABED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FEF19594FA9005DABED /* UIKit.framework */; };
@@ -45,7 +46,6 @@
 		C135602019594FA9005DABED /* KaiShengHuiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C135601F19594FA9005DABED /* KaiShengHuiTests.m */; };
 		C135603819595523005DABED /* KSHMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603719595523005DABED /* KSHMappingProvider.m */; };
 		C135603B19595590005DABED /* KSHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603A19595590005DABED /* KSHObjectManager.m */; };
-		C14924471965491F00DD1478 /* KSHLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C14924461965491F00DD1478 /* KSHLoginManager.m */; };
 		C182851A196679210080F2DD /* KSHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C1828519196679210080F2DD /* KSHMessage.m */; };
 		C1E2AC7F196BC70D00B6A7AF /* KSHUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */; };
 		C1E2AD0F196BF16900B6A7AF /* _KSHArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2ACF3196BF16900B6A7AF /* _KSHArticle.m */; };
@@ -62,7 +62,6 @@
 		C1E2AD3A196CE66200B6A7AF /* _KSHLike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AD38196CE66200B6A7AF /* _KSHLike.m */; };
 		C1E2AD3F196CE67300B6A7AF /* KSHDislike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AD3C196CE67300B6A7AF /* KSHDislike.m */; };
 		C1E2AD40196CE67300B6A7AF /* KSHLike.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AD3E196CE67300B6A7AF /* KSHLike.m */; };
-		C1E2AD43196CE6AC00B6A7AF /* KSHLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AD42196CE6AC00B6A7AF /* KSHLoginRequest.m */; };
 		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
 		C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */; };
 		C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF9819597E0E006EE5F7 /* KSHArticleTableViewController.m */; };
@@ -99,6 +98,8 @@
 		C134459219738CDC003940CE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		C13445981976637C003940CE /* KSHArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleTableViewCell.h; sourceTree = "<group>"; };
 		C13445991976637C003940CE /* KSHArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleTableViewCell.m; sourceTree = "<group>"; };
+		C13445A8197781E7003940CE /* KSHCurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHCurrentUser.h; sourceTree = "<group>"; };
+		C13445A9197781E7003940CE /* KSHCurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHCurrentUser.m; sourceTree = "<group>"; };
 		C1355FE819594FA9005DABED /* KaiShengHui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaiShengHui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1355FEB19594FA9005DABED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C1355FED19594FA9005DABED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,8 +122,6 @@
 		C135603719595523005DABED /* KSHMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMappingProvider.m; sourceTree = "<group>"; };
 		C135603919595590005DABED /* KSHObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHObjectManager.h; sourceTree = "<group>"; };
 		C135603A19595590005DABED /* KSHObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHObjectManager.m; sourceTree = "<group>"; };
-		C14924451965491F00DD1478 /* KSHLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLoginManager.h; sourceTree = "<group>"; };
-		C14924461965491F00DD1478 /* KSHLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLoginManager.m; sourceTree = "<group>"; };
 		C1828518196679210080F2DD /* KSHMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHMessage.h; sourceTree = "<group>"; };
 		C1828519196679210080F2DD /* KSHMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMessage.m; sourceTree = "<group>"; };
 		C1E2AC7D196BC70D00B6A7AF /* KSHUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserDefaultsHelper.h; sourceTree = "<group>"; };
@@ -155,8 +154,6 @@
 		C1E2AD3C196CE67300B6A7AF /* KSHDislike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHDislike.m; sourceTree = "<group>"; };
 		C1E2AD3D196CE67300B6A7AF /* KSHLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLike.h; sourceTree = "<group>"; };
 		C1E2AD3E196CE67300B6A7AF /* KSHLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLike.m; sourceTree = "<group>"; };
-		C1E2AD41196CE6AC00B6A7AF /* KSHLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLoginRequest.h; sourceTree = "<group>"; };
-		C1E2AD42196CE6AC00B6A7AF /* KSHLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLoginRequest.m; sourceTree = "<group>"; };
 		C1F6FF8319596350006EE5F7 /* KSHUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserManager.h; sourceTree = "<group>"; };
 		C1F6FF8419596350006EE5F7 /* KSHUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserManager.m; sourceTree = "<group>"; };
 		C1F6FF861959635E006EE5F7 /* KSHArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleManager.h; sourceTree = "<group>"; };
@@ -207,6 +204,16 @@
 			);
 			name = View;
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C13445A119777035003940CE /* CurrentUser */ = {
+			isa = PBXGroup;
+			children = (
+				C13445A8197781E7003940CE /* KSHCurrentUser.h */,
+				C13445A9197781E7003940CE /* KSHCurrentUser.m */,
+			);
+			name = CurrentUser;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		C1355FDF19594FA9005DABED = {
@@ -300,15 +307,6 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		C182851B1966B2330080F2DD /* LoginManager */ = {
-			isa = PBXGroup;
-			children = (
-				C14924451965491F00DD1478 /* KSHLoginManager.h */,
-				C14924461965491F00DD1478 /* KSHLoginManager.m */,
-			);
-			name = LoginManager;
-			sourceTree = "<group>";
-		};
 		C182851C1966B29B0080F2DD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +368,7 @@
 			children = (
 				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
 				C134458F19735CDE003940CE /* version2.xcdatamodeld */,
+				C13445A119777035003940CE /* CurrentUser */,
 				C1E2AD00196BF16900B6A7AF /* CoreData Subclasses */,
 				C1E2ACF1196BF16900B6A7AF /* CoreDataEntities_DO_NOT_EDIT */,
 			);
@@ -414,8 +413,6 @@
 				C1E2AD2C196CE36800B6A7AF /* KSHStar.m */,
 				C1E2AD0D196BF16900B6A7AF /* KSHUser.h */,
 				C1E2AD0E196BF16900B6A7AF /* KSHUser.m */,
-				C1E2AD41196CE6AC00B6A7AF /* KSHLoginRequest.h */,
-				C1E2AD42196CE6AC00B6A7AF /* KSHLoginRequest.m */,
 			);
 			name = "CoreData Subclasses";
 			path = CoreDataSubclasses;
@@ -435,7 +432,6 @@
 			children = (
 				C1ABFE34195C210B006560E7 /* ObjectManager */,
 				C1ABFE33195C20F3006560E7 /* ArticleManager */,
-				C182851B1966B2330080F2DD /* LoginManager */,
 				C1ABFE32195C20ED006560E7 /* UserManager */,
 			);
 			name = ObjectManagers;
@@ -626,13 +622,12 @@
 				C1E2AD3F196CE67300B6A7AF /* KSHDislike.m in Sources */,
 				C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */,
 				C1E2AD40196CE67300B6A7AF /* KSHLike.m in Sources */,
-				C14924471965491F00DD1478 /* KSHLoginManager.m in Sources */,
-				C1E2AD43196CE6AC00B6A7AF /* KSHLoginRequest.m in Sources */,
 				C1E2AD0F196BF16900B6A7AF /* _KSHArticle.m in Sources */,
 				C1F87B95195D3EAA00DD300D /* KSHUserProfileTableViewController.m in Sources */,
 				C1E2AC7F196BC70D00B6A7AF /* KSHUserDefaultsHelper.m in Sources */,
 				C1E2AD12196BF16900B6A7AF /* _KSHLikeDislike.m in Sources */,
 				C1F87B98195D3ECF00DD300D /* KSHUserProfileDetailViewController.m in Sources */,
+				C13445AA197781E7003940CE /* KSHCurrentUser.m in Sources */,
 				C182851A196679210080F2DD /* KSHMessage.m in Sources */,
 				C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */,
 				C135603819595523005DABED /* KSHMappingProvider.m in Sources */,

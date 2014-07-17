@@ -7,6 +7,8 @@
 //
 
 #import "KSHObjectManager.h"
+#import "KSHAuthorizationClient.h"
+#import "KSHCurrentUser.h"
 
 // !!!: part of test URL
 #define BASE_URL @"http://test.i-ksh.net"
@@ -19,7 +21,7 @@ static KSHObjectManager *sharedManager = nil;
 
 + (instancetype)sharedManager
 {
-    // singleton pattern
+    // singleton
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
@@ -29,21 +31,44 @@ static KSHObjectManager *sharedManager = nil;
         
         // Serialize for JSON
         sharedManager.requestSerializationMIMEType = RKMIMETypeJSON;
-    
+        
         // Set up request and response behavior
         [sharedManager setupRequestDescriptors];
         [sharedManager setupResponseDescriptors];
         
-        // TODO: Add token to request (after JSON API is implemented)
-//        [sharedManager.HTTPClient setDefaultHeader:@"Authorization" value: [NSString stringWithFormat:@"token %@", PERSONAL_ACCESS_TOKEN]];
+        // Set up HTTPClient
+        [sharedManager setupClientWithURL:url];
     });
     
         return sharedManager;
 }
 
+- (void)setupClientWithURL:(NSURL *)url
+{
+    sharedManager.HTTPClient = [AFHTTPClient clientWithBaseURL:url];
+    [sharedManager.HTTPClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [self setAuthTokenHeader];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(tokenChanged:)
+                                                 name:@"token-changed"
+                                               object:nil];
+    
+}
+
+- (void)setAuthTokenHeader {
+    KSHCurrentUser *currentUser = [[KSHCurrentUser alloc] init];
+    NSString *authToken = [currentUser authToken];
+    [sharedManager.HTTPClient setDefaultHeader:@"auth_token" value:authToken];
+}
+
+- (void)tokenChanged:(NSNotification *)notification {
+    [self setAuthTokenHeader];
+}
+
 - (void)setupRequestDescriptors
 {
-  // any common code for requests
+    // any common code for requests
 }
 
 - (void)setupResponseDescriptors

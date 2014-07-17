@@ -29,8 +29,8 @@ extern const struct KSHUserRelationships {
 extern const struct KSHUserFetchedProperties {
 } KSHUserFetchedProperties;
 
-@class KSHLike;
 @class KSHDislike;
+@class KSHLike;
 @class KSHStar;
 
 
@@ -230,13 +230,13 @@ extern const struct KSHUserFetchedProperties {
 
 - (void)addDislikes:(NSSet*)value_;
 - (void)removeDislikes:(NSSet*)value_;
-- (void)addDislikesObject:(KSHLike*)value_;
-- (void)removeDislikesObject:(KSHLike*)value_;
+- (void)addDislikesObject:(KSHDislike*)value_;
+- (void)removeDislikesObject:(KSHDislike*)value_;
 
 - (void)addLikes:(NSSet*)value_;
 - (void)removeLikes:(NSSet*)value_;
-- (void)addLikesObject:(KSHDislike*)value_;
-- (void)removeLikesObject:(KSHDislike*)value_;
+- (void)addLikesObject:(KSHLike*)value_;
+- (void)removeLikesObject:(KSHLike*)value_;
 
 - (void)addStars:(NSSet*)value_;
 - (void)removeStars:(NSSet*)value_;

@@ -9,13 +9,17 @@
 #import "KSHLoginViewController.h"
 #import "KSHMessage.h"
 
-#import "KSHLoginRequest.h"
-#import "KSHArticle.h"
-#import "KSHUserDefaultsHelper.h"
+#import "KSHCurrentUser.h"
 #import "KSHUserProfileTableViewController.h"
+
+#define LOGIN_PATH @"INSERT_LOGIN_PATH"
 
 @interface KSHLoginViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *signInButton;
+@property (strong, nonatomic) IBOutlet UITextField *email;
+@property (strong, nonatomic) IBOutlet UITextField *password;
+
+@property (strong, nonatomic) KSHCurrentUser *currentUser;
 
 @end
 
@@ -38,15 +42,10 @@
     [self enableSignInButton];
     [KSHMessage displayMessageAlert:@"Hi There!" withSubtitle:@"Please sign in with your 凯盛汇 credentials"];
     
-    // Login manager instance
-    NSLog(@"instantiate login manager...");
-    _loginManager = [KSHLoginManager sharedManager];
-    NSLog(@"instantiate login manager...DONE");
-    _loginManager.managedObjectStore = [RKManagedObjectStore defaultStore];
-    // set managed object context to main queue
+    _userManager = [KSHUserManager sharedManager];
+    _userManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
 
-    
     // Tap gesture to minimuze keyboard
     UITapGestureRecognizer *tapBackground = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(backgroundTap:)];
     [self.view addGestureRecognizer:tapBackground];
@@ -110,88 +109,44 @@
         [KSHMessage displayWarningAlert:@"Empty Field" withSubtitle:@"Please check your email or password"];
         [self enableSignInButton];
     } else {
-        if (_loginManager) {
-            NSLog(@"Making login request");
+        if (_userManager) {
             
-# warning better to send this off to the login manager...
-//            KSHLoginRequest *userLogin = [NSEntityDescription insertNewObjectForEntityForName:@"Login" inManagedObjectContext:[self managedObjectContext]];
-//            [userLogin setEmail:_email.text];
-//            [userLogin setPassword:_password.text];
-//            
-//            [_loginManager loginWithEmail:userLogin success:^(RKMappingResult *result){
-//                NSDictionary *resultData = [result dictionary];
-//                NSInteger success = [(NSNumber *) [resultData objectForKey:@"success"] integerValue]; // TODO: check "success" key with Sky
-//                if(success == 1) {
-//                    NSLog(@"Login successful");
-//                    [self loggedInSuccessfully];
-//                    _password.text=@"";
-//                } else {
-//                    NSString *error_msg = (NSString *) [resultData objectForKey:@"error_message"]; // TODO: check "error_message" key with Sky
-//                    [KSHMessage displayErrorAlert:@"Login failed" withSubtitle:@"Please check your email and password"];
-//                }
-//            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-//                [KSHMessage displayErrorAlert:@"Error" withSubtitle:[error localizedDescription]];
-//            }];
-//        }
-
-        // Make request here (rather than _loginManager method) due to error with block pasing
-            KSHLoginRequest *userLogin = [[KSHLoginRequest alloc] initWithUsername:_email.text withPassword:_password.text];
-    
-            [_loginManager postObject:userLogin
-                                 path:kLoginPath
-                           parameters:nil
-                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                  NSDictionary *resultData = [mappingResult dictionary];
-                                  NSInteger success = [(NSNumber *) [resultData objectForKey:@"success"] integerValue]; // TODO: check "success" key with Sky
-                                  if(success == 1) {
-                                      NSLog(@"Login successful");
-                                      [self loggedInSuccessfully];
-                                      _password.text=@"";
-                                  } else {
-                                      NSString *error_msg = (NSString *) [resultData objectForKey:@"error_message"];
-                                      // TODO: check "error_message" key with Sky
-                                      [KSHMessage displayErrorAlert:@"Login failed" withSubtitle:@"Please check your email and password"];
-                                      
-                                      [KSHMessage displayMessageAlert:@"It appears that there was a problem logging in" withSubtitle:@"Would you like to try as a guest?" withButton:@"OK" forCallbackBlock:^{
-                                          [self loginAsGuest];
-                                      }];
-                                      
-                                      [self enableSignInButton];
-                                  }
-                              }
-                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                  [KSHMessage displayErrorAlert:@"Networking Error" withSubtitle:@""];
-                                  [KSHMessage displayMessageAlert:@"It appears that there was a problem logging in" withSubtitle:@"Would you like to try as a guest?" withButton:@" OK " forCallbackBlock:^{
-                                      [self loginAsGuest];
-                                  }];
-                                  [self enableSignInButton];
-                                  NSLog([NSString stringWithFormat:@"Error: %@", [error localizedDescription]]);
-                              }];
+            // TODO: Start HUD
+            
+            NSLog(@"Logging in...");
+            
+            id params = @{
+                          @"username": _email.text,
+                          @"password": _password.text
+                          };
+            
+            [[KSHObjectManager sharedManager].HTTPClient postPath:LOGIN_PATH
+                                                 parameters:params
+                                                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                        NSString *authToken = [responseObject objectForKey:@"auth_token"];
+                                                        [self.currentUser setAuthToken:authToken];
+                                                        // TODO: Stop HUD
+                                                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                        if (operation.response.statusCode == 500) {
+                                                            // TODO: Stop HUD + 500 error
+                                                            [KSHMessage displayErrorAlert:@"Something went wrong!" withSubtitle:@""];
+                                                        } else {
+                                                            NSData *jsonData = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+                                                            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                                                                 options:0
+                                                                                                                   error:nil];
+                                                            NSString *errorMessage = [json objectForKey:@"error"];
+                                                            // TODO: Stop HUD + error
+                                                            [KSHMessage displayErrorAlert:@"Problem logging in" withSubtitle:errorMessage];
+                                                        }
+                                                    }];
         }
     }
 }
 
-- (void)loginAsGuest
-{
-    [KSHUserDefaultsHelper userLogin];
-    
-    KSHUser *guestUser = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[self managedObjectContext]];
-   
-    [guestUser setupGuestUserWithContext:[self managedObjectContext]];
-    
-    _user = guestUser;
-    
-    //TODO: implement guest login
-    NSLog(@"booooooom guest login!");
-    [self showNextView];
-    
-    [KSHMessage displaySuccessAlert:@"Success!" withSubtitle:@"Logged in as Guest."];
-
-}
 
 - (void)loggedInSuccessfully
 {
-    [KSHUserDefaultsHelper userLogin];
     // Instantiate User entity with request
     
     // Link via userID, authToken/cookie(?)
@@ -212,7 +167,6 @@
     }];
     
     
-    nextViewController.user = _user;
     [destinationViewController perform];
 }
 

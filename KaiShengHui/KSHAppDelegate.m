@@ -85,7 +85,7 @@
     _RKManagedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:[self managedObjectModel]];
     
 
-    // FIXME: need to support migrations here
+    // FIXME: need to support migrations when using persistent store - currently requires "Reset Content and Settings" in simulator
     // Set up persistent store
     [_RKManagedObjectStore createPersistentStoreCoordinator];
     NSString *storeURL = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"KaiShengHui.sqlite"];

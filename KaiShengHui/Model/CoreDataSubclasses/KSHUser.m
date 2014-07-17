@@ -8,19 +8,7 @@
 
 @end
 
-static KSHUser *currentUser = nil;
-
 @implementation KSHUser
-
-+ (instancetype)currentUser
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        currentUser = [[self alloc] init];
-    });
-    
-    return currentUser;
-}
 
 - (void)setImage:(UIImage *)image
 {

@@ -33,7 +33,7 @@
     _articleTitle.text = _article.title;
     _articleContent.text = _article.content;
     _articleIndustry.text = _article.industry;
-    _articleTags.text = [NSString stringWithFormat:@"Tags: %@", _article.tags];
+    _articleTags.text = _article.tags;
     _articleImage.image = [_article getImage];
 }
 
