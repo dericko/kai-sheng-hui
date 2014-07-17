@@ -120,7 +120,7 @@
                           @"password": _password.text
                           };
             
-            [[KSHObjectManager sharedManager].HTTPClient postPath:LOGIN_PATH
+            [_userManager.HTTPClient postPath:LOGIN_PATH
                                                  parameters:params
                                                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                         NSString *authToken = [responseObject objectForKey:@"auth_token"];

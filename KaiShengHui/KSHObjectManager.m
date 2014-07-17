@@ -7,7 +7,6 @@
 //
 
 #import "KSHObjectManager.h"
-#import "KSHAuthorizationClient.h"
 #import "KSHCurrentUser.h"
 
 // !!!: part of test URL
