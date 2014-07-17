@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "KSHArticleManager.h"
-#import <SWTableViewCell/SWTableViewCell.h>
 
 /** Displays a table of Articles using a KSHArticleManager
  */

@@ -10,6 +10,7 @@
 
 #import <RestKit/RestKit.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 #import "KSHArticle.h"
 #import "KSHTag.h"
@@ -20,7 +21,7 @@
 
 @interface KSHArticleTableViewController ()
 @property (nonatomic, strong) KSHArticle *article;
-
+@property (nonatomic, strong) UIView * footerView;
 @end
 
 
@@ -53,6 +54,7 @@
     
     // set up refresh control
     [self addRefreshControl];
+    [self initFooterView];
     [self.refreshControl beginRefreshing];
     
     // load articles
@@ -87,6 +89,9 @@
                               }
                               failure:^(NSError *error) {
                                   [self.refreshControl endRefreshing];
+                                  if (_footerView){
+                                      [(UIActivityIndicatorView *)[_footerView viewWithTag:10] stopAnimating];
+                                  }
                                   [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
                               }];
     }
@@ -103,8 +108,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+//    
+//    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+//    return [sectionInfo numberOfObjects];
+
+    return numberToLoad.integerValue;
 }
 
 
@@ -119,13 +127,22 @@
     // Configure the cell
     [self configureCell:cell atIndexPath:indexPath];
     
-    // TODO: add progress indicator
+    // FIXME: loading more rows seems to stop working at 55 articles
     if (indexPath.row >= numberToLoad.intValue - 1) {
-        NSLog(@"more articles! %@", numberToLoad);
-        numberToLoad = [NSNumber numberWithInt:(numberToLoad.intValue + 10)];
-        [self.refreshControl beginRefreshing];
-        [self loadArticles];\
-        [self.tableView reloadData];
+        if (numberToLoad.integerValue <= 55) {
+            self.tableView.tableFooterView = _footerView;
+            
+            [(UIActivityIndicatorView *)[_footerView viewWithTag:10] startAnimating];
+            
+            NSLog(@"more articles! %@", numberToLoad);
+            numberToLoad = [NSNumber numberWithInt:(numberToLoad.intValue + 10)];
+            [self loadArticles];\
+            [self.tableView reloadData];
+        } else {
+            if (_footerView) {
+                [(UIActivityIndicatorView *)[_footerView viewWithTag:10] stopAnimating];
+            }
+        }
     }
     
     return cell;
@@ -193,6 +210,23 @@
     return rightUtilityButtons;
 }
 
+-(void)initFooterView
+{
+    _footerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 40.0)];
+    
+    UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    activityIndicator.tag = 10;
+    
+    activityIndicator.frame = CGRectMake(150.0, 5.0, 20.0, 20.0);
+    
+    activityIndicator.hidesWhenStopped = YES;
+    
+    [_footerView addSubview:activityIndicator];
+    
+    activityIndicator = nil;
+}
+
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController
@@ -207,7 +241,7 @@
     [fetchRequest setEntity:article];
     
 // FIXME: batch size does not determine number of cells returned
-    [fetchRequest setFetchBatchSize:15];
+    [fetchRequest setFetchBatchSize:numberToLoad.intValue];
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"datePublished" ascending:NO];
