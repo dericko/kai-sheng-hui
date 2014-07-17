@@ -662,7 +662,7 @@
                                                             <constraint firstAttribute="width" constant="120" id="guo-NY-kBg"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Title Worth Its Kerning" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQv-Ye-pVt">
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loren Ad Absurdum" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQv-Ye-pVt">
                                                         <rect key="frame" x="0.0" y="80" width="320" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
@@ -718,15 +718,22 @@
                                                     <constraint firstItem="qgG-0F-lhE" firstAttribute="leading" secondItem="RgV-40-uae" secondAttribute="trailing" constant="8" symbolic="YES" id="vcf-8k-qG4"/>
                                                 </constraints>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0u7-BO-Zhv">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0u7-BO-Zhv">
                                                 <rect key="frame" x="0.0" y="110" width="320" height="360"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="320" id="TtJ-OT-lfX"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="360" id="gKh-D3-cUq"/>
                                                 </constraints>
-                                                <string key="text">Productivity, you've gone away, what are we to do? I sit upon the OS Platform waiting here for you. But 'Lo we've found the answer past, it's here it's here, a train at last! Just sitting still, we've found what's next. The Answer? Write more filler text.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">Productivity, you've gone away, what are we to do? I sit upon the OS Platform waiting here for you. But 'Lo we've found the answer past, it's here it's here, a train at last! Just sitting still, we've found what's next. The Answer? Write more filler text.</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="20" name="HelveticaNeue"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
@@ -756,32 +763,44 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTK-C5-VQz">
-                                        <rect key="frame" x="100" y="-2" width="43" height="30"/>
+                                        <rect key="frame" x="85" y="-2" width="45" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Unlike">
+                                        <state key="normal" title="Dislike">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="dislikePressed:" destination="FWE-IM-QWC" eventType="touchUpInside" id="BYk-Mq-nCI"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAa-Zu-9Nq">
-                                        <rect key="frame" x="177" y="-2" width="30" height="30"/>
+                                        <rect key="frame" x="173" y="-2" width="56" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Star">
+                                        <state key="normal" title="Favorite">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="favoritePressed:" destination="FWE-IM-QWC" eventType="touchUpInside" id="mlH-K8-JDf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fob-07-jXM">
-                                        <rect key="frame" x="42" y="-2" width="30" height="30"/>
+                                        <rect key="frame" x="20" y="-2" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Like">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="likePressed:" destination="FWE-IM-QWC" eventType="touchUpInside" id="br3-al-Vio"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzJ-G5-b0Y">
-                                        <rect key="frame" x="239" y="-2" width="40" height="30"/>
+                                        <rect key="frame" x="260" y="-2" width="40" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Share">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sharePressed:" destination="FWE-IM-QWC" eventType="touchUpInside" id="6cx-o1-XtX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

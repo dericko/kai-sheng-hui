@@ -29,7 +29,6 @@
 		C134459319738CDC003940CE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C134459219738CDC003940CE /* README.md */; };
 		C134459A1976637C003940CE /* KSHArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C13445991976637C003940CE /* KSHArticleTableViewCell.m */; };
 		C13445AA197781E7003940CE /* KSHCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C13445A9197781E7003940CE /* KSHCurrentUser.m */; };
-		C13445B01977B068003940CE /* KSHBottomBarButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C13445AF1977B068003940CE /* KSHBottomBarButtonsView.m */; };
 		C1355FEC19594FA9005DABED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FEB19594FA9005DABED /* Foundation.framework */; };
 		C1355FEE19594FA9005DABED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FED19594FA9005DABED /* CoreGraphics.framework */; };
 		C1355FF019594FA9005DABED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FEF19594FA9005DABED /* UIKit.framework */; };
@@ -101,8 +100,6 @@
 		C13445991976637C003940CE /* KSHArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleTableViewCell.m; sourceTree = "<group>"; };
 		C13445A8197781E7003940CE /* KSHCurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHCurrentUser.h; sourceTree = "<group>"; };
 		C13445A9197781E7003940CE /* KSHCurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHCurrentUser.m; sourceTree = "<group>"; };
-		C13445AE1977B068003940CE /* KSHBottomBarButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSHBottomBarButtonsView.h; path = ../KSHBottomBarButtonsView.h; sourceTree = "<group>"; };
-		C13445AF1977B068003940CE /* KSHBottomBarButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSHBottomBarButtonsView.m; path = ../KSHBottomBarButtonsView.m; sourceTree = "<group>"; };
 		C1355FE819594FA9005DABED /* KaiShengHui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaiShengHui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1355FEB19594FA9005DABED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C1355FED19594FA9005DABED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -204,8 +201,6 @@
 			children = (
 				C13445981976637C003940CE /* KSHArticleTableViewCell.h */,
 				C13445991976637C003940CE /* KSHArticleTableViewCell.m */,
-				C13445AE1977B068003940CE /* KSHBottomBarButtonsView.h */,
-				C13445AF1977B068003940CE /* KSHBottomBarButtonsView.m */,
 			);
 			name = View;
 			path = Model;
@@ -628,7 +623,6 @@
 				C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */,
 				C1E2AD40196CE67300B6A7AF /* KSHLike.m in Sources */,
 				C1E2AD0F196BF16900B6A7AF /* _KSHArticle.m in Sources */,
-				C13445B01977B068003940CE /* KSHBottomBarButtonsView.m in Sources */,
 				C1F87B95195D3EAA00DD300D /* KSHUserProfileTableViewController.m in Sources */,
 				C1E2AC7F196BC70D00B6A7AF /* KSHUserDefaultsHelper.m in Sources */,
 				C1E2AD12196BF16900B6A7AF /* _KSHLikeDislike.m in Sources */,
