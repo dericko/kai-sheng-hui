@@ -69,7 +69,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 # pragma mark - Initialization helpers
 
 - (void)addRefreshControl
@@ -86,6 +85,9 @@
         [_articleManager loadArticles:numberToLoad
                               success:^(void) {
                                   [self.refreshControl endRefreshing];
+                                  if (_footerView){
+                                      [(UIActivityIndicatorView *)[_footerView viewWithTag:10] stopAnimating];
+                                  }
                               }
                               failure:^(NSError *error) {
                                   [self.refreshControl endRefreshing];
@@ -97,7 +99,7 @@
     }
 }
 
-#pragma mark - Table view layout
+#pragma mark - Table view cells
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -108,11 +110,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-//    
-//    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-//    return [sectionInfo numberOfObjects];
-
-    return numberToLoad.integerValue;
+    
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
 }
 
 
@@ -127,26 +127,10 @@
     // Configure the cell
     [self configureCell:cell atIndexPath:indexPath];
     
-    // FIXME: loading more rows seems to stop working at 55 articles
-    if (indexPath.row >= numberToLoad.intValue - 1) {
-        if (numberToLoad.integerValue <= 55) {
-            self.tableView.tableFooterView = _footerView;
-            
-            [(UIActivityIndicatorView *)[_footerView viewWithTag:10] startAnimating];
-            
-            NSLog(@"more articles! %@", numberToLoad);
-            numberToLoad = [NSNumber numberWithInt:(numberToLoad.intValue + 10)];
-            [self loadArticles];\
-            [self.tableView reloadData];
-        } else {
-            if (_footerView) {
-                [(UIActivityIndicatorView *)[_footerView viewWithTag:10] stopAnimating];
-            }
-        }
-    }
-    
     return cell;
 }
+
+#pragma mark - Table View Cell helpers
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
@@ -164,7 +148,6 @@
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];
     // Check if image has been downloaded
     if (!_article.imgFile) {
-        NSLog(@"Setting image");
         [self setImageAsync: articleImageView atIndexPath:indexPath];
     } else {
         articleImageView.image = [[self.fetchedResultsController objectAtIndexPath:indexPath] getImage];
@@ -175,7 +158,6 @@
 {
     // Async request and assign cell image
     // FIXME: Displays most recent image instead of Placeholder while loading
-    NSLog(@"grabbing image...");
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder-square.jpg"];
     UIImageView *placeholderImageView = [UIImageView new];
     
@@ -187,7 +169,6 @@
      setImageWithURLRequest:request
      placeholderImage:placeholderImage
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        NSLog(@"grabbing image...DONE");
         articleImageView.image = image;
         [[self.fetchedResultsController objectAtIndexPath:indexPath] setImage:image];
      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
@@ -227,6 +208,38 @@
     activityIndicator = nil;
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)aScrollView
+                  willDecelerate:(BOOL)decelerate{
+    
+    CGPoint offset = aScrollView.contentOffset;
+    CGRect bounds = aScrollView.bounds;
+    CGSize size = aScrollView.contentSize;
+    UIEdgeInsets inset = aScrollView.contentInset;
+    float y = offset.y + bounds.size.height - inset.bottom;
+    float h = size.height;
+    
+    float reload_distance = 50;
+    
+    // Check if already refreshing articles
+    BOOL isRefreshing = [(UIActivityIndicatorView *)[_footerView viewWithTag:10] isAnimating];
+    
+    if((y > h + reload_distance) && (!isRefreshing)) {
+        NSLog(@"load more rows");
+        
+        self.tableView.tableFooterView = _footerView;
+            
+        [(UIActivityIndicatorView *)[_footerView viewWithTag:10] startAnimating];
+            
+        NSLog(@"more articles! %@", numberToLoad);
+        
+        // Check if user is waiting for articles to load
+        
+        numberToLoad = [NSNumber numberWithInt:(numberToLoad.intValue + 10)];
+        [self loadArticles];
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController
@@ -239,9 +252,6 @@
 
     NSEntityDescription *article = [NSEntityDescription entityForName:@"Article" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:article];
-    
-// FIXME: batch size does not determine number of cells returned
-    [fetchRequest setFetchBatchSize:numberToLoad.intValue];
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"datePublished" ascending:NO];
