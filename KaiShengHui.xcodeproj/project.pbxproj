@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = C1E2AC8E196BE96B00B6A7AF /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
 			buildPhases = (
-				C1E2AC91196BE98800B6A7AF /* Run Script */,
+				C1560964197CF1A400FB4677 /* ShellScript */,
 			);
 			dependencies = (
 			);
@@ -25,7 +25,7 @@
 		C111FECA196D50B40043E983 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C111FEC9196D50B40043E983 /* Main.storyboard */; };
 		C111FECF196D97FC0043E983 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C111FECE196D97FC0043E983 /* CoreText.framework */; };
 		C111FED5196E31A10043E983 /* KSHArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C111FED4196E31A10043E983 /* KSHArticleDetailViewController.m */; };
-		C134459119735CDE003940CE /* version2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C134458F19735CDE003940CE /* version2.xcdatamodeld */; };
+		C134459119735CDE003940CE /* KaiShengHui.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C134458F19735CDE003940CE /* KaiShengHui.xcdatamodeld */; };
 		C134459319738CDC003940CE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C134459219738CDC003940CE /* README.md */; };
 		C134459A1976637C003940CE /* KSHArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C13445991976637C003940CE /* KSHArticleTableViewCell.m */; };
 		C13445AA197781E7003940CE /* KSHCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C13445A9197781E7003940CE /* KSHCurrentUser.m */; };
@@ -36,7 +36,6 @@
 		C1355FF819594FA9005DABED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1355FF619594FA9005DABED /* InfoPlist.strings */; };
 		C1355FFA19594FA9005DABED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1355FF919594FA9005DABED /* main.m */; };
 		C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1355FFD19594FA9005DABED /* KSHAppDelegate.m */; };
-		C135600419594FA9005DABED /* KaiShengHui.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */; };
 		C135600C19594FA9005DABED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C135600B19594FA9005DABED /* Images.xcassets */; };
 		C135601319594FA9005DABED /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C135601219594FA9005DABED /* XCTest.framework */; };
 		C135601419594FA9005DABED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FEB19594FA9005DABED /* Foundation.framework */; };
@@ -95,7 +94,7 @@
 		C111FECE196D97FC0043E983 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		C111FED3196E31A10043E983 /* KSHArticleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleDetailViewController.h; sourceTree = "<group>"; };
 		C111FED4196E31A10043E983 /* KSHArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleDetailViewController.m; sourceTree = "<group>"; };
-		C134459019735CDE003940CE /* version2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = version2.xcdatamodel; sourceTree = "<group>"; };
+		C134459019735CDE003940CE /* KaiShengHui.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KaiShengHui.xcdatamodel; sourceTree = "<group>"; };
 		C134459219738CDC003940CE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		C13445981976637C003940CE /* KSHArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleTableViewCell.h; sourceTree = "<group>"; };
 		C13445991976637C003940CE /* KSHArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleTableViewCell.m; sourceTree = "<group>"; };
@@ -112,7 +111,6 @@
 		C1355FFB19594FA9005DABED /* KaiShengHui-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KaiShengHui-Prefix.pch"; sourceTree = "<group>"; };
 		C1355FFC19594FA9005DABED /* KSHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSHAppDelegate.h; sourceTree = "<group>"; };
 		C1355FFD19594FA9005DABED /* KSHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSHAppDelegate.m; sourceTree = "<group>"; };
-		C135600319594FA9005DABED /* KaiShengHui.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KaiShengHui.xcdatamodel; sourceTree = "<group>"; };
 		C135600B19594FA9005DABED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C135601119594FA9005DABED /* KaiShengHuiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaiShengHuiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C135601219594FA9005DABED /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -369,8 +367,7 @@
 		C1E2ACF0196BF16900B6A7AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */,
-				C134458F19735CDE003940CE /* version2.xcdatamodeld */,
+				C134458F19735CDE003940CE /* KaiShengHui.xcdatamodeld */,
 				C13445A119777035003940CE /* CurrentUser */,
 				C1E2AD00196BF16900B6A7AF /* CoreData Subclasses */,
 				C1E2ACF1196BF16900B6A7AF /* CoreDataEntities_DO_NOT_EDIT */,
@@ -592,14 +589,13 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		C1E2AC91196BE98800B6A7AF /* Run Script */ = {
+		C1560964197CF1A400FB4677 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -616,7 +612,6 @@
 				C1E2AD30196CE36800B6A7AF /* KSHStar.m in Sources */,
 				C134459A1976637C003940CE /* KSHArticleTableViewCell.m in Sources */,
 				C1E2AD1C196BF16900B6A7AF /* KSHUser.m in Sources */,
-				C135600419594FA9005DABED /* KaiShengHui.xcdatamodeld in Sources */,
 				C1E2AD3A196CE66200B6A7AF /* _KSHLike.m in Sources */,
 				C1E2AD1B196BF16900B6A7AF /* KSHTag.m in Sources */,
 				C1F87B9C195D3F0900DD300D /* KSHLoginViewController.m in Sources */,
@@ -642,7 +637,7 @@
 				C1E2AD15196BF16900B6A7AF /* _KSHUser.m in Sources */,
 				C1E2AD39196CE66200B6A7AF /* _KSHDislike.m in Sources */,
 				C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */,
-				C134459119735CDE003940CE /* version2.xcdatamodeld in Sources */,
+				C134459119735CDE003940CE /* KaiShengHui.xcdatamodeld in Sources */,
 				C1E2AD19196BF16900B6A7AF /* KSHLikeDislike.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -884,24 +879,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		C134458F19735CDE003940CE /* version2.xcdatamodeld */ = {
+		C134458F19735CDE003940CE /* KaiShengHui.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				C134459019735CDE003940CE /* version2.xcdatamodel */,
+				C134459019735CDE003940CE /* KaiShengHui.xcdatamodel */,
 			);
-			currentVersion = C134459019735CDE003940CE /* version2.xcdatamodel */;
-			path = version2.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C135600319594FA9005DABED /* KaiShengHui.xcdatamodel */,
-			);
-			currentVersion = C135600319594FA9005DABED /* KaiShengHui.xcdatamodel */;
-			name = KaiShengHui.xcdatamodeld;
-			path = ../KaiShengHui.xcdatamodeld;
+			currentVersion = C134459019735CDE003940CE /* KaiShengHui.xcdatamodel */;
+			path = KaiShengHui.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

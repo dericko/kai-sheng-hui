@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F828F7B6-8027-4AA9-9B4E-8CF9F0D9E92F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>KaiShengHui</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8909D12C-F537-4AF0-BD30-A09AD21C4FC8</key>
+		<string>https://www.github.com/dericko/kai-sheng-hui</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>KaiShengHui.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8909D12C-F537-4AF0-BD30-A09AD21C4FC8</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://www.github.com/dericko/kai-sheng-hui</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8909D12C-F537-4AF0-BD30-A09AD21C4FC8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8909D12C-F537-4AF0-BD30-A09AD21C4FC8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KaiShengHui</string>
+		</dict>
+	</array>
+</dict>
+</plist>
