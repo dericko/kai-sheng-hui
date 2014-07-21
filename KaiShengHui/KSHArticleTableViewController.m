@@ -109,10 +109,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
+    // FIXME: Limit initial load size (currently returns everything in fetchedResultsController)
     
+    // Return the number of rows in the section.
+    /* NOTE: FetchedResultsController will wait until ([sectionInfo numberOfObjects] > 0)
+     (Waits for async network request to add items to managedObjectContext) and then 
+     load cells with tableView:cellForRowAtIndexPath (below).
+     */
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    numberToLoad = [NSNumber numberWithInteger:[sectionInfo numberOfObjects]];
+    return numberToLoad.integerValue;
 }
 
 
@@ -123,8 +129,7 @@
     KSHArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                                                 cellIdentifier forIndexPath:indexPath];
     cell.rightUtilityButtons = [self rightButtons];
-    
-    // Configure the cell
+
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
@@ -134,7 +139,13 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    _article = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if ([[_fetchedResultsController fetchedObjects] count] > 0) {
+        _article = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    } else {
+        @throw [NSException exceptionWithName:@"fetchFromEmptyFetchedResultsControllerException:"
+                                       reason:@"Trying to fetch objects from empty fetchedResultsController (will result in arrayOutOfBounds) Check that return value from tableView:numberOfRowsInSection is based on number of objects in fetchedResultsController"
+                                     userInfo:nil];
+    }
 
     /* Keep cell type UITableViewCell in declaration to satisfy the implementation of
      controller:didChangeObject:atIndexPath:forChangeType:newIndexPath: (part of
@@ -229,12 +240,10 @@
         self.tableView.tableFooterView = _footerView;
             
         [(UIActivityIndicatorView *)[_footerView viewWithTag:10] startAnimating];
-            
-        NSLog(@"more articles! %@", numberToLoad);
-        
-        // Check if user is waiting for articles to load
         
         numberToLoad = [NSNumber numberWithInt:(numberToLoad.intValue + 10)];
+        NSLog(@"more articles! %@", numberToLoad);
+        
         [self loadArticles];
         [self.tableView reloadData];
     }
