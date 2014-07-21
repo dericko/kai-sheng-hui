@@ -46,6 +46,8 @@
 		C135602019594FA9005DABED /* KaiShengHuiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C135601F19594FA9005DABED /* KaiShengHuiTests.m */; };
 		C135603819595523005DABED /* KSHMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603719595523005DABED /* KSHMappingProvider.m */; };
 		C135603B19595590005DABED /* KSHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603A19595590005DABED /* KSHObjectManager.m */; };
+		C14D49A9197D470300CAA5A5 /* article.json in Resources */ = {isa = PBXBuildFile; fileRef = C14D49A8197D470300CAA5A5 /* article.json */; };
+		C14D49AB197D4AE600CAA5A5 /* KSHMappingProviderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C14D49AA197D4AE600CAA5A5 /* KSHMappingProviderTest.m */; };
 		C1560938197CE34500FB4677 /* ksh-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1560937197CE34500FB4677 /* ksh-default.jpg */; };
 		C182851A196679210080F2DD /* KSHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C1828519196679210080F2DD /* KSHMessage.m */; };
 		C1E2AC7F196BC70D00B6A7AF /* KSHUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */; };
@@ -123,6 +125,8 @@
 		C135603719595523005DABED /* KSHMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMappingProvider.m; sourceTree = "<group>"; };
 		C135603919595590005DABED /* KSHObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHObjectManager.h; sourceTree = "<group>"; };
 		C135603A19595590005DABED /* KSHObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHObjectManager.m; sourceTree = "<group>"; };
+		C14D49A8197D470300CAA5A5 /* article.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = article.json; sourceTree = "<group>"; };
+		C14D49AA197D4AE600CAA5A5 /* KSHMappingProviderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMappingProviderTest.m; sourceTree = "<group>"; };
 		C1560937197CE34500FB4677 /* ksh-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ksh-default.jpg"; sourceTree = "<group>"; };
 		C1828518196679210080F2DD /* KSHMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHMessage.h; sourceTree = "<group>"; };
 		C1828519196679210080F2DD /* KSHMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMessage.m; sourceTree = "<group>"; };
@@ -284,7 +288,9 @@
 		C135601919594FA9005DABED /* KaiShengHuiTests */ = {
 			isa = PBXGroup;
 			children = (
+				C14D49AA197D4AE600CAA5A5 /* KSHMappingProviderTest.m */,
 				C135601F19594FA9005DABED /* KaiShengHuiTests.m */,
+				C14D49A7197D468700CAA5A5 /* Fixtures */,
 				C135601A19594FA9005DABED /* Supporting Files */,
 			);
 			path = KaiShengHuiTests;
@@ -308,6 +314,14 @@
 				C1F6FFA019597E8E006EE5F7 /* UserProfileControllers */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C14D49A7197D468700CAA5A5 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				C14D49A8197D470300CAA5A5 /* article.json */,
+			);
+			name = Fixtures;
 			sourceTree = "<group>";
 		};
 		C182851C1966B29B0080F2DD /* Helpers */ = {
@@ -555,6 +569,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C14D49A9197D470300CAA5A5 /* article.json in Resources */,
 				C135601E19594FA9005DABED /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,6 +667,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C135602019594FA9005DABED /* KaiShengHuiTests.m in Sources */,
+				C14D49AB197D4AE600CAA5A5 /* KSHMappingProviderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +738,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -754,6 +775,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -790,6 +816,7 @@
 		};
 		C135602719594FA9005DABED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07AC7ED80DC44FFAADF56747 /* Pods.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KaiShengHui.app/KaiShengHui";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -804,6 +831,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "KaiShengHuiTests/KaiShengHuiTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -822,6 +850,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KaiShengHui/KaiShengHui-Prefix.pch";
 				INFOPLIST_FILE = "KaiShengHuiTests/KaiShengHuiTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
