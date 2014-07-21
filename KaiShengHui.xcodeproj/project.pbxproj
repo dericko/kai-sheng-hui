@@ -46,6 +46,7 @@
 		C135602019594FA9005DABED /* KaiShengHuiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C135601F19594FA9005DABED /* KaiShengHuiTests.m */; };
 		C135603819595523005DABED /* KSHMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603719595523005DABED /* KSHMappingProvider.m */; };
 		C135603B19595590005DABED /* KSHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603A19595590005DABED /* KSHObjectManager.m */; };
+		C1560938197CE34500FB4677 /* ksh-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1560937197CE34500FB4677 /* ksh-default.jpg */; };
 		C182851A196679210080F2DD /* KSHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C1828519196679210080F2DD /* KSHMessage.m */; };
 		C1E2AC7F196BC70D00B6A7AF /* KSHUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */; };
 		C1E2AD0F196BF16900B6A7AF /* _KSHArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2ACF3196BF16900B6A7AF /* _KSHArticle.m */; };
@@ -122,6 +123,7 @@
 		C135603719595523005DABED /* KSHMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMappingProvider.m; sourceTree = "<group>"; };
 		C135603919595590005DABED /* KSHObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHObjectManager.h; sourceTree = "<group>"; };
 		C135603A19595590005DABED /* KSHObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHObjectManager.m; sourceTree = "<group>"; };
+		C1560937197CE34500FB4677 /* ksh-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ksh-default.jpg"; sourceTree = "<group>"; };
 		C1828518196679210080F2DD /* KSHMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHMessage.h; sourceTree = "<group>"; };
 		C1828519196679210080F2DD /* KSHMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMessage.m; sourceTree = "<group>"; };
 		C1E2AC7D196BC70D00B6A7AF /* KSHUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserDefaultsHelper.h; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				C111FEC9196D50B40043E983 /* Main.storyboard */,
 				C134459219738CDC003940CE /* README.md */,
 				C135600B19594FA9005DABED /* Images.xcassets */,
+				C1560937197CE34500FB4677 /* ksh-default.jpg */,
 				C1355FF419594FA9005DABED /* Supporting Files */,
 			);
 			path = KaiShengHui;
@@ -543,6 +546,7 @@
 				C135600C19594FA9005DABED /* Images.xcassets in Resources */,
 				C1355FF819594FA9005DABED /* InfoPlist.strings in Resources */,
 				C134459319738CDC003940CE /* README.md in Resources */,
+				C1560938197CE34500FB4677 /* ksh-default.jpg in Resources */,
 				C111FECA196D50B40043E983 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
