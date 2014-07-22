@@ -47,7 +47,7 @@
     // Collection View setup
     industryMenuItems = @[@"Retail", @"TMT", @"Ag+Food", @"Energy", @"Chemicals", @"Finance", @"Healthcare", @"Transport"];
     
-    // Instantiate articleManager with main managed object context (for Core Data)
+    // Core Data setup
     _articleManager = [KSHArticleManager sharedManager];
     _articleManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
