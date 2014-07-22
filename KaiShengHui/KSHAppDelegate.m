@@ -9,7 +9,6 @@
 #import <RestKit/RestKit.h>
 #import "KSHAppDelegate.h"
 #import "KSHArticleManager.h"
-#import "KSHUserManager.h"
 #import "KSHArticleTableViewController.h"
 #import "KSHUserDefaultsHelper.h"
 
@@ -88,9 +87,10 @@
     // FIXME: need to support migrations when using persistent store - currently requires "Reset Content and Settings" in simulator
     // Set up persistent store
     [_RKManagedObjectStore createPersistentStoreCoordinator];
+    // !!! For Development: use addInMemoryPersistentStore to avoid SQLite migration problem
 //    NSString *storeURL = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"KaiShengHui.sqlite"];
     NSError *error = nil;
-    NSPersistentStore *persistentStore = [_RKManagedObjectStore addInMemoryPersistentStore:&error]; // Use in-memory store during data model development
+    NSPersistentStore *persistentStore = [_RKManagedObjectStore addInMemoryPersistentStore:&error];
 //    NSPersistentStore *persistentStore = [_RKManagedObjectStore addSQLitePersistentStoreAtPath:storeURL fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
     NSAssert(persistentStore, @"Failed to add persistent store: %@", error);
     

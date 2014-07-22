@@ -24,6 +24,18 @@
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 8
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
 
+// MagicalRecord
+#define COCOAPODS_POD_AVAILABLE_MagicalRecord
+#define COCOAPODS_VERSION_MAJOR_MagicalRecord 2
+#define COCOAPODS_VERSION_MINOR_MagicalRecord 2
+#define COCOAPODS_VERSION_PATCH_MagicalRecord 0
+
+// MagicalRecord/Core
+#define COCOAPODS_POD_AVAILABLE_MagicalRecord_Core
+#define COCOAPODS_VERSION_MAJOR_MagicalRecord_Core 2
+#define COCOAPODS_VERSION_MINOR_MagicalRecord_Core 2
+#define COCOAPODS_VERSION_PATCH_MagicalRecord_Core 0
+
 // RestKit
 #define COCOAPODS_POD_AVAILABLE_RestKit
 #define COCOAPODS_VERSION_MAJOR_RestKit 0
@@ -59,6 +71,12 @@
 #define COCOAPODS_VERSION_MAJOR_RestKit_Support 0
 #define COCOAPODS_VERSION_MINOR_RestKit_Support 20
 #define COCOAPODS_VERSION_PATCH_RestKit_Support 3
+
+// RestKit/Testing
+#define COCOAPODS_POD_AVAILABLE_RestKit_Testing
+#define COCOAPODS_VERSION_MAJOR_RestKit_Testing 0
+#define COCOAPODS_VERSION_MINOR_RestKit_Testing 20
+#define COCOAPODS_VERSION_PATCH_RestKit_Testing 3
 
 // SOCKit
 #define COCOAPODS_POD_AVAILABLE_SOCKit

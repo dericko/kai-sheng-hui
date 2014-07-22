@@ -15,6 +15,9 @@ iOS Application for 凯盛汇 platform. A multiple-function hub for Capvision Ex
 -browse upcoming events
 -check other member items related to KSH profile
 
+Testing:
+Network testing uses RestKit patterns (See https://github.com/RestKit/RestKit/wiki/Unit-Testing-with-RestKit)
+
 Structure:
 -Networking
 	Object Managers - parent class handles general networking API requests

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Article" representedClassName="KSHArticle" parentEntity="Post" syncable="YES">
+        <attribute name="industry" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="industryID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasTopic" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="ofArticle" inverseEntity="Topic" syncable="YES"/>
+    </entity>
+    <entity name="Consultant" representedClassName="KSHConsultant" parentEntity="User" syncable="YES">
+        <attribute name="birthday" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vconsultant"/>
+            </userInfo>
+        </attribute>
+        <attribute name="education" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="7" syncable="YES">
+            <userInfo>
+                <entry key="1" value="大专"/>
+                <entry key="2" value="本科"/>
+                <entry key="3" value="硕士"/>
+                <entry key="4" value="MBA/EMBA"/>
+                <entry key="5" value="博士"/>
+                <entry key="6" value="博士后"/>
+                <entry key="7" value="其他"/>
+                <entry key="source" value="vconsultant_education_experience"/>
+            </userInfo>
+        </attribute>
+        <attribute name="gender" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="2" syncable="YES">
+            <userInfo>
+                <entry key="1" value="male"/>
+                <entry key="2" value="female"/>
+                <entry key="source" value="vconsultant"/>
+            </userInfo>
+        </attribute>
+        <attribute name="industry" optional="YES" attributeType="Integer 32" minValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vconsultant_experience"/>
+            </userInfo>
+        </attribute>
+        <attribute name="profile" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vconsultant"/>
+            </userInfo>
+        </attribute>
+        <attribute name="residence" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vconsultant"/>
+            </userInfo>
+        </attribute>
+        <attribute name="specialty" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vconsultant"/>
+            </userInfo>
+        </attribute>
+        <relationship name="hasProject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project" inverseName="ofConsultant" inverseEntity="Project" syncable="YES"/>
+        <relationship name="hasProjectOpportunity" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectOpportunity" inverseName="ofConsultant" inverseEntity="ProjectOpportunity" syncable="YES"/>
+    </entity>
+    <entity name="ConsultationProject" representedClassName="KSHConsultationProject" parentEntity="Project" syncable="YES">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="revealClientName" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="2" defaultValueString="2" syncable="YES">
+            <userInfo>
+                <entry key="1" value="YES"/>
+                <entry key="2" value="NO"/>
+            </userInfo>
+        </attribute>
+        <userInfo>
+            <entry key="source" value="project_consultation"/>
+        </userInfo>
+    </entity>
+    <entity name="ConsultationTask" representedClassName="KSHConsultationTask" parentEntity="Task" syncable="YES">
+        <attribute name="approved" optional="YES" attributeType="Boolean" syncable="YES">
+            <userInfo>
+                <entry key="source" value="value"/>
+            </userInfo>
+        </attribute>
+        <attribute name="clientID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="contactID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="industry" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="interviewType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="7" syncable="YES"/>
+        <attribute name="positionID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <userInfo>
+            <entry key="source" value="project_consultation_task"/>
+        </userInfo>
+    </entity>
+    <entity name="Event" representedClassName="KSHEvent" parentEntity="Post" syncable="YES">
+        <attribute name="chargeType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" syncable="YES">
+            <userInfo>
+                <entry key="1" value="凯盛会员价"/>
+                <entry key="2" value="收费"/>
+                <entry key="3" value="免费"/>
+            </userInfo>
+        </attribute>
+        <attribute name="contactEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contactTelephone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="eventURLString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="memberPrice" optional="YES" attributeType="Decimal" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="mustApply" optional="YES" attributeType="Binary" syncable="YES">
+            <userInfo>
+                <entry key="0" value="NO"/>
+                <entry key="1" value="YES"/>
+            </userInfo>
+        </attribute>
+        <attribute name="nonmemberPrice" optional="YES" attributeType="Decimal" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="2" syncable="YES">
+            <userInfo>
+                <entry key="1" value="online"/>
+                <entry key="2" value="offline"/>
+            </userInfo>
+        </attribute>
+        <userInfo>
+            <entry key="source" value="vesta_post_event"/>
+        </userInfo>
+    </entity>
+    <entity name="Feedback" representedClassName="KSHFeedback" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_project_feedback"/>
+            </userInfo>
+        </attribute>
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_project_feedback"/>
+            </userInfo>
+        </attribute>
+        <attribute name="feedbackID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_project_feedback"/>
+            </userInfo>
+        </attribute>
+        <attribute name="paymentScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_project_feedback"/>
+            </userInfo>
+        </attribute>
+        <attribute name="qualityScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_project_feedback"/>
+            </userInfo>
+        </attribute>
+        <attribute name="serviceScore" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_project_feedback"/>
+            </userInfo>
+        </attribute>
+        <attribute name="willing" optional="YES" attributeType="Boolean" syncable="YES">
+            <userInfo>
+                <entry key="1" value="YES"/>
+                <entry key="2" value="NO"/>
+                <entry key="source" value="project_feedback"/>
+            </userInfo>
+        </attribute>
+        <relationship name="ofProject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="hasFeedback" inverseEntity="Project" syncable="YES"/>
+    </entity>
+    <entity name="Post" representedClassName="KSHPost" isAbstract="YES" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <attribute name="creator" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <attribute name="editor" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <attribute name="excerpt" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <attribute name="fileType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="1" value="列表图片"/>
+                <entry key="2" value="侧边栏图片"/>
+                <entry key="source" value="vesta_post_file"/>
+            </userInfo>
+        </attribute>
+        <attribute name="guestContent" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <attribute name="homePage" optional="YES" attributeType="Boolean" syncable="YES">
+            <userInfo>
+                <entry key="0" value="否"/>
+                <entry key="1" value="是"/>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <attribute name="imgFile" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imgURLString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postID" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <attribute name="postType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" syncable="YES">
+            <userInfo>
+                <entry key="1" value="观点汇"/>
+                <entry key="2" value="行业活动"/>
+                <entry key="3" value="页面管理"/>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <attribute name="publishTime" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <attribute name="viewCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_post"/>
+            </userInfo>
+        </attribute>
+        <relationship name="favoritedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="favorites" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Profile" representedClassName="KSHProfile" syncable="YES">
+        <attribute name="company" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_member"/>
+            </userInfo>
+        </attribute>
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_user"/>
+            </userInfo>
+        </attribute>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_member"/>
+            </userInfo>
+        </attribute>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_member"/>
+            </userInfo>
+        </attribute>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_member"/>
+            </userInfo>
+        </attribute>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_member"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_member"/>
+            </userInfo>
+        </attribute>
+        <attribute name="nickname" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_member"/>
+            </userInfo>
+        </attribute>
+        <attribute name="position" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_member"/>
+            </userInfo>
+        </attribute>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userProfile" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Project" representedClassName="KSHProject" isAbstract="YES" syncable="YES">
+        <attribute name="categoryID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="createTime" attributeType="Date" syncable="YES"/>
+        <attribute name="currencyUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="industryID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="priority" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" syncable="YES">
+            <userInfo>
+                <entry key="1" value="low"/>
+                <entry key="2" value="medium"/>
+                <entry key="3" value="high"/>
+            </userInfo>
+        </attribute>
+        <attribute name="projectDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectID" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" defaultValueString="1" syncable="YES">
+            <userInfo>
+                <entry key="1" value="In Progress"/>
+                <entry key="2" value="On Hold"/>
+                <entry key="3" value="Complete"/>
+            </userInfo>
+        </attribute>
+        <attribute name="statusTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timeframe" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="hasFeedback" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Feedback" inverseName="ofProject" inverseEntity="Feedback" syncable="YES"/>
+        <relationship name="hasTask" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="ofProject" inverseEntity="Task" syncable="YES"/>
+        <relationship name="ofConsultant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Consultant" inverseName="hasProject" inverseEntity="Consultant" syncable="YES"/>
+        <userInfo>
+            <entry key="source" value="project"/>
+        </userInfo>
+    </entity>
+    <entity name="ProjectOpportunity" representedClassName="KSHProjectOpportunity" syncable="YES">
+        <attribute name="contacts" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="deadlineTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="idealBackground" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="opportunityID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="publishTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="referenceContent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ofConsultant" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Consultant" inverseName="hasProjectOpportunity" inverseEntity="Consultant" syncable="YES"/>
+    </entity>
+    <entity name="Task" representedClassName="KSHTask" isAbstract="YES" syncable="YES">
+        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="source" value="project_task"/>
+            </userInfo>
+        </attribute>
+        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="source" value="project_task_common"/>
+            </userInfo>
+        </attribute>
+        <attribute name="listID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="source" value="project_task_common"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="project_task"/>
+            </userInfo>
+        </attribute>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="project_task_common"/>
+            </userInfo>
+        </attribute>
+        <attribute name="paid" optional="YES" attributeType="Boolean" minValueString="0" maxValueString="1" syncable="YES">
+            <userInfo>
+                <entry key="0" value="NO"/>
+                <entry key="1" value="YES"/>
+                <entry key="source" value="project_task_common"/>
+            </userInfo>
+        </attribute>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="source" value="project_task_common"/>
+            </userInfo>
+        </attribute>
+        <attribute name="status" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="20" syncable="YES">
+            <userInfo>
+                <entry key="source" value="project_task"/>
+            </userInfo>
+        </attribute>
+        <attribute name="statusTime" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="source" value="project_task"/>
+            </userInfo>
+        </attribute>
+        <attribute name="taskID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="source" value="project_task"/>
+            </userInfo>
+        </attribute>
+        <attribute name="timezone" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="source" value="project_task_common"/>
+            </userInfo>
+        </attribute>
+        <relationship name="ofProject" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="hasTask" inverseEntity="Project" syncable="YES"/>
+    </entity>
+    <entity name="Topic" representedClassName="KSHTopic" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="topicID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" attributeType="Integer 16" minValueString="1" maxValueString="5" syncable="YES">
+            <userInfo>
+                <entry key="1" value="tag"/>
+                <entry key="2" value="type"/>
+                <entry key="3" value="source"/>
+                <entry key="4" value="industry"/>
+                <entry key="5" value="other"/>
+            </userInfo>
+        </attribute>
+        <relationship name="dislikedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="dislikes" inverseEntity="User" syncable="YES"/>
+        <relationship name="likedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="likes" inverseEntity="User" syncable="YES"/>
+        <relationship name="ofArticle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="hasTopic" inverseEntity="Article" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="KSHUser" syncable="YES">
+        <attribute name="currentUser" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_user"/>
+            </userInfo>
+        </attribute>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vesta_user"/>
+            </userInfo>
+        </attribute>
+        <relationship name="dislikes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="dislikedBy" inverseEntity="Topic" syncable="YES"/>
+        <relationship name="favorites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="favoritedBy" inverseEntity="Post" syncable="YES"/>
+        <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="likedBy" inverseEntity="Topic" syncable="YES"/>
+        <relationship name="userProfile" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Profile" inverseName="user" inverseEntity="Profile" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Article" positionX="63" positionY="108" width="128" height="105"/>
+        <element name="Consultant" positionX="36" positionY="81" width="128" height="178"/>
+        <element name="ConsultationProject" positionX="45" positionY="90" width="128" height="75"/>
+        <element name="ConsultationTask" positionX="36" positionY="81" width="128" height="133"/>
+        <element name="Event" positionX="81" positionY="126" width="128" height="255"/>
+        <element name="Feedback" positionX="36" positionY="81" width="128" height="165"/>
+        <element name="Post" positionX="9" positionY="54" width="128" height="283"/>
+        <element name="Profile" positionX="-18" positionY="27" width="128" height="193"/>
+        <element name="Project" positionX="18" positionY="63" width="128" height="330"/>
+        <element name="ProjectOpportunity" positionX="63" positionY="108" width="128" height="165"/>
+        <element name="Task" positionX="27" positionY="72" width="128" height="225"/>
+        <element name="Topic" positionX="54" positionY="99" width="128" height="135"/>
+        <element name="User" positionX="45" positionY="90" width="128" height="165"/>
+    </elements>
+</model>

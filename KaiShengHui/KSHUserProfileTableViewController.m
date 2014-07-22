@@ -8,7 +8,6 @@
 
 #import "KSHUserProfileTableViewController.h"
 #import "KSHUser.h"
-#import "KSHLikeDislike.h"
 #import "KSHMessage.h"
 #import "KSHUserDefaultsHelper.h"
 
@@ -30,16 +29,8 @@
 {
     [super viewDidLoad];
     
-    if (_user) {        
-        _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
+    if (_user) {
         _usernameLabel.text = _user.username;
-        _emailLabel.text = _user.email;
-        _industryLabel.text = _user.industry;
-        _functionLabel.text = _user.function;
-        
-        _likesCount.text = [NSString stringWithFormat:@"%i", [_user.likes count]];
-        _dislikesCount.text = [NSString stringWithFormat:@"%i", [_user.dislikes count]];
-        _followingCount.text = 0;
     }
 }
 
