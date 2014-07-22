@@ -88,10 +88,10 @@
     // Set up persistent store
     [_RKManagedObjectStore createPersistentStoreCoordinator];
     // !!! For Development: use addInMemoryPersistentStore to avoid SQLite migration problem
-    NSString *storeURL = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"KaiShengHui.sqlite"];
+//    NSString *storeURL = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"KaiShengHui.sqlite"];
     NSError *error = nil;
-    //    NSPersistentStore *persistentStore = [_RKManagedObjectStore addInMemoryPersistentStore:&error];
-    NSPersistentStore *persistentStore = [_RKManagedObjectStore addSQLitePersistentStoreAtPath:storeURL fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+    NSPersistentStore *persistentStore = [_RKManagedObjectStore addInMemoryPersistentStore:&error];
+//    NSPersistentStore *persistentStore = [_RKManagedObjectStore addSQLitePersistentStoreAtPath:storeURL fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
     NSAssert(persistentStore, @"Failed to add persistent store: %@", error);
     
     // Managed object context

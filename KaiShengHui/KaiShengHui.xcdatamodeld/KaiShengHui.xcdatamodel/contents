@@ -26,13 +26,13 @@
         <attribute name="flag" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="liked" inverseEntity="Article" syncable="YES"/>
         <relationship name="tag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="liked" inverseEntity="Tag" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="dislikes" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Like" representedClassName="KSHLike" parentEntity="LikeDislike" syncable="YES">
         <attribute name="flag" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="disliked" inverseEntity="Article" syncable="YES"/>
         <relationship name="tag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="disliked" inverseEntity="Tag" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="likes" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="LikeDislike" representedClassName="KSHLikeDislike" isAbstract="YES" syncable="YES">
         <attribute name="createdAt" attributeType="Date" defaultDateTimeInterval="0" defaultValueString="currentDate" syncable="YES"/>
@@ -63,17 +63,17 @@
         <attribute name="signupDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="dislikes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dislike" syncable="YES"/>
-        <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" syncable="YES"/>
+        <relationship name="dislikes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dislike" inverseName="user" inverseEntity="Dislike" syncable="YES"/>
+        <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="user" inverseEntity="Like" syncable="YES"/>
         <relationship name="stars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Star" inverseName="user" inverseEntity="Star" syncable="YES"/>
     </entity>
     <elements>
         <element name="Article" positionX="90" positionY="90" width="128" height="345"/>
-        <element name="Dislike" positionX="306" positionY="324" width="128" height="103"/>
-        <element name="Like" positionX="304" positionY="198" width="128" height="103"/>
+        <element name="Dislike" positionX="306" positionY="324" width="128" height="105"/>
+        <element name="Like" positionX="304" positionY="198" width="128" height="105"/>
         <element name="LikeDislike" positionX="304" positionY="18" width="128" height="73"/>
         <element name="Star" positionX="306" positionY="459" width="128" height="73"/>
         <element name="Tag" positionX="124" positionY="531" width="128" height="118"/>
-        <element name="User" positionX="504" positionY="153" width="128" height="283"/>
+        <element name="User" positionX="504" positionY="153" width="128" height="285"/>
     </elements>
 </model>

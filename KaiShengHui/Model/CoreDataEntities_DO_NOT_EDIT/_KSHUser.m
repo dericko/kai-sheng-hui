@@ -4,25 +4,17 @@
 #import "_KSHUser.h"
 
 const struct KSHUserAttributes KSHUserAttributes = {
-	.email = @"email",
-	.firstName = @"firstName",
-	.function = @"function",
-	.functionID = @"functionID",
-	.imgFile = @"imgFile",
-	.imgURLString = @"imgURLString",
-	.industry = @"industry",
-	.industryID = @"industryID",
-	.lastLoginDate = @"lastLoginDate",
-	.lastName = @"lastName",
-	.signupDate = @"signupDate",
+	.currentUser = @"currentUser",
+	.token = @"token",
 	.userID = @"userID",
 	.username = @"username",
 };
 
 const struct KSHUserRelationships KSHUserRelationships = {
 	.dislikes = @"dislikes",
+	.favorites = @"favorites",
 	.likes = @"likes",
-	.stars = @"stars",
+	.userProfile = @"userProfile",
 };
 
 const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
@@ -54,13 +46,8 @@ const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"functionIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"functionID"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
-	if ([key isEqualToString:@"industryIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"industryID"];
+	if ([key isEqualToString:@"currentUserValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"currentUser"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -76,115 +63,33 @@ const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
 
 
 
-@dynamic email;
+@dynamic currentUser;
 
 
 
-
-
-
-@dynamic firstName;
-
-
-
-
-
-
-@dynamic function;
-
-
-
-
-
-
-@dynamic functionID;
-
-
-
-- (int32_t)functionIDValue {
-	NSNumber *result = [self functionID];
-	return [result intValue];
+- (BOOL)currentUserValue {
+	NSNumber *result = [self currentUser];
+	return [result boolValue];
 }
 
-- (void)setFunctionIDValue:(int32_t)value_ {
-	[self setFunctionID:[NSNumber numberWithInt:value_]];
+- (void)setCurrentUserValue:(BOOL)value_ {
+	[self setCurrentUser:[NSNumber numberWithBool:value_]];
 }
 
-- (int32_t)primitiveFunctionIDValue {
-	NSNumber *result = [self primitiveFunctionID];
-	return [result intValue];
+- (BOOL)primitiveCurrentUserValue {
+	NSNumber *result = [self primitiveCurrentUser];
+	return [result boolValue];
 }
 
-- (void)setPrimitiveFunctionIDValue:(int32_t)value_ {
-	[self setPrimitiveFunctionID:[NSNumber numberWithInt:value_]];
+- (void)setPrimitiveCurrentUserValue:(BOOL)value_ {
+	[self setPrimitiveCurrentUser:[NSNumber numberWithBool:value_]];
 }
 
 
 
 
 
-@dynamic imgFile;
-
-
-
-
-
-
-@dynamic imgURLString;
-
-
-
-
-
-
-@dynamic industry;
-
-
-
-
-
-
-@dynamic industryID;
-
-
-
-- (int16_t)industryIDValue {
-	NSNumber *result = [self industryID];
-	return [result shortValue];
-}
-
-- (void)setIndustryIDValue:(int16_t)value_ {
-	[self setIndustryID:[NSNumber numberWithShort:value_]];
-}
-
-- (int16_t)primitiveIndustryIDValue {
-	NSNumber *result = [self primitiveIndustryID];
-	return [result shortValue];
-}
-
-- (void)setPrimitiveIndustryIDValue:(int16_t)value_ {
-	[self setPrimitiveIndustryID:[NSNumber numberWithShort:value_]];
-}
-
-
-
-
-
-@dynamic lastLoginDate;
-
-
-
-
-
-
-@dynamic lastName;
-
-
-
-
-
-
-@dynamic signupDate;
+@dynamic token;
 
 
 
@@ -237,6 +142,19 @@ const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
 }
 	
 
+@dynamic favorites;
+
+	
+- (NSMutableSet*)favoritesSet {
+	[self willAccessValueForKey:@"favorites"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"favorites"];
+  
+	[self didAccessValueForKey:@"favorites"];
+	return result;
+}
+	
+
 @dynamic likes;
 
 	
@@ -250,17 +168,8 @@ const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
 }
 	
 
-@dynamic stars;
+@dynamic userProfile;
 
-	
-- (NSMutableSet*)starsSet {
-	[self willAccessValueForKey:@"stars"];
-  
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"stars"];
-  
-	[self didAccessValueForKey:@"stars"];
-	return result;
-}
 	
 
 

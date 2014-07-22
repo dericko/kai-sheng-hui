@@ -5,42 +5,26 @@
 
 
 extern const struct KSHUserAttributes {
-	__unsafe_unretained NSString *email;
-	__unsafe_unretained NSString *firstName;
-	__unsafe_unretained NSString *function;
-	__unsafe_unretained NSString *functionID;
-	__unsafe_unretained NSString *imgFile;
-	__unsafe_unretained NSString *imgURLString;
-	__unsafe_unretained NSString *industry;
-	__unsafe_unretained NSString *industryID;
-	__unsafe_unretained NSString *lastLoginDate;
-	__unsafe_unretained NSString *lastName;
-	__unsafe_unretained NSString *signupDate;
+	__unsafe_unretained NSString *currentUser;
+	__unsafe_unretained NSString *token;
 	__unsafe_unretained NSString *userID;
 	__unsafe_unretained NSString *username;
 } KSHUserAttributes;
 
 extern const struct KSHUserRelationships {
 	__unsafe_unretained NSString *dislikes;
+	__unsafe_unretained NSString *favorites;
 	__unsafe_unretained NSString *likes;
-	__unsafe_unretained NSString *stars;
+	__unsafe_unretained NSString *userProfile;
 } KSHUserRelationships;
 
 extern const struct KSHUserFetchedProperties {
 } KSHUserFetchedProperties;
 
-@class KSHDislike;
-@class KSHLike;
-@class KSHStar;
-
-
-
-
-
-
-
-
-
+@class KSHTopic;
+@class KSHPost;
+@class KSHTopic;
+@class KSHProfile;
 
 
 
@@ -60,119 +44,25 @@ extern const struct KSHUserFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* email;
+@property (nonatomic, strong) NSNumber* currentUser;
 
 
 
-//- (BOOL)validateEmail:(id*)value_ error:(NSError**)error_;
+@property BOOL currentUserValue;
+- (BOOL)currentUserValue;
+- (void)setCurrentUserValue:(BOOL)value_;
 
+//- (BOOL)validateCurrentUser:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSString* firstName;
 
+@property (nonatomic, strong) NSString* token;
 
 
-//- (BOOL)validateFirstName:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
-@property (nonatomic, strong) NSString* function;
-
-
-
-//- (BOOL)validateFunction:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSNumber* functionID;
-
-
-
-@property int32_t functionIDValue;
-- (int32_t)functionIDValue;
-- (void)setFunctionIDValue:(int32_t)value_;
-
-//- (BOOL)validateFunctionID:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSData* imgFile;
-
-
-
-//- (BOOL)validateImgFile:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* imgURLString;
-
-
-
-//- (BOOL)validateImgURLString:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* industry;
-
-
-
-//- (BOOL)validateIndustry:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSNumber* industryID;
-
-
-
-@property int16_t industryIDValue;
-- (int16_t)industryIDValue;
-- (void)setIndustryIDValue:(int16_t)value_;
-
-//- (BOOL)validateIndustryID:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSDate* lastLoginDate;
-
-
-
-//- (BOOL)validateLastLoginDate:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* lastName;
-
-
-
-//- (BOOL)validateLastName:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSDate* signupDate;
-
-
-
-//- (BOOL)validateSignupDate:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateToken:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -209,6 +99,13 @@ extern const struct KSHUserFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet *favorites;
+
+- (NSMutableSet*)favoritesSet;
+
+
+
+
 @property (nonatomic, strong) NSSet *likes;
 
 - (NSMutableSet*)likesSet;
@@ -216,9 +113,9 @@ extern const struct KSHUserFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet *stars;
+@property (nonatomic, strong) KSHProfile *userProfile;
 
-- (NSMutableSet*)starsSet;
+//- (BOOL)validateUserProfile:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -230,92 +127,35 @@ extern const struct KSHUserFetchedProperties {
 
 - (void)addDislikes:(NSSet*)value_;
 - (void)removeDislikes:(NSSet*)value_;
-- (void)addDislikesObject:(KSHDislike*)value_;
-- (void)removeDislikesObject:(KSHDislike*)value_;
+- (void)addDislikesObject:(KSHTopic*)value_;
+- (void)removeDislikesObject:(KSHTopic*)value_;
+
+- (void)addFavorites:(NSSet*)value_;
+- (void)removeFavorites:(NSSet*)value_;
+- (void)addFavoritesObject:(KSHPost*)value_;
+- (void)removeFavoritesObject:(KSHPost*)value_;
 
 - (void)addLikes:(NSSet*)value_;
 - (void)removeLikes:(NSSet*)value_;
-- (void)addLikesObject:(KSHLike*)value_;
-- (void)removeLikesObject:(KSHLike*)value_;
-
-- (void)addStars:(NSSet*)value_;
-- (void)removeStars:(NSSet*)value_;
-- (void)addStarsObject:(KSHStar*)value_;
-- (void)removeStarsObject:(KSHStar*)value_;
+- (void)addLikesObject:(KSHTopic*)value_;
+- (void)removeLikesObject:(KSHTopic*)value_;
 
 @end
 
 @interface _KSHUser (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSString*)primitiveEmail;
-- (void)setPrimitiveEmail:(NSString*)value;
+- (NSNumber*)primitiveCurrentUser;
+- (void)setPrimitiveCurrentUser:(NSNumber*)value;
+
+- (BOOL)primitiveCurrentUserValue;
+- (void)setPrimitiveCurrentUserValue:(BOOL)value_;
 
 
 
 
-- (NSString*)primitiveFirstName;
-- (void)setPrimitiveFirstName:(NSString*)value;
-
-
-
-
-- (NSString*)primitiveFunction;
-- (void)setPrimitiveFunction:(NSString*)value;
-
-
-
-
-- (NSNumber*)primitiveFunctionID;
-- (void)setPrimitiveFunctionID:(NSNumber*)value;
-
-- (int32_t)primitiveFunctionIDValue;
-- (void)setPrimitiveFunctionIDValue:(int32_t)value_;
-
-
-
-
-- (NSData*)primitiveImgFile;
-- (void)setPrimitiveImgFile:(NSData*)value;
-
-
-
-
-- (NSString*)primitiveImgURLString;
-- (void)setPrimitiveImgURLString:(NSString*)value;
-
-
-
-
-- (NSString*)primitiveIndustry;
-- (void)setPrimitiveIndustry:(NSString*)value;
-
-
-
-
-- (NSNumber*)primitiveIndustryID;
-- (void)setPrimitiveIndustryID:(NSNumber*)value;
-
-- (int16_t)primitiveIndustryIDValue;
-- (void)setPrimitiveIndustryIDValue:(int16_t)value_;
-
-
-
-
-- (NSDate*)primitiveLastLoginDate;
-- (void)setPrimitiveLastLoginDate:(NSDate*)value;
-
-
-
-
-- (NSString*)primitiveLastName;
-- (void)setPrimitiveLastName:(NSString*)value;
-
-
-
-
-- (NSDate*)primitiveSignupDate;
-- (void)setPrimitiveSignupDate:(NSDate*)value;
+- (NSString*)primitiveToken;
+- (void)setPrimitiveToken:(NSString*)value;
 
 
 
@@ -341,13 +181,18 @@ extern const struct KSHUserFetchedProperties {
 
 
 
+- (NSMutableSet*)primitiveFavorites;
+- (void)setPrimitiveFavorites:(NSMutableSet*)value;
+
+
+
 - (NSMutableSet*)primitiveLikes;
 - (void)setPrimitiveLikes:(NSMutableSet*)value;
 
 
 
-- (NSMutableSet*)primitiveStars;
-- (void)setPrimitiveStars:(NSMutableSet*)value;
+- (KSHProfile*)primitiveUserProfile;
+- (void)setPrimitiveUserProfile:(KSHProfile*)value;
 
 
 @end
