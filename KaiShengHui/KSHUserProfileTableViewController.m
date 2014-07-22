@@ -8,7 +8,6 @@
 
 #import "KSHUserProfileTableViewController.h"
 #import "KSHUser.h"
-#import "KSHLikeDislike.h"
 #import "KSHMessage.h"
 #import "KSHUserDefaultsHelper.h"
 
@@ -31,7 +30,7 @@
     [super viewDidLoad];
     
     if (_user) {
-        _emailLabel.text = _user.email;
+        _usernameLabel.text = _user.username;
     }
 }
 
