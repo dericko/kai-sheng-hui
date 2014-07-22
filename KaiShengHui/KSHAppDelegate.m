@@ -9,7 +9,6 @@
 #import <RestKit/RestKit.h>
 #import "KSHAppDelegate.h"
 #import "KSHArticleManager.h"
-#import "KSHUserManager.h"
 #import "KSHArticleTableViewController.h"
 #import "KSHUserDefaultsHelper.h"
 

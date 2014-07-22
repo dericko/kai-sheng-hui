@@ -24,10 +24,14 @@
 @interface KSHMappingProvider : NSObject
 
 // TODO: comment mapping methods
-+ (RKEntityMapping *)loginRequestMapping;
-+ (RKEntityMapping *)userMapping;
+// TODO: comment mapping methods
 + (RKEntityMapping *)articleMapping;
-+ (RKEntityMapping *)tagMapping;
-+ (RKEntityMapping *)likeMapping;
++ (RKEntityMapping *)eventMapping;
+
++ (RKEntityMapping *)userMapping;
++ (RKEntityMapping *)consultantMapping;
+
++ (RKEntityMapping *)projectMapping;
++ (RKEntityMapping *)projectOpportunityMapping;
 
 @end

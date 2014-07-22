@@ -127,6 +127,7 @@
 		C135603A19595590005DABED /* KSHObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHObjectManager.m; sourceTree = "<group>"; };
 		C14D49A8197D470300CAA5A5 /* article.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = article.json; sourceTree = "<group>"; };
 		C14D49AA197D4AE600CAA5A5 /* KSHMappingProviderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMappingProviderTest.m; sourceTree = "<group>"; };
+		C14D4A3B197E645F00CAA5A5 /* KaiShengHui1.0.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KaiShengHui1.0.0.xcdatamodel; sourceTree = "<group>"; };
 		C1560937197CE34500FB4677 /* ksh-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ksh-default.jpg"; sourceTree = "<group>"; };
 		C1828518196679210080F2DD /* KSHMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHMessage.h; sourceTree = "<group>"; };
 		C1828519196679210080F2DD /* KSHMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMessage.m; sourceTree = "<group>"; };
@@ -926,9 +927,10 @@
 		C135600219594FA9005DABED /* KaiShengHui.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C14D4A3B197E645F00CAA5A5 /* KaiShengHui1.0.0.xcdatamodel */,
 				C135600319594FA9005DABED /* KaiShengHui.xcdatamodel */,
 			);
-			currentVersion = C135600319594FA9005DABED /* KaiShengHui.xcdatamodel */;
+			currentVersion = C14D4A3B197E645F00CAA5A5 /* KaiShengHui1.0.0.xcdatamodel */;
 			name = KaiShengHui.xcdatamodeld;
 			path = ../KaiShengHui.xcdatamodeld;
 			sourceTree = "<group>";

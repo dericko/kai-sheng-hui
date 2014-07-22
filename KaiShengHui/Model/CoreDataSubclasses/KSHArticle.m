@@ -22,22 +22,21 @@
 
 #pragma mark - Override methods
 
--(void) awakeFromFetch
+-(void) awakeFromFetch // Called when instance fetched from Core Data
 {
     [super awakeFromFetch];
     
     NSLog(@"Wake up: %@", self.title);
     // Compute derived values from the persisted properties
-    [self setIndustry];
 }
 
--(void) awakeFromInsert
+-(void) awakeFromInsert // Called when instance is added to Core Data
 {
     [super awakeFromInsert];
     // Initialize default settings
 }
 
-- (void)setIndustry
+- (void)setIndustryText
 {
     switch (self.industryID.integerValue) {
         case 1:

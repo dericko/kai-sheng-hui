@@ -30,16 +30,8 @@
 {
     [super viewDidLoad];
     
-    if (_user) {        
-        _nameLabel.text = [NSString stringWithFormat:@"%@ %@", _user.firstName, _user.lastName];
-        _usernameLabel.text = _user.username;
+    if (_user) {
         _emailLabel.text = _user.email;
-        _industryLabel.text = _user.industry;
-        _functionLabel.text = _user.function;
-        
-        _likesCount.text = [NSString stringWithFormat:@"%i", [_user.likes count]];
-        _dislikesCount.text = [NSString stringWithFormat:@"%i", [_user.dislikes count]];
-        _followingCount.text = 0;
     }
 }
 

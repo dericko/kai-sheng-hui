@@ -6,5 +6,5 @@
 
 - (void)setImage:(UIImage *)image;
 - (UIImage *)getImage;
-
+- (void)setIndustryText;
 @end

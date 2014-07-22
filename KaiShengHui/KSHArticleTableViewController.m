@@ -13,7 +13,6 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 
 #import "KSHArticle.h"
-#import "KSHTag.h"
 #import "KSHMessage.h"
 
 #import "KSHArticleTableViewCell.h"
@@ -154,6 +153,10 @@
      */
     ((KSHArticleTableViewCell *)cell).titleLabel.text = [[_article valueForKey:@"title"] description];
     ((KSHArticleTableViewCell *)cell).tagsLabel.text = [[_article valueForKey:@"tags"] description];
+    if (!_article.industry) {
+        NSLog(@"Setting industry");
+        [_article setIndustryText];
+    }
     ((KSHArticleTableViewCell *)cell).industryLabel.text = [[_article valueForKey:@"industry"] description];;
 
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];
@@ -263,7 +266,7 @@
     [fetchRequest setEntity:article];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"datePublished" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"publishTime" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
