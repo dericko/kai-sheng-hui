@@ -10,7 +10,6 @@ extern const struct KSHEventAttributes {
 	__unsafe_unretained NSString *contactName;
 	__unsafe_unretained NSString *contactTelephone;
 	__unsafe_unretained NSString *endTime;
-	__unsafe_unretained NSString *eventID;
 	__unsafe_unretained NSString *eventURLString;
 	__unsafe_unretained NSString *memberPrice;
 	__unsafe_unretained NSString *mustApply;
@@ -26,7 +25,6 @@ extern const struct KSHEventRelationships {
 
 extern const struct KSHEventFetchedProperties {
 } KSHEventFetchedProperties;
-
 
 
 
@@ -110,20 +108,6 @@ extern const struct KSHEventFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* eventID;
-
-
-
-@property int32_t eventIDValue;
-- (int32_t)eventIDValue;
-- (void)setEventIDValue:(int32_t)value_;
-
-//- (BOOL)validateEventID:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
 @property (nonatomic, strong) NSString* eventURLString;
 
 
@@ -144,9 +128,13 @@ extern const struct KSHEventFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSData* mustApply;
+@property (nonatomic, strong) NSNumber* mustApply;
 
 
+
+@property BOOL mustApplyValue;
+- (BOOL)mustApplyValue;
+- (void)setMustApplyValue:(BOOL)value_;
 
 //- (BOOL)validateMustApply:(id*)value_ error:(NSError**)error_;
 
@@ -251,15 +239,6 @@ extern const struct KSHEventFetchedProperties {
 
 
 
-- (NSNumber*)primitiveEventID;
-- (void)setPrimitiveEventID:(NSNumber*)value;
-
-- (int32_t)primitiveEventIDValue;
-- (void)setPrimitiveEventIDValue:(int32_t)value_;
-
-
-
-
 - (NSString*)primitiveEventURLString;
 - (void)setPrimitiveEventURLString:(NSString*)value;
 
@@ -272,8 +251,11 @@ extern const struct KSHEventFetchedProperties {
 
 
 
-- (NSData*)primitiveMustApply;
-- (void)setPrimitiveMustApply:(NSData*)value;
+- (NSNumber*)primitiveMustApply;
+- (void)setPrimitiveMustApply:(NSNumber*)value;
+
+- (BOOL)primitiveMustApplyValue;
+- (void)setPrimitiveMustApplyValue:(BOOL)value_;
 
 
 

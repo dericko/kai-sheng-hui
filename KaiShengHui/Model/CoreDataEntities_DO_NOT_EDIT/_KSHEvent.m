@@ -9,7 +9,6 @@ const struct KSHEventAttributes KSHEventAttributes = {
 	.contactName = @"contactName",
 	.contactTelephone = @"contactTelephone",
 	.endTime = @"endTime",
-	.eventID = @"eventID",
 	.eventURLString = @"eventURLString",
 	.memberPrice = @"memberPrice",
 	.mustApply = @"mustApply",
@@ -57,8 +56,8 @@ const struct KSHEventFetchedProperties KSHEventFetchedProperties = {
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
-	if ([key isEqualToString:@"eventIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"eventID"];
+	if ([key isEqualToString:@"mustApplyValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"mustApply"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -128,32 +127,6 @@ const struct KSHEventFetchedProperties KSHEventFetchedProperties = {
 
 
 
-@dynamic eventID;
-
-
-
-- (int32_t)eventIDValue {
-	NSNumber *result = [self eventID];
-	return [result intValue];
-}
-
-- (void)setEventIDValue:(int32_t)value_ {
-	[self setEventID:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveEventIDValue {
-	NSNumber *result = [self primitiveEventID];
-	return [result intValue];
-}
-
-- (void)setPrimitiveEventIDValue:(int32_t)value_ {
-	[self setPrimitiveEventID:[NSNumber numberWithInt:value_]];
-}
-
-
-
-
-
 @dynamic eventURLString;
 
 
@@ -170,6 +143,25 @@ const struct KSHEventFetchedProperties KSHEventFetchedProperties = {
 
 @dynamic mustApply;
 
+
+
+- (BOOL)mustApplyValue {
+	NSNumber *result = [self mustApply];
+	return [result boolValue];
+}
+
+- (void)setMustApplyValue:(BOOL)value_ {
+	[self setMustApply:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveMustApplyValue {
+	NSNumber *result = [self primitiveMustApply];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveMustApplyValue:(BOOL)value_ {
+	[self setPrimitiveMustApply:[NSNumber numberWithBool:value_]];
+}
 
 
 
