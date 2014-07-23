@@ -22,9 +22,9 @@ static RKEntityMapping *PLACEHOLDER = nil;
     return PLACEHOLDER;
 }
 
-+ (NSDictionary *)postMapping
++ (NSDictionary *)postMap
 {
-    NSDictionary *postMapping = @{
+    NSDictionary *postMap = @{
                                   @"content":           @"content",
                                   @"creator":           @"creator",
                                   @"editor":            @"editor",
@@ -40,38 +40,27 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                   @"update_time":       @"updateTime",
                                   @"view_count":        @"viewCount",
                                   };
-    return postMapping;
+    return postMap;
 }
 
 + (RKEntityMapping *)articleMapping
 {
     NSLog(@"-articleMapping: assign mapping for article manager");
     RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    [articleMapping addAttributeMappingsFromDictionary:[self postMapping]];
-    [articleMapping addAttributeMappingsFromDictionary:@{
-                                                         @"industry.id":        @"industryID",
-                                                         @"tags":               @"tags"
-                                                         }];
+    NSDictionary *articleMap = @{
+                                 @"industry.id":        @"industryID",
+                                 @"tags":               @"tags"
+                                 };
+    [articleMapping addAttributeMappingsFromDictionary:[self postMap]];
+    [articleMapping addAttributeMappingsFromDictionary: articleMap];
+//    [articleMapping addRelationshipMappingWithSourceKeyPath:@"hasTopic" mapping:[self topicMapping]];
+    
     articleMapping.identificationAttributes = @[ @"postID" ];
     
-    
-    //    [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"hasTopic"
-    //                                                                                   toKeyPath:@"ofArticle"
-    //                                                                                 withMapping:[self topicMapping]]];
-    //
     /* Additional JSON mapping support to sync Likes/Dislikes/Favorites
-     
-     [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"likes"
-     toKeyPath:@"likedBy"
-     withMapping:[self topicMapping]]];
-     
-     [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"dislikes"
-     toKeyPath:@"dislikedBy"
-     withMapping:[self topicMapping]]];
-     
-     [articleMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"favorites"
-     toKeyPath:@"favoritedBy"
-     withMapping:[self topicMapping]]];
+     [articleMapping addRelationshipMappingWithSourceKeyPath:@"likedBy" mapping:[self userMapping]];
+     [articleMapping addRelationshipMappingWithSourceKeyPath:@"dislikedBy" mapping:[self userMapping]];
+     [articleMapping addRelationshipMappingWithSourceKeyPath:@"favoritedBy" mapping:[self userMapping]];
      */
     
     
@@ -82,25 +71,26 @@ static RKEntityMapping *PLACEHOLDER = nil;
 {
     NSLog(@"-eventMapping: assign mapping for event manager");
     RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    [eventMapping addAttributeMappingsFromDictionary:[self postMapping]];
-    //    [eventMapping addAttributeMappingsFromDictionary:@{
-    // TODO: Fill in JSON properties to be mapped to entity
-    //                                                       @"???":              @"chargeType",
-    //                                                       @"???":              @"contactEmail",
-    //                                                       @"???":              @"contactName",
-    //                                                       @"???":              @"contactTelephone",
-    //                                                       @"???":              @"endTime",
-    //                                                       @"???":              @"eventID",
-    //                                                       @"???":              @"eventURLString",
-    //                                                       @"???":              @"memberPrice",
-    //                                                       @"???":              @"mustApply",
-    //                                                       @"???":              @"nonmemberPrice",
-    //                                                       @"???":              @"place",
-    //                                                       @"???":              @"region",
-    //                                                       @"???":              @"startTime",
-    //                                                       @"???":              @"type",
-    //                                                         }];
-    
+    NSDictionary *eventMap = @{
+                               //     TODO: Fill in JSON properties to be mapped to entity
+                               @"???":              @"chargeType",
+                               @"???":              @"contactEmail",
+                               @"???":              @"contactName",
+                               @"???":              @"contactTelephone",
+                               @"???":              @"endTime",
+                               @"???":              @"eventID",
+                               @"???":              @"eventURLString",
+                               @"???":              @"memberPrice",
+                               @"???":              @"mustApply",
+                               @"???":              @"nonmemberPrice",
+                               @"???":              @"place",
+                               @"???":              @"region",
+                               @"???":              @"startTime",
+                               @"???":              @"type",
+                               };
+    [eventMapping addAttributeMappingsFromDictionary:[self postMap]];
+    [eventMapping addAttributeMappingsFromDictionary:eventMap];
+    eventMapping.identificationAttributes = @[ @"postID" ];
     return eventMapping;
 }
 
@@ -116,22 +106,38 @@ static RKEntityMapping *PLACEHOLDER = nil;
     return profileMapping;
 }
 
++ (NSDictionary *)userMap
+{
+    NSDictionary *userMap = @{
+                              
+                              };
+    return userMap;
+}
 + (RKEntityMapping *)userMapping
 {
     RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    [userMapping addAttributeMappingsFromDictionary:@{
-                                                      // TODO: add profile mapping
-                                                      }];
     
+    [userMapping addAttributeMappingsFromDictionary:[self userMap]];
+    userMapping.identificationAttributes = @[ @"userID" ];
+
+    /* Additional JSON mapping support to sync Likes/Dislikes/Favorites
+     [articleMapping addRelationshipMappingWithSourceKeyPath:@"likes" mapping:[self topicMapping]];
+     [articleMapping addRelationshipMappingWithSourceKeyPath:@"dislikes" mapping:[self topicMapping]];
+     [articleMapping addRelationshipMappingWithSourceKeyPath:@"favorites" mapping:[self topicMapping]];
+     */
     return userMapping;
 }
 
 + (RKEntityMapping *)consultantMapping
 {
     RKEntityMapping *consultantMapping = [RKEntityMapping mappingForEntityForName:@"Consultant" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    [consultantMapping addAttributeMappingsFromDictionary:@{
-                                                            // TODO: add profile mapping
-                                                            }];
+    NSDictionary *consultantMap = @{
+                                    // TODO: add profile mapping
+                                    };
+    [consultantMapping addAttributeMappingsFromDictionary:[self userMap]];
+    [consultantMapping addAttributeMappingsFromDictionary:consultantMap];
+    consultantMapping.identificationAttributes = @[ @"userID" ];
+    ;
     
     return consultantMapping;
 }
@@ -151,9 +157,12 @@ static RKEntityMapping *PLACEHOLDER = nil;
 + (RKEntityMapping *)projectMapping
 {
     RKEntityMapping *projectMapping = [RKEntityMapping mappingForEntityForName:@"Project" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    [projectMapping addAttributeMappingsFromDictionary:@{
-                                                         // TODO: add project mapping
-                                                         }];
+    NSDictionary *projectMap = @{
+                                 // TODO: add project mapping
+                                 };
+    [projectMapping addAttributeMappingsFromDictionary:projectMap];
+    
+    [projectMapping addRelationshipMappingWithSourceKeyPath:@"tasks" mapping:[self topicMapping]];
     
     return projectMapping;
 }

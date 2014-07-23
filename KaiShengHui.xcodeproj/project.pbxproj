@@ -75,6 +75,13 @@
 		C14D4A8F197E6BBF00CAA5A5 /* KSHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C14D4A75197E6BBF00CAA5A5 /* KSHUser.m */; };
 		C1560938197CE34500FB4677 /* ksh-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1560937197CE34500FB4677 /* ksh-default.jpg */; };
 		C182851A196679210080F2DD /* KSHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C1828519196679210080F2DD /* KSHMessage.m */; };
+		C1CAA141197F8A2D003EA341 /* KSHEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA140197F8A2D003EA341 /* KSHEventTableViewController.m */; };
+		C1CAA144197F8A3D003EA341 /* KSHProjectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA143197F8A3D003EA341 /* KSHProjectTableViewController.m */; };
+		C1CAA149197F8E15003EA341 /* KSHEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA148197F8E15003EA341 /* KSHEventManager.m */; };
+		C1CAA14C197F8E23003EA341 /* KSHProjectOpportunityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA14B197F8E23003EA341 /* KSHProjectOpportunityManager.m */; };
+		C1CAA14F197F8EF8003EA341 /* KSHEntityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA14E197F8EF8003EA341 /* KSHEntityTableViewController.m */; };
+		C1CAA152197FA173003EA341 /* KSHProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA151197FA173003EA341 /* KSHProjectDetailViewController.m */; };
+		C1CAA156197FA70E003EA341 /* KSHEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA155197FA70E003EA341 /* KSHEventDetailViewController.m */; };
 		C1E2AC7F196BC70D00B6A7AF /* KSHUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */; };
 		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
 		C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */; };
@@ -193,6 +200,20 @@
 		C1560937197CE34500FB4677 /* ksh-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ksh-default.jpg"; sourceTree = "<group>"; };
 		C1828518196679210080F2DD /* KSHMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHMessage.h; sourceTree = "<group>"; };
 		C1828519196679210080F2DD /* KSHMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMessage.m; sourceTree = "<group>"; };
+		C1CAA13F197F8A2D003EA341 /* KSHEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHEventTableViewController.h; sourceTree = "<group>"; };
+		C1CAA140197F8A2D003EA341 /* KSHEventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHEventTableViewController.m; sourceTree = "<group>"; };
+		C1CAA142197F8A3D003EA341 /* KSHProjectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHProjectTableViewController.h; sourceTree = "<group>"; };
+		C1CAA143197F8A3D003EA341 /* KSHProjectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProjectTableViewController.m; sourceTree = "<group>"; };
+		C1CAA147197F8E15003EA341 /* KSHEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHEventManager.h; sourceTree = "<group>"; };
+		C1CAA148197F8E15003EA341 /* KSHEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHEventManager.m; sourceTree = "<group>"; };
+		C1CAA14A197F8E23003EA341 /* KSHProjectOpportunityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHProjectOpportunityManager.h; sourceTree = "<group>"; };
+		C1CAA14B197F8E23003EA341 /* KSHProjectOpportunityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProjectOpportunityManager.m; sourceTree = "<group>"; };
+		C1CAA14D197F8EF8003EA341 /* KSHEntityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHEntityTableViewController.h; sourceTree = "<group>"; };
+		C1CAA14E197F8EF8003EA341 /* KSHEntityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHEntityTableViewController.m; sourceTree = "<group>"; };
+		C1CAA150197FA173003EA341 /* KSHProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHProjectDetailViewController.h; sourceTree = "<group>"; };
+		C1CAA151197FA173003EA341 /* KSHProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProjectDetailViewController.m; sourceTree = "<group>"; };
+		C1CAA154197FA70E003EA341 /* KSHEventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHEventDetailViewController.h; sourceTree = "<group>"; };
+		C1CAA155197FA70E003EA341 /* KSHEventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHEventDetailViewController.m; sourceTree = "<group>"; };
 		C1E2AC7D196BC70D00B6A7AF /* KSHUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserDefaultsHelper.h; sourceTree = "<group>"; };
 		C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserDefaultsHelper.m; sourceTree = "<group>"; };
 		C1F6FF8319596350006EE5F7 /* KSHUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserManager.h; sourceTree = "<group>"; };
@@ -344,9 +365,12 @@
 			isa = PBXGroup;
 			children = (
 				C182851C1966B29B0080F2DD /* Helpers */,
-				C1F6FF9619597DE8006EE5F7 /* ArticleControllers */,
-				C1ABFE31195C20B5006560E7 /* LoginController */,
-				C1F6FFA019597E8E006EE5F7 /* UserProfileControllers */,
+				C1CAA153197FA3B2003EA341 /* MasterViewController */,
+				C1F6FF9619597DE8006EE5F7 /* ArticleViewControllers */,
+				C1CAA13D197F89E5003EA341 /* EventViewControllers */,
+				C1CAA13E197F89F7003EA341 /* ProjectViewControllers */,
+				C1ABFE31195C20B5006560E7 /* LoginViewController */,
+				C1F6FFA019597E8E006EE5F7 /* ProfileViewControllers */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -456,13 +480,13 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
-		C1ABFE31195C20B5006560E7 /* LoginController */ = {
+		C1ABFE31195C20B5006560E7 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
 				C1F87B9A195D3F0900DD300D /* KSHLoginViewController.h */,
 				C1F87B9B195D3F0900DD300D /* KSHLoginViewController.m */,
 			);
-			name = LoginController;
+			name = LoginViewController;
 			sourceTree = "<group>";
 		};
 		C1ABFE32195C20ED006560E7 /* UserManager */ = {
@@ -492,6 +516,55 @@
 			name = ObjectManager;
 			sourceTree = "<group>";
 		};
+		C1CAA13D197F89E5003EA341 /* EventViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C1CAA13F197F8A2D003EA341 /* KSHEventTableViewController.h */,
+				C1CAA140197F8A2D003EA341 /* KSHEventTableViewController.m */,
+				C1CAA154197FA70E003EA341 /* KSHEventDetailViewController.h */,
+				C1CAA155197FA70E003EA341 /* KSHEventDetailViewController.m */,
+			);
+			name = EventViewControllers;
+			sourceTree = "<group>";
+		};
+		C1CAA13E197F89F7003EA341 /* ProjectViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C1CAA142197F8A3D003EA341 /* KSHProjectTableViewController.h */,
+				C1CAA143197F8A3D003EA341 /* KSHProjectTableViewController.m */,
+				C1CAA150197FA173003EA341 /* KSHProjectDetailViewController.h */,
+				C1CAA151197FA173003EA341 /* KSHProjectDetailViewController.m */,
+			);
+			name = ProjectViewControllers;
+			sourceTree = "<group>";
+		};
+		C1CAA145197F8DDF003EA341 /* EventManager */ = {
+			isa = PBXGroup;
+			children = (
+				C1CAA147197F8E15003EA341 /* KSHEventManager.h */,
+				C1CAA148197F8E15003EA341 /* KSHEventManager.m */,
+			);
+			name = EventManager;
+			sourceTree = "<group>";
+		};
+		C1CAA146197F8DE5003EA341 /* ProjectOpportunityManager */ = {
+			isa = PBXGroup;
+			children = (
+				C1CAA14A197F8E23003EA341 /* KSHProjectOpportunityManager.h */,
+				C1CAA14B197F8E23003EA341 /* KSHProjectOpportunityManager.m */,
+			);
+			name = ProjectOpportunityManager;
+			sourceTree = "<group>";
+		};
+		C1CAA153197FA3B2003EA341 /* MasterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C1CAA14D197F8EF8003EA341 /* KSHEntityTableViewController.h */,
+				C1CAA14E197F8EF8003EA341 /* KSHEntityTableViewController.m */,
+			);
+			name = MasterViewController;
+			sourceTree = "<group>";
+		};
 		C1F6FF8F195963CC006EE5F7 /* MappingProvider */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,12 +579,14 @@
 			children = (
 				C1ABFE34195C210B006560E7 /* ObjectManager */,
 				C1ABFE33195C20F3006560E7 /* ArticleManager */,
+				C1CAA145197F8DDF003EA341 /* EventManager */,
+				C1CAA146197F8DE5003EA341 /* ProjectOpportunityManager */,
 				C1ABFE32195C20ED006560E7 /* UserManager */,
 			);
 			name = ObjectManagers;
 			sourceTree = "<group>";
 		};
-		C1F6FF9619597DE8006EE5F7 /* ArticleControllers */ = {
+		C1F6FF9619597DE8006EE5F7 /* ArticleViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				C1F6FF9719597E0E006EE5F7 /* KSHArticleTableViewController.h */,
@@ -519,10 +594,10 @@
 				C111FED3196E31A10043E983 /* KSHArticleDetailViewController.h */,
 				C111FED4196E31A10043E983 /* KSHArticleDetailViewController.m */,
 			);
-			name = ArticleControllers;
+			name = ArticleViewControllers;
 			sourceTree = "<group>";
 		};
-		C1F6FFA019597E8E006EE5F7 /* UserProfileControllers */ = {
+		C1F6FFA019597E8E006EE5F7 /* ProfileViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				C1F87B93195D3EA900DD300D /* KSHUserProfileTableViewController.h */,
@@ -530,7 +605,7 @@
 				C1F87B96195D3ECF00DD300D /* KSHUserProfileDetailViewController.h */,
 				C1F87B97195D3ECF00DD300D /* KSHUserProfileDetailViewController.m */,
 			);
-			name = UserProfileControllers;
+			name = ProfileViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -689,21 +764,27 @@
 				C14D4A79197E6BBF00CAA5A5 /* _KSHConsultationTask.m in Sources */,
 				C14D4A7B197E6BBF00CAA5A5 /* _KSHFeedback.m in Sources */,
 				C14D4A8A197E6BBF00CAA5A5 /* KSHProfile.m in Sources */,
+				C1CAA152197FA173003EA341 /* KSHProjectDetailViewController.m in Sources */,
 				C135600419594FA9005DABED /* KaiShengHui.xcdatamodeld in Sources */,
 				C14D4A80197E6BBF00CAA5A5 /* _KSHTask.m in Sources */,
+				C1CAA144197F8A3D003EA341 /* KSHProjectTableViewController.m in Sources */,
 				C1F87B9C195D3F0900DD300D /* KSHLoginViewController.m in Sources */,
 				C14D4A87197E6BBF00CAA5A5 /* KSHEvent.m in Sources */,
 				C111FED5196E31A10043E983 /* KSHArticleDetailViewController.m in Sources */,
 				C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */,
 				C14D4A8E197E6BBF00CAA5A5 /* KSHTopic.m in Sources */,
+				C1CAA141197F8A2D003EA341 /* KSHEventTableViewController.m in Sources */,
 				C14D4A76197E6BBF00CAA5A5 /* _KSHArticle.m in Sources */,
 				C14D4A7E197E6BBF00CAA5A5 /* _KSHProject.m in Sources */,
 				C1F87B95195D3EAA00DD300D /* KSHUserProfileTableViewController.m in Sources */,
+				C1CAA149197F8E15003EA341 /* KSHEventManager.m in Sources */,
 				C14D4A88197E6BBF00CAA5A5 /* KSHFeedback.m in Sources */,
 				C14D4A7A197E6BBF00CAA5A5 /* _KSHEvent.m in Sources */,
 				C14D4A7C197E6BBF00CAA5A5 /* _KSHPost.m in Sources */,
+				C1CAA14C197F8E23003EA341 /* KSHProjectOpportunityManager.m in Sources */,
 				C1E2AC7F196BC70D00B6A7AF /* KSHUserDefaultsHelper.m in Sources */,
 				C14D4A77197E6BBF00CAA5A5 /* _KSHConsultant.m in Sources */,
+				C1CAA156197FA70E003EA341 /* KSHEventDetailViewController.m in Sources */,
 				C1F87B98195D3ECF00DD300D /* KSHUserProfileDetailViewController.m in Sources */,
 				C13445AA197781E7003940CE /* KSHCurrentUser.m in Sources */,
 				C14D4A8F197E6BBF00CAA5A5 /* KSHUser.m in Sources */,
@@ -723,6 +804,7 @@
 				C1355FFA19594FA9005DABED /* main.m in Sources */,
 				C14D4A83197E6BBF00CAA5A5 /* KSHArticle.m in Sources */,
 				C135603B19595590005DABED /* KSHObjectManager.m in Sources */,
+				C1CAA14F197F8EF8003EA341 /* KSHEntityTableViewController.m in Sources */,
 				C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */,
 				C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */,
 				C14D4A86197E6BBF00CAA5A5 /* KSHConsultationTask.m in Sources */,

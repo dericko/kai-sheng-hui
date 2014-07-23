@@ -72,7 +72,7 @@ static KSHObjectManager *sharedManager = nil;
 
 - (void)setupResponseDescriptors
 {
-  // any common code for responses
+    // any common code for responses
 }
 
 @end

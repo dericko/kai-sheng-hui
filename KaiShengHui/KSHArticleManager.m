@@ -8,6 +8,7 @@
 
 #import "KSHArticleManager.h"
 
+
 // !!!: part of test URL
 NSString * const kArticlePath = @"/post/rest/gettopposts/";
 
@@ -55,8 +56,6 @@ NSString * const kArticlePath = @"/post/rest/gettopposts/";
         
         return nil;
     }];
-
-
 }
 
 - (void)setupResponseDescriptors

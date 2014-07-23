@@ -27,13 +27,15 @@
 + (instancetype)sharedManager;
 
 /**
- Tells client how to make API requests
+ Tells client how to make API requests, to be used with POST, PUT, PATH HTTP methods.
+ Specific to each subclass of object manager.
  @see http://restkit.org/ for more information
  */
 - (void)setupRequestDescriptors;
 
 /**
- Tells client how to deal with API responses
+ Tells client how to deal with API responses, such as how to map a JSON response to your objects.
+ Specific to each subclass of object manager.
  @see http://restkit.org/ for more information
  */
 - (void)setupResponseDescriptors;
