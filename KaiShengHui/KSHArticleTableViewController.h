@@ -6,15 +6,11 @@
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "KSHEntityTableViewController.h"
 #import "KSHArticleManager.h"
 
-/** Displays a table of Articles using a KSHArticleManager
- */
-@interface KSHArticleTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface KSHArticleTableViewController : KSHEntityTableViewController
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) KSHArticleManager *articleManager;
 
 @end

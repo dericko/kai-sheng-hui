@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>F828F7B6-8027-4AA9-9B4E-8CF9F0D9E92F</string>
+	<string>7E656ED1-CE95-4EC0-B092-002678A8B9D7</string>
 	<key>IDESourceControlProjectName</key>
 	<string>KaiShengHui</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>8909D12C-F537-4AF0-BD30-A09AD21C4FC8</key>
+		<key>D6EDE19A-A310-4FA3-BC6A-5ADF4E206957</key>
 		<string>https://www.github.com/dericko/kai-sheng-hui</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>KaiShengHui.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>8909D12C-F537-4AF0-BD30-A09AD21C4FC8</key>
+		<key>D6EDE19A-A310-4FA3-BC6A-5ADF4E206957</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8909D12C-F537-4AF0-BD30-A09AD21C4FC8</string>
+	<string>D6EDE19A-A310-4FA3-BC6A-5ADF4E206957</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8909D12C-F537-4AF0-BD30-A09AD21C4FC8</string>
+			<string>D6EDE19A-A310-4FA3-BC6A-5ADF4E206957</string>
 			<key>IDESourceControlWCCName</key>
 			<string>KaiShengHui</string>
 		</dict>
