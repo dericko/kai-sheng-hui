@@ -43,7 +43,7 @@
     // TODO: Implement GET Request
 }
 
-#pragma mark - Set up Cell
+#pragma mark - Cell configuration
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {

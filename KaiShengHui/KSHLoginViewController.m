@@ -11,6 +11,7 @@
 
 #import "KSHCurrentUser.h"
 #import "KSHUserProfileTableViewController.h"
+#import "KSHUserDefaultsHelper.h"
 
 #define LOGIN_PATH @"INSERT_LOGIN_PATH"
 
@@ -69,19 +70,22 @@
 
 - (IBAction)signInButtonPressed:(id)sender
 {
-    NSLog(@"signin button pressed");
-    [self disableSignInButton];
+    [self loggedInSuccessfully];
     
-    // The hud will disable all input on the view (use the higest view possible in the view hierarchy)
-	HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-	[self.navigationController.view addSubview:HUD];
-    
-	// Regiser for HUD callbacks so we can remove it from the window at the right time
-	HUD.delegate = self;
-    HUD.labelText = @"Signing In";
-    
-# warning internal HUD selector method "sendLoginRequest" uses async blocks, so stops loading signal before blocks are executed
-    [HUD showWhileExecuting:@selector(sendLoginRequest) onTarget:self withObject:nil animated:YES];
+# warning temporarily accepts login without making login request (for demonstration)
+//    NSLog(@"signin button pressed");
+//    [self disableSignInButton];
+//    
+//    // The hud will disable all input on the view (use the higest view possible in the view hierarchy)
+//	HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+//	[self.navigationController.view addSubview:HUD];
+//    
+//	// Regiser for HUD callbacks so we can remove it from the window at the right time
+//	HUD.delegate = self;
+//    HUD.labelText = @"Signing In";
+//    
+//# warning internal HUD selector method "sendLoginRequest" uses async blocks, so stops loading signal before blocks are executed
+//    [HUD showWhileExecuting:@selector(sendLoginRequest) onTarget:self withObject:nil animated:YES];
 
 }
 
@@ -127,6 +131,7 @@
                                                         [self.currentUser setAuthToken:authToken];
                                                         // TODO: Stop HUD
                                                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                        [self enableSignInButton];
                                                         if (operation.response.statusCode == 500) {
                                                             // TODO: Stop HUD + 500 error
                                                             [KSHMessage displayErrorAlert:@"Something went wrong!" withSubtitle:@""];
@@ -148,27 +153,11 @@
 - (void)loggedInSuccessfully
 {
     // Instantiate User entity with request
+    [KSHUserDefaultsHelper userLogin];
     
-    // Link via userID, authToken/cookie(?)
-    
-    // Move to next scene
-    [self showNextView];
 }
 
 #pragma mark - Navigation
-
-- (void)showNextView
-{
-    NSString *controllerId = @"UserProfile";
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    KSHUserProfileTableViewController *nextViewController = [storyboard instantiateViewControllerWithIdentifier:controllerId];
-    
-    UIStoryboardSegue *destinationViewController = [UIStoryboardSegue segueWithIdentifier:controllerId source:self destination:nextViewController performHandler:^{
-    }];
-    
-    
-    [destinationViewController perform];
-}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

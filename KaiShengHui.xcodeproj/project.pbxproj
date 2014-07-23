@@ -82,6 +82,8 @@
 		C1CAA14F197F8EF8003EA341 /* KSHEntityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA14E197F8EF8003EA341 /* KSHEntityTableViewController.m */; };
 		C1CAA152197FA173003EA341 /* KSHProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA151197FA173003EA341 /* KSHProjectDetailViewController.m */; };
 		C1CAA156197FA70E003EA341 /* KSHEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA155197FA70E003EA341 /* KSHEventDetailViewController.m */; };
+		C1CAA159197FB505003EA341 /* KSHLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA158197FB505003EA341 /* KSHLandingViewController.m */; };
+		C1CAA15C197FB52F003EA341 /* KSHNewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA15B197FB52F003EA341 /* KSHNewUserViewController.m */; };
 		C1E2AC7F196BC70D00B6A7AF /* KSHUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */; };
 		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
 		C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */; };
@@ -214,6 +216,10 @@
 		C1CAA151197FA173003EA341 /* KSHProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProjectDetailViewController.m; sourceTree = "<group>"; };
 		C1CAA154197FA70E003EA341 /* KSHEventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHEventDetailViewController.h; sourceTree = "<group>"; };
 		C1CAA155197FA70E003EA341 /* KSHEventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHEventDetailViewController.m; sourceTree = "<group>"; };
+		C1CAA157197FB505003EA341 /* KSHLandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLandingViewController.h; sourceTree = "<group>"; };
+		C1CAA158197FB505003EA341 /* KSHLandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLandingViewController.m; sourceTree = "<group>"; };
+		C1CAA15A197FB52F003EA341 /* KSHNewUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHNewUserViewController.h; sourceTree = "<group>"; };
+		C1CAA15B197FB52F003EA341 /* KSHNewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHNewUserViewController.m; sourceTree = "<group>"; };
 		C1E2AC7D196BC70D00B6A7AF /* KSHUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserDefaultsHelper.h; sourceTree = "<group>"; };
 		C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserDefaultsHelper.m; sourceTree = "<group>"; };
 		C1F6FF8319596350006EE5F7 /* KSHUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserManager.h; sourceTree = "<group>"; };
@@ -365,11 +371,11 @@
 			isa = PBXGroup;
 			children = (
 				C182851C1966B29B0080F2DD /* Helpers */,
-				C1CAA153197FA3B2003EA341 /* MasterViewController */,
+				C1CAA153197FA3B2003EA341 /* Parent Controllers */,
 				C1F6FF9619597DE8006EE5F7 /* ArticleViewControllers */,
 				C1CAA13D197F89E5003EA341 /* EventViewControllers */,
 				C1CAA13E197F89F7003EA341 /* ProjectViewControllers */,
-				C1ABFE31195C20B5006560E7 /* LoginViewController */,
+				C1ABFE31195C20B5006560E7 /* LoginViewControllers */,
 				C1F6FFA019597E8E006EE5F7 /* ProfileViewControllers */,
 			);
 			name = Controllers;
@@ -480,13 +486,17 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
-		C1ABFE31195C20B5006560E7 /* LoginViewController */ = {
+		C1ABFE31195C20B5006560E7 /* LoginViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				C1F87B9A195D3F0900DD300D /* KSHLoginViewController.h */,
 				C1F87B9B195D3F0900DD300D /* KSHLoginViewController.m */,
+				C1CAA157197FB505003EA341 /* KSHLandingViewController.h */,
+				C1CAA158197FB505003EA341 /* KSHLandingViewController.m */,
+				C1CAA15A197FB52F003EA341 /* KSHNewUserViewController.h */,
+				C1CAA15B197FB52F003EA341 /* KSHNewUserViewController.m */,
 			);
-			name = LoginViewController;
+			name = LoginViewControllers;
 			sourceTree = "<group>";
 		};
 		C1ABFE32195C20ED006560E7 /* UserManager */ = {
@@ -556,13 +566,13 @@
 			name = ProjectOpportunityManager;
 			sourceTree = "<group>";
 		};
-		C1CAA153197FA3B2003EA341 /* MasterViewController */ = {
+		C1CAA153197FA3B2003EA341 /* Parent Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				C1CAA14D197F8EF8003EA341 /* KSHEntityTableViewController.h */,
 				C1CAA14E197F8EF8003EA341 /* KSHEntityTableViewController.m */,
 			);
-			name = MasterViewController;
+			name = "Parent Controllers";
 			sourceTree = "<group>";
 		};
 		C1F6FF8F195963CC006EE5F7 /* MappingProvider */ = {
@@ -775,8 +785,10 @@
 				C14D4A8E197E6BBF00CAA5A5 /* KSHTopic.m in Sources */,
 				C1CAA141197F8A2D003EA341 /* KSHEventTableViewController.m in Sources */,
 				C14D4A76197E6BBF00CAA5A5 /* _KSHArticle.m in Sources */,
+				C1CAA15C197FB52F003EA341 /* KSHNewUserViewController.m in Sources */,
 				C14D4A7E197E6BBF00CAA5A5 /* _KSHProject.m in Sources */,
 				C1F87B95195D3EAA00DD300D /* KSHUserProfileTableViewController.m in Sources */,
+				C1CAA159197FB505003EA341 /* KSHLandingViewController.m in Sources */,
 				C1CAA149197F8E15003EA341 /* KSHEventManager.m in Sources */,
 				C14D4A88197E6BBF00CAA5A5 /* KSHFeedback.m in Sources */,
 				C14D4A7A197E6BBF00CAA5A5 /* _KSHEvent.m in Sources */,

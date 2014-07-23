@@ -31,16 +31,20 @@
         [KSHUserDefaultsHelper initUserDefaults:_defaults];
     }
     
-// TODO: Set up initial view controller to check: loggedin ? LOGIN vs FIRSTVIEW
-/* former code (edit and reimplement)
-    NSString *controllerID = @"ArticleTable"; // can add multiple options with ? operator
+    // !!!: Assume user is logged in for testing purposes
+    [KSHUserDefaultsHelper userLogin];
+    
+    // Set initial controller depending on login status
+    NSString *controllerID = [KSHUserDefaultsHelper isUserLoggedIn] ? @"TabBar" : @"Landing";
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    KSHArticleTableViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controllerID];
+    UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controllerID];
+    if ([KSHUserDefaultsHelper isUserLoggedIn]) {
+        [self.window setRootViewController:initViewController];
+    } else {
+        [(UINavigationController *)self.window.rootViewController pushViewController:initViewController animated:NO];
+    }
     
-    initViewController.managedObjectStore = _RKManagedObjectStore;
-    
-    [self.window setRootViewController:initViewController];
-*/
     return YES;
 }
 							
