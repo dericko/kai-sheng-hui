@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import "KSHObjectManager.h"
+#import "KSHContentManager.h"
 #import "KSHEvent.h"
 
-@interface KSHEventManager : KSHObjectManager
+@interface KSHEventManager : KSHContentManager
 
 @end

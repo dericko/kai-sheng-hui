@@ -177,4 +177,99 @@ static RKEntityMapping *PLACEHOLDER = nil;
     return projectOpportunityMapping;
 }
 
+#pragma mark - Test Mapping using Parse database
+
++ (NSDictionary *)postParseMap
+{
+    NSDictionary *postMap = @{
+                              @"id":                    @"postID",
+                              @"post_type":             @"postType",
+                              @"publish_time":          @"publishTime",
+                              @"update_time":           @"updateTime",
+                              @"view_count":            @"viewCount",
+                              @"creator":               @"creator",
+                              @"editor":                @"editor",
+                              @"post.title":            @"title",
+                              @"post.content":          @"content",
+                              @"post.excerpt":          @"excerpt",
+                              @"post.guest_content":    @"guestContent"
+                              };
+    return postMap;
+}
+
+
++ (RKEntityMapping *)articleParseMapping
+{
+    RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    NSDictionary *articleMap = @{
+                                 @"article_fields.industry":    @"industryID",
+                                 @"file.file_type":        @"fileType",
+                                 @"file.path":             @"imgURLString"
+//                                 @"tags":               @"tags"
+                                 };
+    [articleMapping addAttributeMappingsFromDictionary:[self postParseMap]];
+    [articleMapping addAttributeMappingsFromDictionary: articleMap];
+    articleMapping.identificationAttributes = @[ @"postID" ];
+    
+    return articleMapping;
+}
+
++ (RKEntityMapping *)eventParseMapping
+{
+    RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    NSDictionary *eventMap = @{
+                                 @"event_fields.apply.must_apply":      @"mustApply",
+                                 @"event_fields.apply.charge_type":     @"chargeType",
+                                 @"event_fields.apply.member_price":    @"memberPrice",
+                                 @"event_fields.apply.nonmember_price": @"nonmemberPrice",
+                                 @"event_fields.contact.contact_name":  @"contactName",
+                                 @"event_fields.contact.contact_email": @"contactEmail",
+                                 @"event_fields.region":                @"region",
+                                 @"event_fields.place":                 @"place",
+                                 @"event_fields.startTime":             @"startTime",
+                                 @"event_fields.endTime":               @"endTime",
+                                 @"event_fields.type":                  @"type"
+                                 };
+    [eventMapping addAttributeMappingsFromDictionary:[self postParseMap]];
+    [eventMapping addAttributeMappingsFromDictionary: eventMap];
+    eventMapping.identificationAttributes = @[ @"postID" ];
+    ;
+    
+    return eventMapping;
+}
+
++ (RKEntityMapping *)userParseMapping
+{
+    return PLACEHOLDER;
+}
+
++ (RKEntityMapping *)consultantParseMapping
+{
+    return PLACEHOLDER;
+}
+
++ (RKEntityMapping *)projectParseMapping
+{
+    return PLACEHOLDER;
+}
+
++ (RKEntityMapping *)projectOpportunityParseMapping
+{
+    RKEntityMapping *projectOpportunityMapping = [RKEntityMapping mappingForEntityForName:@"ProjectOpportunity" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    NSDictionary *projectOpportunityMap = @{
+                               @"id":                       @"opportunityID",
+                               @"content.title":            @"title",
+                               @"content.ideal_background": @"idealBackground",
+                               @"content.referenceContent": @"referencecontent",
+                               @"content.contacts":         @"contacts",
+                               @"content.deadline_time":    @"deadlineTime",
+                               @"publishTime":              @"publishTime"
+                               };
+    [projectOpportunityMapping addAttributeMappingsFromDictionary: projectOpportunityMap];
+    projectOpportunityMapping.identificationAttributes = @[ @"opportunityID" ];
+    ;
+    
+    return projectOpportunityMapping;
+}
+
 @end

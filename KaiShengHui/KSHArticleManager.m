@@ -9,48 +9,35 @@
 #import "KSHArticleManager.h"
 
 
-// !!!: part of test URL
-NSString * const kArticlePath = @"/post/rest/gettopposts/";
 
 @interface KSHArticleManager()
-@property NSString *articlePath;
 @end
 
 @implementation KSHArticleManager
-// TODO: implement KSHArticleManager methods
 
-- (void)loadArticles:(NSNumber *)numberToLoad success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
+- (void)setPath
 {
-    _articlePath = [NSString stringWithFormat:@"%@%@", kArticlePath, numberToLoad];
-    [self getObjectsAtPath:_articlePath
-                parameters:nil
-                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                       if (success) {
-                           success();
-                       }}
-                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                       if (failure) {
-                           failure(error);
-                       }
-                   }];
+    self.objectPath = kArticlePath;
 }
 
 - (void)setupRequestDescriptors
 {
     [super setupRequestDescriptors];
     
-    // Check objects by comparing existing articleIDs with incoming calls and delete orphaned objects
+    [self setPath];
+    
+    // Check objects by comparing existing postIDs with incoming calls and delete orphaned objects
     [self addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:kArticlePath];
         
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
-        NSString *articleID;
+        NSString *contentID;
         if (match) {
-            articleID = [argsDict objectForKey:@"id"];
+            contentID = [argsDict objectForKey:@"id"];
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
-            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"articleID = %@", @([articleID integerValue])]; // NOTE: Coerced from string to number
-            fetchRequest.sortDescriptors = @[ [NSSortDescriptor sortDescriptorWithKey:@"publish_time" ascending:YES] ];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"postID = %@", @([contentID integerValue])]; // NOTE: Coerced from string to number
+            fetchRequest.sortDescriptors = @[ [NSSortDescriptor sortDescriptorWithKey:@"publishTime" ascending:NO] ];
             return fetchRequest;
         }
         
@@ -62,12 +49,12 @@ NSString * const kArticlePath = @"/post/rest/gettopposts/";
 {
     [super setupResponseDescriptors];
     
-    // add additional response descriptors
+# warning Using test database on Parse.com: change 'articleParseMapping' to 'articleMapping' for production
     RKResponseDescriptor *articleResponseDescriptor =
-    [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider articleMapping]
+    [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider articleParseMapping]
                                                  method:RKRequestMethodGET
-                                            pathPattern:_articlePath
-                                                keyPath:nil
+                                            pathPattern:self.objectPath
+                                                keyPath:@"results"
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     
     [self addResponseDescriptor:articleResponseDescriptor];

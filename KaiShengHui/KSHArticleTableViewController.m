@@ -22,9 +22,11 @@
 
 - (void)viewDidLoad
 {
-    _articleManager = [KSHArticleManager sharedManager];
-    _articleManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+    self.contentManager = [KSHContentManager sharedManager];
+    self.contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
+    
+    [self assignCustomClassFields];
     
     [super viewDidLoad];
 }
@@ -42,22 +44,21 @@
 
 - (void)loadCells
 {
-    NSLog(@"loading Articles");
-    if (_articleManager) {
-        [_articleManager loadArticles:self.numberToLoad
-                                         success:^(void) {
-                                             [self.refreshControl endRefreshing];
-                                             if (self.footerView){
-                                                 [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
-                                             }
-                                         }
-                                         failure:^(NSError *error) {
-                                             [self.refreshControl endRefreshing];
-                                             if (self.footerView){
-                                                 [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
-                                             }
-                                             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
-                                         }];
+    if (self.contentManager) {
+        [self.contentManager
+         loadArticlesWithParameters:nil
+         success:^(void) {
+             [self.refreshControl endRefreshing];
+             if (self.footerView){
+                 [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
+             }
+        } failure:^(NSError *error) {
+            [self.refreshControl endRefreshing];
+            if (self.footerView){
+                [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
+            }
+            [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
+        }];
     }
 }
 
@@ -73,12 +74,12 @@
     [(KSHArticleTableViewCell *) cell setRightUtilityButtons:[self rightButtons]];
     
     ((KSHArticleTableViewCell *)cell).titleLabel.text = [[_article valueForKey:@"title"] description];
-    ((KSHArticleTableViewCell *)cell).tagsLabel.text = [[_article valueForKey:@"tags"] description];
+    ((KSHArticleTableViewCell *)cell).detailLabel3.text = [[_article valueForKey:@"tags"] description];
     if (!_article.industry) {
         NSLog(@"Setting industry");
         [_article setIndustryText];
     }
-    ((KSHArticleTableViewCell *)cell).industryLabel.text = [[_article valueForKey:@"industry"] description];;
+    ((KSHArticleTableViewCell *)cell).detailLabel2.text = [[_article valueForKey:@"industry"] description];;
     
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];
     // Check if image has been downloaded

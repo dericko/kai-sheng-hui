@@ -11,7 +11,7 @@
 #import "KSHMappingProvider.h"
 
 /**
- 'KSHObjectManager' Handles initial setup, requests, and responses as application network client. This class should be extended according to request and response behaviour of specific resources.
+ 'KSHObjectManager' Is a network client that handles initial setup, request descriptors, and response mapping. This class should be extended according to request and response behaviour of specific resources.
  Dependencies: RestKit 0.20.0
  @see 'RKObjectManager'
  */
@@ -39,5 +39,18 @@
  @see http://restkit.org/ for more information
  */
 - (void)setupResponseDescriptors;
+
+@end
+
+@protocol KSHObjectManagerDelegate <NSObject>
+
+@optional
+- (void)loadArticlesWithParameters:(NSDictionary *)parameters success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
+
+@optional
+- (void)loadEventsWithParameters:(NSDictionary *)parameters success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
+
+@optional
+- (void)loadProjectOpportunitiesWithParameters:(NSDictionary *)parameters success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
 
 @end

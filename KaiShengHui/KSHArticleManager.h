@@ -6,16 +6,14 @@
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import "KSHObjectManager.h"
+#import "KSHContentManager.h"
 #import "KSHArticle.h"
-
-extern NSString * const kArticlePath;
 
 /**
  'KSHArticleManager' Defines articleObject-specific request and response behavior. It handles interactions with an object mapping provider to map network responses to an article model.
  @see 'KSHObjectManager'
  */
-@interface KSHArticleManager : KSHObjectManager
+@interface KSHArticleManager : KSHContentManager
 
 /** Wrapper for a RestKit network request.
  Loads Article JSON from API and executes provided success: and failure: blocks.
@@ -24,6 +22,5 @@ extern NSString * const kArticlePath;
  for an EntityMapping object (from KSHMappingProvider) and returns an RKManagedObjectRequestOperation if so. 
  Be sure to implement similar behaviour if switching away from Restkit.
  */
-- (void)loadArticles:(NSNumber *)numberToLoad success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
 
 @end

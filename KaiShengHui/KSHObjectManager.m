@@ -9,10 +9,6 @@
 #import "KSHObjectManager.h"
 #import "KSHCurrentUser.h"
 
-// !!!: part of test URL
-#define BASE_URL @"http://test.i-ksh.net"
-#define PERSONAL_ACCESS_TOKEN @"insert_access_token"
-
 static KSHObjectManager *sharedManager = nil;
 
 @implementation KSHObjectManager
@@ -25,7 +21,7 @@ static KSHObjectManager *sharedManager = nil;
     dispatch_once(&onceToken, ^{
         
         // instantiate object manager with base url
-        NSURL *url = [NSURL URLWithString:BASE_URL];
+        NSURL *url = [NSURL URLWithString:kBASE_URL];
         sharedManager = [self managerWithBaseURL:url];
         
         // Serialize for JSON
@@ -36,7 +32,8 @@ static KSHObjectManager *sharedManager = nil;
         [sharedManager setupResponseDescriptors];
         
         // Set up HTTPClient
-        [sharedManager setupClientWithURL:url];
+//        [sharedManager setupClientWithURL:url];
+        [sharedManager setupParseHeaders];
     });
     
         return sharedManager;
@@ -63,6 +60,12 @@ static KSHObjectManager *sharedManager = nil;
 
 - (void)tokenChanged:(NSNotification *)notification {
     [self setAuthTokenHeader];
+}
+
+- (void)setupParseHeaders
+{
+    [sharedManager.HTTPClient setDefaultHeader:@"X-Parse-Application-Id" value:kAppKey];
+    [sharedManager.HTTPClient setDefaultHeader:@"X-Parse-REST-API-Key" value:kRestAPIKey];
 }
 
 - (void)setupRequestDescriptors

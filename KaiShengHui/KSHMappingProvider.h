@@ -24,7 +24,6 @@
 @interface KSHMappingProvider : NSObject
 
 // TODO: comment mapping methods
-// TODO: comment mapping methods
 + (RKEntityMapping *)articleMapping;
 + (RKEntityMapping *)eventMapping;
 
@@ -33,5 +32,15 @@
 
 + (RKEntityMapping *)projectMapping;
 + (RKEntityMapping *)projectOpportunityMapping;
+
+#pragma mark - Test Mapping using Parse database
++ (RKEntityMapping *)articleParseMapping;
++ (RKEntityMapping *)eventParseMapping;
+
++ (RKEntityMapping *)userParseMapping;
++ (RKEntityMapping *)consultantParseMapping;
+
++ (RKEntityMapping *)projectParseMapping;
++ (RKEntityMapping *)projectOpportunityParseMapping;
 
 @end

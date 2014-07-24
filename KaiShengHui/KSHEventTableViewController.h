@@ -7,10 +7,7 @@
 //
 
 #import "KSHEntityTableViewController.h"
-#import "KSHEventManager.h"
 
 @interface KSHEventTableViewController : KSHEntityTableViewController
-
-@property (strong, nonatomic) KSHEventManager *eventManager;
 
 @end

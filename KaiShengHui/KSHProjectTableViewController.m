@@ -8,6 +8,7 @@
 
 #import "KSHProjectTableViewController.h"
 #import "KSHProjectDetailViewController.h"
+#import "KSHContentTableViewCell.h"
 #import "KSHMessage.h"
 
 @interface KSHProjectTableViewController ()
@@ -20,9 +21,11 @@
 
 - (void)viewDidLoad
 {
-    _projectOpportunityManager = [KSHProjectOpportunityManager sharedManager];
-    _projectOpportunityManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+    self.contentManager = [KSHContentManager sharedManager];
+    self.contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
+    
+    [self assignCustomClassFields];
     
     [super viewDidLoad];
 }
@@ -30,17 +33,32 @@
 - (void)assignCustomClassFields
 {
     self.numberToLoad = @5;
-    self.cellIdentifier = @"ArticleCell";
-    self.entityName = @"Article";
+    self.cellIdentifier = @"ContentCell";
+    self.entityName = @"ProjectOpportunity";
     self.sortDescriptorKey = @"publishTime";
-    self.segueIdentifier = @"showArticleDetail";
+    self.segueIdentifier = @"";
     
     [super assignCustomClassFields];
 }
 
 - (void)loadCells
 {
-    // TODO: Implement GET Request
+    if (self.contentManager) {
+        [self.contentManager
+         loadProjectOpportunitiesWithParameters:nil
+         success:^(void) {
+             [self.refreshControl endRefreshing];
+             if (self.footerView){
+                 [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
+             }
+         } failure:^(NSError *error) {
+             [self.refreshControl endRefreshing];
+             if (self.footerView){
+                 [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
+             }
+             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
+         }];
+    }
 }
 
 #pragma mark - Cell configuration
@@ -51,7 +69,11 @@
     
     _projectOpportunity = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    // TODO: finish cell configuration
+    // Can typecast to 'cellIdentifer' type specified in Storyboard
+    
+    ((KSHContentTableViewCell *) cell).titleLabel.text = [[_projectOpportunity valueForKey:@"title"] description];
+    ((KSHContentTableViewCell *) cell).descriptionLabel.text = [[_projectOpportunity valueForKey:@"referenceContent"] description];
+    ((KSHContentTableViewCell *) cell).dateLabel.text = [[_projectOpportunity valueForKey:@"publishTime"] description];
 }
 
 # pragma mark - Navigation

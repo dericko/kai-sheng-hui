@@ -8,6 +8,7 @@
 
 #import "KSHEventTableViewController.h"
 #import "KSHEventDetailViewController.h"
+#import "KSHContentTableViewCell.h"
 #import "KSHMessage.h"
 
 @interface KSHEventTableViewController ()
@@ -20,9 +21,11 @@
 
 - (void)viewDidLoad
 {
-    _eventManager = [KSHEventManager sharedManager];
-    _eventManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+    self.contentManager = [KSHContentManager sharedManager];
+    self.contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
+    
+    [self assignCustomClassFields];
     
     [super viewDidLoad];
 }
@@ -30,17 +33,32 @@
 - (void)assignCustomClassFields
 {
     self.numberToLoad = @5;
-    self.cellIdentifier = @"INSERT_CELL_IDENTIFIER";
+    self.cellIdentifier = @"ContentCell";
     self.entityName = @"Event";
     self.sortDescriptorKey = @"publishTime";
-    self.segueIdentifier = @"INSERT_SEGUE_ID";
+    self.segueIdentifier = @"";
     
     [super assignCustomClassFields];
 }
 
 - (void)loadCells
 {
-    // TODO: Implement GET Request
+    if (self.contentManager) {
+        [self.contentManager
+         loadEventsWithParameters:nil
+         success:^(void) {
+             [self.refreshControl endRefreshing];
+             if (self.footerView){
+                 [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
+             }
+         } failure:^(NSError *error) {
+             [self.refreshControl endRefreshing];
+             if (self.footerView){
+                 [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
+             }
+             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
+         }];
+    }
 }
 
 #pragma mark - Cell configuration
@@ -51,7 +69,13 @@
     
     _event = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    // TODO: finish cell configuration
+    // Can typecast to 'cellIdentifer' type specified in Storyboard
+
+    ((KSHContentTableViewCell *) cell).titleLabel.text = [[_event valueForKey:@"title"] description];
+    ((KSHContentTableViewCell *) cell).detailLabel1.text = [[_event valueForKey:@"excerpt"] description];
+    ((KSHContentTableViewCell *) cell).detailLabel2.text = [[_event valueForKey:@"memberPrice"] description];
+    ((KSHContentTableViewCell *) cell).dateLabel.text = [[_event valueForKey:@"publishTime"] description];
+    ((KSHContentTableViewCell *) cell).descriptionLabel.text = [[_event valueForKey:@"excerpt"] description];
 }
 
 # pragma mark - Navigation

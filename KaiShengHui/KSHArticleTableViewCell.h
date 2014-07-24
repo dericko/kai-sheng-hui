@@ -7,13 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SWTableViewCell/SWTableViewCell.h>
+#import "KSHContentTableViewCell.h"
 
-@interface KSHArticleTableViewCell : SWTableViewCell <SWTableViewCellDelegate>
-
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *tagsLabel;
-@property (strong, nonatomic) IBOutlet UILabel *industryLabel;
-@property (strong, nonatomic) IBOutlet UILabel *sourceLabel;
+@interface KSHArticleTableViewCell : KSHContentTableViewCell <SWTableViewCellDelegate>
 
 @end
