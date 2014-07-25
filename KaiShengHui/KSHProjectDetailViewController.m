@@ -11,7 +11,6 @@
 @interface KSHProjectDetailViewController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *publishDateLabel;
-
 @property (strong, nonatomic) IBOutlet UILabel *deadlineLabel;
 
 @end
@@ -41,12 +40,6 @@
     self.contentLabel.text = content;
     self.publishDateLabel.text = publishDate;
     self.deadlineLabel.text = deadline;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)viewOnlinePressed:(id)sender {

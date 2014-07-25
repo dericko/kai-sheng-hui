@@ -6,22 +6,11 @@
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "KSHArticle.h"
+#import "KSHEntityDetailViewController.h"
 
-@interface KSHArticleDetailViewController : UIViewController
-
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *titleAreaHeightConstraint;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomAreaHeightConstraint;
+@interface KSHArticleDetailViewController : KSHEntityDetailViewController
 
 @property (nonatomic, strong) KSHArticle *article;
-@property (nonatomic, strong) IBOutlet UILabel *articleTitle;
-@property (nonatomic, strong) IBOutlet UITextView *articleContent;
-@property (strong, nonatomic) IBOutlet UILabel *articleTags;
-@property (strong, nonatomic) IBOutlet UILabel *articleIndustry;
-@property (strong, nonatomic) IBOutlet UILabel *articleSource;
-@property (nonatomic, strong) IBOutlet UIImageView *articleImage;
+
 @end

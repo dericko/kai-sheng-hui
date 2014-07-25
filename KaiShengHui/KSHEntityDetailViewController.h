@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+/** A content view controller with a ScrollArea (TitleArea + ContentArea) and BottomBarArea. Uses height constraints to dynamically resize the window according to content length on each load. This serves as the parent view controller for entity detail views with dynamic content.
+ */
 @interface KSHEntityDetailViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;

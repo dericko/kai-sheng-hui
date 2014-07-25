@@ -14,22 +14,6 @@
 
 @implementation KSHEntityDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Set content fields
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
@@ -40,12 +24,6 @@
     // Update content size of scroll view
     _scrollView.contentSize = self.containerView.frame.size;
     
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

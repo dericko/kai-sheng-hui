@@ -11,6 +11,11 @@
 #import "KSHMessage.h"
 
 @interface KSHArticleDetailViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *articleTags;
+@property (strong, nonatomic) IBOutlet UILabel *articleIndustry;
+@property (strong, nonatomic) IBOutlet UILabel *articleSource;
+@property (nonatomic, strong) IBOutlet UIImageView *articleImage;
+
 @end
 
 @implementation KSHArticleDetailViewController
@@ -32,29 +37,20 @@
     [self cleanUpContent];
     
     // Set content fields
-    _articleTitle.text = _article.title;
-    _articleContent.text = _article.content;
-    _articleIndustry.text = _article.industry;
-    _articleTags.text = _article.tags;
+    NSString *title = [NSString stringWithFormat:@"%@", _article.title];
+    NSString *content = [NSString stringWithFormat:@"%@", _article.content];
+    NSString *industry = [NSString stringWithFormat:@"%@", _article.industry];
+    NSString *tags = [NSString stringWithFormat:@"%@", _article.tags];
+    // TODO: use API to get actual source
+    NSString *source = [NSString stringWithFormat:@"%@", @"www.iksh.com"];
+
+    // Set content labels
+    self.titleLabel.text = title;
+    self.contentLabel.text = content;
+    _articleIndustry.text = industry;
+    _articleTags.text = tags;
+    _articleSource.text = source;
     _articleImage.image = [_article getImage];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:YES];
-    
-    // Update content container to fit Title Content, Article Content, and Bottom Bar Controls
-    _heightConstraint.constant = _articleContent.contentSize.height + _titleAreaHeightConstraint.constant + _bottomAreaHeightConstraint.constant;
-    
-    // Update content size of scroll view
-    _scrollView.contentSize = self.containerView.frame.size;
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)cleanUpContent
