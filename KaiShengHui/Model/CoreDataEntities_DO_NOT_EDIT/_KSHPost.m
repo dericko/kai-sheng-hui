@@ -15,9 +15,9 @@ const struct KSHPostAttributes KSHPostAttributes = {
 	.imgURLString = @"imgURLString",
 	.postID = @"postID",
 	.postType = @"postType",
-	.publishTime = @"publishTime",
+	.publishDate = @"publishDate",
 	.title = @"title",
-	.updateTime = @"updateTime",
+	.updateDate = @"updateDate",
 	.viewCount = @"viewCount",
 };
 
@@ -287,7 +287,7 @@ const struct KSHPostFetchedProperties KSHPostFetchedProperties = {
 
 
 
-@dynamic publishTime;
+@dynamic publishDate;
 
 
 
@@ -301,7 +301,7 @@ const struct KSHPostFetchedProperties KSHPostFetchedProperties = {
 
 
 
-@dynamic updateTime;
+@dynamic updateDate;
 
 
 

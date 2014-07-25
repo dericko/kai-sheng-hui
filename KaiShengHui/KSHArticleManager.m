@@ -13,36 +13,42 @@
 @interface KSHArticleManager()
 @end
 
+static KSHArticleManager *sharedManager = nil;
+
 @implementation KSHArticleManager
 
-- (void)setPath
++ (instancetype)sharedManager
 {
-    self.objectPath = kArticlePath;
+    // singleton
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedManager = [super sharedManager];
+    });
+    
+    return sharedManager;
+}
+
+- (void)loadContentWithParameters:(NSDictionary *)parameters success:(void (^)(void))success failure:(void (^)(NSError *error))failure
+{
+    [self getObjectsAtPath:kArticlePath
+                parameters:parameters
+                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                       if (success) {
+                           success();
+                       }}
+                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                       if (failure) {
+                           failure(error);
+                       }
+                   }];
 }
 
 - (void)setupRequestDescriptors
 {
     [super setupRequestDescriptors];
     
-    [self setPath];
-    
-    // Check objects by comparing existing postIDs with incoming calls and delete orphaned objects
-    [self addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
-        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:kArticlePath];
-        
-        NSDictionary *argsDict = nil;
-        BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
-        NSString *contentID;
-        if (match) {
-            contentID = [argsDict objectForKey:@"id"];
-            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Article"];
-            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"postID = %@", @([contentID integerValue])]; // NOTE: Coerced from string to number
-            fetchRequest.sortDescriptors = @[ [NSSortDescriptor sortDescriptorWithKey:@"publishTime" ascending:NO] ];
-            return fetchRequest;
-        }
-        
-        return nil;
-    }];
+    [self setPathMatcherForPath:kArticlePath forEntity:@"Article" withAttributeID:@"postID"];
+
 }
 
 - (void)setupResponseDescriptors
@@ -53,7 +59,7 @@
     RKResponseDescriptor *articleResponseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider articleParseMapping]
                                                  method:RKRequestMethodGET
-                                            pathPattern:self.objectPath
+                                            pathPattern:kArticlePath
                                                 keyPath:@"results"
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     

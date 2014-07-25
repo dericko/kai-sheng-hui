@@ -21,8 +21,8 @@
 
 - (void)viewDidLoad
 {
-    self.contentManager = [KSHContentManager sharedManager];
-    self.contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+    _eventManager = [KSHEventManager sharedManager];
+    _eventManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     
     [self assignCustomClassFields];
@@ -35,17 +35,17 @@
     self.numberToLoad = @5;
     self.cellIdentifier = @"ContentCell";
     self.entityName = @"Event";
-    self.sortDescriptorKey = @"publishTime";
-    self.segueIdentifier = @"";
+    self.sortDescriptorKey = @"publishDate";
+    self.segueIdentifier = @"showEventDetail";
     
     [super assignCustomClassFields];
 }
 
 - (void)loadCells
 {
-    if (self.contentManager) {
-        [self.contentManager
-         loadEventsWithParameters:nil
+    if (_eventManager) {
+        [_eventManager
+         loadContentWithParameters:nil
          success:^(void) {
              [self.refreshControl endRefreshing];
              if (self.footerView){
@@ -72,9 +72,8 @@
     // Can typecast to 'cellIdentifer' type specified in Storyboard
 
     ((KSHContentTableViewCell *) cell).titleLabel.text = [[_event valueForKey:@"title"] description];
-    ((KSHContentTableViewCell *) cell).detailLabel1.text = [[_event valueForKey:@"excerpt"] description];
-    ((KSHContentTableViewCell *) cell).detailLabel2.text = [[_event valueForKey:@"memberPrice"] description];
-    ((KSHContentTableViewCell *) cell).dateLabel.text = [[_event valueForKey:@"publishTime"] description];
+    ((KSHContentTableViewCell *) cell).detailLabel1.text = [[_event valueForKey:@"region"] description];
+    ((KSHContentTableViewCell *) cell).detailLabel2.text = [NSString stringWithFormat:@"%@", [[_event valueForKey:@"startDate"] description]];
     ((KSHContentTableViewCell *) cell).descriptionLabel.text = [[_event valueForKey:@"excerpt"] description];
 }
 

@@ -6,10 +6,10 @@
 
 extern const struct KSHProjectOpportunityAttributes {
 	__unsafe_unretained NSString *contacts;
-	__unsafe_unretained NSString *deadlineTime;
+	__unsafe_unretained NSString *deadlineDate;
 	__unsafe_unretained NSString *idealBackground;
 	__unsafe_unretained NSString *opportunityID;
-	__unsafe_unretained NSString *publishTime;
+	__unsafe_unretained NSString *publishDate;
 	__unsafe_unretained NSString *referenceContent;
 	__unsafe_unretained NSString *title;
 } KSHProjectOpportunityAttributes;
@@ -54,11 +54,11 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* deadlineTime;
+@property (nonatomic, strong) NSDate* deadlineDate;
 
 
 
-//- (BOOL)validateDeadlineTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateDeadlineDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -88,11 +88,11 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* publishTime;
+@property (nonatomic, strong) NSDate* publishDate;
 
 
 
-//- (BOOL)validatePublishTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validatePublishDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -146,8 +146,8 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 
 
 
-- (NSDate*)primitiveDeadlineTime;
-- (void)setPrimitiveDeadlineTime:(NSDate*)value;
+- (NSDate*)primitiveDeadlineDate;
+- (void)setPrimitiveDeadlineDate:(NSDate*)value;
 
 
 
@@ -167,8 +167,8 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 
 
 
-- (NSDate*)primitivePublishTime;
-- (void)setPrimitivePublishTime:(NSDate*)value;
+- (NSDate*)primitivePublishDate;
+- (void)setPrimitivePublishDate:(NSDate*)value;
 
 
 

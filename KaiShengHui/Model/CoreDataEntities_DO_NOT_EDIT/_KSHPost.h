@@ -16,9 +16,9 @@ extern const struct KSHPostAttributes {
 	__unsafe_unretained NSString *imgURLString;
 	__unsafe_unretained NSString *postID;
 	__unsafe_unretained NSString *postType;
-	__unsafe_unretained NSString *publishTime;
+	__unsafe_unretained NSString *publishDate;
 	__unsafe_unretained NSString *title;
-	__unsafe_unretained NSString *updateTime;
+	__unsafe_unretained NSString *updateDate;
 	__unsafe_unretained NSString *viewCount;
 } KSHPostAttributes;
 
@@ -194,11 +194,11 @@ extern const struct KSHPostFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* publishTime;
+@property (nonatomic, strong) NSDate* publishDate;
 
 
 
-//- (BOOL)validatePublishTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validatePublishDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -214,11 +214,11 @@ extern const struct KSHPostFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* updateTime;
+@property (nonatomic, strong) NSDate* updateDate;
 
 
 
-//- (BOOL)validateUpdateTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateUpdateDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -344,8 +344,8 @@ extern const struct KSHPostFetchedProperties {
 
 
 
-- (NSDate*)primitivePublishTime;
-- (void)setPrimitivePublishTime:(NSDate*)value;
+- (NSDate*)primitivePublishDate;
+- (void)setPrimitivePublishDate:(NSDate*)value;
 
 
 
@@ -356,8 +356,8 @@ extern const struct KSHPostFetchedProperties {
 
 
 
-- (NSDate*)primitiveUpdateTime;
-- (void)setPrimitiveUpdateTime:(NSDate*)value;
+- (NSDate*)primitiveUpdateDate;
+- (void)setPrimitiveUpdateDate:(NSDate*)value;
 
 
 

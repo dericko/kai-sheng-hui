@@ -4,15 +4,15 @@
 #import "_KSHTask.h"
 
 const struct KSHTaskAttributes KSHTaskAttributes = {
-	.createTime = @"createTime",
-	.endTime = @"endTime",
+	.createDate = @"createDate",
+	.endDate = @"endDate",
 	.listID = @"listID",
 	.name = @"name",
 	.notes = @"notes",
 	.paid = @"paid",
-	.startTime = @"startTime",
+	.startDate = @"startDate",
 	.status = @"status",
-	.statusTime = @"statusTime",
+	.statusDate = @"statusDate",
 	.taskID = @"taskID",
 	.timezone = @"timezone",
 };
@@ -82,14 +82,14 @@ const struct KSHTaskFetchedProperties KSHTaskFetchedProperties = {
 
 
 
-@dynamic createTime;
+@dynamic createDate;
 
 
 
 
 
 
-@dynamic endTime;
+@dynamic endDate;
 
 
 
@@ -162,7 +162,7 @@ const struct KSHTaskFetchedProperties KSHTaskFetchedProperties = {
 
 
 
-@dynamic startTime;
+@dynamic startDate;
 
 
 
@@ -195,7 +195,7 @@ const struct KSHTaskFetchedProperties KSHTaskFetchedProperties = {
 
 
 
-@dynamic statusTime;
+@dynamic statusDate;
 
 
 

@@ -8,47 +8,53 @@
 
 #import "KSHProjectOpportunityManager.h"
 
+static KSHProjectOpportunityManager *sharedManager = nil;
+
 @implementation KSHProjectOpportunityManager
 
-- (void)setPath
++ (instancetype)sharedManager
 {
-    self.objectPath = kProjectOpportunityPath;
+    // singleton
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedManager = [super sharedManager];
+    });
+    
+    return sharedManager;
+}
+
+- (void)loadContentWithParameters:(NSDictionary *)parameters success:(void (^)(void))success failure:(void (^)(NSError *error))failure
+{
+    [self getObjectsAtPath:kProjectOpportunityPath
+                parameters:parameters
+                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                       if (success) {
+                           success();
+                       }}
+                   failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                       if (failure) {
+                           failure(error);
+                       }
+                   }];
 }
 
 - (void)setupRequestDescriptors
 {
     [super setupRequestDescriptors];
     
-    [self setPath];
-    
-    // Check objects by comparing existing postIDs with incoming calls and delete orphaned objects
-    [self addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
-        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:kProjectOpportunityPath];
-        
-        NSDictionary *argsDict = nil;
-        BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
-        NSString *contentID;
-        if (match) {
-            contentID = [argsDict objectForKey:@"id"];
-            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Event"];
-            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"postID = %@", @([contentID integerValue])]; // NOTE: Coerced from string to number
-            fetchRequest.sortDescriptors = @[ [NSSortDescriptor sortDescriptorWithKey:@"publishTime" ascending:NO] ];
-            return fetchRequest;
-        }
-        
-        return nil;
-    }];
+    [self setPathMatcherForPath:kProjectOpportunityPath forEntity:@"ProjectOpportunity" withAttributeID:@"opportunityID"];
+
 }
 
 - (void)setupResponseDescriptors
 {
     [super setupResponseDescriptors];
     
-# warning Using test database on Parse.com: change 'articleParseMapping' to 'articleMapping' for production
+# warning Using test database on Parse.com: change 'projectOpportunityParseMapping' to 'projectOpportunityMapping' for production
     RKResponseDescriptor *articleResponseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider projectOpportunityParseMapping]
                                                  method:RKRequestMethodGET
-                                            pathPattern:self.objectPath
+                                            pathPattern:kProjectOpportunityPath
                                                 keyPath:@"results"
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     

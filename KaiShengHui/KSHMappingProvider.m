@@ -35,9 +35,9 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                   @"file.path":         @"imgURLString",
                                   @"id":                @"postID",
                                   //                                  @"???":               @"postType",
-                                  @"publish_time":      @"publishTime",
+                                  @"publish_time":      @"publishDate",
                                   @"title":             @"title",
-                                  @"update_time":       @"updateTime",
+                                  @"update_time":       @"updateDate",
                                   @"view_count":        @"viewCount",
                                   };
     return postMap;
@@ -77,7 +77,7 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                @"???":              @"contactEmail",
                                @"???":              @"contactName",
                                @"???":              @"contactTelephone",
-                               @"???":              @"endTime",
+                               @"???":              @"endDate",
                                @"???":              @"eventID",
                                @"???":              @"eventURLString",
                                @"???":              @"memberPrice",
@@ -85,7 +85,7 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                @"???":              @"nonmemberPrice",
                                @"???":              @"place",
                                @"???":              @"region",
-                               @"???":              @"startTime",
+                               @"???":              @"startDate",
                                @"???":              @"type",
                                };
     [eventMapping addAttributeMappingsFromDictionary:[self postMap]];
@@ -184,8 +184,8 @@ static RKEntityMapping *PLACEHOLDER = nil;
     NSDictionary *postMap = @{
                               @"id":                    @"postID",
                               @"post_type":             @"postType",
-                              @"publish_time":          @"publishTime",
-                              @"update_time":           @"updateTime",
+                              @"publish_time":          @"publishDate",
+                              @"update_time":           @"updateDate",
                               @"view_count":            @"viewCount",
                               @"creator":               @"creator",
                               @"editor":                @"editor",
@@ -226,8 +226,8 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                  @"event_fields.contact.contact_email": @"contactEmail",
                                  @"event_fields.region":                @"region",
                                  @"event_fields.place":                 @"place",
-                                 @"event_fields.startTime":             @"startTime",
-                                 @"event_fields.endTime":               @"endTime",
+                                 @"event_fields.startTime":             @"startDate",
+                                 @"event_fields.endTime":               @"endDate",
                                  @"event_fields.type":                  @"type"
                                  };
     [eventMapping addAttributeMappingsFromDictionary:[self postParseMap]];
@@ -257,13 +257,13 @@ static RKEntityMapping *PLACEHOLDER = nil;
 {
     RKEntityMapping *projectOpportunityMapping = [RKEntityMapping mappingForEntityForName:@"ProjectOpportunity" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     NSDictionary *projectOpportunityMap = @{
-                               @"id":                       @"opportunityID",
-                               @"content.title":            @"title",
-                               @"content.ideal_background": @"idealBackground",
-                               @"content.referenceContent": @"referencecontent",
-                               @"content.contacts":         @"contacts",
-                               @"content.deadline_time":    @"deadlineTime",
-                               @"publishTime":              @"publishTime"
+                               @"id":                           @"opportunityID",
+                               @"content.title":                @"title",
+                               @"content.ideal_background":     @"idealBackground",
+                               @"content.reference_content":    @"referenceContent",
+                               @"content.contacts":             @"contacts",
+                               @"content.deadline_time":        @"deadlineDate",
+                               @"publish_time":                 @"publishDate"
                                };
     [projectOpportunityMapping addAttributeMappingsFromDictionary: projectOpportunityMap];
     projectOpportunityMapping.identificationAttributes = @[ @"opportunityID" ];

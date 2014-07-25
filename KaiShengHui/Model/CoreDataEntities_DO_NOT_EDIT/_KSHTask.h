@@ -5,15 +5,15 @@
 
 
 extern const struct KSHTaskAttributes {
-	__unsafe_unretained NSString *createTime;
-	__unsafe_unretained NSString *endTime;
+	__unsafe_unretained NSString *createDate;
+	__unsafe_unretained NSString *endDate;
 	__unsafe_unretained NSString *listID;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *notes;
 	__unsafe_unretained NSString *paid;
-	__unsafe_unretained NSString *startTime;
+	__unsafe_unretained NSString *startDate;
 	__unsafe_unretained NSString *status;
-	__unsafe_unretained NSString *statusTime;
+	__unsafe_unretained NSString *statusDate;
 	__unsafe_unretained NSString *taskID;
 	__unsafe_unretained NSString *timezone;
 } KSHTaskAttributes;
@@ -52,21 +52,21 @@ extern const struct KSHTaskFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* createTime;
+@property (nonatomic, strong) NSDate* createDate;
 
 
 
-//- (BOOL)validateCreateTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateCreateDate:(id*)value_ error:(NSError**)error_;
 
 
 
 
 
-@property (nonatomic, strong) NSDate* endTime;
+@property (nonatomic, strong) NSDate* endDate;
 
 
 
-//- (BOOL)validateEndTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateEndDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -120,11 +120,11 @@ extern const struct KSHTaskFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* startTime;
+@property (nonatomic, strong) NSDate* startDate;
 
 
 
-//- (BOOL)validateStartTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateStartDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -144,11 +144,11 @@ extern const struct KSHTaskFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* statusTime;
+@property (nonatomic, strong) NSDate* statusDate;
 
 
 
-//- (BOOL)validateStatusTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateStatusDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -199,14 +199,14 @@ extern const struct KSHTaskFetchedProperties {
 @interface _KSHTask (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSDate*)primitiveCreateTime;
-- (void)setPrimitiveCreateTime:(NSDate*)value;
+- (NSDate*)primitiveCreateDate;
+- (void)setPrimitiveCreateDate:(NSDate*)value;
 
 
 
 
-- (NSDate*)primitiveEndTime;
-- (void)setPrimitiveEndTime:(NSDate*)value;
+- (NSDate*)primitiveEndDate;
+- (void)setPrimitiveEndDate:(NSDate*)value;
 
 
 
@@ -241,8 +241,8 @@ extern const struct KSHTaskFetchedProperties {
 
 
 
-- (NSDate*)primitiveStartTime;
-- (void)setPrimitiveStartTime:(NSDate*)value;
+- (NSDate*)primitiveStartDate;
+- (void)setPrimitiveStartDate:(NSDate*)value;
 
 
 
@@ -256,8 +256,8 @@ extern const struct KSHTaskFetchedProperties {
 
 
 
-- (NSDate*)primitiveStatusTime;
-- (void)setPrimitiveStatusTime:(NSDate*)value;
+- (NSDate*)primitiveStatusDate;
+- (void)setPrimitiveStatusDate:(NSDate*)value;
 
 
 

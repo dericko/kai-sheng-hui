@@ -40,17 +40,13 @@
  */
 - (void)setupResponseDescriptors;
 
+- (void)setPathMatcherForPath:(NSString *)path forEntity:(NSString *)entity withAttributeID:(NSString *)matchID;
+
 @end
 
 @protocol KSHObjectManagerDelegate <NSObject>
 
 @optional
-- (void)loadArticlesWithParameters:(NSDictionary *)parameters success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
-
-@optional
-- (void)loadEventsWithParameters:(NSDictionary *)parameters success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
-
-@optional
-- (void)loadProjectOpportunitiesWithParameters:(NSDictionary *)parameters success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
+- (void)loadUser;
 
 @end

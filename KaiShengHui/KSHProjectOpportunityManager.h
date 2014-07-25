@@ -6,9 +6,11 @@
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import "KSHContentManager.h"
+#import "KSHObjectManager.h"
 #import "KSHProjectOpportunity.h"
 
-@interface KSHProjectOpportunityManager : KSHContentManager
+@interface KSHProjectOpportunityManager : KSHObjectManager
+
+- (void)loadContentWithParameters:(NSDictionary *)parameters success:(void (^)(void))success failure:(void (^)(NSError *error))failure;
 
 @end

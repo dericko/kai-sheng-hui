@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "KSHEvent.h"
+#import "KSHEntityDetailViewController.h"
 
-@interface KSHEventDetailViewController : UIViewController
+@interface KSHEventDetailViewController : KSHEntityDetailViewController
 
 @property (nonatomic, strong) KSHEvent *event;
 

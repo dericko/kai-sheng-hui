@@ -9,14 +9,14 @@ extern const struct KSHEventAttributes {
 	__unsafe_unretained NSString *contactEmail;
 	__unsafe_unretained NSString *contactName;
 	__unsafe_unretained NSString *contactTelephone;
-	__unsafe_unretained NSString *endTime;
+	__unsafe_unretained NSString *endDate;
 	__unsafe_unretained NSString *eventURLString;
 	__unsafe_unretained NSString *memberPrice;
 	__unsafe_unretained NSString *mustApply;
 	__unsafe_unretained NSString *nonmemberPrice;
 	__unsafe_unretained NSString *place;
 	__unsafe_unretained NSString *region;
-	__unsafe_unretained NSString *startTime;
+	__unsafe_unretained NSString *startDate;
 	__unsafe_unretained NSString *type;
 } KSHEventAttributes;
 
@@ -98,11 +98,11 @@ extern const struct KSHEventFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* endTime;
+@property (nonatomic, strong) NSDate* endDate;
 
 
 
-//- (BOOL)validateEndTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateEndDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -172,11 +172,11 @@ extern const struct KSHEventFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* startTime;
+@property (nonatomic, strong) NSDate* startDate;
 
 
 
-//- (BOOL)validateStartTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateStartDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -233,8 +233,8 @@ extern const struct KSHEventFetchedProperties {
 
 
 
-- (NSString*)primitiveEndTime;
-- (void)setPrimitiveEndTime:(NSString*)value;
+- (NSDate*)primitiveEndDate;
+- (void)setPrimitiveEndDate:(NSDate*)value;
 
 
 
@@ -278,8 +278,8 @@ extern const struct KSHEventFetchedProperties {
 
 
 
-- (NSDate*)primitiveStartTime;
-- (void)setPrimitiveStartTime:(NSDate*)value;
+- (NSDate*)primitiveStartDate;
+- (void)setPrimitiveStartDate:(NSDate*)value;
 
 
 

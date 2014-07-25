@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad
 {
-    self.contentManager = [KSHContentManager sharedManager];
-    self.contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+    _articleManager = [KSHArticleManager sharedManager];
+    _articleManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     
     [self assignCustomClassFields];
@@ -36,7 +36,7 @@
     self.numberToLoad = @10;
     self.cellIdentifier = @"ArticleCell";
     self.entityName = @"Article";
-    self.sortDescriptorKey = @"publishTime";
+    self.sortDescriptorKey = @"publishDate";
     self.segueIdentifier = @"showArticleDetail";
     
     [super assignCustomClassFields];
@@ -44,9 +44,9 @@
 
 - (void)loadCells
 {
-    if (self.contentManager) {
-        [self.contentManager
-         loadArticlesWithParameters:nil
+    if (_articleManager) {
+        [_articleManager
+         loadContentWithParameters:nil
          success:^(void) {
              [self.refreshControl endRefreshing];
              if (self.footerView){
@@ -74,12 +74,12 @@
     [(KSHArticleTableViewCell *) cell setRightUtilityButtons:[self rightButtons]];
     
     ((KSHArticleTableViewCell *)cell).titleLabel.text = [[_article valueForKey:@"title"] description];
-    ((KSHArticleTableViewCell *)cell).detailLabel3.text = [[_article valueForKey:@"tags"] description];
-    if (!_article.industry) {
-        NSLog(@"Setting industry");
-        [_article setIndustryText];
-    }
+    // TODO: get API field for Source
+    ((KSHArticleTableViewCell *)cell).detailLabel1.text = @"www.iksh.com";
+    if (!_article.industry) [_article setIndustryText];
     ((KSHArticleTableViewCell *)cell).detailLabel2.text = [[_article valueForKey:@"industry"] description];;
+    ((KSHArticleTableViewCell *)cell).detailLabel3.text = [[_article valueForKey:@"tags"] description];
+   
     
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];
     // Check if image has been downloaded

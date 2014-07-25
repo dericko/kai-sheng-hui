@@ -5,10 +5,10 @@
 
 const struct KSHProjectOpportunityAttributes KSHProjectOpportunityAttributes = {
 	.contacts = @"contacts",
-	.deadlineTime = @"deadlineTime",
+	.deadlineDate = @"deadlineDate",
 	.idealBackground = @"idealBackground",
 	.opportunityID = @"opportunityID",
-	.publishTime = @"publishTime",
+	.publishDate = @"publishDate",
 	.referenceContent = @"referenceContent",
 	.title = @"title",
 };
@@ -65,7 +65,7 @@ const struct KSHProjectOpportunityFetchedProperties KSHProjectOpportunityFetched
 
 
 
-@dynamic deadlineTime;
+@dynamic deadlineDate;
 
 
 
@@ -105,7 +105,7 @@ const struct KSHProjectOpportunityFetchedProperties KSHProjectOpportunityFetched
 
 
 
-@dynamic publishTime;
+@dynamic publishDate;
 
 
 

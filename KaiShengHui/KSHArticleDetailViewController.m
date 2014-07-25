@@ -72,7 +72,7 @@
     _article.content = [_article.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-# pragma mark - Bottom Bar Buttons
+# pragma mark - Bottom Bars Buttons
 
 // FIXME: Make these buttons do something real!
 - (IBAction)likePressed:(id)sender {

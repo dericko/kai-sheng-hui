@@ -7,7 +7,10 @@
 //
 
 #import "KSHEntityTableViewController.h"
+#import "KSHProjectOpportunityManager.h"
 
 @interface KSHProjectTableViewController : KSHEntityTableViewController
+
+@property (nonatomic, strong) KSHProjectOpportunityManager *projectOpportunityManager;
 
 @end

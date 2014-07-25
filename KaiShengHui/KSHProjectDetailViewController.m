@@ -10,6 +10,10 @@
 
 @interface KSHProjectDetailViewController ()
 
+@property (strong, nonatomic) IBOutlet UILabel *publishDateLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *deadlineLabel;
+
 @end
 
 @implementation KSHProjectDetailViewController
@@ -26,7 +30,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    // Set content fields
+    NSString *title = [NSString stringWithFormat:@"%@", _projectOpportunity.title];
+    NSString *content = [NSString stringWithFormat:@"理想背景: \n %@ \n\n 关键问题: %@", _projectOpportunity.idealBackground, _projectOpportunity.referenceContent];
+    NSString *publishDate = [NSString stringWithFormat:@"发布时间: %@", _projectOpportunity.publishDate];
+    NSString *deadline = [NSString stringWithFormat:@"截止日期: %@", _projectOpportunity.deadlineDate];
+    // Assign content fields
+    self.titleLabel.text = title;
+    self.contentLabel.text = content;
+    self.publishDateLabel.text = publishDate;
+    self.deadlineLabel.text = deadline;
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,15 +49,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)viewOnlinePressed:(id)sender {
 }
-*/
+
+# pragma mark - Bottom Bars Buttons
+
+// FIXME: Make these buttons do something real!
+
+- (IBAction)favoritePressed:(id)sender {
+    
+}
+- (IBAction)sharePressed:(id)sender {
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    
+    if (self.contentLabel.text) {
+        [sharingItems addObject:self.contentLabel.text];
+    }
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+}
 
 @end

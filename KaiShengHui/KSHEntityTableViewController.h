@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KSHContentManager.h"
 
 /** Base class for entity-based TableViewControllers that should satisfy <NSFetchedResultsControllerDelegate> for Core Data fetches. Assumes that class will populate itself with an appropriate subclass of KSHObjectManager to handle network requests and entity mapping.
  */
@@ -15,8 +14,6 @@
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) KSHContentManager *contentManager;
-
 
 @property (nonatomic, strong) UIView * footerView;
 @property (strong, nonatomic) NSNumber *numberToLoad;

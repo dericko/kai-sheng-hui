@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "KSHProjectOpportunity.h"
+#import "KSHEntityDetailViewController.h"
 
-@interface KSHProjectDetailViewController : UIViewController
+@interface KSHProjectDetailViewController : KSHEntityDetailViewController
 
 @property (nonatomic, strong) KSHProjectOpportunity *projectOpportunity;
 

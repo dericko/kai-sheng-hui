@@ -8,14 +8,14 @@ const struct KSHEventAttributes KSHEventAttributes = {
 	.contactEmail = @"contactEmail",
 	.contactName = @"contactName",
 	.contactTelephone = @"contactTelephone",
-	.endTime = @"endTime",
+	.endDate = @"endDate",
 	.eventURLString = @"eventURLString",
 	.memberPrice = @"memberPrice",
 	.mustApply = @"mustApply",
 	.nonmemberPrice = @"nonmemberPrice",
 	.place = @"place",
 	.region = @"region",
-	.startTime = @"startTime",
+	.startDate = @"startDate",
 	.type = @"type",
 };
 
@@ -120,7 +120,7 @@ const struct KSHEventFetchedProperties KSHEventFetchedProperties = {
 
 
 
-@dynamic endTime;
+@dynamic endDate;
 
 
 
@@ -188,7 +188,7 @@ const struct KSHEventFetchedProperties KSHEventFetchedProperties = {
 
 
 
-@dynamic startTime;
+@dynamic startDate;
 
 
 

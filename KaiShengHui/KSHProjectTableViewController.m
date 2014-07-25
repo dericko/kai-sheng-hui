@@ -21,8 +21,8 @@
 
 - (void)viewDidLoad
 {
-    self.contentManager = [KSHContentManager sharedManager];
-    self.contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+    _projectOpportunityManager = [KSHProjectOpportunityManager sharedManager];
+    _projectOpportunityManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     
     [self assignCustomClassFields];
@@ -35,17 +35,17 @@
     self.numberToLoad = @5;
     self.cellIdentifier = @"ContentCell";
     self.entityName = @"ProjectOpportunity";
-    self.sortDescriptorKey = @"publishTime";
-    self.segueIdentifier = @"";
+    self.sortDescriptorKey = @"publishDate";
+    self.segueIdentifier = @"showProjectOpportunityDetail";
     
     [super assignCustomClassFields];
 }
 
 - (void)loadCells
 {
-    if (self.contentManager) {
-        [self.contentManager
-         loadProjectOpportunitiesWithParameters:nil
+    if (_projectOpportunityManager) {
+        [_projectOpportunityManager
+         loadContentWithParameters:nil
          success:^(void) {
              [self.refreshControl endRefreshing];
              if (self.footerView){
@@ -73,7 +73,7 @@
     
     ((KSHContentTableViewCell *) cell).titleLabel.text = [[_projectOpportunity valueForKey:@"title"] description];
     ((KSHContentTableViewCell *) cell).descriptionLabel.text = [[_projectOpportunity valueForKey:@"referenceContent"] description];
-    ((KSHContentTableViewCell *) cell).dateLabel.text = [[_projectOpportunity valueForKey:@"publishTime"] description];
+    ((KSHContentTableViewCell *) cell).detailLabel3.text = [[_projectOpportunity valueForKey:@"deadlineDate"] description];
 }
 
 # pragma mark - Navigation

@@ -92,7 +92,7 @@
         <attribute name="contactEmail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactTelephone" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="endTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="eventURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="memberPrice" optional="YES" attributeType="Decimal" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="mustApply" optional="YES" attributeType="Boolean" syncable="YES">
@@ -104,7 +104,7 @@
         <attribute name="nonmemberPrice" optional="YES" attributeType="Decimal" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="2" syncable="YES">
             <userInfo>
                 <entry key="1" value="online"/>
@@ -210,7 +210,7 @@
                 <entry key="source" value="vesta_post"/>
             </userInfo>
         </attribute>
-        <attribute name="publishTime" optional="YES" attributeType="Date" syncable="YES">
+        <attribute name="publishDate" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_post"/>
             </userInfo>
@@ -220,7 +220,7 @@
                 <entry key="source" value="vesta_post"/>
             </userInfo>
         </attribute>
-        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES">
+        <attribute name="updateDate" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_post"/>
             </userInfo>
@@ -318,21 +318,21 @@
     </entity>
     <entity name="ProjectOpportunity" representedClassName="KSHProjectOpportunity" syncable="YES">
         <attribute name="contacts" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="deadlineTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deadlineDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="idealBackground" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="opportunityID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="publishTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="publishDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="referenceContent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ofConsultant" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Consultant" inverseName="hasProjectOpportunity" inverseEntity="Consultant" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName="KSHTask" isAbstract="YES" syncable="YES">
-        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES">
+        <attribute name="createDate" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
                 <entry key="source" value="project_task"/>
             </userInfo>
         </attribute>
-        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
                 <entry key="source" value="project_task_common"/>
             </userInfo>
@@ -359,7 +359,7 @@
                 <entry key="source" value="project_task_common"/>
             </userInfo>
         </attribute>
-        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES">
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
                 <entry key="source" value="project_task_common"/>
             </userInfo>
@@ -369,7 +369,7 @@
                 <entry key="source" value="project_task"/>
             </userInfo>
         </attribute>
-        <attribute name="statusTime" optional="YES" attributeType="Date" syncable="YES">
+        <attribute name="statusDate" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
                 <entry key="source" value="project_task"/>
             </userInfo>
@@ -425,9 +425,9 @@
         <element name="Consultant" positionX="36" positionY="81" width="128" height="178"/>
         <element name="ConsultationProject" positionX="45" positionY="90" width="128" height="75"/>
         <element name="ConsultationTask" positionX="36" positionY="81" width="128" height="133"/>
-        <element name="Event" positionX="81" positionY="126" width="128" height="240"/>
+        <element name="Event" positionX="81" positionY="126" width="128" height="238"/>
         <element name="Feedback" positionX="36" positionY="81" width="128" height="165"/>
-        <element name="Post" positionX="9" positionY="54" width="128" height="283"/>
+        <element name="Post" positionX="9" positionY="54" width="128" height="285"/>
         <element name="Profile" positionX="-18" positionY="27" width="128" height="193"/>
         <element name="Project" positionX="18" positionY="63" width="128" height="330"/>
         <element name="ProjectOpportunity" positionX="63" positionY="108" width="128" height="165"/>
