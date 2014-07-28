@@ -90,6 +90,11 @@
 		C1EDDEDE198231C5004AE85A /* KSHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EDDEDD198231C5004AE85A /* KSHWebViewController.m */; };
 		C1EDDEE119823A3C004AE85A /* KSHMyKSHTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EDDEE019823A3C004AE85A /* KSHMyKSHTableViewController.m */; };
 		C1EDDEE719824050004AE85A /* KSHMyKSHTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EDDEE619824050004AE85A /* KSHMyKSHTableViewCell.m */; };
+		C1EDDEEE1985EC43004AE85A /* event-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EDDEEA1985EC43004AE85A /* event-icon.png */; };
+		C1EDDEEF1985EC43004AE85A /* news-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EDDEEB1985EC43004AE85A /* news-icon.png */; };
+		C1EDDEF31985F18D004AE85A /* myksh-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EDDEF11985F18D004AE85A /* myksh-icon.png */; };
+		C1EDDEF41985F18D004AE85A /* project-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EDDEF21985F18D004AE85A /* project-icon.png */; };
+		C1EDDEF61985F387004AE85A /* ksh-points-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EDDEF51985F387004AE85A /* ksh-points-icon.png */; };
 		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
 		C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */; };
 		C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF9819597E0E006EE5F7 /* KSHArticleTableViewController.m */; };
@@ -236,6 +241,11 @@
 		C1EDDEE019823A3C004AE85A /* KSHMyKSHTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMyKSHTableViewController.m; sourceTree = "<group>"; };
 		C1EDDEE519824050004AE85A /* KSHMyKSHTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHMyKSHTableViewCell.h; sourceTree = "<group>"; };
 		C1EDDEE619824050004AE85A /* KSHMyKSHTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMyKSHTableViewCell.m; sourceTree = "<group>"; };
+		C1EDDEEA1985EC43004AE85A /* event-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event-icon.png"; sourceTree = "<group>"; };
+		C1EDDEEB1985EC43004AE85A /* news-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "news-icon.png"; sourceTree = "<group>"; };
+		C1EDDEF11985F18D004AE85A /* myksh-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myksh-icon.png"; sourceTree = "<group>"; };
+		C1EDDEF21985F18D004AE85A /* project-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "project-icon.png"; sourceTree = "<group>"; };
+		C1EDDEF51985F387004AE85A /* ksh-points-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ksh-points-icon.png"; sourceTree = "<group>"; };
 		C1F6FF8319596350006EE5F7 /* KSHUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserManager.h; sourceTree = "<group>"; };
 		C1F6FF8419596350006EE5F7 /* KSHUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserManager.m; sourceTree = "<group>"; };
 		C1F6FF861959635E006EE5F7 /* KSHArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleManager.h; sourceTree = "<group>"; };
@@ -347,6 +357,7 @@
 				C134459219738CDC003940CE /* README.md */,
 				C135600B19594FA9005DABED /* Images.xcassets */,
 				C1560937197CE34500FB4677 /* ksh-default.jpg */,
+				C1EDDEE81985EC43004AE85A /* Assets */,
 				C1355FF419594FA9005DABED /* Supporting Files */,
 			);
 			path = KaiShengHui;
@@ -579,6 +590,18 @@
 			name = "Parent Controllers";
 			sourceTree = "<group>";
 		};
+		C1EDDEE81985EC43004AE85A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C1EDDEF51985F387004AE85A /* ksh-points-icon.png */,
+				C1EDDEF11985F18D004AE85A /* myksh-icon.png */,
+				C1EDDEF21985F18D004AE85A /* project-icon.png */,
+				C1EDDEEA1985EC43004AE85A /* event-icon.png */,
+				C1EDDEEB1985EC43004AE85A /* news-icon.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		C1F6FF8F195963CC006EE5F7 /* MappingProvider */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,7 +729,12 @@
 				C135600C19594FA9005DABED /* Images.xcassets in Resources */,
 				C1355FF819594FA9005DABED /* InfoPlist.strings in Resources */,
 				C134459319738CDC003940CE /* README.md in Resources */,
+				C1EDDEF31985F18D004AE85A /* myksh-icon.png in Resources */,
+				C1EDDEF41985F18D004AE85A /* project-icon.png in Resources */,
+				C1EDDEEE1985EC43004AE85A /* event-icon.png in Resources */,
+				C1EDDEF61985F387004AE85A /* ksh-points-icon.png in Resources */,
 				C1560938197CE34500FB4677 /* ksh-default.jpg in Resources */,
+				C1EDDEEF1985EC43004AE85A /* news-icon.png in Resources */,
 				C111FECA196D50B40043E983 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -966,6 +994,8 @@
 				GCC_PREFIX_HEADER = "KaiShengHui/KaiShengHui-Prefix.pch";
 				INFOPLIST_FILE = "KaiShengHui/KaiShengHui-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "48F08E0F-C676-4AE5-8846-003394FA3DBA";
+				"PROVISIONING_PROFILE[sdk=*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -980,6 +1010,7 @@
 				GCC_PREFIX_HEADER = "KaiShengHui/KaiShengHui-Prefix.pch";
 				INFOPLIST_FILE = "KaiShengHui/KaiShengHui-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4EBD6AAC-B930-4A00-AE7E-7D6E7BDF0839";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

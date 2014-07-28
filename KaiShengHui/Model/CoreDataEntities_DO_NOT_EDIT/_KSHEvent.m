@@ -9,7 +9,6 @@ const struct KSHEventAttributes KSHEventAttributes = {
 	.contactName = @"contactName",
 	.contactTelephone = @"contactTelephone",
 	.endDate = @"endDate",
-	.eventURLString = @"eventURLString",
 	.memberPrice = @"memberPrice",
 	.mustApply = @"mustApply",
 	.nonmemberPrice = @"nonmemberPrice",
@@ -17,6 +16,7 @@ const struct KSHEventAttributes KSHEventAttributes = {
 	.region = @"region",
 	.startDate = @"startDate",
 	.type = @"type",
+	.urlString = @"urlString",
 };
 
 const struct KSHEventRelationships KSHEventRelationships = {
@@ -127,13 +127,6 @@ const struct KSHEventFetchedProperties KSHEventFetchedProperties = {
 
 
 
-@dynamic eventURLString;
-
-
-
-
-
-
 @dynamic memberPrice;
 
 
@@ -216,6 +209,13 @@ const struct KSHEventFetchedProperties KSHEventFetchedProperties = {
 - (void)setPrimitiveTypeValue:(int16_t)value_ {
 	[self setPrimitiveType:[NSNumber numberWithShort:value_]];
 }
+
+
+
+
+
+@dynamic urlString;
+
 
 
 

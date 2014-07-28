@@ -10,7 +10,6 @@ extern const struct KSHEventAttributes {
 	__unsafe_unretained NSString *contactName;
 	__unsafe_unretained NSString *contactTelephone;
 	__unsafe_unretained NSString *endDate;
-	__unsafe_unretained NSString *eventURLString;
 	__unsafe_unretained NSString *memberPrice;
 	__unsafe_unretained NSString *mustApply;
 	__unsafe_unretained NSString *nonmemberPrice;
@@ -18,6 +17,7 @@ extern const struct KSHEventAttributes {
 	__unsafe_unretained NSString *region;
 	__unsafe_unretained NSString *startDate;
 	__unsafe_unretained NSString *type;
+	__unsafe_unretained NSString *urlString;
 } KSHEventAttributes;
 
 extern const struct KSHEventRelationships {
@@ -108,16 +108,6 @@ extern const struct KSHEventFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* eventURLString;
-
-
-
-//- (BOOL)validateEventURLString:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
 @property (nonatomic, strong) NSDecimalNumber* memberPrice;
 
 
@@ -196,6 +186,16 @@ extern const struct KSHEventFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSString* urlString;
+
+
+
+//- (BOOL)validateUrlString:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 
 @end
 
@@ -235,12 +235,6 @@ extern const struct KSHEventFetchedProperties {
 
 - (NSDate*)primitiveEndDate;
 - (void)setPrimitiveEndDate:(NSDate*)value;
-
-
-
-
-- (NSString*)primitiveEventURLString;
-- (void)setPrimitiveEventURLString:(NSString*)value;
 
 
 
@@ -289,6 +283,12 @@ extern const struct KSHEventFetchedProperties {
 
 - (int16_t)primitiveTypeValue;
 - (void)setPrimitiveTypeValue:(int16_t)value_;
+
+
+
+
+- (NSString*)primitiveUrlString;
+- (void)setPrimitiveUrlString:(NSString*)value;
 
 
 

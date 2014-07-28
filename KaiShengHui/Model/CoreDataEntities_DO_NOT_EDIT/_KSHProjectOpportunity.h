@@ -12,6 +12,7 @@ extern const struct KSHProjectOpportunityAttributes {
 	__unsafe_unretained NSString *publishDate;
 	__unsafe_unretained NSString *referenceContent;
 	__unsafe_unretained NSString *title;
+	__unsafe_unretained NSString *urlString;
 } KSHProjectOpportunityAttributes;
 
 extern const struct KSHProjectOpportunityRelationships {
@@ -22,6 +23,7 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 } KSHProjectOpportunityFetchedProperties;
 
 @class KSHConsultant;
+
 
 
 
@@ -118,6 +120,16 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSString* urlString;
+
+
+
+//- (BOOL)validateUrlString:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSSet *ofConsultant;
 
 - (NSMutableSet*)ofConsultantSet;
@@ -181,6 +193,12 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 
 - (NSString*)primitiveTitle;
 - (void)setPrimitiveTitle:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveUrlString;
+- (void)setPrimitiveUrlString:(NSString*)value;
 
 
 

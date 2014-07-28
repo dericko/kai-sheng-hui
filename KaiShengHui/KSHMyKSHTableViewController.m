@@ -13,6 +13,7 @@
 @interface KSHMyKSHTableViewController ()
 @property KSHUser *user;
 @property NSArray *myItems;
+@property NSArray *myItemImages;
 @end
 
 @implementation KSHMyKSHTableViewController
@@ -31,6 +32,8 @@
     [super viewDidLoad];
     
     _myItems = [NSArray arrayWithObjects:@"My Projects", @"My Articles", @"My Events", @"My Points",nil];
+    
+    _myItemImages = [NSArray arrayWithObjects:@"project-icon.png", @"news-icon.png", @"event-icon.png", @"ksh-points-icon.png", nil];
     
     // TODO: load up user (will have to setup Core Data stack / fetchedResultsController)
     
@@ -68,13 +71,14 @@
         case 0:
             cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell" forIndexPath:indexPath];
             // FIXME: use real _user.username once user API is ready
-            self.tableView.rowHeight = 60;
             cell.titleLabel.text = @"sample_username";
+            cell.iconView.image = [UIImage imageNamed:@"myksh-icon.png"];
             break;
         case 1:
             cell = [tableView dequeueReusableCellWithIdentifier:@"MyItemCell" forIndexPath:indexPath];
-            self.tableView.rowHeight = 44;
             cell.titleLabel.text = [_myItems objectAtIndex:indexPath.row];
+            cell.iconView.image = [UIImage imageNamed:[_myItemImages objectAtIndex:indexPath.row]];
+            
             // TODO: setup number of items for user item (projects, articles, events, points)
         default:
             break;

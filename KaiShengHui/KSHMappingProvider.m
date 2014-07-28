@@ -203,9 +203,9 @@ static RKEntityMapping *PLACEHOLDER = nil;
     RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     NSDictionary *articleMap = @{
                                  @"article_fields.industry":    @"industryID",
-                                 @"file.file_type":        @"fileType",
-                                 @"file.path":             @"imgURLString"
-//                                 @"tags":               @"tags"
+                                 @"file.file_type":             @"fileType",
+                                 @"file.path":                  @"imgURLString"
+//                                 @"tags":                     @"tags"
                                  };
     [articleMapping addAttributeMappingsFromDictionary:[self postParseMap]];
     [articleMapping addAttributeMappingsFromDictionary: articleMap];
@@ -228,7 +228,8 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                  @"event_fields.place":                 @"place",
                                  @"event_fields.startTime":             @"startDate",
                                  @"event_fields.endTime":               @"endDate",
-                                 @"event_fields.type":                  @"type"
+                                 @"event_fields.type":                  @"type",
+                                 @"url":                                @"urlString"
                                  };
     [eventMapping addAttributeMappingsFromDictionary:[self postParseMap]];
     [eventMapping addAttributeMappingsFromDictionary: eventMap];
@@ -263,7 +264,8 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                @"content.reference_content":    @"referenceContent",
                                @"content.contacts":             @"contacts",
                                @"content.deadline_time":        @"deadlineDate",
-                               @"publish_time":                 @"publishDate"
+                               @"publish_time":                 @"publishDate",
+                               @"url":                          @"urlString"
                                };
     [projectOpportunityMapping addAttributeMappingsFromDictionary: projectOpportunityMap];
     projectOpportunityMapping.identificationAttributes = @[ @"opportunityID" ];

@@ -11,6 +11,7 @@ const struct KSHProjectOpportunityAttributes KSHProjectOpportunityAttributes = {
 	.publishDate = @"publishDate",
 	.referenceContent = @"referenceContent",
 	.title = @"title",
+	.urlString = @"urlString",
 };
 
 const struct KSHProjectOpportunityRelationships KSHProjectOpportunityRelationships = {
@@ -120,6 +121,13 @@ const struct KSHProjectOpportunityFetchedProperties KSHProjectOpportunityFetched
 
 
 @dynamic title;
+
+
+
+
+
+
+@dynamic urlString;
 
 
 

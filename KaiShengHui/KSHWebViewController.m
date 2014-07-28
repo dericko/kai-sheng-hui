@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    NSAssert(_url, @"No url found: make sure you set the *urlString before calling [super viewDidLoad]");
+    NSAssert(_url, @"No url found: make sure you set the *urlString while preparing for segue or before calling [super viewDidLoad] in subclasses");
     [self requestWithURL:_url];
 }
 
@@ -34,6 +34,7 @@
 {
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    NSLog(@"Request with url: %@", url);
     [self.webview loadRequest:requestObj];
 }
 

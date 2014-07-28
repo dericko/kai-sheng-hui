@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *articleIndustry;
 @property (strong, nonatomic) IBOutlet UILabel *articleSource;
 @property (nonatomic, strong) IBOutlet UIImageView *articleImage;
+@property (strong, nonatomic) IBOutlet UILabel *publishDate;
 
 @end
 
@@ -43,6 +44,7 @@
     NSString *tags = [NSString stringWithFormat:@"%@", _article.tags];
     // TODO: use API to get actual source
     NSString *source = [NSString stringWithFormat:@"%@", @"www.iksh.com"];
+    NSString *published = [NSString stringWithFormat:@"%@", _article.publishDate];
 
     // Set content labels
     self.titleLabel.text = title;
@@ -51,6 +53,7 @@
     _articleTags.text = tags;
     _articleSource.text = source;
     _articleImage.image = [_article getImage];
+    _publishDate.text = published;
 }
 
 - (void)cleanUpContent

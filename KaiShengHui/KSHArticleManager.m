@@ -57,7 +57,7 @@ static KSHArticleManager *sharedManager = nil;
     
 # warning Using test database on Parse.com: change 'articleParseMapping' to 'articleMapping' for production
     RKResponseDescriptor *articleResponseDescriptor =
-    [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider articleParseMapping]
+    [RKResponseDescriptor responseDescriptorWithMapping:[KSHMappingProvider articleMapping]
                                                  method:RKRequestMethodGET
                                             pathPattern:kArticlePath
                                                 keyPath:@"results"

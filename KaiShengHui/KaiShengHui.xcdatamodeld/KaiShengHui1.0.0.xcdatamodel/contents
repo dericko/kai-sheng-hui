@@ -93,7 +93,6 @@
         <attribute name="contactName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactTelephone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="eventURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="memberPrice" optional="YES" attributeType="Decimal" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="mustApply" optional="YES" attributeType="Boolean" syncable="YES">
             <userInfo>
@@ -111,6 +110,7 @@
                 <entry key="2" value="offline"/>
             </userInfo>
         </attribute>
+        <attribute name="urlString" optional="YES" attributeType="String" syncable="YES"/>
         <userInfo>
             <entry key="source" value="vesta_post_event"/>
         </userInfo>
@@ -324,6 +324,7 @@
         <attribute name="publishDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="referenceContent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urlString" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ofConsultant" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Consultant" inverseName="hasProjectOpportunity" inverseEntity="Consultant" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName="KSHTask" isAbstract="YES" syncable="YES">
@@ -430,7 +431,7 @@
         <element name="Post" positionX="-27" positionY="372" width="128" height="285"/>
         <element name="Profile" positionX="889" positionY="32" width="128" height="193"/>
         <element name="Project" positionX="7" positionY="-267" width="128" height="330"/>
-        <element name="ProjectOpportunity" positionX="-252" positionY="384" width="128" height="165"/>
+        <element name="ProjectOpportunity" positionX="-252" positionY="384" width="128" height="178"/>
         <element name="Task" positionX="-189" positionY="-180" width="128" height="225"/>
         <element name="Topic" positionX="394" positionY="405" width="128" height="133"/>
         <element name="User" positionX="234" positionY="168" width="128" height="165"/>

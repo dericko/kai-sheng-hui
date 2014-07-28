@@ -7,6 +7,7 @@
 //
 
 #import "KSHEventDetailViewController.h"
+#import "KSHWebViewController.h"
 
 @interface KSHEventDetailViewController ()
 
@@ -48,10 +49,6 @@
     
 }
 
-- (IBAction)viewOnlinePressed:(id)sender {
-}
-
-
 # pragma mark - Bottom Bars Buttons
 
 // FIXME: Make these buttons do something real!
@@ -76,6 +73,17 @@
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
     [self presentViewController:activityController animated:YES completion:nil];
+}
+
+- (IBAction)emailPressed:(id)sender {
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"viewWebpage"]) {
+        KSHWebViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.url = _event.urlString;
+    }
 }
 
 @end
