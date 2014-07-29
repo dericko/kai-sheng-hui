@@ -45,6 +45,8 @@
     searchController.searchResultsDelegate = self; // should use tableview's datasource
     searchController.searchResultsDataSource = self; // should use tableview's datasource
     
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -152,6 +154,18 @@
 - (void)configureProjectOpportunityCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     ((KSHContentTableViewCell *)cell).titleLabel.text = @"test-proj-opp";
+}
+
+#pragma mark - search bar
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    [self.view endEditing:YES];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
 }
 
 #pragma mark - Navigation

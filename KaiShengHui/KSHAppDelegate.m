@@ -35,16 +35,16 @@
     [KSHUserDefaultsHelper userLogin];
     
     // Set initial controller depending on login status
-//    NSString *controllerID = [KSHUserDefaultsHelper isUserLoggedIn] ? @"TabBar" : @"Landing";
-//    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controllerID];
-//    if ([KSHUserDefaultsHelper isUserLoggedIn]) {
-//        [self.window setRootViewController:initViewController];
-//    } else {
-//        [(UINavigationController *)self.window.rootViewController pushViewController:initViewController animated:NO];
-//    }
-//    
+    NSString *controllerID = [KSHUserDefaultsHelper isUserLoggedIn] ? @"TabBar" : @"Landing";
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controllerID];
+    if ([KSHUserDefaultsHelper isUserLoggedIn]) {
+        [self.window setRootViewController:initViewController];
+    } else {
+        [(UINavigationController *)self.window.rootViewController pushViewController:initViewController animated:NO];
+    }
+    
     return YES;
 }
 							

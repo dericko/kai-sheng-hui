@@ -108,6 +108,8 @@
 		C1EDDF2119875249004AE85A /* KSHHomescreenTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EDDF2019875249004AE85A /* KSHHomescreenTableViewController.m */; };
 		C1EDDF241987580D004AE85A /* KSHMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EDDF231987580D004AE85A /* KSHMenuTableViewCell.m */; };
 		C1EDDF2619877456004AE85A /* help-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EDDF2519877456004AE85A /* help-icon.png */; };
+		C1EDDF291987A4FC004AE85A /* favorites-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EDDF271987A4FC004AE85A /* favorites-icon.png */; };
+		C1EDDF2A1987A4FC004AE85A /* home-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1EDDF281987A4FC004AE85A /* home-icon.png */; };
 		C1F6FF8519596350006EE5F7 /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF8419596350006EE5F7 /* KSHUserManager.m */; };
 		C1F6FF881959635E006EE5F7 /* KSHArticleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF871959635E006EE5F7 /* KSHArticleManager.m */; };
 		C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F6FF9819597E0E006EE5F7 /* KSHArticleTableViewController.m */; };
@@ -275,6 +277,8 @@
 		C1EDDF221987580D004AE85A /* KSHMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHMenuTableViewCell.h; sourceTree = "<group>"; };
 		C1EDDF231987580D004AE85A /* KSHMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMenuTableViewCell.m; sourceTree = "<group>"; };
 		C1EDDF2519877456004AE85A /* help-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help-icon.png"; sourceTree = "<group>"; };
+		C1EDDF271987A4FC004AE85A /* favorites-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-icon.png"; sourceTree = "<group>"; };
+		C1EDDF281987A4FC004AE85A /* home-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon.png"; sourceTree = "<group>"; };
 		C1F6FF8319596350006EE5F7 /* KSHUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserManager.h; sourceTree = "<group>"; };
 		C1F6FF8419596350006EE5F7 /* KSHUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserManager.m; sourceTree = "<group>"; };
 		C1F6FF861959635E006EE5F7 /* KSHArticleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleManager.h; sourceTree = "<group>"; };
@@ -626,6 +630,8 @@
 				C1EDDF0B1986280A004AE85A /* arrow-up-icon-blk.png */,
 				C1EDDF0C1986280A004AE85A /* arrow-up-icon-wht.png */,
 				C1EDDEFB1986256E004AE85A /* coin-icon-blk.png */,
+				C1EDDF271987A4FC004AE85A /* favorites-icon.png */,
+				C1EDDF281987A4FC004AE85A /* home-icon.png */,
 				C1EDDEFC1986256E004AE85A /* coin-icon-wht.png */,
 				C1EDDF05198625B8004AE85A /* share-icon-blk.png */,
 				C1EDDF06198625B8004AE85A /* share-icon-wht.png */,
@@ -804,10 +810,12 @@
 				C1560938197CE34500FB4677 /* ksh-default.jpg in Resources */,
 				C1EDDF0D1986280A004AE85A /* arrow-down-icon-blk.png in Resources */,
 				C1EDDF101986280A004AE85A /* arrow-up-icon-wht.png in Resources */,
+				C1EDDF291987A4FC004AE85A /* favorites-icon.png in Resources */,
 				C1EDDF07198625B8004AE85A /* share-icon-blk.png in Resources */,
 				C1EDDF011986256E004AE85A /* coin-icon-wht.png in Resources */,
 				C1EDDF0F1986280A004AE85A /* arrow-up-icon-blk.png in Resources */,
 				C1EDDEEF1985EC43004AE85A /* news-icon.png in Resources */,
+				C1EDDF2A1987A4FC004AE85A /* home-icon.png in Resources */,
 				C111FECA196D50B40043E983 /* Main.storyboard in Resources */,
 				C1EDDF2619877456004AE85A /* help-icon.png in Resources */,
 			);
