@@ -17,6 +17,9 @@
 @property (nonatomic, strong) IBOutlet UIImageView *articleImage;
 @property (strong, nonatomic) IBOutlet UILabel *publishDate;
 
+@property (strong, nonatomic) IBOutlet UIButton *upvoteButton;
+@property (strong, nonatomic) IBOutlet UIButton *downvoteButton;
+
 @end
 
 @implementation KSHArticleDetailViewController
@@ -31,9 +34,7 @@
 }
 
 - (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
+{    
     // Clean up content for html remnants
     [self cleanUpContent];
     
@@ -54,6 +55,8 @@
     _articleSource.text = source;
     _articleImage.image = [_article getImage];
     _publishDate.text = published;
+    
+    [super viewDidLoad];
 }
 
 - (void)cleanUpContent
@@ -75,13 +78,15 @@
 
 // FIXME: Make these buttons do something real!
 - (IBAction)likePressed:(id)sender {
-    [KSHMessage displayMessageAlert:@"Liked!" withSubtitle:@"We'll show you more articles like this"];
+    _upvoteButton.selected = !_upvoteButton.selected;
+    _downvoteButton.selected = NO;
 }
 - (IBAction)dislikePressed:(id)sender {
-    [KSHMessage displayMessageAlert:@"Disliked" withSubtitle:@"We'll show you fewer articles like this"];
+    _downvoteButton.selected = !_downvoteButton.selected;
+    _upvoteButton.selected = NO;
 }
 - (IBAction)favoritePressed:(id)sender {
-    [KSHMessage displaySuccessAlert:@"Added To Favorites" withSubtitle:@""];
+    self.starButton.selected = !self.starButton.selected;
 }
 - (IBAction)sharePressed:(id)sender {
     NSMutableArray *sharingItems = [NSMutableArray new];

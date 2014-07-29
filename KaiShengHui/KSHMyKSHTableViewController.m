@@ -31,9 +31,8 @@
 {
     [super viewDidLoad];
     
-    _myItems = [NSArray arrayWithObjects:@"My Projects", @"My Articles", @"My Events", @"My Points",nil];
-    
-    _myItemImages = [NSArray arrayWithObjects:@"project-icon.png", @"news-icon.png", @"event-icon.png", @"ksh-points-icon.png", nil];
+    _myItems = [NSArray arrayWithObjects:@"My Projects", @"My Calendar", @"KSH Shop",nil];
+    _myItemImages = [NSArray arrayWithObjects:@"project-icon.png", @"event-icon.png", @"coin-icon-blk.png", nil];
     
     // TODO: load up user (will have to setup Core Data stack / fetchedResultsController)
     
@@ -69,13 +68,13 @@
     
     switch (indexPath.section) {
         case 0:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell" forIndexPath:indexPath];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"viewProfileCell" forIndexPath:indexPath];
             // FIXME: use real _user.username once user API is ready
             cell.titleLabel.text = @"sample_username";
             cell.iconView.image = [UIImage imageNamed:@"myksh-icon.png"];
             break;
         case 1:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"MyItemCell" forIndexPath:indexPath];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"viewMyItemCell" forIndexPath:indexPath];
             cell.titleLabel.text = [_myItems objectAtIndex:indexPath.row];
             cell.iconView.image = [UIImage imageNamed:[_myItemImages objectAtIndex:indexPath.row]];
             
@@ -85,6 +84,18 @@
     }
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 0:
+            return 100;
+            break;
+        default:
+            return 80;
+            break;
+    }
 }
 
 #pragma mark - Navigation

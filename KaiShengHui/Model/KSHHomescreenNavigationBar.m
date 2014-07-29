@@ -1,0 +1,32 @@
+//
+//  KSHHomescreenNavigationBar.m
+//  KaiShengHui
+//
+//  Created by Derick Olson on 7/29/14.
+//  Copyright (c) 2014 Capvision. All rights reserved.
+//
+
+#import "KSHHomescreenNavigationBar.h"
+
+@implementation KSHHomescreenNavigationBar
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
+
+
+@end

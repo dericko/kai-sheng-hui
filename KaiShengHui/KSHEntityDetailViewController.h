@@ -21,4 +21,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 @property (nonatomic, strong) IBOutlet UITextView *contentLabel;
 
+@property (strong, nonatomic) IBOutlet UIButton *starButton;
+@property (strong, nonatomic) IBOutlet UIButton *shareButton;
+
 @end

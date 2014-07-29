@@ -12,6 +12,7 @@
 #import "KSHUserDefaultsHelper.h"
 
 @interface KSHUserProfileTableViewController ()
+@property NSArray *userDetails;
 @end
 
 @implementation KSHUserProfileTableViewController
@@ -28,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _userDetails = [NSArray arrayWithObjects:@"Name", @"Email", @"Industry", @"Position", @"",nil];
     
     if (_user) {
         _usernameLabel.text = _user.username;
@@ -51,70 +54,79 @@
 }
 
 #pragma mark - Table view data source
-/*
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    switch (section) {
+        case 0:
+            return 1;
+        case 1:
+            return 1;
+        case 2:
+            return [_userDetails count];
+        default:
+            // Should not get here
+            return 0;
+    }
 }
-*/
 
-/*
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [UITableViewCell new];
     
-    // Configure the cell...
+    switch (indexPath.section) {
+        case 0:
+            cell = [tableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
+            break;
+        case 1:
+            cell = [tableView dequeueReusableCellWithIdentifier:@"profileCell" forIndexPath:indexPath];
+        case 2:
+            cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];
+            cell.textLabel.text = [_userDetails objectAtIndex:indexPath.row];
+        default:
+            break;
+    }
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    switch (indexPath.section) {
+        case 0:
+            return 100;
+        case 1:
+            // TODO: make dynamic size according to profile length
+            return 150;
+        default:
+            return 44;
+    }
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+#pragma mark - TableViewDelegate
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    // Return the height of header for the section.
+    switch (section) {
+        case 0:
+            return 0;
+        case 1:
+            return 10;
+        case 2:
+            return 10;
+        default:
+            // Should not reach this default case!
+            return 0;
+    }
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

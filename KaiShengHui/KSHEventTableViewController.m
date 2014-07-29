@@ -81,7 +81,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
+    [super prepareForSegue:segue sender:sender];
+    
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:self.segueIdentifier]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];

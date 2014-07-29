@@ -30,8 +30,6 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
     // Set content fields
     NSString *title = [NSString stringWithFormat:@"%@", _event.title];
     NSString *content = [NSString stringWithFormat:@"%@", _event.content];
@@ -47,21 +45,14 @@
     self.priceLabel.text = price;
     self.contactLabel.text = contact;
     
+    [super viewDidLoad];
 }
 
 # pragma mark - Bottom Bars Buttons
 
 // FIXME: Make these buttons do something real!
-- (IBAction)likePressed:(id)sender {
-    
-}
-
-- (IBAction)dislikePressed:(id)sender {
-    
-}
-
 - (IBAction)favoritePressed:(id)sender {
-    
+    self.starButton.selected = !self.starButton.selected;
 }
 
 - (IBAction)sharePressed:(id)sender {

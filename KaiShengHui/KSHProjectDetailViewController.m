@@ -29,8 +29,6 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
     // Set content fields
     NSString *title = [NSString stringWithFormat:@"%@", _projectOpportunity.title];
     NSString *content = [NSString stringWithFormat:@"理想背景: \n %@ \n\n 关键问题: %@", _projectOpportunity.idealBackground, _projectOpportunity.referenceContent];
@@ -41,6 +39,8 @@
     self.contentLabel.text = content;
     self.publishDateLabel.text = publishDate;
     self.deadlineLabel.text = deadline;
+
+    [super viewDidLoad];
 }
 
 # pragma mark - Bottom Bars Buttons
@@ -48,7 +48,7 @@
 // FIXME: Make these buttons do something real!
 
 - (IBAction)favoritePressed:(id)sender {
-    
+    self.starButton.selected = !self.starButton.selected;
 }
 - (IBAction)sharePressed:(id)sender {
     NSMutableArray *sharingItems = [NSMutableArray new];
