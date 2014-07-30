@@ -72,6 +72,7 @@
 		C14D4A8D197E6BBF00CAA5A5 /* KSHTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C14D4A71197E6BBF00CAA5A5 /* KSHTask.m */; };
 		C14D4A8E197E6BBF00CAA5A5 /* KSHTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = C14D4A73197E6BBF00CAA5A5 /* KSHTopic.m */; };
 		C14D4A8F197E6BBF00CAA5A5 /* KSHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C14D4A75197E6BBF00CAA5A5 /* KSHUser.m */; };
+		C150B7C3198894030069B0DB /* KSHSplitButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C150B7C2198894030069B0DB /* KSHSplitButtonView.m */; };
 		C1560938197CE34500FB4677 /* ksh-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1560937197CE34500FB4677 /* ksh-default.jpg */; };
 		C182851A196679210080F2DD /* KSHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C1828519196679210080F2DD /* KSHMessage.m */; };
 		C1CAA141197F8A2D003EA341 /* KSHEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA140197F8A2D003EA341 /* KSHEventTableViewController.m */; };
@@ -221,6 +222,8 @@
 		C14D4A73197E6BBF00CAA5A5 /* KSHTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHTopic.m; sourceTree = "<group>"; };
 		C14D4A74197E6BBF00CAA5A5 /* KSHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUser.h; sourceTree = "<group>"; };
 		C14D4A75197E6BBF00CAA5A5 /* KSHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUser.m; sourceTree = "<group>"; };
+		C150B7C1198894030069B0DB /* KSHSplitButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHSplitButtonView.h; sourceTree = "<group>"; };
+		C150B7C2198894030069B0DB /* KSHSplitButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHSplitButtonView.m; sourceTree = "<group>"; };
 		C1560937197CE34500FB4677 /* ksh-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ksh-default.jpg"; sourceTree = "<group>"; };
 		C1828518196679210080F2DD /* KSHMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHMessage.h; sourceTree = "<group>"; };
 		C1828519196679210080F2DD /* KSHMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMessage.m; sourceTree = "<group>"; };
@@ -663,6 +666,8 @@
 		C1EDDF1B198750CC004AE85A /* Navbars */ = {
 			isa = PBXGroup;
 			children = (
+				C150B7C1198894030069B0DB /* KSHSplitButtonView.h */,
+				C150B7C2198894030069B0DB /* KSHSplitButtonView.m */,
 				C1EDDF1C198750F9004AE85A /* KSHHomescreenNavigationBar.h */,
 				C1EDDF1D198750F9004AE85A /* KSHHomescreenNavigationBar.m */,
 			);
@@ -939,6 +944,7 @@
 				C135603B19595590005DABED /* KSHObjectManager.m in Sources */,
 				C1CAA14F197F8EF8003EA341 /* KSHEntityTableViewController.m in Sources */,
 				C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */,
+				C150B7C3198894030069B0DB /* KSHSplitButtonView.m in Sources */,
 				C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */,
 				C14D4A86197E6BBF00CAA5A5 /* KSHConsultationTask.m in Sources */,
 				C14D4A82197E6BBF00CAA5A5 /* _KSHUser.m in Sources */,

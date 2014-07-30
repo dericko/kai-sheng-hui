@@ -7,10 +7,10 @@
 //
 
 #import "KSHEntityTableViewController.h"
+#import "KSHSplitButtonView.h"
 
 @interface KSHEntityTableViewController ()
-@property (nonatomic, strong) UIButton *button1;
-@property (nonatomic, strong) UIButton *button2;
+@property (nonatomic, strong) KSHSplitButtonView *splitButtons;
 @end
 
 @implementation KSHEntityTableViewController
@@ -33,34 +33,10 @@
     NSAssert(self.managedObjectContext, @"No managedObjectContext: make sure you set up Core Data and networking");
     
     // Set up selector buttons
-    // TODO: refactor with a nice custom button subclasses
-    CGRect frame1 = CGRectMake(1, 1.0, 70.0, 22.0);
-    _button1= [[UIButton alloc] initWithFrame:frame1];
-    _button1.titleLabel.font = [UIFont systemFontOfSize:14];
-    [_button1 setTitle:@"Newest" forState:UIControlStateNormal];
-    [_button1 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [_button1 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [_button1 addTarget:self action:@selector(button1Clicked) forControlEvents:UIControlEventTouchUpInside];
-    [_button1 setBackgroundColor:[UIColor darkGrayColor]];
-    [_button1 setSelected:YES];
-    
-    CGRect frame2 = CGRectMake(71.0, 1.0, 70.0, 22.0);
-    _button2 = [[UIButton alloc] initWithFrame:frame2];
-    _button2.titleLabel.font = [UIFont systemFontOfSize:14];
-    [_button2 setTitle:@"Popular" forState:UIControlStateNormal];
-    [_button2 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [_button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [_button2 addTarget:self action:@selector(button2Clicked) forControlEvents:UIControlEventTouchUpInside];
-    [_button2 setBackgroundColor:[UIColor whiteColor]];
-    [_button2 setSelected:NO];
-    
-    CGRect typeSelectFrame = CGRectMake(0, 10.0, 142.0, 24.0);
-    UIView *typeSelectButtonsView = [[UIView alloc] initWithFrame:typeSelectFrame];
-    typeSelectButtonsView.backgroundColor = [UIColor blackColor];
-    [typeSelectButtonsView addSubview:_button1];
-    [typeSelectButtonsView addSubview:_button2];
-    
-    self.navigationItem.titleView = typeSelectButtonsView;
+    _splitButtons = [[KSHSplitButtonView alloc] initWithFrame:CGRectMake(0, 10.0, 142.0, 24.0)];
+    [_splitButtons addLeftButtonWithTitle:@"Newest" forTarget:self withAction:@selector(viewNewest)];
+    [_splitButtons addRightButtonWithTitle:@"Popular" forTarget:self withAction:@selector(viewPopular)];
+    self.navigationItem.titleView = _splitButtons;
     
     // Setup filter menu
     UIBarButtonItem *filterButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterClicked)];
@@ -85,31 +61,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)button1Clicked
-{
-    if (!_button1.selected) {
-        [_button1 setSelected:YES];
-        [_button1 setBackgroundColor:[UIColor darkGrayColor]];
-        [_button2 setSelected:NO];
-        [_button2 setBackgroundColor:[UIColor whiteColor]];
-    }
-}
-
-- (void)button2Clicked
-{
-    if (!_button2.selected) {
-        [_button2 setSelected:YES];
-        [_button2 setBackgroundColor:[UIColor darkGrayColor]];
-        [_button1 setSelected:NO];
-        [_button1 setBackgroundColor:[UIColor whiteColor]];
-    }
-}
-
-- (void)filterClicked
-{
-    // TODO: modal with scroll view with Industries, etc.
 }
                                          
 # pragma mark - Initialization helpers
@@ -150,6 +101,21 @@
     [_footerView addSubview:activityIndicator];
     
     activityIndicator = nil;
+}
+
+- (void)viewNewest
+{
+    // TODO: implement (add/remove fetch predicate, reload)
+}
+
+- (void)viewPopular
+{
+    // TODO: implement (add/remove fetch predicate, reload)
+}
+
+- (void)filterClicked
+{
+    // TODO: modal with scroll view with Industries, etc. (with fetch predicate according to industry)
 }
 
 #pragma mark - Table view data source

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-/** Base class for entity-based TableViewControllers that should satisfy <NSFetchedResultsControllerDelegate> for Core Data fetches. Assumes that class will populate itself with an appropriate subclass of KSHObjectManager to handle network requests and entity mapping.
+/** This is the base class for Article Tables, Project Opportunity Tables, and other entity-based TableViewController that uses a single NSFetchedResultsController to populate a single-section table. Assumes that subclasses will provide a KSHObjectManager subclass to handle network requests and entity mapping.
  */
 @interface KSHEntityTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, strong) UIView * footerView;
+
 @property (strong, nonatomic) NSNumber *numberToLoad;
 @property (strong, nonatomic) NSString *cellIdentifier;
 @property (strong, nonatomic) NSString *entityName;

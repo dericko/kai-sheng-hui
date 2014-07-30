@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     // Font Button
-    _fontSize = 19;
+    _fontSize = 16;
     _contentLabel.font = [UIFont systemFontOfSize:_fontSize];
     UIBarButtonItem *fontSizeButton = [[UIBarButtonItem alloc] initWithTitle:@"Aa" style:UIBarButtonItemStylePlain target:self action:@selector(adjustFont)];
     [self.navigationItem setRightBarButtonItem:fontSizeButton];
@@ -42,16 +42,16 @@
 - (void)adjustFont
 {
     switch (_fontSize) {
-        case 17:
-            _fontSize = 19;
+        case 16:
+            _fontSize = 18;
             _contentLabel.font = [UIFont systemFontOfSize:_fontSize];
             break;
-        case 19:
-            _fontSize = 17;
+        case 18:
+            _fontSize = 16;
             _contentLabel.font = [UIFont systemFontOfSize:_fontSize];
             break;
         default:
-            _fontSize = 19;
+            _fontSize = 18;
             _contentLabel.font = [UIFont systemFontOfSize:_fontSize];
             break;
     }

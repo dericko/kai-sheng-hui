@@ -30,11 +30,8 @@
 {
     [super viewDidLoad];
     
-    _userDetails = [NSArray arrayWithObjects:@"Name", @"Email", @"Industry", @"Position", @"",nil];
+    _userDetails = [NSArray arrayWithObjects:@"Name", @"Email", @"Industry", @"Position", @"Points",nil];
     
-    if (_user) {
-        _usernameLabel.text = _user.username;
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,18 +111,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    // Return the height of header for the section.
-    switch (section) {
-        case 0:
-            return 0;
-        case 1:
-            return 10;
-        case 2:
-            return 10;
-        default:
-            // Should not reach this default case!
-            return 0;
+    if (section == 0) {
+        return 0;
     }
+    return 20;
 }
 
 /*

@@ -18,7 +18,7 @@
 @implementation KSHAppDelegate
 
 @synthesize managedObjectModel = _managedObjectModel;
-@synthesize managedObjectStore = _RKManagedObjectStore;
+@synthesize managedObjectStore = _managedObjectStore;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -81,28 +81,29 @@
 
 - (void)initializeRestkitForCoreData
 {
-    // Log all Restkit info
+    // To log all requests and responses, use RKLogLevelDebug
+    // To log all calls as well as the content, use RKLogLevelTrace
     RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
     
-    // Restkit managed object store
-    _RKManagedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    // Initialize a Restkit managed object store with our Core Data model
+    _managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:[self managedObjectModel]];
     
 
     // FIXME: need to support migrations when using persistent store - currently requires "Reset Content and Settings" in simulator
-    // Set up persistent store
-    [_RKManagedObjectStore createPersistentStoreCoordinator];
+    // Set up persistent store for our managed object store
+    [_managedObjectStore createPersistentStoreCoordinator];
     // !!! For Development: use addInMemoryPersistentStore to avoid SQLite migration problem
 //    NSString *storeURL = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"KaiShengHui.sqlite"];
     NSError *error = nil;
-    NSPersistentStore *persistentStore = [_RKManagedObjectStore addInMemoryPersistentStore:&error];
+    NSPersistentStore *persistentStore = [_managedObjectStore addInMemoryPersistentStore:&error];
 //    NSPersistentStore *persistentStore = [_RKManagedObjectStore addSQLitePersistentStoreAtPath:storeURL fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
     NSAssert(persistentStore, @"Failed to add persistent store: %@", error);
     
     // Managed object context
-    [_RKManagedObjectStore createManagedObjectContexts];
+    [_managedObjectStore createManagedObjectContexts];
     
     
-    [RKManagedObjectStore setDefaultStore:_RKManagedObjectStore];
+    [RKManagedObjectStore setDefaultStore:_managedObjectStore];
 }
 
 // Returns the managed object model for the application.

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KSHHomescreenTableViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
+@interface KSHHomescreenTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+
+// Managed object context for fetch requests
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
+// Two fetched results controller to populate separate sections
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResults1;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResults2;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "KSHArticleDetailViewController.h"
-
+#import <AFNetworking/UIImageView+AFNetworking.h>
 #import "KSHMessage.h"
 
 @interface KSHArticleDetailViewController ()
@@ -41,6 +41,7 @@
     // Set content fields
     NSString *title = [NSString stringWithFormat:@"%@", _article.title];
     NSString *content = [NSString stringWithFormat:@"%@", _article.content];
+    if (!_article.industry) [_article setIndustryText];
     NSString *industry = [NSString stringWithFormat:@"%@", _article.industry];
     NSString *tags = [NSString stringWithFormat:@"%@", _article.tags];
     // TODO: use API to get actual source
@@ -53,8 +54,15 @@
     _articleIndustry.text = industry;
     _articleTags.text = tags;
     _articleSource.text = source;
-    _articleImage.image = [_article getImage];
     _publishDate.text = published;
+    
+    if ([_article getImage]) {
+        _articleImage.image = [_article getImage];
+    } else {
+        [self getImage];
+    }
+    
+    
     
     [super viewDidLoad];
 }
@@ -72,6 +80,23 @@
     _article.content= [_article.content stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"&mdash;"] withString:@"-"];
     _article.content= [_article.content stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"&nbsp;"] withString:@""];
     _article.content = [_article.content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (void)getImage
+{
+    // Set image
+    UIImage *placeholderImage = [UIImage imageNamed:@"ksh-default.jpg"];
+    UIImageView *placeholderImageView = [[UIImageView alloc] initWithImage:placeholderImage];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURLString"] description]]]];
+    [placeholderImageView
+     setImageWithURLRequest:request
+     placeholderImage:placeholderImage
+     success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+         _articleImage.image = image;
+     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+         [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error  localizedDescription]];
+         NSLog(@"Error: %@", error);
+     }];
 }
 
 # pragma mark - Bottom Bars Buttons
