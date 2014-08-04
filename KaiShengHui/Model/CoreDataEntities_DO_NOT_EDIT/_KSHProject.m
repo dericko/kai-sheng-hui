@@ -4,28 +4,26 @@
 #import "_KSHProject.h"
 
 const struct KSHProjectAttributes KSHProjectAttributes = {
-	.categoryID = @"categoryID",
-	.createTime = @"createTime",
+	.category = @"category",
 	.currencyUnit = @"currencyUnit",
-	.endTime = @"endTime",
-	.industryID = @"industryID",
+	.endDate = @"endDate",
+	.fetchableType = @"fetchableType",
+	.industry = @"industry",
 	.name = @"name",
 	.price = @"price",
 	.priority = @"priority",
 	.projectDescription = @"projectDescription",
-	.projectID = @"projectID",
-	.startTime = @"startTime",
+	.startDate = @"startDate",
 	.status = @"status",
 	.statusTime = @"statusTime",
 	.timeframe = @"timeframe",
 	.type = @"type",
-	.updateTime = @"updateTime",
 };
 
 const struct KSHProjectRelationships KSHProjectRelationships = {
 	.hasFeedback = @"hasFeedback",
 	.hasTask = @"hasTask",
-	.ofConsultant = @"ofConsultant",
+	.ofUser = @"ofUser",
 };
 
 const struct KSHProjectFetchedProperties KSHProjectFetchedProperties = {
@@ -57,13 +55,18 @@ const struct KSHProjectFetchedProperties KSHProjectFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"categoryIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"categoryID"];
+	if ([key isEqualToString:@"categoryValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"category"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
-	if ([key isEqualToString:@"industryIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"industryID"];
+	if ([key isEqualToString:@"fetchableTypeValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"fetchableType"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"industryValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"industry"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -74,11 +77,6 @@ const struct KSHProjectFetchedProperties KSHProjectFetchedProperties = {
 	}
 	if ([key isEqualToString:@"priorityValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"priority"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
-	if ([key isEqualToString:@"projectIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"projectID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -99,34 +97,27 @@ const struct KSHProjectFetchedProperties KSHProjectFetchedProperties = {
 
 
 
-@dynamic categoryID;
+@dynamic category;
 
 
 
-- (int16_t)categoryIDValue {
-	NSNumber *result = [self categoryID];
+- (int16_t)categoryValue {
+	NSNumber *result = [self category];
 	return [result shortValue];
 }
 
-- (void)setCategoryIDValue:(int16_t)value_ {
-	[self setCategoryID:[NSNumber numberWithShort:value_]];
+- (void)setCategoryValue:(int16_t)value_ {
+	[self setCategory:[NSNumber numberWithShort:value_]];
 }
 
-- (int16_t)primitiveCategoryIDValue {
-	NSNumber *result = [self primitiveCategoryID];
+- (int16_t)primitiveCategoryValue {
+	NSNumber *result = [self primitiveCategory];
 	return [result shortValue];
 }
 
-- (void)setPrimitiveCategoryIDValue:(int16_t)value_ {
-	[self setPrimitiveCategoryID:[NSNumber numberWithShort:value_]];
+- (void)setPrimitiveCategoryValue:(int16_t)value_ {
+	[self setPrimitiveCategory:[NSNumber numberWithShort:value_]];
 }
-
-
-
-
-
-@dynamic createTime;
-
 
 
 
@@ -139,33 +130,59 @@ const struct KSHProjectFetchedProperties KSHProjectFetchedProperties = {
 
 
 
-@dynamic endTime;
+@dynamic endDate;
 
 
 
 
 
 
-@dynamic industryID;
+@dynamic fetchableType;
 
 
 
-- (int32_t)industryIDValue {
-	NSNumber *result = [self industryID];
-	return [result intValue];
+- (int16_t)fetchableTypeValue {
+	NSNumber *result = [self fetchableType];
+	return [result shortValue];
 }
 
-- (void)setIndustryIDValue:(int32_t)value_ {
-	[self setIndustryID:[NSNumber numberWithInt:value_]];
+- (void)setFetchableTypeValue:(int16_t)value_ {
+	[self setFetchableType:[NSNumber numberWithShort:value_]];
 }
 
-- (int32_t)primitiveIndustryIDValue {
-	NSNumber *result = [self primitiveIndustryID];
-	return [result intValue];
+- (int16_t)primitiveFetchableTypeValue {
+	NSNumber *result = [self primitiveFetchableType];
+	return [result shortValue];
 }
 
-- (void)setPrimitiveIndustryIDValue:(int32_t)value_ {
-	[self setPrimitiveIndustryID:[NSNumber numberWithInt:value_]];
+- (void)setPrimitiveFetchableTypeValue:(int16_t)value_ {
+	[self setPrimitiveFetchableType:[NSNumber numberWithShort:value_]];
+}
+
+
+
+
+
+@dynamic industry;
+
+
+
+- (int16_t)industryValue {
+	NSNumber *result = [self industry];
+	return [result shortValue];
+}
+
+- (void)setIndustryValue:(int16_t)value_ {
+	[self setIndustry:[NSNumber numberWithShort:value_]];
+}
+
+- (int16_t)primitiveIndustryValue {
+	NSNumber *result = [self primitiveIndustry];
+	return [result shortValue];
+}
+
+- (void)setPrimitiveIndustryValue:(int16_t)value_ {
+	[self setPrimitiveIndustry:[NSNumber numberWithShort:value_]];
 }
 
 
@@ -238,33 +255,7 @@ const struct KSHProjectFetchedProperties KSHProjectFetchedProperties = {
 
 
 
-@dynamic projectID;
-
-
-
-- (int32_t)projectIDValue {
-	NSNumber *result = [self projectID];
-	return [result intValue];
-}
-
-- (void)setProjectIDValue:(int32_t)value_ {
-	[self setProjectID:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveProjectIDValue {
-	NSNumber *result = [self primitiveProjectID];
-	return [result intValue];
-}
-
-- (void)setPrimitiveProjectIDValue:(int32_t)value_ {
-	[self setPrimitiveProjectID:[NSNumber numberWithInt:value_]];
-}
-
-
-
-
-
-@dynamic startTime;
+@dynamic startDate;
 
 
 
@@ -337,13 +328,6 @@ const struct KSHProjectFetchedProperties KSHProjectFetchedProperties = {
 
 
 
-@dynamic updateTime;
-
-
-
-
-
-
 @dynamic hasFeedback;
 
 	
@@ -361,7 +345,7 @@ const struct KSHProjectFetchedProperties KSHProjectFetchedProperties = {
 }
 	
 
-@dynamic ofConsultant;
+@dynamic ofUser;
 
 	
 

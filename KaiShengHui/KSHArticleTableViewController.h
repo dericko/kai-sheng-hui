@@ -7,10 +7,7 @@
 //
 
 #import "KSHEntityTableViewController.h"
-#import "KSHArticleManager.h"
 
 @interface KSHArticleTableViewController : KSHEntityTableViewController
-
-@property (nonatomic, strong) KSHArticleManager *articleManager;
 
 @end

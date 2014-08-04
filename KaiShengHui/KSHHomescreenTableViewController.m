@@ -8,18 +8,14 @@
 
 #import "KSHHomescreenTableViewController.h"
 #import "KSHContentTableViewCell.h"
-#import "KSHArticleManager.h"
-#import "KSHProjectOpportunityManager.h"
-#import "KSHMessage.h"
+#import "KSHContentManager.h"
 #import "KSHArticleDetailViewController.h"
 #import "KSHProjectDetailViewController.h"
 
 @interface KSHHomescreenTableViewController ()
 
-@property (nonatomic, strong) KSHArticleManager *articleManager;
+@property (nonatomic, strong) KSHContentManager *contentManager;
 @property (nonatomic, strong) KSHArticle *article;
-
-@property (nonatomic, strong) KSHProjectOpportunityManager *projectOpportunityManager;
 @property (nonatomic, strong) KSHProjectOpportunity *projectOpportunity;
 
 @property int numberToLoad;
@@ -28,26 +24,15 @@
 
 @implementation KSHHomescreenTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // Setup networking managers
-    _articleManager = [KSHArticleManager sharedManager];
-    _projectOpportunityManager = [KSHProjectOpportunityManager sharedManager];
+    _contentManager = [KSHContentManager sharedManager];
     
     // Setup core data stack
-    _articleManager.managedObjectStore = [RKManagedObjectStore defaultStore];
-    _projectOpportunityManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+    _contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
 
     // setup toolbar
@@ -62,6 +47,13 @@
     
     // GET content
     [self getData];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self showLoginScreenIfNeccessary];
 }
 
 # pragma mark - Initialization helpers
@@ -93,27 +85,27 @@
 
 - (void)getData
 {
-    // TODO: set parameters (load top 3)
+#warning Uses 'parameters' that are specific to Parse REST API used in testing. May need to change with real API
     NSString *numberToLoad = [NSString stringWithFormat:@"%d", self.numberToLoad];
     NSDictionary *parameters = @{@"limit": numberToLoad};
     
-    if (_articleManager) {
+    if (_contentManager) {
+        // Load articles
         [self controllerWillChangeContent:_fetchedResults1];
-        [_articleManager
-         loadContentWithParameters:parameters
+        [_contentManager
+         loadArticlesWithParameters:parameters
          success:^(void) {
              [self.refreshControl endRefreshing];
              [self controllerDidChangeContent:_fetchedResults1];
          } failure:^(NSError *error) {
              [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
          }];
-    }
-    
-    if (_projectOpportunityManager) {
+        
+        // Load project opportunities
         [self controllerWillChangeContent:_fetchedResults2];
-        [_projectOpportunityManager
-         loadContentWithParameters:parameters
-         success:^(void) {
+        [_contentManager
+         loadProjectOpportunitiesWithParameters:parameters
+         success:^{
              [self.refreshControl endRefreshing];
              [self controllerDidChangeContent:_fetchedResults2];
          } failure:^(NSError *error) {
@@ -242,13 +234,6 @@
     }
 }
 
-
-
-- (void)setImageAsync:(UIImageView *)articleImageView atIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResults1
@@ -265,7 +250,7 @@
     
     // Assign sort descriptor (one of entity's properties)
 
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"postID" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"entityID" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     [fetchRequest setSortDescriptors:sortDescriptors];
     
@@ -305,7 +290,7 @@
     
     // Assign sort descriptor (one of entity's properties)
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"opportunityID" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"entityID" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     [fetchRequest setSortDescriptors:sortDescriptors];
     
@@ -410,7 +395,7 @@
         NSString *segueIdentifier = @"showArticleDetail";
         [self performSegueWithIdentifier:segueIdentifier sender:[self.tableView cellForRowAtIndexPath:indexPath]];
     } else if (indexPath.section == 2) {
-        NSString *segueIdentifier = @"showProjectOppotunityDetail";
+        NSString *segueIdentifier = @"showProjectOpportunityDetail";
         [self performSegueWithIdentifier:segueIdentifier sender:[self.tableView cellForRowAtIndexPath:indexPath]];
     }
 }
@@ -425,12 +410,38 @@
     }
     
     else if ([segue.identifier isEqualToString:@"showProjectOpportunityDetail"]) {
-         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.tableView indexPathForSelectedRow].row inSection:[self.tableView indexPathForSelectedRow].section - 1];
+         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.tableView indexPathForSelectedRow].row inSection:[self.tableView indexPathForSelectedRow].section - 2];
         KSHProjectDetailViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.projectOpportunity = [[self fetchedResults2] objectAtIndexPath:indexPath];
         
     }
+    
+    [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
 }
 
+# pragma mark - Login check
+
+- (void)showLoginScreenIfNeccessary
+{
+    if (![[KSHUserManager sharedManager] isLoggedIn]) {
+		// Register for login succeeded notification
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogin) name:UserDidLoginNotification object:nil];
+		
+		KSHLoginViewController* loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Login"];
+        [self presentViewController:loginViewController animated:YES completion:NULL];
+        
+		loginViewController.delegate = self;
+	}
+}
+
+- (void)userDidLogin
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)loginViewControllerDidCancel:(KSHLoginViewController *)loginViewController
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

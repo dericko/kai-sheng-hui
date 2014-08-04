@@ -11,7 +11,7 @@
 @class RKEntityMapping;
 
 /**
- 'KSHMappingProvider' Uses RestKit object mapping to define custom mapping between data objects and JSON-formatted network response information
+ 'KSHMappingProvider' Uses RestKit object mapping to define custom mapping from JSON-formatted network response information to Core Data entities. This class provides factory methods for network response descriptors used by object managers.
  
  Attribute Mapping Dictionary Format: {@"JSONKey" : @"CoreDataPropertyName"}
  Note: Keep track of (orphaned) objects by setting identificationAttributes:
@@ -23,24 +23,14 @@
  */
 @interface KSHMappingProvider : NSObject
 
-// TODO: comment mapping methods
 + (RKEntityMapping *)articleMapping;
 + (RKEntityMapping *)eventMapping;
 
 + (RKEntityMapping *)userMapping;
-+ (RKEntityMapping *)consultantMapping;
++ (RKEntityMapping *)profileMapping;
 
 + (RKEntityMapping *)projectMapping;
++ (RKEntityMapping *)taskMapping;
 + (RKEntityMapping *)projectOpportunityMapping;
-
-#pragma mark - Test Mapping using Parse database
-+ (RKEntityMapping *)articleParseMapping;
-+ (RKEntityMapping *)eventParseMapping;
-
-+ (RKEntityMapping *)userParseMapping;
-+ (RKEntityMapping *)consultantParseMapping;
-
-+ (RKEntityMapping *)projectParseMapping;
-+ (RKEntityMapping *)projectOpportunityParseMapping;
 
 @end

@@ -7,31 +7,36 @@
 //
 
 #import "KSHUserProfileTableViewController.h"
-#import "KSHUser.h"
-#import "KSHMessage.h"
-#import "KSHUserDefaultsHelper.h"
+#import "KSHProfileTableViewCell.h"
+#import "KSHMyKSHTableViewCell.h"
+#import "KSHHomescreenTableViewController.h"
+#import "KSHUserManager.h"
 
 @interface KSHUserProfileTableViewController ()
+@property (strong, nonatomic) KSHProfile *profile;
+
 @property NSArray *userDetails;
 @end
 
 @implementation KSHUserProfileTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    _userDetails = [NSArray arrayWithObjects:@"Name", @"Email", @"Industry", @"Position", @"Points",nil];
+    // Get the current user's profile
+    [[KSHUserManager sharedManager]
+     loadProfileForUser:[KSHUser currentUser]
+     success:^{
+         _profile = [KSHUser currentUser].userProfile;
+         [self.tableView reloadData];
+         NSLog(@"Hello, %@", _profile.name);
+     } failure:^(NSError *error) {
+         // failure
+     }]; // TODO: print failure message
     
+    // Set up user detail list
+    _userDetails = [NSArray arrayWithObjects:@"Name", @"Email", @"Industry", @"Position", @"Specialty",nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,12 +47,9 @@
 
 - (IBAction)signOutButtonPressed:(id)sender
 {
-    // dealloc user and login objects
-    // set global SIGNED_IN to false
-    [KSHUserDefaultsHelper userLogout];
-    
-    // TODO: implement user Logout
-    
+    // Logout
+    [[KSHUserManager sharedManager] logoutWithDelegate:self];
+
 }
 
 #pragma mark - Table view data source
@@ -80,18 +82,50 @@
     
     switch (indexPath.section) {
         case 0:
+            // Username section
             cell = [tableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
+            ((KSHMyKSHTableViewCell *) cell).titleLabel.text = [KSHUser currentUser].username;
             break;
         case 1:
+            // Profile section
             cell = [tableView dequeueReusableCellWithIdentifier:@"profileCell" forIndexPath:indexPath];
+            ((KSHProfileTableViewCell *) cell).profileTextView.text = _profile.profile;
+            break;
+            break;
         case 2:
+            // User detail section
             cell = [tableView dequeueReusableCellWithIdentifier:@"detailCell"];
             cell.textLabel.text = [_userDetails objectAtIndex:indexPath.row];
+            [self configureCell:cell forIndexPath:indexPath];
+            break;
         default:
             break;
     }
     
     return cell;
+}
+
+- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+            cell.detailTextLabel.text = _profile.name;
+            break;
+        case 1:
+            cell.detailTextLabel.text = [KSHUser currentUser].email;
+            break;
+        case 2:
+            cell.detailTextLabel.text = [_profile getIndustryName];
+            break;
+        case 3:
+            cell.detailTextLabel.text = _profile.position;
+            break;
+        case 4:
+            cell.detailTextLabel.text = _profile.specialty;
+            break;
+        default:
+            break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -100,8 +134,7 @@
         case 0:
             return 100;
         case 1:
-            // TODO: make dynamic size according to profile length
-            return 150;
+            // Adjust height according to profile text view
         default:
             return 44;
     }
@@ -117,15 +150,15 @@
     return 20;
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - UserAuthenticationDelegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)userDidLogout:(KSHUser *)user
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // Return to homeview
+    [self.tabBarController setSelectedIndex:0];
+    
+    // Pop navigation controller back to MyKSH page
+    [self.navigationController popViewControllerAnimated:NO];
 }
-*/
 
 @end

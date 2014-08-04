@@ -10,8 +10,6 @@ const struct KSHTopicAttributes KSHTopicAttributes = {
 };
 
 const struct KSHTopicRelationships KSHTopicRelationships = {
-	.dislikedBy = @"dislikedBy",
-	.likedBy = @"likedBy",
 	.ofArticle = @"ofArticle",
 };
 
@@ -119,32 +117,6 @@ const struct KSHTopicFetchedProperties KSHTopicFetchedProperties = {
 
 
 
-
-@dynamic dislikedBy;
-
-	
-- (NSMutableSet*)dislikedBySet {
-	[self willAccessValueForKey:@"dislikedBy"];
-  
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"dislikedBy"];
-  
-	[self didAccessValueForKey:@"dislikedBy"];
-	return result;
-}
-	
-
-@dynamic likedBy;
-
-	
-- (NSMutableSet*)likedBySet {
-	[self willAccessValueForKey:@"likedBy"];
-  
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"likedBy"];
-  
-	[self didAccessValueForKey:@"likedBy"];
-	return result;
-}
-	
 
 @dynamic ofArticle;
 

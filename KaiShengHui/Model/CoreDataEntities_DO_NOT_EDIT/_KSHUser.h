@@ -5,26 +5,28 @@
 
 
 extern const struct KSHUserAttributes {
-	__unsafe_unretained NSString *currentUser;
+	__unsafe_unretained NSString *createDate;
+	__unsafe_unretained NSString *email;
 	__unsafe_unretained NSString *token;
+	__unsafe_unretained NSString *updateDate;
 	__unsafe_unretained NSString *userID;
 	__unsafe_unretained NSString *username;
 } KSHUserAttributes;
 
 extern const struct KSHUserRelationships {
-	__unsafe_unretained NSString *dislikes;
 	__unsafe_unretained NSString *favorites;
-	__unsafe_unretained NSString *likes;
+	__unsafe_unretained NSString *hasProject;
 	__unsafe_unretained NSString *userProfile;
 } KSHUserRelationships;
 
 extern const struct KSHUserFetchedProperties {
 } KSHUserFetchedProperties;
 
-@class KSHTopic;
-@class KSHPost;
-@class KSHTopic;
+@class KSHFavoritable;
+@class KSHProject;
 @class KSHProfile;
+
+
 
 
 
@@ -44,15 +46,21 @@ extern const struct KSHUserFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* currentUser;
+@property (nonatomic, strong) NSDate* createDate;
 
 
 
-@property BOOL currentUserValue;
-- (BOOL)currentUserValue;
-- (void)setCurrentUserValue:(BOOL)value_;
+//- (BOOL)validateCreateDate:(id*)value_ error:(NSError**)error_;
 
-//- (BOOL)validateCurrentUser:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSString* email;
+
+
+
+//- (BOOL)validateEmail:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -68,13 +76,19 @@ extern const struct KSHUserFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* userID;
+@property (nonatomic, strong) NSDate* updateDate;
 
 
 
-@property int32_t userIDValue;
-- (int32_t)userIDValue;
-- (void)setUserIDValue:(int32_t)value_;
+//- (BOOL)validateUpdateDate:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* userID;
+
+
 
 //- (BOOL)validateUserID:(id*)value_ error:(NSError**)error_;
 
@@ -92,13 +106,6 @@ extern const struct KSHUserFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet *dislikes;
-
-- (NSMutableSet*)dislikesSet;
-
-
-
-
 @property (nonatomic, strong) NSSet *favorites;
 
 - (NSMutableSet*)favoritesSet;
@@ -106,9 +113,9 @@ extern const struct KSHUserFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet *likes;
+@property (nonatomic, strong) NSSet *hasProject;
 
-- (NSMutableSet*)likesSet;
+- (NSMutableSet*)hasProjectSet;
 
 
 
@@ -125,31 +132,29 @@ extern const struct KSHUserFetchedProperties {
 
 @interface _KSHUser (CoreDataGeneratedAccessors)
 
-- (void)addDislikes:(NSSet*)value_;
-- (void)removeDislikes:(NSSet*)value_;
-- (void)addDislikesObject:(KSHTopic*)value_;
-- (void)removeDislikesObject:(KSHTopic*)value_;
-
 - (void)addFavorites:(NSSet*)value_;
 - (void)removeFavorites:(NSSet*)value_;
-- (void)addFavoritesObject:(KSHPost*)value_;
-- (void)removeFavoritesObject:(KSHPost*)value_;
+- (void)addFavoritesObject:(KSHFavoritable*)value_;
+- (void)removeFavoritesObject:(KSHFavoritable*)value_;
 
-- (void)addLikes:(NSSet*)value_;
-- (void)removeLikes:(NSSet*)value_;
-- (void)addLikesObject:(KSHTopic*)value_;
-- (void)removeLikesObject:(KSHTopic*)value_;
+- (void)addHasProject:(NSSet*)value_;
+- (void)removeHasProject:(NSSet*)value_;
+- (void)addHasProjectObject:(KSHProject*)value_;
+- (void)removeHasProjectObject:(KSHProject*)value_;
 
 @end
 
 @interface _KSHUser (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSNumber*)primitiveCurrentUser;
-- (void)setPrimitiveCurrentUser:(NSNumber*)value;
+- (NSDate*)primitiveCreateDate;
+- (void)setPrimitiveCreateDate:(NSDate*)value;
 
-- (BOOL)primitiveCurrentUserValue;
-- (void)setPrimitiveCurrentUserValue:(BOOL)value_;
+
+
+
+- (NSString*)primitiveEmail;
+- (void)setPrimitiveEmail:(NSString*)value;
 
 
 
@@ -160,11 +165,14 @@ extern const struct KSHUserFetchedProperties {
 
 
 
-- (NSNumber*)primitiveUserID;
-- (void)setPrimitiveUserID:(NSNumber*)value;
+- (NSDate*)primitiveUpdateDate;
+- (void)setPrimitiveUpdateDate:(NSDate*)value;
 
-- (int32_t)primitiveUserIDValue;
-- (void)setPrimitiveUserIDValue:(int32_t)value_;
+
+
+
+- (NSString*)primitiveUserID;
+- (void)setPrimitiveUserID:(NSString*)value;
 
 
 
@@ -176,18 +184,13 @@ extern const struct KSHUserFetchedProperties {
 
 
 
-- (NSMutableSet*)primitiveDislikes;
-- (void)setPrimitiveDislikes:(NSMutableSet*)value;
-
-
-
 - (NSMutableSet*)primitiveFavorites;
 - (void)setPrimitiveFavorites:(NSMutableSet*)value;
 
 
 
-- (NSMutableSet*)primitiveLikes;
-- (void)setPrimitiveLikes:(NSMutableSet*)value;
+- (NSMutableSet*)primitiveHasProject;
+- (void)setPrimitiveHasProject:(NSMutableSet*)value;
 
 
 

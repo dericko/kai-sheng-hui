@@ -38,32 +38,33 @@
 
 - (void)setIndustryText
 {
-    switch (self.industryID.integerValue) {
+    switch (self.industry.integerValue) {
         case 1:
-            self.industry = @"快消零售";
+            self.industryName = @"快消零售";
             break;
         case 2:
-            self.industry = @"通讯网络技术";
+            self.industryName = @"通讯网络技术";
             break;
         case 3:
-            self.industry = @"农业食品饮料";
+            self.industryName = @"农业食品饮料";
             break;
         case 4:
-            self.industry = @"能源矿产";
+            self.industryName = @"能源矿产";
             break;
         case 5:
-            self.industry = @"化工工业制造";
+            self.industryName = @"化工工业制造";
             break;
         case 6:
-            self.industry = @"金融地产,";
+            self.industryName = @"金融地产,";
             break;
         case 7:
-            self.industry = @"医疗卫生";
+            self.industryName = @"医疗卫生";
             break;
         case 8:
-            self.industry = @"汽车交通运输";
+            self.industryName = @"汽车交通运输";
+            break;
         default:
-            self.industry = @"General";
+            self.industryName = @"General";
             break;
     }
 }

@@ -8,7 +8,6 @@
 
 #import <RestKit/RestKit.h>
 #import "KSHAppDelegate.h"
-#import "KSHArticleManager.h"
 #import "KSHArticleTableViewController.h"
 #import "KSHUserDefaultsHelper.h"
 
@@ -25,25 +24,17 @@
 {
     [self initializeRestkitForCoreData];
     
-    // Set up user login defaults
-    // TODO: persist log in status
-    if (!_defaults) {
-        [KSHUserDefaultsHelper initUserDefaults:_defaults];
-    }
     
-    // !!!: Assume user is logged in for testing purposes
-    [KSHUserDefaultsHelper userLogin];
-    
-    // Set initial controller depending on login status
-    NSString *controllerID = [KSHUserDefaultsHelper isUserLoggedIn] ? @"TabBar" : @"Landing";
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controllerID];
-    if ([KSHUserDefaultsHelper isUserLoggedIn]) {
-        [self.window setRootViewController:initViewController];
-    } else {
-        [(UINavigationController *)self.window.rootViewController pushViewController:initViewController animated:NO];
-    }
+//    // Set initial controller depending on login status
+//    NSString *controllerID = [KSHUserDefaultsHelper isUserLoggedIn] ? @"TabBar" : @"LandingPage";
+//    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controllerID];
+//    if ([KSHUserDefaultsHelper isUserLoggedIn]) {
+//        [self.window setRootViewController:initViewController];
+//    } else {
+//        [(UINavigationController *)self.window.rootViewController pushViewController:initViewController animated:NO];
+//    }
     
     return YES;
 }
@@ -83,7 +74,7 @@
 {
     // To log all requests and responses, use RKLogLevelDebug
     // To log all calls as well as the content, use RKLogLevelTrace
-    RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
+    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     
     // Initialize a Restkit managed object store with our Core Data model
     _managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:[self managedObjectModel]];

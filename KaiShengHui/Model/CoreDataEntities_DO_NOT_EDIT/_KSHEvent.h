@@ -10,6 +10,7 @@ extern const struct KSHEventAttributes {
 	__unsafe_unretained NSString *contactName;
 	__unsafe_unretained NSString *contactTelephone;
 	__unsafe_unretained NSString *endDate;
+	__unsafe_unretained NSString *fetchableType;
 	__unsafe_unretained NSString *memberPrice;
 	__unsafe_unretained NSString *mustApply;
 	__unsafe_unretained NSString *nonmemberPrice;
@@ -25,6 +26,7 @@ extern const struct KSHEventRelationships {
 
 extern const struct KSHEventFetchedProperties {
 } KSHEventFetchedProperties;
+
 
 
 
@@ -103,6 +105,20 @@ extern const struct KSHEventFetchedProperties {
 
 
 //- (BOOL)validateEndDate:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* fetchableType;
+
+
+
+@property int16_t fetchableTypeValue;
+- (int16_t)fetchableTypeValue;
+- (void)setFetchableTypeValue:(int16_t)value_;
+
+//- (BOOL)validateFetchableType:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -235,6 +251,15 @@ extern const struct KSHEventFetchedProperties {
 
 - (NSDate*)primitiveEndDate;
 - (void)setPrimitiveEndDate:(NSDate*)value;
+
+
+
+
+- (NSNumber*)primitiveFetchableType;
+- (void)setPrimitiveFetchableType:(NSNumber*)value;
+
+- (int16_t)primitiveFetchableTypeValue;
+- (void)setPrimitiveFetchableTypeValue:(int16_t)value_;
 
 
 

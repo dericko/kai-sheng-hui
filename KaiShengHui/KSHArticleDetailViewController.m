@@ -8,7 +8,6 @@
 
 #import "KSHArticleDetailViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
-#import "KSHMessage.h"
 
 @interface KSHArticleDetailViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *articleTags;
@@ -41,12 +40,12 @@
     // Set content fields
     NSString *title = [NSString stringWithFormat:@"%@", _article.title];
     NSString *content = [NSString stringWithFormat:@"%@", _article.content];
-    if (!_article.industry) [_article setIndustryText];
-    NSString *industry = [NSString stringWithFormat:@"%@", _article.industry];
+    if (!_article.industryName) [_article setIndustryText];
+    NSString *industry = [NSString stringWithFormat:@"%@", _article.industryName];
     NSString *tags = [NSString stringWithFormat:@"%@", _article.tags];
     // TODO: use API to get actual source
     NSString *source = [NSString stringWithFormat:@"%@", @"www.iksh.com"];
-    NSString *published = [NSString stringWithFormat:@"%@", _article.publishDate];
+    NSString *published = [NSString stringWithFormat:@"%@", _article.createDate];
 
     // Set content labels
     self.titleLabel.text = title;
@@ -114,6 +113,18 @@
     self.starButton.selected = !self.starButton.selected;
 }
 - (IBAction)sharePressed:(id)sender {
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    
+    if (_article.content) {
+        [sharingItems addObject:_article.content];
+    }
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+}
+
+- (void)share
+{
     NSMutableArray *sharingItems = [NSMutableArray new];
     
     if (_article.content) {

@@ -2,7 +2,7 @@
 // Make changes to KSHPost.h instead.
 
 #import <CoreData/CoreData.h>
-
+#import "KSHFavoritable.h"
 
 extern const struct KSHPostAttributes {
 	__unsafe_unretained NSString *content;
@@ -14,24 +14,16 @@ extern const struct KSHPostAttributes {
 	__unsafe_unretained NSString *homePage;
 	__unsafe_unretained NSString *imgFile;
 	__unsafe_unretained NSString *imgURLString;
-	__unsafe_unretained NSString *postID;
 	__unsafe_unretained NSString *postType;
-	__unsafe_unretained NSString *publishDate;
 	__unsafe_unretained NSString *title;
-	__unsafe_unretained NSString *updateDate;
 	__unsafe_unretained NSString *viewCount;
 } KSHPostAttributes;
 
 extern const struct KSHPostRelationships {
-	__unsafe_unretained NSString *favoritedBy;
 } KSHPostRelationships;
 
 extern const struct KSHPostFetchedProperties {
 } KSHPostFetchedProperties;
-
-@class KSHUser;
-
-
 
 
 
@@ -50,7 +42,7 @@ extern const struct KSHPostFetchedProperties {
 @interface KSHPostID : NSManagedObjectID {}
 @end
 
-@interface _KSHPost : NSManagedObject {}
+@interface _KSHPost : KSHFavoritable {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
@@ -166,20 +158,6 @@ extern const struct KSHPostFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* postID;
-
-
-
-@property int32_t postIDValue;
-- (int32_t)postIDValue;
-- (void)setPostIDValue:(int32_t)value_;
-
-//- (BOOL)validatePostID:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
 @property (nonatomic, strong) NSNumber* postType;
 
 
@@ -194,31 +172,11 @@ extern const struct KSHPostFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* publishDate;
-
-
-
-//- (BOOL)validatePublishDate:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
 @property (nonatomic, strong) NSString* title;
 
 
 
 //- (BOOL)validateTitle:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSDate* updateDate;
-
-
-
-//- (BOOL)validateUpdateDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -238,22 +196,10 @@ extern const struct KSHPostFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet *favoritedBy;
-
-- (NSMutableSet*)favoritedBySet;
-
-
-
-
 
 @end
 
 @interface _KSHPost (CoreDataGeneratedAccessors)
-
-- (void)addFavoritedBy:(NSSet*)value_;
-- (void)removeFavoritedBy:(NSSet*)value_;
-- (void)addFavoritedByObject:(KSHUser*)value_;
-- (void)removeFavoritedByObject:(KSHUser*)value_;
 
 @end
 
@@ -326,15 +272,6 @@ extern const struct KSHPostFetchedProperties {
 
 
 
-- (NSNumber*)primitivePostID;
-- (void)setPrimitivePostID:(NSNumber*)value;
-
-- (int32_t)primitivePostIDValue;
-- (void)setPrimitivePostIDValue:(int32_t)value_;
-
-
-
-
 - (NSNumber*)primitivePostType;
 - (void)setPrimitivePostType:(NSNumber*)value;
 
@@ -344,20 +281,8 @@ extern const struct KSHPostFetchedProperties {
 
 
 
-- (NSDate*)primitivePublishDate;
-- (void)setPrimitivePublishDate:(NSDate*)value;
-
-
-
-
 - (NSString*)primitiveTitle;
 - (void)setPrimitiveTitle:(NSString*)value;
-
-
-
-
-- (NSDate*)primitiveUpdateDate;
-- (void)setPrimitiveUpdateDate:(NSDate*)value;
 
 
 
@@ -369,11 +294,6 @@ extern const struct KSHPostFetchedProperties {
 - (void)setPrimitiveViewCountValue:(int32_t)value_;
 
 
-
-
-
-- (NSMutableSet*)primitiveFavoritedBy;
-- (void)setPrimitiveFavoritedBy:(NSMutableSet*)value;
 
 
 @end

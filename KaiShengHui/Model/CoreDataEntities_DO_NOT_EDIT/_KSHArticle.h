@@ -5,19 +5,27 @@
 #import "KSHPost.h"
 
 extern const struct KSHArticleAttributes {
+	__unsafe_unretained NSString *fetchableType;
+	__unsafe_unretained NSString *function;
 	__unsafe_unretained NSString *industry;
-	__unsafe_unretained NSString *industryID;
+	__unsafe_unretained NSString *industryName;
+	__unsafe_unretained NSString *source;
+	__unsafe_unretained NSString *sourceName;
 	__unsafe_unretained NSString *tags;
+	__unsafe_unretained NSString *type;
 } KSHArticleAttributes;
 
 extern const struct KSHArticleRelationships {
-	__unsafe_unretained NSString *hasTopic;
 } KSHArticleRelationships;
 
 extern const struct KSHArticleFetchedProperties {
 } KSHArticleFetchedProperties;
 
-@class KSHTopic;
+
+
+
+
+
 
 
 
@@ -36,9 +44,37 @@ extern const struct KSHArticleFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* industry;
+@property (nonatomic, strong) NSNumber* fetchableType;
 
 
+
+@property int16_t fetchableTypeValue;
+- (int16_t)fetchableTypeValue;
+- (void)setFetchableTypeValue:(int16_t)value_;
+
+//- (BOOL)validateFetchableType:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* function;
+
+
+
+//- (BOOL)validateFunction:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* industry;
+
+
+
+@property int16_t industryValue;
+- (int16_t)industryValue;
+- (void)setIndustryValue:(int16_t)value_;
 
 //- (BOOL)validateIndustry:(id*)value_ error:(NSError**)error_;
 
@@ -46,15 +82,35 @@ extern const struct KSHArticleFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* industryID;
+@property (nonatomic, strong) NSString* industryName;
 
 
 
-@property int16_t industryIDValue;
-- (int16_t)industryIDValue;
-- (void)setIndustryIDValue:(int16_t)value_;
+//- (BOOL)validateIndustryName:(id*)value_ error:(NSError**)error_;
 
-//- (BOOL)validateIndustryID:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSNumber* source;
+
+
+
+@property int32_t sourceValue;
+- (int32_t)sourceValue;
+- (void)setSourceValue:(int32_t)value_;
+
+//- (BOOL)validateSource:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* sourceName;
+
+
+
+//- (BOOL)validateSourceName:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -70,9 +126,12 @@ extern const struct KSHArticleFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet *hasTopic;
+@property (nonatomic, strong) NSString* type;
 
-- (NSMutableSet*)hasTopicSet;
+
+
+//- (BOOL)validateType:(id*)value_ error:(NSError**)error_;
+
 
 
 
@@ -82,27 +141,52 @@ extern const struct KSHArticleFetchedProperties {
 
 @interface _KSHArticle (CoreDataGeneratedAccessors)
 
-- (void)addHasTopic:(NSSet*)value_;
-- (void)removeHasTopic:(NSSet*)value_;
-- (void)addHasTopicObject:(KSHTopic*)value_;
-- (void)removeHasTopicObject:(KSHTopic*)value_;
-
 @end
 
 @interface _KSHArticle (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSString*)primitiveIndustry;
-- (void)setPrimitiveIndustry:(NSString*)value;
+- (NSNumber*)primitiveFetchableType;
+- (void)setPrimitiveFetchableType:(NSNumber*)value;
+
+- (int16_t)primitiveFetchableTypeValue;
+- (void)setPrimitiveFetchableTypeValue:(int16_t)value_;
 
 
 
 
-- (NSNumber*)primitiveIndustryID;
-- (void)setPrimitiveIndustryID:(NSNumber*)value;
+- (NSString*)primitiveFunction;
+- (void)setPrimitiveFunction:(NSString*)value;
 
-- (int16_t)primitiveIndustryIDValue;
-- (void)setPrimitiveIndustryIDValue:(int16_t)value_;
+
+
+
+- (NSNumber*)primitiveIndustry;
+- (void)setPrimitiveIndustry:(NSNumber*)value;
+
+- (int16_t)primitiveIndustryValue;
+- (void)setPrimitiveIndustryValue:(int16_t)value_;
+
+
+
+
+- (NSString*)primitiveIndustryName;
+- (void)setPrimitiveIndustryName:(NSString*)value;
+
+
+
+
+- (NSNumber*)primitiveSource;
+- (void)setPrimitiveSource:(NSNumber*)value;
+
+- (int32_t)primitiveSourceValue;
+- (void)setPrimitiveSourceValue:(int32_t)value_;
+
+
+
+
+- (NSString*)primitiveSourceName;
+- (void)setPrimitiveSourceName:(NSString*)value;
 
 
 
@@ -113,9 +197,10 @@ extern const struct KSHArticleFetchedProperties {
 
 
 
+- (NSString*)primitiveType;
+- (void)setPrimitiveType:(NSString*)value;
 
-- (NSMutableSet*)primitiveHasTopic;
-- (void)setPrimitiveHasTopic:(NSMutableSet*)value;
+
 
 
 @end

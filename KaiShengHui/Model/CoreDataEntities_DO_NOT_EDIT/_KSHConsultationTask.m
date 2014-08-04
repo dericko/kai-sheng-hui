@@ -9,7 +9,7 @@ const struct KSHConsultationTaskAttributes KSHConsultationTaskAttributes = {
 	.contactID = @"contactID",
 	.industry = @"industry",
 	.interviewType = @"interviewType",
-	.positionID = @"positionID",
+	.position = @"position",
 };
 
 const struct KSHConsultationTaskRelationships KSHConsultationTaskRelationships = {
@@ -69,8 +69,8 @@ const struct KSHConsultationTaskFetchedProperties KSHConsultationTaskFetchedProp
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
-	if ([key isEqualToString:@"positionIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"positionID"];
+	if ([key isEqualToString:@"positionValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"position"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -163,22 +163,22 @@ const struct KSHConsultationTaskFetchedProperties KSHConsultationTaskFetchedProp
 
 
 
-- (int32_t)industryValue {
+- (int16_t)industryValue {
 	NSNumber *result = [self industry];
-	return [result intValue];
+	return [result shortValue];
 }
 
-- (void)setIndustryValue:(int32_t)value_ {
-	[self setIndustry:[NSNumber numberWithInt:value_]];
+- (void)setIndustryValue:(int16_t)value_ {
+	[self setIndustry:[NSNumber numberWithShort:value_]];
 }
 
-- (int32_t)primitiveIndustryValue {
+- (int16_t)primitiveIndustryValue {
 	NSNumber *result = [self primitiveIndustry];
-	return [result intValue];
+	return [result shortValue];
 }
 
-- (void)setPrimitiveIndustryValue:(int32_t)value_ {
-	[self setPrimitiveIndustry:[NSNumber numberWithInt:value_]];
+- (void)setPrimitiveIndustryValue:(int16_t)value_ {
+	[self setPrimitiveIndustry:[NSNumber numberWithShort:value_]];
 }
 
 
@@ -211,26 +211,26 @@ const struct KSHConsultationTaskFetchedProperties KSHConsultationTaskFetchedProp
 
 
 
-@dynamic positionID;
+@dynamic position;
 
 
 
-- (int32_t)positionIDValue {
-	NSNumber *result = [self positionID];
+- (int32_t)positionValue {
+	NSNumber *result = [self position];
 	return [result intValue];
 }
 
-- (void)setPositionIDValue:(int32_t)value_ {
-	[self setPositionID:[NSNumber numberWithInt:value_]];
+- (void)setPositionValue:(int32_t)value_ {
+	[self setPosition:[NSNumber numberWithInt:value_]];
 }
 
-- (int32_t)primitivePositionIDValue {
-	NSNumber *result = [self primitivePositionID];
+- (int32_t)primitivePositionValue {
+	NSNumber *result = [self primitivePosition];
 	return [result intValue];
 }
 
-- (void)setPrimitivePositionIDValue:(int32_t)value_ {
-	[self setPrimitivePositionID:[NSNumber numberWithInt:value_]];
+- (void)setPrimitivePositionValue:(int32_t)value_ {
+	[self setPrimitivePosition:[NSNumber numberWithInt:value_]];
 }
 
 

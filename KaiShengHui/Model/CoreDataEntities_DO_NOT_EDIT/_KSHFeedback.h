@@ -2,12 +2,10 @@
 // Make changes to KSHFeedback.h instead.
 
 #import <CoreData/CoreData.h>
-
+#import "KSHFetchable.h"
 
 extern const struct KSHFeedbackAttributes {
 	__unsafe_unretained NSString *comment;
-	__unsafe_unretained NSString *createTime;
-	__unsafe_unretained NSString *feedbackID;
 	__unsafe_unretained NSString *paymentScore;
 	__unsafe_unretained NSString *qualityScore;
 	__unsafe_unretained NSString *serviceScore;
@@ -29,12 +27,10 @@ extern const struct KSHFeedbackFetchedProperties {
 
 
 
-
-
 @interface KSHFeedbackID : NSManagedObjectID {}
 @end
 
-@interface _KSHFeedback : NSManagedObject {}
+@interface _KSHFeedback : KSHFetchable {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
@@ -49,30 +45,6 @@ extern const struct KSHFeedbackFetchedProperties {
 
 
 //- (BOOL)validateComment:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSDate* createTime;
-
-
-
-//- (BOOL)validateCreateTime:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSNumber* feedbackID;
-
-
-
-@property int32_t feedbackIDValue;
-- (int32_t)feedbackIDValue;
-- (void)setFeedbackIDValue:(int32_t)value_;
-
-//- (BOOL)validateFeedbackID:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -153,21 +125,6 @@ extern const struct KSHFeedbackFetchedProperties {
 
 - (NSString*)primitiveComment;
 - (void)setPrimitiveComment:(NSString*)value;
-
-
-
-
-- (NSDate*)primitiveCreateTime;
-- (void)setPrimitiveCreateTime:(NSDate*)value;
-
-
-
-
-- (NSNumber*)primitiveFeedbackID;
-- (void)setPrimitiveFeedbackID:(NSNumber*)value;
-
-- (int32_t)primitiveFeedbackIDValue;
-- (void)setPrimitiveFeedbackIDValue:(int32_t)value_;
 
 
 

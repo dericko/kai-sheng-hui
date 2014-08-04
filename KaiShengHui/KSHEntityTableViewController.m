@@ -10,7 +10,6 @@
 #import "KSHSplitButtonView.h"
 
 @interface KSHEntityTableViewController ()
-@property (nonatomic, strong) KSHSplitButtonView *splitButtons;
 @end
 
 @implementation KSHEntityTableViewController
@@ -31,16 +30,6 @@
     [super viewDidLoad];
     
     NSAssert(self.managedObjectContext, @"No managedObjectContext: make sure you set up Core Data and networking");
-    
-    // Set up selector buttons
-    _splitButtons = [[KSHSplitButtonView alloc] initWithFrame:CGRectMake(0, 10.0, 142.0, 24.0)];
-    [_splitButtons addLeftButtonWithTitle:@"Newest" forTarget:self withAction:@selector(viewNewest)];
-    [_splitButtons addRightButtonWithTitle:@"Popular" forTarget:self withAction:@selector(viewPopular)];
-    self.navigationItem.titleView = _splitButtons;
-    
-    // Setup filter menu
-    UIBarButtonItem *filterButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filterClicked)];
-    self.navigationItem.rightBarButtonItem = filterButtonItem;
     
     // set up refresh control
     [self addRefreshControl];
@@ -103,21 +92,6 @@
     activityIndicator = nil;
 }
 
-- (void)viewNewest
-{
-    // TODO: implement (add/remove fetch predicate, reload)
-}
-
-- (void)viewPopular
-{
-    // TODO: implement (add/remove fetch predicate, reload)
-}
-
-- (void)filterClicked
-{
-    // TODO: modal with scroll view with Industries, etc. (with fetch predicate according to industry)
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -137,6 +111,8 @@
      */
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     _numberToLoad = [NSNumber numberWithInteger:[sectionInfo numberOfObjects]];
+    
+    NSLog(@"--number of rows in section: %d", [sectionInfo numberOfObjects]);
     return _numberToLoad.integerValue;
 }
 
@@ -181,7 +157,6 @@
         [(UIActivityIndicatorView *)[_footerView viewWithTag:10] startAnimating];
         
         _numberToLoad = [NSNumber numberWithInt:(_numberToLoad.intValue + 10)];
-        NSLog(@"more articles! %@", _numberToLoad);
         
         [self loadCells];
         [self.tableView reloadData];

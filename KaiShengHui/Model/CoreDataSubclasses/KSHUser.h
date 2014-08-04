@@ -1,10 +1,14 @@
 #import "_KSHUser.h"
 
+extern NSString const *UserDidLoginNotification;
+extern NSString const *UserDidLogoutNotification;
+
+
 @interface KSHUser : _KSHUser {}
 
-- (void)setupGuestUserWithContext:(NSManagedObjectContext *)managedObjectContext;
++ (KSHUser *)currentUser;
 
-- (void)setImage:(UIImage *)image;
-- (UIImage *)getImage;
++ (void)logout;
 
 @end
+

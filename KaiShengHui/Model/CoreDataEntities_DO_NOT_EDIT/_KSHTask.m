@@ -4,16 +4,15 @@
 #import "_KSHTask.h"
 
 const struct KSHTaskAttributes KSHTaskAttributes = {
-	.createDate = @"createDate",
 	.endDate = @"endDate",
-	.listID = @"listID",
+	.fetchableType = @"fetchableType",
+	.list = @"list",
 	.name = @"name",
 	.notes = @"notes",
 	.paid = @"paid",
 	.startDate = @"startDate",
 	.status = @"status",
-	.statusDate = @"statusDate",
-	.taskID = @"taskID",
+	.statusTime = @"statusTime",
 	.timezone = @"timezone",
 };
 
@@ -50,8 +49,13 @@ const struct KSHTaskFetchedProperties KSHTaskFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"listIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"listID"];
+	if ([key isEqualToString:@"fetchableTypeValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"fetchableType"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"listValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"list"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -62,11 +66,6 @@ const struct KSHTaskFetchedProperties KSHTaskFetchedProperties = {
 	}
 	if ([key isEqualToString:@"statusValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"status"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
-	if ([key isEqualToString:@"taskIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"taskID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -82,13 +81,6 @@ const struct KSHTaskFetchedProperties KSHTaskFetchedProperties = {
 
 
 
-@dynamic createDate;
-
-
-
-
-
-
 @dynamic endDate;
 
 
@@ -96,26 +88,52 @@ const struct KSHTaskFetchedProperties KSHTaskFetchedProperties = {
 
 
 
-@dynamic listID;
+@dynamic fetchableType;
 
 
 
-- (int32_t)listIDValue {
-	NSNumber *result = [self listID];
+- (int16_t)fetchableTypeValue {
+	NSNumber *result = [self fetchableType];
+	return [result shortValue];
+}
+
+- (void)setFetchableTypeValue:(int16_t)value_ {
+	[self setFetchableType:[NSNumber numberWithShort:value_]];
+}
+
+- (int16_t)primitiveFetchableTypeValue {
+	NSNumber *result = [self primitiveFetchableType];
+	return [result shortValue];
+}
+
+- (void)setPrimitiveFetchableTypeValue:(int16_t)value_ {
+	[self setPrimitiveFetchableType:[NSNumber numberWithShort:value_]];
+}
+
+
+
+
+
+@dynamic list;
+
+
+
+- (int32_t)listValue {
+	NSNumber *result = [self list];
 	return [result intValue];
 }
 
-- (void)setListIDValue:(int32_t)value_ {
-	[self setListID:[NSNumber numberWithInt:value_]];
+- (void)setListValue:(int32_t)value_ {
+	[self setList:[NSNumber numberWithInt:value_]];
 }
 
-- (int32_t)primitiveListIDValue {
-	NSNumber *result = [self primitiveListID];
+- (int32_t)primitiveListValue {
+	NSNumber *result = [self primitiveList];
 	return [result intValue];
 }
 
-- (void)setPrimitiveListIDValue:(int32_t)value_ {
-	[self setPrimitiveListID:[NSNumber numberWithInt:value_]];
+- (void)setPrimitiveListValue:(int32_t)value_ {
+	[self setPrimitiveList:[NSNumber numberWithInt:value_]];
 }
 
 
@@ -195,34 +213,8 @@ const struct KSHTaskFetchedProperties KSHTaskFetchedProperties = {
 
 
 
-@dynamic statusDate;
+@dynamic statusTime;
 
-
-
-
-
-
-@dynamic taskID;
-
-
-
-- (int32_t)taskIDValue {
-	NSNumber *result = [self taskID];
-	return [result intValue];
-}
-
-- (void)setTaskIDValue:(int32_t)value_ {
-	[self setTaskID:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveTaskIDValue {
-	NSNumber *result = [self primitiveTaskID];
-	return [result intValue];
-}
-
-- (void)setPrimitiveTaskIDValue:(int32_t)value_ {
-	[self setPrimitiveTaskID:[NSNumber numberWithInt:value_]];
-}
 
 
 

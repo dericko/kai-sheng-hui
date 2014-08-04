@@ -11,16 +11,12 @@ extern const struct KSHTopicAttributes {
 } KSHTopicAttributes;
 
 extern const struct KSHTopicRelationships {
-	__unsafe_unretained NSString *dislikedBy;
-	__unsafe_unretained NSString *likedBy;
 	__unsafe_unretained NSString *ofArticle;
 } KSHTopicRelationships;
 
 extern const struct KSHTopicFetchedProperties {
 } KSHTopicFetchedProperties;
 
-@class KSHUser;
-@class KSHUser;
 @class KSHArticle;
 
 
@@ -78,20 +74,6 @@ extern const struct KSHTopicFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet *dislikedBy;
-
-- (NSMutableSet*)dislikedBySet;
-
-
-
-
-@property (nonatomic, strong) NSSet *likedBy;
-
-- (NSMutableSet*)likedBySet;
-
-
-
-
 @property (nonatomic, strong) KSHArticle *ofArticle;
 
 //- (BOOL)validateOfArticle:(id*)value_ error:(NSError**)error_;
@@ -103,16 +85,6 @@ extern const struct KSHTopicFetchedProperties {
 @end
 
 @interface _KSHTopic (CoreDataGeneratedAccessors)
-
-- (void)addDislikedBy:(NSSet*)value_;
-- (void)removeDislikedBy:(NSSet*)value_;
-- (void)addDislikedByObject:(KSHUser*)value_;
-- (void)removeDislikedByObject:(KSHUser*)value_;
-
-- (void)addLikedBy:(NSSet*)value_;
-- (void)removeLikedBy:(NSSet*)value_;
-- (void)addLikedByObject:(KSHUser*)value_;
-- (void)removeLikedByObject:(KSHUser*)value_;
 
 @end
 
@@ -141,16 +113,6 @@ extern const struct KSHTopicFetchedProperties {
 - (void)setPrimitiveTypeValue:(int16_t)value_;
 
 
-
-
-
-- (NSMutableSet*)primitiveDislikedBy;
-- (void)setPrimitiveDislikedBy:(NSMutableSet*)value;
-
-
-
-- (NSMutableSet*)primitiveLikedBy;
-- (void)setPrimitiveLikedBy:(NSMutableSet*)value;
 
 
 

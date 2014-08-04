@@ -16,17 +16,4 @@
     #import <CoreData/CoreData.h>
 #endif
 
-// !!!: REST API Constants
-#define kBASE_URL @"https://api.parse.com"
-#define kAPI_KEY @"insert_access_token"
-#define kArticlePath @"/1/classes/Article"
-#define kEventPath @"/1/classes/Event"
-#define kProjectOpportunityPath @"/1/classes/ProjectOpportunity"
-#define kLoginPath @""
-
-// !!!: For Parse.com Testing
-// For information on Parse Queries see: https://www.parse.com/docs/rest#queries
-#define kAppKey @"d3RYCmBykmK7gIpg3kvrAqX2MaGvuYQBnepJJH4S"
-#define kClientKey @"6zFbGi95FQbTm8hOJ4WyyqBK8sWBrDVYiDbh6i76"
-#define kRestAPIKey @"EfYIGGw8KDiQLebS2TB6dtIqc6JtJ4SSJvGZKIwO"
-#define kMasterKey @"ftpstW8O70ctxptMhx9RJnYvBDY7JVPRbhmdkcDD"
+#import "KSHMessage.h"

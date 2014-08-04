@@ -2,27 +2,23 @@
 // Make changes to KSHProjectOpportunity.h instead.
 
 #import <CoreData/CoreData.h>
-
+#import "KSHFavoritable.h"
 
 extern const struct KSHProjectOpportunityAttributes {
 	__unsafe_unretained NSString *contacts;
 	__unsafe_unretained NSString *deadlineDate;
+	__unsafe_unretained NSString *fetchableType;
 	__unsafe_unretained NSString *idealBackground;
-	__unsafe_unretained NSString *opportunityID;
-	__unsafe_unretained NSString *publishDate;
 	__unsafe_unretained NSString *referenceContent;
 	__unsafe_unretained NSString *title;
 	__unsafe_unretained NSString *urlString;
 } KSHProjectOpportunityAttributes;
 
 extern const struct KSHProjectOpportunityRelationships {
-	__unsafe_unretained NSString *ofConsultant;
 } KSHProjectOpportunityRelationships;
 
 extern const struct KSHProjectOpportunityFetchedProperties {
 } KSHProjectOpportunityFetchedProperties;
-
-@class KSHConsultant;
 
 
 
@@ -36,7 +32,7 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 @interface KSHProjectOpportunityID : NSManagedObjectID {}
 @end
 
-@interface _KSHProjectOpportunity : NSManagedObject {}
+@interface _KSHProjectOpportunity : KSHFavoritable {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
@@ -66,35 +62,25 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSNumber* fetchableType;
+
+
+
+@property int16_t fetchableTypeValue;
+- (int16_t)fetchableTypeValue;
+- (void)setFetchableTypeValue:(int16_t)value_;
+
+//- (BOOL)validateFetchableType:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSString* idealBackground;
 
 
 
 //- (BOOL)validateIdealBackground:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSNumber* opportunityID;
-
-
-
-@property int32_t opportunityIDValue;
-- (int32_t)opportunityIDValue;
-- (void)setOpportunityIDValue:(int32_t)value_;
-
-//- (BOOL)validateOpportunityID:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSDate* publishDate;
-
-
-
-//- (BOOL)validatePublishDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -130,22 +116,10 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet *ofConsultant;
-
-- (NSMutableSet*)ofConsultantSet;
-
-
-
-
 
 @end
 
 @interface _KSHProjectOpportunity (CoreDataGeneratedAccessors)
-
-- (void)addOfConsultant:(NSSet*)value_;
-- (void)removeOfConsultant:(NSSet*)value_;
-- (void)addOfConsultantObject:(KSHConsultant*)value_;
-- (void)removeOfConsultantObject:(KSHConsultant*)value_;
 
 @end
 
@@ -164,23 +138,17 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 
 
 
+- (NSNumber*)primitiveFetchableType;
+- (void)setPrimitiveFetchableType:(NSNumber*)value;
+
+- (int16_t)primitiveFetchableTypeValue;
+- (void)setPrimitiveFetchableTypeValue:(int16_t)value_;
+
+
+
+
 - (NSString*)primitiveIdealBackground;
 - (void)setPrimitiveIdealBackground:(NSString*)value;
-
-
-
-
-- (NSNumber*)primitiveOpportunityID;
-- (void)setPrimitiveOpportunityID:(NSNumber*)value;
-
-- (int32_t)primitiveOpportunityIDValue;
-- (void)setPrimitiveOpportunityIDValue:(int32_t)value_;
-
-
-
-
-- (NSDate*)primitivePublishDate;
-- (void)setPrimitivePublishDate:(NSDate*)value;
 
 
 
@@ -201,11 +169,6 @@ extern const struct KSHProjectOpportunityFetchedProperties {
 - (void)setPrimitiveUrlString:(NSString*)value;
 
 
-
-
-
-- (NSMutableSet*)primitiveOfConsultant;
-- (void)setPrimitiveOfConsultant:(NSMutableSet*)value;
 
 
 @end

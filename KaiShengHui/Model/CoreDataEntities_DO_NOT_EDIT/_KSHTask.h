@@ -2,19 +2,18 @@
 // Make changes to KSHTask.h instead.
 
 #import <CoreData/CoreData.h>
-
+#import "KSHFetchable.h"
 
 extern const struct KSHTaskAttributes {
-	__unsafe_unretained NSString *createDate;
 	__unsafe_unretained NSString *endDate;
-	__unsafe_unretained NSString *listID;
+	__unsafe_unretained NSString *fetchableType;
+	__unsafe_unretained NSString *list;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *notes;
 	__unsafe_unretained NSString *paid;
 	__unsafe_unretained NSString *startDate;
 	__unsafe_unretained NSString *status;
-	__unsafe_unretained NSString *statusDate;
-	__unsafe_unretained NSString *taskID;
+	__unsafe_unretained NSString *statusTime;
 	__unsafe_unretained NSString *timezone;
 } KSHTaskAttributes;
 
@@ -38,25 +37,14 @@ extern const struct KSHTaskFetchedProperties {
 
 
 
-
 @interface KSHTaskID : NSManagedObjectID {}
 @end
 
-@interface _KSHTask : NSManagedObject {}
+@interface _KSHTask : KSHFetchable {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (KSHTaskID*)objectID;
-
-
-
-
-
-@property (nonatomic, strong) NSDate* createDate;
-
-
-
-//- (BOOL)validateCreateDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -72,15 +60,29 @@ extern const struct KSHTaskFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* listID;
+@property (nonatomic, strong) NSNumber* fetchableType;
 
 
 
-@property int32_t listIDValue;
-- (int32_t)listIDValue;
-- (void)setListIDValue:(int32_t)value_;
+@property int16_t fetchableTypeValue;
+- (int16_t)fetchableTypeValue;
+- (void)setFetchableTypeValue:(int16_t)value_;
 
-//- (BOOL)validateListID:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateFetchableType:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* list;
+
+
+
+@property int32_t listValue;
+- (int32_t)listValue;
+- (void)setListValue:(int32_t)value_;
+
+//- (BOOL)validateList:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -144,25 +146,11 @@ extern const struct KSHTaskFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* statusDate;
+@property (nonatomic, strong) NSDate* statusTime;
 
 
 
-//- (BOOL)validateStatusDate:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSNumber* taskID;
-
-
-
-@property int32_t taskIDValue;
-- (int32_t)taskIDValue;
-- (void)setTaskIDValue:(int32_t)value_;
-
-//- (BOOL)validateTaskID:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateStatusTime:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -199,23 +187,26 @@ extern const struct KSHTaskFetchedProperties {
 @interface _KSHTask (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSDate*)primitiveCreateDate;
-- (void)setPrimitiveCreateDate:(NSDate*)value;
-
-
-
-
 - (NSDate*)primitiveEndDate;
 - (void)setPrimitiveEndDate:(NSDate*)value;
 
 
 
 
-- (NSNumber*)primitiveListID;
-- (void)setPrimitiveListID:(NSNumber*)value;
+- (NSNumber*)primitiveFetchableType;
+- (void)setPrimitiveFetchableType:(NSNumber*)value;
 
-- (int32_t)primitiveListIDValue;
-- (void)setPrimitiveListIDValue:(int32_t)value_;
+- (int16_t)primitiveFetchableTypeValue;
+- (void)setPrimitiveFetchableTypeValue:(int16_t)value_;
+
+
+
+
+- (NSNumber*)primitiveList;
+- (void)setPrimitiveList:(NSNumber*)value;
+
+- (int32_t)primitiveListValue;
+- (void)setPrimitiveListValue:(int32_t)value_;
 
 
 
@@ -256,17 +247,8 @@ extern const struct KSHTaskFetchedProperties {
 
 
 
-- (NSDate*)primitiveStatusDate;
-- (void)setPrimitiveStatusDate:(NSDate*)value;
-
-
-
-
-- (NSNumber*)primitiveTaskID;
-- (void)setPrimitiveTaskID:(NSNumber*)value;
-
-- (int32_t)primitiveTaskIDValue;
-- (void)setPrimitiveTaskIDValue:(int32_t)value_;
+- (NSDate*)primitiveStatusTime;
+- (void)setPrimitiveStatusTime:(NSDate*)value;
 
 
 

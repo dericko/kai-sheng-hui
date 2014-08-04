@@ -1,58 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Article" representedClassName="KSHArticle" parentEntity="Post" syncable="YES">
-        <attribute name="industry" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="industryID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="fetchableType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="1" syncable="YES">
+            <userInfo>
+                <entry key="1" value="article"/>
+                <entry key="2" value="event"/>
+                <entry key="3" value="projectOpportunity"/>
+                <entry key="4" value="project"/>
+                <entry key="5" value="task"/>
+            </userInfo>
+        </attribute>
+        <attribute name="function" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="industry" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="industryName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="sourceName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tags" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="hasTopic" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="ofArticle" inverseEntity="Topic" syncable="YES"/>
-    </entity>
-    <entity name="Consultant" representedClassName="KSHConsultant" parentEntity="User" syncable="YES">
-        <attribute name="birthday" optional="YES" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="source" value="vconsultant"/>
-            </userInfo>
-        </attribute>
-        <attribute name="education" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="7" syncable="YES">
-            <userInfo>
-                <entry key="1" value="大专"/>
-                <entry key="2" value="本科"/>
-                <entry key="3" value="硕士"/>
-                <entry key="4" value="MBA/EMBA"/>
-                <entry key="5" value="博士"/>
-                <entry key="6" value="博士后"/>
-                <entry key="7" value="其他"/>
-                <entry key="source" value="vconsultant_education_experience"/>
-            </userInfo>
-        </attribute>
-        <attribute name="gender" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="2" syncable="YES">
-            <userInfo>
-                <entry key="1" value="male"/>
-                <entry key="2" value="female"/>
-                <entry key="source" value="vconsultant"/>
-            </userInfo>
-        </attribute>
-        <attribute name="industry" optional="YES" attributeType="Integer 32" minValueString="0" syncable="YES">
-            <userInfo>
-                <entry key="source" value="vconsultant_experience"/>
-            </userInfo>
-        </attribute>
-        <attribute name="profile" optional="YES" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="source" value="vconsultant"/>
-            </userInfo>
-        </attribute>
-        <attribute name="residence" optional="YES" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="source" value="vconsultant"/>
-            </userInfo>
-        </attribute>
-        <attribute name="specialty" optional="YES" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="source" value="vconsultant"/>
-            </userInfo>
-        </attribute>
-        <relationship name="hasProject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project" inverseName="ofConsultant" inverseEntity="Project" syncable="YES"/>
-        <relationship name="hasProjectOpportunity" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProjectOpportunity" inverseName="ofConsultant" inverseEntity="ProjectOpportunity" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ConsultationProject" representedClassName="KSHConsultationProject" parentEntity="Project" syncable="YES">
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
@@ -74,9 +38,9 @@
         </attribute>
         <attribute name="clientID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="contactID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="industry" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="industry" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="interviewType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="7" syncable="YES"/>
-        <attribute name="positionID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <userInfo>
             <entry key="source" value="project_consultation_task"/>
         </userInfo>
@@ -93,6 +57,15 @@
         <attribute name="contactName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactTelephone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fetchableType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="2" syncable="YES">
+            <userInfo>
+                <entry key="1" value="article"/>
+                <entry key="2" value="event"/>
+                <entry key="3" value="projectOpportunity"/>
+                <entry key="4" value="project"/>
+                <entry key="5" value="task"/>
+            </userInfo>
+        </attribute>
         <attribute name="memberPrice" optional="YES" attributeType="Decimal" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="mustApply" optional="YES" attributeType="Boolean" syncable="YES">
             <userInfo>
@@ -115,18 +88,14 @@
             <entry key="source" value="vesta_post_event"/>
         </userInfo>
     </entity>
-    <entity name="Feedback" representedClassName="KSHFeedback" syncable="YES">
+    <entity name="Favoritable" representedClassName="KSHFavoritable" isAbstract="YES" parentEntity="Fetchable" syncable="YES">
+        <relationship name="favoritedBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favorites" inverseEntity="User" syncable="YES"/>
+        <userInfo>
+            <entry key="description" value="The parent class for KaiShengHui objects such as Articles, Events, and Project Opportunities, that can be favorited."/>
+        </userInfo>
+    </entity>
+    <entity name="Feedback" representedClassName="KSHFeedback" parentEntity="Fetchable" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="source" value="vesta_project_feedback"/>
-            </userInfo>
-        </attribute>
-        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES">
-            <userInfo>
-                <entry key="source" value="vesta_project_feedback"/>
-            </userInfo>
-        </attribute>
-        <attribute name="feedbackID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_project_feedback"/>
             </userInfo>
@@ -155,7 +124,15 @@
         </attribute>
         <relationship name="ofProject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="hasFeedback" inverseEntity="Project" syncable="YES"/>
     </entity>
-    <entity name="Post" representedClassName="KSHPost" isAbstract="YES" syncable="YES">
+    <entity name="Fetchable" representedClassName="KSHFetchable" isAbstract="YES" syncable="YES">
+        <attribute name="createDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="entityID" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="updateDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <userInfo>
+            <entry key="description" value="The parent class of all fetchable objects from DB or KSH. Use this parent Entity for fetch requests."/>
+        </userInfo>
+    </entity>
+    <entity name="Post" representedClassName="KSHPost" isAbstract="YES" parentEntity="Favoritable" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_post"/>
@@ -197,11 +174,6 @@
         </attribute>
         <attribute name="imgFile" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="imgURLString" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="postID" attributeType="Integer 32" defaultValueString="0" syncable="YES">
-            <userInfo>
-                <entry key="source" value="vesta_post"/>
-            </userInfo>
-        </attribute>
         <attribute name="postType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" syncable="YES">
             <userInfo>
                 <entry key="1" value="观点汇"/>
@@ -210,17 +182,7 @@
                 <entry key="source" value="vesta_post"/>
             </userInfo>
         </attribute>
-        <attribute name="publishDate" optional="YES" attributeType="Date" syncable="YES">
-            <userInfo>
-                <entry key="source" value="vesta_post"/>
-            </userInfo>
-        </attribute>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="source" value="vesta_post"/>
-            </userInfo>
-        </attribute>
-        <attribute name="updateDate" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_post"/>
             </userInfo>
@@ -230,27 +192,45 @@
                 <entry key="source" value="vesta_post"/>
             </userInfo>
         </attribute>
-        <relationship name="favoritedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="favorites" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Profile" representedClassName="KSHProfile" syncable="YES">
+    <entity name="Profile" representedClassName="KSHProfile" parentEntity="Fetchable" syncable="YES">
+        <attribute name="birthday" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vconsultant"/>
+            </userInfo>
+        </attribute>
         <attribute name="company" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_member"/>
             </userInfo>
         </attribute>
-        <attribute name="createTime" optional="YES" attributeType="Date" syncable="YES">
+        <attribute name="education" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="7" syncable="YES">
             <userInfo>
-                <entry key="source" value="vesta_user"/>
-            </userInfo>
-        </attribute>
-        <attribute name="email" optional="YES" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="source" value="vesta_member"/>
+                <entry key="1" value="大专"/>
+                <entry key="2" value="本科"/>
+                <entry key="3" value="硕士"/>
+                <entry key="4" value="MBA/EMBA"/>
+                <entry key="5" value="博士"/>
+                <entry key="6" value="博士后"/>
+                <entry key="7" value="其他"/>
+                <entry key="source" value="vconsultant_education_experience"/>
             </userInfo>
         </attribute>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_member"/>
+            </userInfo>
+        </attribute>
+        <attribute name="gender" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="2" syncable="YES">
+            <userInfo>
+                <entry key="1" value="male"/>
+                <entry key="2" value="female"/>
+                <entry key="source" value="vconsultant"/>
+            </userInfo>
+        </attribute>
+        <attribute name="industry" optional="YES" attributeType="Integer 16" minValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vconsultant_experience"/>
             </userInfo>
         </attribute>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES">
@@ -278,14 +258,37 @@
                 <entry key="source" value="vesta_member"/>
             </userInfo>
         </attribute>
+        <attribute name="profile" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vconsultant"/>
+            </userInfo>
+        </attribute>
+        <attribute name="residence" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vconsultant"/>
+            </userInfo>
+        </attribute>
+        <attribute name="specialty" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="source" value="vconsultant"/>
+            </userInfo>
+        </attribute>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userProfile" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Project" representedClassName="KSHProject" isAbstract="YES" syncable="YES">
-        <attribute name="categoryID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="createTime" attributeType="Date" syncable="YES"/>
+    <entity name="Project" representedClassName="KSHProject" isAbstract="YES" parentEntity="Fetchable" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="currencyUnit" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="industryID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fetchableType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="4" syncable="YES">
+            <userInfo>
+                <entry key="1" value="article"/>
+                <entry key="2" value="event"/>
+                <entry key="3" value="projectOpportunity"/>
+                <entry key="4" value="project"/>
+                <entry key="5" value="task"/>
+            </userInfo>
+        </attribute>
+        <attribute name="industry" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="priority" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" syncable="YES">
@@ -296,8 +299,7 @@
             </userInfo>
         </attribute>
         <attribute name="projectDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="projectID" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" defaultValueString="1" syncable="YES">
             <userInfo>
                 <entry key="1" value="In Progress"/>
@@ -308,37 +310,46 @@
         <attribute name="statusTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="timeframe" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="hasFeedback" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Feedback" inverseName="ofProject" inverseEntity="Feedback" syncable="YES"/>
         <relationship name="hasTask" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="ofProject" inverseEntity="Task" syncable="YES"/>
-        <relationship name="ofConsultant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Consultant" inverseName="hasProject" inverseEntity="Consultant" syncable="YES"/>
+        <relationship name="ofUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasProject" inverseEntity="User" syncable="YES"/>
         <userInfo>
             <entry key="source" value="project"/>
         </userInfo>
     </entity>
-    <entity name="ProjectOpportunity" representedClassName="KSHProjectOpportunity" syncable="YES">
+    <entity name="ProjectOpportunity" representedClassName="KSHProjectOpportunity" parentEntity="Favoritable" syncable="YES">
         <attribute name="contacts" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="deadlineDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fetchableType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="3" syncable="YES">
+            <userInfo>
+                <entry key="1" value="article"/>
+                <entry key="2" value="event"/>
+                <entry key="3" value="projectOpportunity"/>
+                <entry key="4" value="project"/>
+                <entry key="5" value="task"/>
+            </userInfo>
+        </attribute>
         <attribute name="idealBackground" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="opportunityID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="publishDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="referenceContent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="urlString" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ofConsultant" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Consultant" inverseName="hasProjectOpportunity" inverseEntity="Consultant" syncable="YES"/>
     </entity>
-    <entity name="Task" representedClassName="KSHTask" isAbstract="YES" syncable="YES">
-        <attribute name="createDate" optional="YES" attributeType="Date" syncable="YES">
-            <userInfo>
-                <entry key="source" value="project_task"/>
-            </userInfo>
-        </attribute>
+    <entity name="Task" representedClassName="KSHTask" isAbstract="YES" parentEntity="Fetchable" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
                 <entry key="source" value="project_task_common"/>
             </userInfo>
         </attribute>
-        <attribute name="listID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+        <attribute name="fetchableType" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="5" syncable="YES">
+            <userInfo>
+                <entry key="1" value="article"/>
+                <entry key="2" value="event"/>
+                <entry key="3" value="projectOpportunity"/>
+                <entry key="4" value="project"/>
+                <entry key="5" value="task"/>
+            </userInfo>
+        </attribute>
+        <attribute name="list" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
             <userInfo>
                 <entry key="source" value="project_task_common"/>
             </userInfo>
@@ -365,17 +376,18 @@
                 <entry key="source" value="project_task_common"/>
             </userInfo>
         </attribute>
-        <attribute name="status" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="20" syncable="YES">
+        <attribute name="status" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="6" syncable="YES">
             <userInfo>
+                <entry key="1" value="待申请(waiting-apply)"/>
+                <entry key="2" value="审核中(auditing)"/>
+                <entry key="3" value="待激活(waiting-activate)"/>
+                <entry key="4" value="审核失败(audit failed)"/>
+                <entry key="5" value="邀请延误(application delayed)"/>
+                <entry key="6" value="邀请成功(apllication success)"/>
                 <entry key="source" value="project_task"/>
             </userInfo>
         </attribute>
-        <attribute name="statusDate" optional="YES" attributeType="Date" syncable="YES">
-            <userInfo>
-                <entry key="source" value="project_task"/>
-            </userInfo>
-        </attribute>
-        <attribute name="taskID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+        <attribute name="statusTime" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
                 <entry key="source" value="project_task"/>
             </userInfo>
@@ -387,26 +399,12 @@
         </attribute>
         <relationship name="ofProject" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="hasTask" inverseEntity="Project" syncable="YES"/>
     </entity>
-    <entity name="Topic" representedClassName="KSHTopic" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="topicID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="type" attributeType="Integer 16" minValueString="1" maxValueString="5" syncable="YES">
-            <userInfo>
-                <entry key="1" value="industry"/>
-                <entry key="2" value="tag"/>
-                <entry key="3" value="type"/>
-                <entry key="4" value="source"/>
-                <entry key="5" value="other"/>
-            </userInfo>
-        </attribute>
-        <relationship name="dislikedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="dislikes" inverseEntity="User" syncable="YES"/>
-        <relationship name="likedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="likes" inverseEntity="User" syncable="YES"/>
-        <relationship name="ofArticle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="hasTopic" inverseEntity="Article" syncable="YES"/>
-    </entity>
     <entity name="User" representedClassName="KSHUser" syncable="YES">
-        <attribute name="currentUser" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="createDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+        <attribute name="updateDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="source" value="vesta_user"/>
             </userInfo>
@@ -416,24 +414,23 @@
                 <entry key="source" value="vesta_user"/>
             </userInfo>
         </attribute>
-        <relationship name="dislikes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="dislikedBy" inverseEntity="Topic" syncable="YES"/>
-        <relationship name="favorites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="favoritedBy" inverseEntity="Post" syncable="YES"/>
-        <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Topic" inverseName="likedBy" inverseEntity="Topic" syncable="YES"/>
+        <relationship name="favorites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Favoritable" inverseName="favoritedBy" inverseEntity="Favoritable" syncable="YES"/>
+        <relationship name="hasProject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project" inverseName="ofUser" inverseEntity="Project" syncable="YES"/>
         <relationship name="userProfile" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Profile" inverseName="user" inverseEntity="Profile" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Article" positionX="180" positionY="462" width="128" height="103"/>
-        <element name="Consultant" positionX="7" positionY="126" width="128" height="178"/>
-        <element name="ConsultationProject" positionX="-9" positionY="-378" width="128" height="75"/>
-        <element name="ConsultationTask" positionX="-182" positionY="-360" width="128" height="133"/>
-        <element name="Event" positionX="-38" positionY="725" width="128" height="238"/>
-        <element name="Feedback" positionX="196" positionY="-129" width="128" height="165"/>
-        <element name="Post" positionX="-27" positionY="372" width="128" height="285"/>
-        <element name="Profile" positionX="889" positionY="32" width="128" height="193"/>
-        <element name="Project" positionX="7" positionY="-267" width="128" height="330"/>
-        <element name="ProjectOpportunity" positionX="-252" positionY="384" width="128" height="178"/>
-        <element name="Task" positionX="-189" positionY="-180" width="128" height="225"/>
-        <element name="Topic" positionX="394" positionY="405" width="128" height="133"/>
-        <element name="User" positionX="234" positionY="168" width="128" height="165"/>
+        <element name="Article" positionX="18" positionY="747" width="128" height="163"/>
+        <element name="ConsultationProject" positionX="7" positionY="-459" width="128" height="75"/>
+        <element name="ConsultationTask" positionX="-182" positionY="-441" width="128" height="133"/>
+        <element name="Event" positionX="-135" positionY="747" width="128" height="253"/>
+        <element name="Favoritable" positionX="-171" positionY="342" width="128" height="58"/>
+        <element name="Feedback" positionX="196" positionY="-192" width="128" height="133"/>
+        <element name="Fetchable" positionX="-387" positionY="117" width="128" height="88"/>
+        <element name="Post" positionX="-56" positionY="489" width="128" height="223"/>
+        <element name="Profile" positionX="376" positionY="50" width="128" height="28"/>
+        <element name="Project" positionX="7" positionY="-348" width="128" height="298"/>
+        <element name="ProjectOpportunity" positionX="-243" positionY="492" width="128" height="148"/>
+        <element name="Task" positionX="-189" positionY="-261" width="128" height="208"/>
+        <element name="User" positionX="16" positionY="117" width="128" height="178"/>
     </elements>
 </model>

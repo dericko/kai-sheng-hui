@@ -7,6 +7,7 @@
 //
 
 #import "KSHEntityDetailViewController.h"
+#import "KSHDetailToolbarView.h"
 
 @interface KSHEntityDetailViewController ()
 @property int fontSize;
@@ -21,8 +22,14 @@
     // Font Button
     _fontSize = 16;
     _contentLabel.font = [UIFont systemFontOfSize:_fontSize];
-    UIBarButtonItem *fontSizeButton = [[UIBarButtonItem alloc] initWithTitle:@"Aa" style:UIBarButtonItemStylePlain target:self action:@selector(adjustFont)];
-    [self.navigationItem setRightBarButtonItem:fontSizeButton];
+    KSHDetailToolbarView *toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [toolbarView addResizeButtonForTarget:self action:@selector(adjustFont)];
+    [toolbarView addShareButtonForTarget:self action:@selector(share)];
+    // FIXME: should change target to [KSHUser currentUser] and link to favorite/unfavorite methods
+    [toolbarView addFavoriteButtonForTarget:self favorite:@selector(favorite) unfavorite:@selector(unfavorite)];
+
+    UIBarButtonItem *toolbar = [[UIBarButtonItem alloc] initWithCustomView:toolbarView];
+    [self.navigationItem setRightBarButtonItem:toolbar];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -59,6 +66,28 @@
     _contentLabel.contentSize = [_contentLabel intrinsicContentSize];
     
     [self viewDidAppear:YES];
+}
+
+- (void)share
+{
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    
+    if (self.contentLabel.text) {
+        [sharingItems addObject:self.contentLabel.text];
+    }
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+}
+
+- (void)favorite
+{
+    
+}
+
+- (void)unfavorite
+{
+    
 }
 
 @end

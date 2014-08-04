@@ -7,12 +7,17 @@
 //
 
 #import "KSHProjectTableViewController.h"
+#import "KSHContentManager.h"
+
 #import "KSHProjectDetailViewController.h"
 #import "KSHContentTableViewCell.h"
-#import "KSHMessage.h"
+#import "KSHSplitButtonView.h"
 
 @interface KSHProjectTableViewController ()
+@property (nonatomic, strong) KSHContentManager *contentManager;
 @property (nonatomic, strong) KSHProjectOpportunity *projectOpportunity;
+@property (nonatomic, strong) KSHSplitButtonView *splitButtons;
+
 @end
 
 @implementation KSHProjectTableViewController
@@ -21,8 +26,14 @@
 
 - (void)viewDidLoad
 {
-    _projectOpportunityManager = [KSHProjectOpportunityManager sharedManager];
-    _projectOpportunityManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+    // Set up selector buttons
+    _splitButtons = [[KSHSplitButtonView alloc] initWithFrame:CGRectMake(0, 10.0, 142.0, 24.0)];
+    [_splitButtons addLeftButtonWithTitle:@"Newest" forTarget:self withAction:@selector(viewNewest)];
+    [_splitButtons addRightButtonWithTitle:@"Popular" forTarget:self withAction:@selector(viewPopular)];
+    self.navigationItem.titleView = _splitButtons;
+    
+    _contentManager = [KSHContentManager sharedManager];
+    _contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     
     [self assignCustomClassFields];
@@ -32,10 +43,10 @@
 
 - (void)assignCustomClassFields
 {
-    self.numberToLoad = @5;
+    self.numberToLoad = @10;
     self.cellIdentifier = @"ContentCell";
     self.entityName = @"ProjectOpportunity";
-    self.sortDescriptorKey = @"publishDate";
+    self.sortDescriptorKey = @"createDate";
     self.segueIdentifier = @"showProjectOpportunityDetail";
     
     [super assignCustomClassFields];
@@ -43,14 +54,15 @@
 
 - (void)loadCells
 {
-    if (_projectOpportunityManager) {
-        [_projectOpportunityManager
-         loadContentWithParameters:nil
+    if (_contentManager) {
+        [_contentManager
+         loadProjectOpportunitiesWithParameters:nil
          success:^(void) {
              [self.refreshControl endRefreshing];
              if (self.footerView){
                  [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
              }
+             [self.tableView beginUpdates];
          } failure:^(NSError *error) {
              [self.refreshControl endRefreshing];
              if (self.footerView){
@@ -60,6 +72,17 @@
          }];
     }
 }
+
+- (void)viewNewest
+{
+    // TODO: implement (add/remove fetch predicate, reload)
+}
+
+- (void)viewPopular
+{
+    // TODO: implement (add/remove fetch predicate, reload)
+}
+
 
 #pragma mark - Cell configuration
 

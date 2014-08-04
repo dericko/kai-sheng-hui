@@ -6,16 +6,14 @@
 const struct KSHProjectOpportunityAttributes KSHProjectOpportunityAttributes = {
 	.contacts = @"contacts",
 	.deadlineDate = @"deadlineDate",
+	.fetchableType = @"fetchableType",
 	.idealBackground = @"idealBackground",
-	.opportunityID = @"opportunityID",
-	.publishDate = @"publishDate",
 	.referenceContent = @"referenceContent",
 	.title = @"title",
 	.urlString = @"urlString",
 };
 
 const struct KSHProjectOpportunityRelationships KSHProjectOpportunityRelationships = {
-	.ofConsultant = @"ofConsultant",
 };
 
 const struct KSHProjectOpportunityFetchedProperties KSHProjectOpportunityFetchedProperties = {
@@ -47,8 +45,8 @@ const struct KSHProjectOpportunityFetchedProperties KSHProjectOpportunityFetched
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"opportunityIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"opportunityID"];
+	if ([key isEqualToString:@"fetchableTypeValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"fetchableType"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -73,40 +71,33 @@ const struct KSHProjectOpportunityFetchedProperties KSHProjectOpportunityFetched
 
 
 
+@dynamic fetchableType;
+
+
+
+- (int16_t)fetchableTypeValue {
+	NSNumber *result = [self fetchableType];
+	return [result shortValue];
+}
+
+- (void)setFetchableTypeValue:(int16_t)value_ {
+	[self setFetchableType:[NSNumber numberWithShort:value_]];
+}
+
+- (int16_t)primitiveFetchableTypeValue {
+	NSNumber *result = [self primitiveFetchableType];
+	return [result shortValue];
+}
+
+- (void)setPrimitiveFetchableTypeValue:(int16_t)value_ {
+	[self setPrimitiveFetchableType:[NSNumber numberWithShort:value_]];
+}
+
+
+
+
+
 @dynamic idealBackground;
-
-
-
-
-
-
-@dynamic opportunityID;
-
-
-
-- (int32_t)opportunityIDValue {
-	NSNumber *result = [self opportunityID];
-	return [result intValue];
-}
-
-- (void)setOpportunityIDValue:(int32_t)value_ {
-	[self setOpportunityID:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveOpportunityIDValue {
-	NSNumber *result = [self primitiveOpportunityID];
-	return [result intValue];
-}
-
-- (void)setPrimitiveOpportunityIDValue:(int32_t)value_ {
-	[self setPrimitiveOpportunityID:[NSNumber numberWithInt:value_]];
-}
-
-
-
-
-
-@dynamic publishDate;
 
 
 
@@ -133,19 +124,6 @@ const struct KSHProjectOpportunityFetchedProperties KSHProjectOpportunityFetched
 
 
 
-
-@dynamic ofConsultant;
-
-	
-- (NSMutableSet*)ofConsultantSet {
-	[self willAccessValueForKey:@"ofConsultant"];
-  
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"ofConsultant"];
-  
-	[self didAccessValueForKey:@"ofConsultant"];
-	return result;
-}
-	
 
 
 

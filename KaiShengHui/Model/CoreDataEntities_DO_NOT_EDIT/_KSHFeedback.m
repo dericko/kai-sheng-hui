@@ -5,8 +5,6 @@
 
 const struct KSHFeedbackAttributes KSHFeedbackAttributes = {
 	.comment = @"comment",
-	.createTime = @"createTime",
-	.feedbackID = @"feedbackID",
 	.paymentScore = @"paymentScore",
 	.qualityScore = @"qualityScore",
 	.serviceScore = @"serviceScore",
@@ -46,11 +44,6 @@ const struct KSHFeedbackFetchedProperties KSHFeedbackFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"feedbackIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"feedbackID"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
 	if ([key isEqualToString:@"paymentScoreValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"paymentScore"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -80,39 +73,6 @@ const struct KSHFeedbackFetchedProperties KSHFeedbackFetchedProperties = {
 
 @dynamic comment;
 
-
-
-
-
-
-@dynamic createTime;
-
-
-
-
-
-
-@dynamic feedbackID;
-
-
-
-- (int32_t)feedbackIDValue {
-	NSNumber *result = [self feedbackID];
-	return [result intValue];
-}
-
-- (void)setFeedbackIDValue:(int32_t)value_ {
-	[self setFeedbackID:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveFeedbackIDValue {
-	NSNumber *result = [self primitiveFeedbackID];
-	return [result intValue];
-}
-
-- (void)setPrimitiveFeedbackIDValue:(int32_t)value_ {
-	[self setPrimitiveFeedbackID:[NSNumber numberWithInt:value_]];
-}
 
 
 

@@ -9,6 +9,7 @@ const struct KSHEventAttributes KSHEventAttributes = {
 	.contactName = @"contactName",
 	.contactTelephone = @"contactTelephone",
 	.endDate = @"endDate",
+	.fetchableType = @"fetchableType",
 	.memberPrice = @"memberPrice",
 	.mustApply = @"mustApply",
 	.nonmemberPrice = @"nonmemberPrice",
@@ -53,6 +54,11 @@ const struct KSHEventFetchedProperties KSHEventFetchedProperties = {
 	
 	if ([key isEqualToString:@"chargeTypeValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"chargeType"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"fetchableTypeValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"fetchableType"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -122,6 +128,32 @@ const struct KSHEventFetchedProperties KSHEventFetchedProperties = {
 
 @dynamic endDate;
 
+
+
+
+
+
+@dynamic fetchableType;
+
+
+
+- (int16_t)fetchableTypeValue {
+	NSNumber *result = [self fetchableType];
+	return [result shortValue];
+}
+
+- (void)setFetchableTypeValue:(int16_t)value_ {
+	[self setFetchableType:[NSNumber numberWithShort:value_]];
+}
+
+- (int16_t)primitiveFetchableTypeValue {
+	NSNumber *result = [self primitiveFetchableType];
+	return [result shortValue];
+}
+
+- (void)setPrimitiveFetchableTypeValue:(int16_t)value_ {
+	[self setPrimitiveFetchableType:[NSNumber numberWithShort:value_]];
+}
 
 
 

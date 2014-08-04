@@ -32,7 +32,7 @@
     // Set content fields
     NSString *title = [NSString stringWithFormat:@"%@", _projectOpportunity.title];
     NSString *content = [NSString stringWithFormat:@"理想背景: \n %@ \n\n 关键问题: %@", _projectOpportunity.idealBackground, _projectOpportunity.referenceContent];
-    NSString *publishDate = [NSString stringWithFormat:@"发布时间: %@", _projectOpportunity.publishDate];
+    NSString *publishDate = [NSString stringWithFormat:@"发布时间: %@", _projectOpportunity.createDate];
     NSString *deadline = [NSString stringWithFormat:@"截止日期: %@", _projectOpportunity.deadlineDate];
     // Assign content fields
     self.titleLabel.text = title;
@@ -68,6 +68,5 @@
         destinationViewController.url = _projectOpportunity.urlString;
     }
 }
-
 
 @end

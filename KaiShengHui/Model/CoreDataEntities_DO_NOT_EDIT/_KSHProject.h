@@ -2,31 +2,29 @@
 // Make changes to KSHProject.h instead.
 
 #import <CoreData/CoreData.h>
-
+#import "KSHFetchable.h"
 
 extern const struct KSHProjectAttributes {
-	__unsafe_unretained NSString *categoryID;
-	__unsafe_unretained NSString *createTime;
+	__unsafe_unretained NSString *category;
 	__unsafe_unretained NSString *currencyUnit;
-	__unsafe_unretained NSString *endTime;
-	__unsafe_unretained NSString *industryID;
+	__unsafe_unretained NSString *endDate;
+	__unsafe_unretained NSString *fetchableType;
+	__unsafe_unretained NSString *industry;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *price;
 	__unsafe_unretained NSString *priority;
 	__unsafe_unretained NSString *projectDescription;
-	__unsafe_unretained NSString *projectID;
-	__unsafe_unretained NSString *startTime;
+	__unsafe_unretained NSString *startDate;
 	__unsafe_unretained NSString *status;
 	__unsafe_unretained NSString *statusTime;
 	__unsafe_unretained NSString *timeframe;
 	__unsafe_unretained NSString *type;
-	__unsafe_unretained NSString *updateTime;
 } KSHProjectAttributes;
 
 extern const struct KSHProjectRelationships {
 	__unsafe_unretained NSString *hasFeedback;
 	__unsafe_unretained NSString *hasTask;
-	__unsafe_unretained NSString *ofConsultant;
+	__unsafe_unretained NSString *ofUser;
 } KSHProjectRelationships;
 
 extern const struct KSHProjectFetchedProperties {
@@ -34,9 +32,7 @@ extern const struct KSHProjectFetchedProperties {
 
 @class KSHFeedback;
 @class KSHTask;
-@class KSHConsultant;
-
-
+@class KSHUser;
 
 
 
@@ -56,7 +52,7 @@ extern const struct KSHProjectFetchedProperties {
 @interface KSHProjectID : NSManagedObjectID {}
 @end
 
-@interface _KSHProject : NSManagedObject {}
+@interface _KSHProject : KSHFetchable {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
@@ -66,25 +62,15 @@ extern const struct KSHProjectFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* categoryID;
+@property (nonatomic, strong) NSNumber* category;
 
 
 
-@property int16_t categoryIDValue;
-- (int16_t)categoryIDValue;
-- (void)setCategoryIDValue:(int16_t)value_;
+@property int16_t categoryValue;
+- (int16_t)categoryValue;
+- (void)setCategoryValue:(int16_t)value_;
 
-//- (BOOL)validateCategoryID:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSDate* createTime;
-
-
-
-//- (BOOL)validateCreateTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateCategory:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -100,25 +86,39 @@ extern const struct KSHProjectFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* endTime;
+@property (nonatomic, strong) NSDate* endDate;
 
 
 
-//- (BOOL)validateEndTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateEndDate:(id*)value_ error:(NSError**)error_;
 
 
 
 
 
-@property (nonatomic, strong) NSNumber* industryID;
+@property (nonatomic, strong) NSNumber* fetchableType;
 
 
 
-@property int32_t industryIDValue;
-- (int32_t)industryIDValue;
-- (void)setIndustryIDValue:(int32_t)value_;
+@property int16_t fetchableTypeValue;
+- (int16_t)fetchableTypeValue;
+- (void)setFetchableTypeValue:(int16_t)value_;
 
-//- (BOOL)validateIndustryID:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateFetchableType:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* industry;
+
+
+
+@property int16_t industryValue;
+- (int16_t)industryValue;
+- (void)setIndustryValue:(int16_t)value_;
+
+//- (BOOL)validateIndustry:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -172,25 +172,11 @@ extern const struct KSHProjectFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* projectID;
+@property (nonatomic, strong) NSDate* startDate;
 
 
 
-@property int32_t projectIDValue;
-- (int32_t)projectIDValue;
-- (void)setProjectIDValue:(int32_t)value_;
-
-//- (BOOL)validateProjectID:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSDate* startTime;
-
-
-
-//- (BOOL)validateStartTime:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateStartDate:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -244,16 +230,6 @@ extern const struct KSHProjectFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* updateTime;
-
-
-
-//- (BOOL)validateUpdateTime:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
 @property (nonatomic, strong) KSHFeedback *hasFeedback;
 
 //- (BOOL)validateHasFeedback:(id*)value_ error:(NSError**)error_;
@@ -268,9 +244,9 @@ extern const struct KSHProjectFetchedProperties {
 
 
 
-@property (nonatomic, strong) KSHConsultant *ofConsultant;
+@property (nonatomic, strong) KSHUser *ofUser;
 
-//- (BOOL)validateOfConsultant:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateOfUser:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -290,17 +266,11 @@ extern const struct KSHProjectFetchedProperties {
 @interface _KSHProject (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSNumber*)primitiveCategoryID;
-- (void)setPrimitiveCategoryID:(NSNumber*)value;
+- (NSNumber*)primitiveCategory;
+- (void)setPrimitiveCategory:(NSNumber*)value;
 
-- (int16_t)primitiveCategoryIDValue;
-- (void)setPrimitiveCategoryIDValue:(int16_t)value_;
-
-
-
-
-- (NSDate*)primitiveCreateTime;
-- (void)setPrimitiveCreateTime:(NSDate*)value;
+- (int16_t)primitiveCategoryValue;
+- (void)setPrimitiveCategoryValue:(int16_t)value_;
 
 
 
@@ -311,17 +281,26 @@ extern const struct KSHProjectFetchedProperties {
 
 
 
-- (NSDate*)primitiveEndTime;
-- (void)setPrimitiveEndTime:(NSDate*)value;
+- (NSDate*)primitiveEndDate;
+- (void)setPrimitiveEndDate:(NSDate*)value;
 
 
 
 
-- (NSNumber*)primitiveIndustryID;
-- (void)setPrimitiveIndustryID:(NSNumber*)value;
+- (NSNumber*)primitiveFetchableType;
+- (void)setPrimitiveFetchableType:(NSNumber*)value;
 
-- (int32_t)primitiveIndustryIDValue;
-- (void)setPrimitiveIndustryIDValue:(int32_t)value_;
+- (int16_t)primitiveFetchableTypeValue;
+- (void)setPrimitiveFetchableTypeValue:(int16_t)value_;
+
+
+
+
+- (NSNumber*)primitiveIndustry;
+- (void)setPrimitiveIndustry:(NSNumber*)value;
+
+- (int16_t)primitiveIndustryValue;
+- (void)setPrimitiveIndustryValue:(int16_t)value_;
 
 
 
@@ -356,17 +335,8 @@ extern const struct KSHProjectFetchedProperties {
 
 
 
-- (NSNumber*)primitiveProjectID;
-- (void)setPrimitiveProjectID:(NSNumber*)value;
-
-- (int32_t)primitiveProjectIDValue;
-- (void)setPrimitiveProjectIDValue:(int32_t)value_;
-
-
-
-
-- (NSDate*)primitiveStartTime;
-- (void)setPrimitiveStartTime:(NSDate*)value;
+- (NSDate*)primitiveStartDate;
+- (void)setPrimitiveStartDate:(NSDate*)value;
 
 
 
@@ -401,12 +371,6 @@ extern const struct KSHProjectFetchedProperties {
 
 
 
-- (NSDate*)primitiveUpdateTime;
-- (void)setPrimitiveUpdateTime:(NSDate*)value;
-
-
-
-
 
 - (KSHFeedback*)primitiveHasFeedback;
 - (void)setPrimitiveHasFeedback:(KSHFeedback*)value;
@@ -418,8 +382,8 @@ extern const struct KSHProjectFetchedProperties {
 
 
 
-- (KSHConsultant*)primitiveOfConsultant;
-- (void)setPrimitiveOfConsultant:(KSHConsultant*)value;
+- (KSHUser*)primitiveOfUser;
+- (void)setPrimitiveOfUser:(KSHUser*)value;
 
 
 @end

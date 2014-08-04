@@ -7,12 +7,18 @@
 //
 
 #import "KSHEventTableViewController.h"
+#import "KSHContentManager.h"
+
 #import "KSHEventDetailViewController.h"
 #import "KSHContentTableViewCell.h"
-#import "KSHMessage.h"
+#import "KSHSplitButtonView.h"
 
 @interface KSHEventTableViewController ()
 @property (nonatomic, strong) KSHEvent *event;
+@property (nonatomic, strong) KSHContentManager *contentManager;
+
+@property (nonatomic, strong) KSHSplitButtonView *splitButtons;
+
 @end
 
 @implementation KSHEventTableViewController
@@ -21,9 +27,17 @@
 
 - (void)viewDidLoad
 {
-    _eventManager = [KSHEventManager sharedManager];
-    _eventManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+    // Set up selector buttons
+    _splitButtons = [[KSHSplitButtonView alloc] initWithFrame:CGRectMake(0, 10.0, 142.0, 24.0)];
+    [_splitButtons addLeftButtonWithTitle:@"Newest" forTarget:self withAction:@selector(viewNewest)];
+    [_splitButtons addRightButtonWithTitle:@"Popular" forTarget:self withAction:@selector(viewPopular)];
+    self.navigationItem.titleView = _splitButtons;
+    
+    // Setup networking/core data
+    _contentManager = [KSHContentManager sharedManager];
+    _contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
+    
     
     [self assignCustomClassFields];
     
@@ -32,10 +46,10 @@
 
 - (void)assignCustomClassFields
 {
-    self.numberToLoad = @5;
+    self.numberToLoad = @10;
     self.cellIdentifier = @"ContentCell";
     self.entityName = @"Event";
-    self.sortDescriptorKey = @"publishDate";
+    self.sortDescriptorKey = @"createDate";
     self.segueIdentifier = @"showEventDetail";
     
     [super assignCustomClassFields];
@@ -43,9 +57,9 @@
 
 - (void)loadCells
 {
-    if (_eventManager) {
-        [_eventManager
-         loadContentWithParameters:nil
+    if (_contentManager) {
+        [_contentManager
+         loadEventsWithParameters:nil
          success:^(void) {
              [self.refreshControl endRefreshing];
              if (self.footerView){
@@ -60,6 +74,17 @@
          }];
     }
 }
+
+- (void)viewNewest
+{
+    // TODO: implement (add/remove fetch predicate, reload)
+}
+
+- (void)viewPopular
+{
+    // TODO: implement (add/remove fetch predicate, reload)
+}
+
 
 #pragma mark - Cell configuration
 

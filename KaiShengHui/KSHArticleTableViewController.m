@@ -7,13 +7,17 @@
 //
 
 #import "KSHArticleTableViewController.h"
-#import "KSHMessage.h"
+#import "KSHContentManager.h"
+
 #import "KSHArticleTableViewCell.h"
 #import "KSHArticleDetailViewController.h"
+#import "KSHSplitButtonView.h"
 
 @interface KSHArticleTableViewController ()
 @property (nonatomic, strong) KSHArticle *article;
+@property (nonatomic, strong) KSHContentManager *contentManager;
 
+@property (nonatomic, strong) KSHSplitButtonView *splitButtons;
 @end
 
 @implementation KSHArticleTableViewController
@@ -22,8 +26,15 @@
 
 - (void)viewDidLoad
 {
-    _articleManager = [KSHArticleManager sharedManager];
-    _articleManager.managedObjectStore = [RKManagedObjectStore defaultStore];
+    // Set up selector buttons
+    _splitButtons = [[KSHSplitButtonView alloc] initWithFrame:CGRectMake(0, 10.0, 142.0, 24.0)];
+    [_splitButtons addLeftButtonWithTitle:@"Newest" forTarget:self withAction:@selector(viewNewest)];
+    [_splitButtons addRightButtonWithTitle:@"Popular" forTarget:self withAction:@selector(viewPopular)];
+    self.navigationItem.titleView = _splitButtons;
+    
+    // Setup networking/core data
+    _contentManager = [KSHContentManager sharedManager];
+    _contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     
     [self assignCustomClassFields];
@@ -36,7 +47,7 @@
     self.numberToLoad = @10;
     self.cellIdentifier = @"ArticleCell";
     self.entityName = @"Article";
-    self.sortDescriptorKey = @"publishDate";
+    self.sortDescriptorKey = @"createDate";
     self.segueIdentifier = @"showArticleDetail";
     
     [super assignCustomClassFields];
@@ -44,9 +55,9 @@
 
 - (void)loadCells
 {
-    if (_articleManager) {
-        [_articleManager
-         loadContentWithParameters:nil
+    if (_contentManager) {
+        [_contentManager
+         loadArticlesWithParameters:nil
          success:^(void) {
              [self.refreshControl endRefreshing];
              if (self.footerView){
@@ -60,6 +71,17 @@
             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
         }];
     }
+    
+}
+
+- (void)viewNewest
+{
+    // TODO: implement (add/remove fetch predicate, reload)
+}
+
+- (void)viewPopular
+{
+    // TODO: implement (add/remove fetch predicate, reload)
 }
 
 #pragma mark - Cell configuration
@@ -76,8 +98,8 @@
     ((KSHArticleTableViewCell *)cell).titleLabel.text = [[_article valueForKey:@"title"] description];
     // TODO: get API field for Source
     ((KSHArticleTableViewCell *)cell).detailLabel1.text = @"www.iksh.com";
-    if (!_article.industry) [_article setIndustryText];
-    ((KSHArticleTableViewCell *)cell).detailLabel2.text = [[_article valueForKey:@"industry"] description];;
+    if (!_article.industryName) [_article setIndustryText];
+    ((KSHArticleTableViewCell *)cell).detailLabel2.text = [[_article valueForKey:@"industryName"] description];;
     ((KSHArticleTableViewCell *)cell).detailLabel3.text = [[_article valueForKey:@"tags"] description];
    
     

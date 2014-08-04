@@ -8,10 +8,9 @@
 
 #import "KSHMyKSHTableViewController.h"
 #import "KSHMyKSHTableViewCell.h"
-#import "KSHUser.h"
+#import "KSHUserManager.h"
 
 @interface KSHMyKSHTableViewController ()
-@property KSHUser *user;
 @property NSArray *myItems;
 @property NSArray *myItemImages;
 @end
@@ -30,13 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
+    // Setup User items
     _myItems = [NSArray arrayWithObjects:@"My Projects", @"My Calendar", @"KSH Shop",nil];
     _myItemImages = [NSArray arrayWithObjects:@"project-icon.png", @"event-icon.png", @"coin-icon-blk.png", nil];
-    
-    // TODO: load up user (will have to setup Core Data stack / fetchedResultsController)
-    
-    [self.tableView reloadData];
+
 }
 
 #pragma mark - Table view data source
@@ -70,7 +67,7 @@
         case 0:
             cell = [tableView dequeueReusableCellWithIdentifier:@"viewProfileCell" forIndexPath:indexPath];
             // FIXME: use real _user.username once user API is ready
-            cell.titleLabel.text = @"sample_username";
+            ((KSHMyKSHTableViewCell *) cell).titleLabel.text = [KSHUser currentUser].username;
             cell.iconView.image = [UIImage imageNamed:@"myksh-icon.png"];
             break;
         case 1:

@@ -10,7 +10,7 @@ extern const struct KSHConsultationTaskAttributes {
 	__unsafe_unretained NSString *contactID;
 	__unsafe_unretained NSString *industry;
 	__unsafe_unretained NSString *interviewType;
-	__unsafe_unretained NSString *positionID;
+	__unsafe_unretained NSString *position;
 } KSHConsultationTaskAttributes;
 
 extern const struct KSHConsultationTaskRelationships {
@@ -86,9 +86,9 @@ extern const struct KSHConsultationTaskFetchedProperties {
 
 
 
-@property int32_t industryValue;
-- (int32_t)industryValue;
-- (void)setIndustryValue:(int32_t)value_;
+@property int16_t industryValue;
+- (int16_t)industryValue;
+- (void)setIndustryValue:(int16_t)value_;
 
 //- (BOOL)validateIndustry:(id*)value_ error:(NSError**)error_;
 
@@ -110,15 +110,15 @@ extern const struct KSHConsultationTaskFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* positionID;
+@property (nonatomic, strong) NSNumber* position;
 
 
 
-@property int32_t positionIDValue;
-- (int32_t)positionIDValue;
-- (void)setPositionIDValue:(int32_t)value_;
+@property int32_t positionValue;
+- (int32_t)positionValue;
+- (void)setPositionValue:(int32_t)value_;
 
-//- (BOOL)validatePositionID:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validatePosition:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -164,8 +164,8 @@ extern const struct KSHConsultationTaskFetchedProperties {
 - (NSNumber*)primitiveIndustry;
 - (void)setPrimitiveIndustry:(NSNumber*)value;
 
-- (int32_t)primitiveIndustryValue;
-- (void)setPrimitiveIndustryValue:(int32_t)value_;
+- (int16_t)primitiveIndustryValue;
+- (void)setPrimitiveIndustryValue:(int16_t)value_;
 
 
 
@@ -179,11 +179,11 @@ extern const struct KSHConsultationTaskFetchedProperties {
 
 
 
-- (NSNumber*)primitivePositionID;
-- (void)setPrimitivePositionID:(NSNumber*)value;
+- (NSNumber*)primitivePosition;
+- (void)setPrimitivePosition:(NSNumber*)value;
 
-- (int32_t)primitivePositionIDValue;
-- (void)setPrimitivePositionIDValue:(int32_t)value_;
+- (int32_t)primitivePositionValue;
+- (void)setPrimitivePositionValue:(int32_t)value_;
 
 
 

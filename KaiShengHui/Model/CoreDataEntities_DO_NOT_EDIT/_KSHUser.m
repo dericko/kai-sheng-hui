@@ -4,16 +4,17 @@
 #import "_KSHUser.h"
 
 const struct KSHUserAttributes KSHUserAttributes = {
-	.currentUser = @"currentUser",
+	.createDate = @"createDate",
+	.email = @"email",
 	.token = @"token",
+	.updateDate = @"updateDate",
 	.userID = @"userID",
 	.username = @"username",
 };
 
 const struct KSHUserRelationships KSHUserRelationships = {
-	.dislikes = @"dislikes",
 	.favorites = @"favorites",
-	.likes = @"likes",
+	.hasProject = @"hasProject",
 	.userProfile = @"userProfile",
 };
 
@@ -46,16 +47,6 @@ const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"currentUserValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"currentUser"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
-	if ([key isEqualToString:@"userIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"userID"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
 
 	return keyPaths;
 }
@@ -63,27 +54,15 @@ const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
 
 
 
-@dynamic currentUser;
+@dynamic createDate;
 
 
 
-- (BOOL)currentUserValue {
-	NSNumber *result = [self currentUser];
-	return [result boolValue];
-}
 
-- (void)setCurrentUserValue:(BOOL)value_ {
-	[self setCurrentUser:[NSNumber numberWithBool:value_]];
-}
 
-- (BOOL)primitiveCurrentUserValue {
-	NSNumber *result = [self primitiveCurrentUser];
-	return [result boolValue];
-}
 
-- (void)setPrimitiveCurrentUserValue:(BOOL)value_ {
-	[self setPrimitiveCurrentUser:[NSNumber numberWithBool:value_]];
-}
+@dynamic email;
+
 
 
 
@@ -96,27 +75,15 @@ const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
 
 
 
+@dynamic updateDate;
+
+
+
+
+
+
 @dynamic userID;
 
-
-
-- (int32_t)userIDValue {
-	NSNumber *result = [self userID];
-	return [result intValue];
-}
-
-- (void)setUserIDValue:(int32_t)value_ {
-	[self setUserID:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveUserIDValue {
-	NSNumber *result = [self primitiveUserID];
-	return [result intValue];
-}
-
-- (void)setPrimitiveUserIDValue:(int32_t)value_ {
-	[self setPrimitiveUserID:[NSNumber numberWithInt:value_]];
-}
 
 
 
@@ -128,19 +95,6 @@ const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
 
 
 
-
-@dynamic dislikes;
-
-	
-- (NSMutableSet*)dislikesSet {
-	[self willAccessValueForKey:@"dislikes"];
-  
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"dislikes"];
-  
-	[self didAccessValueForKey:@"dislikes"];
-	return result;
-}
-	
 
 @dynamic favorites;
 
@@ -155,15 +109,15 @@ const struct KSHUserFetchedProperties KSHUserFetchedProperties = {
 }
 	
 
-@dynamic likes;
+@dynamic hasProject;
 
 	
-- (NSMutableSet*)likesSet {
-	[self willAccessValueForKey:@"likes"];
+- (NSMutableSet*)hasProjectSet {
+	[self willAccessValueForKey:@"hasProject"];
   
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"likes"];
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"hasProject"];
   
-	[self didAccessValueForKey:@"likes"];
+	[self didAccessValueForKey:@"hasProject"];
 	return result;
 }
 	

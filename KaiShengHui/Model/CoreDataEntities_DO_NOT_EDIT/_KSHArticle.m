@@ -4,13 +4,17 @@
 #import "_KSHArticle.h"
 
 const struct KSHArticleAttributes KSHArticleAttributes = {
+	.fetchableType = @"fetchableType",
+	.function = @"function",
 	.industry = @"industry",
-	.industryID = @"industryID",
+	.industryName = @"industryName",
+	.source = @"source",
+	.sourceName = @"sourceName",
 	.tags = @"tags",
+	.type = @"type",
 };
 
 const struct KSHArticleRelationships KSHArticleRelationships = {
-	.hasTopic = @"hasTopic",
 };
 
 const struct KSHArticleFetchedProperties KSHArticleFetchedProperties = {
@@ -42,8 +46,18 @@ const struct KSHArticleFetchedProperties KSHArticleFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"industryIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"industryID"];
+	if ([key isEqualToString:@"fetchableTypeValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"fetchableType"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"industryValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"industry"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"sourceValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"source"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -54,34 +68,100 @@ const struct KSHArticleFetchedProperties KSHArticleFetchedProperties = {
 
 
 
+@dynamic fetchableType;
+
+
+
+- (int16_t)fetchableTypeValue {
+	NSNumber *result = [self fetchableType];
+	return [result shortValue];
+}
+
+- (void)setFetchableTypeValue:(int16_t)value_ {
+	[self setFetchableType:[NSNumber numberWithShort:value_]];
+}
+
+- (int16_t)primitiveFetchableTypeValue {
+	NSNumber *result = [self primitiveFetchableType];
+	return [result shortValue];
+}
+
+- (void)setPrimitiveFetchableTypeValue:(int16_t)value_ {
+	[self setPrimitiveFetchableType:[NSNumber numberWithShort:value_]];
+}
+
+
+
+
+
+@dynamic function;
+
+
+
+
+
+
 @dynamic industry;
 
 
 
-
-
-
-@dynamic industryID;
-
-
-
-- (int16_t)industryIDValue {
-	NSNumber *result = [self industryID];
+- (int16_t)industryValue {
+	NSNumber *result = [self industry];
 	return [result shortValue];
 }
 
-- (void)setIndustryIDValue:(int16_t)value_ {
-	[self setIndustryID:[NSNumber numberWithShort:value_]];
+- (void)setIndustryValue:(int16_t)value_ {
+	[self setIndustry:[NSNumber numberWithShort:value_]];
 }
 
-- (int16_t)primitiveIndustryIDValue {
-	NSNumber *result = [self primitiveIndustryID];
+- (int16_t)primitiveIndustryValue {
+	NSNumber *result = [self primitiveIndustry];
 	return [result shortValue];
 }
 
-- (void)setPrimitiveIndustryIDValue:(int16_t)value_ {
-	[self setPrimitiveIndustryID:[NSNumber numberWithShort:value_]];
+- (void)setPrimitiveIndustryValue:(int16_t)value_ {
+	[self setPrimitiveIndustry:[NSNumber numberWithShort:value_]];
 }
+
+
+
+
+
+@dynamic industryName;
+
+
+
+
+
+
+@dynamic source;
+
+
+
+- (int32_t)sourceValue {
+	NSNumber *result = [self source];
+	return [result intValue];
+}
+
+- (void)setSourceValue:(int32_t)value_ {
+	[self setSource:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveSourceValue {
+	NSNumber *result = [self primitiveSource];
+	return [result intValue];
+}
+
+- (void)setPrimitiveSourceValue:(int32_t)value_ {
+	[self setPrimitiveSource:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
+@dynamic sourceName;
+
 
 
 
@@ -94,18 +174,12 @@ const struct KSHArticleFetchedProperties KSHArticleFetchedProperties = {
 
 
 
-@dynamic hasTopic;
+@dynamic type;
 
-	
-- (NSMutableSet*)hasTopicSet {
-	[self willAccessValueForKey:@"hasTopic"];
-  
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"hasTopic"];
-  
-	[self didAccessValueForKey:@"hasTopic"];
-	return result;
-}
-	
+
+
+
+
 
 
 

@@ -13,16 +13,12 @@ const struct KSHPostAttributes KSHPostAttributes = {
 	.homePage = @"homePage",
 	.imgFile = @"imgFile",
 	.imgURLString = @"imgURLString",
-	.postID = @"postID",
 	.postType = @"postType",
-	.publishDate = @"publishDate",
 	.title = @"title",
-	.updateDate = @"updateDate",
 	.viewCount = @"viewCount",
 };
 
 const struct KSHPostRelationships KSHPostRelationships = {
-	.favoritedBy = @"favoritedBy",
 };
 
 const struct KSHPostFetchedProperties KSHPostFetchedProperties = {
@@ -71,11 +67,6 @@ const struct KSHPostFetchedProperties KSHPostFetchedProperties = {
 	}
 	if ([key isEqualToString:@"homePageValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"homePage"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
-	if ([key isEqualToString:@"postIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"postID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -235,32 +226,6 @@ const struct KSHPostFetchedProperties KSHPostFetchedProperties = {
 
 
 
-@dynamic postID;
-
-
-
-- (int32_t)postIDValue {
-	NSNumber *result = [self postID];
-	return [result intValue];
-}
-
-- (void)setPostIDValue:(int32_t)value_ {
-	[self setPostID:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitivePostIDValue {
-	NSNumber *result = [self primitivePostID];
-	return [result intValue];
-}
-
-- (void)setPrimitivePostIDValue:(int32_t)value_ {
-	[self setPrimitivePostID:[NSNumber numberWithInt:value_]];
-}
-
-
-
-
-
 @dynamic postType;
 
 
@@ -287,21 +252,7 @@ const struct KSHPostFetchedProperties KSHPostFetchedProperties = {
 
 
 
-@dynamic publishDate;
-
-
-
-
-
-
 @dynamic title;
-
-
-
-
-
-
-@dynamic updateDate;
 
 
 
@@ -333,19 +284,6 @@ const struct KSHPostFetchedProperties KSHPostFetchedProperties = {
 
 
 
-
-@dynamic favoritedBy;
-
-	
-- (NSMutableSet*)favoritedBySet {
-	[self willAccessValueForKey:@"favoritedBy"];
-  
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"favoritedBy"];
-  
-	[self didAccessValueForKey:@"favoritedBy"];
-	return result;
-}
-	
 
 
 

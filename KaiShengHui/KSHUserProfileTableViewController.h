@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KSHUser.h"
+#import "KSHUserManager.h"
 
-@interface KSHUserProfileTableViewController : UITableViewController
-
-@property (strong, nonatomic) KSHUser *user;
-
+@interface KSHUserProfileTableViewController : UITableViewController <UserAuthenticationDelegate>
 @end

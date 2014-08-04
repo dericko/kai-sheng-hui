@@ -7,7 +7,6 @@
 //
 
 #import "KSHArticleTableViewCell.h"
-#import "KSHMessage.h"
 
 @implementation KSHArticleTableViewCell
 

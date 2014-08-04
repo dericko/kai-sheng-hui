@@ -10,52 +10,44 @@
 #import <RestKit/RestKit.h>
 
 
-// !!!: Placeholder object for compilation, remove after implementing all methods
-static RKEntityMapping *PLACEHOLDER = nil;
+# warning Must update mapping for REAL API once it is released.
 
 @implementation KSHMappingProvider
 
 # pragma mark - Content Mapping
 
-+ (RKEntityMapping *)topicMapping
-{
-    return PLACEHOLDER;
-}
-
-+ (NSDictionary *)postMap
-{
-    NSDictionary *postMap = @{
-                                  @"content":           @"content",
-                                  @"creator":           @"creator",
-                                  @"editor":            @"editor",
-                                  @"excerpt":           @"excerpt",
-                                  //                                  @"???":               @"fileType",
-                                  //                                  @"???":               @"guestContent",
-                                  //                                  @"???":               @"homePage",
-                                  @"file.path":         @"imgURLString",
-                                  @"id":                @"postID",
-                                  //                                  @"???":               @"postType",
-                                  @"publish_time":      @"publishDate",
-                                  @"title":             @"title",
-                                  @"update_time":       @"updateDate",
-                                  @"view_count":        @"viewCount",
-                                  };
-    return postMap;
-}
-
 + (RKEntityMapping *)articleMapping
 {
-    NSLog(@"-articleMapping: assign mapping for article manager");
     RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    
+    NSDictionary *postMap = @{
+                              @"id":                @"entityID",
+                              @"content":           @"content",
+                              @"creator":           @"creator",
+                              @"editor":            @"editor",
+                              @"excerpt":           @"excerpt",
+                              @"publish_time":      @"createDate",
+                              @"title":             @"title",
+                              @"type":              @"type",
+                              @"update_time":       @"updateDate",
+                              @"view_count":        @"viewCount",
+                              };
+    
+    
     NSDictionary *articleMap = @{
-                                 @"industry.id":        @"industryID",
+                                 @"file.path":          @"imgURLString",
+                                 @"function.value":     @"function",
+                                 @"home":               @"homePage",
+                                 @"origin.id":          @"source",
+                                 @"origin.value":       @"sourceName",
+                                 @"industry.id":        @"industry",
                                  @"tags":               @"tags"
                                  };
-    [articleMapping addAttributeMappingsFromDictionary:[self postMap]];
+    [articleMapping addAttributeMappingsFromDictionary:postMap];
     [articleMapping addAttributeMappingsFromDictionary: articleMap];
 //    [articleMapping addRelationshipMappingWithSourceKeyPath:@"hasTopic" mapping:[self topicMapping]];
     
-    articleMapping.identificationAttributes = @[ @"postID" ];
+    articleMapping.identificationAttributes = @[ @"entityID" ];
     
     /* Additional JSON mapping support to sync Likes/Dislikes/Favorites
      [articleMapping addRelationshipMappingWithSourceKeyPath:@"likedBy" mapping:[self userMapping]];
@@ -69,122 +61,12 @@ static RKEntityMapping *PLACEHOLDER = nil;
 
 + (RKEntityMapping *)eventMapping
 {
-    NSLog(@"-eventMapping: assign mapping for event manager");
     RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    NSDictionary *eventMap = @{
-                               //     TODO: Fill in JSON properties to be mapped to entity
-                               @"???":              @"chargeType",
-                               @"???":              @"contactEmail",
-                               @"???":              @"contactName",
-                               @"???":              @"contactTelephone",
-                               @"???":              @"endDate",
-                               @"???":              @"eventID",
-                               @"???":              @"eventURLString",
-                               @"???":              @"memberPrice",
-                               @"???":              @"mustApply",
-                               @"???":              @"nonmemberPrice",
-                               @"???":              @"place",
-                               @"???":              @"region",
-                               @"???":              @"startDate",
-                               @"???":              @"type",
-                               };
-    [eventMapping addAttributeMappingsFromDictionary:[self postMap]];
-    [eventMapping addAttributeMappingsFromDictionary:eventMap];
-    eventMapping.identificationAttributes = @[ @"postID" ];
-    return eventMapping;
-}
-
-# pragma mark - User Mapping
-
-+ (RKEntityMapping *)profileMapping
-{
-    RKEntityMapping *profileMapping = [RKEntityMapping mappingForEntityForName:@"Profile" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    [profileMapping addAttributeMappingsFromDictionary:@{
-                                                         // TODO: add profile mapping
-                                                         }];
     
-    return profileMapping;
-}
-
-+ (NSDictionary *)userMap
-{
-    NSDictionary *userMap = @{
-                              
-                              };
-    return userMap;
-}
-+ (RKEntityMapping *)userMapping
-{
-    RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    
-    [userMapping addAttributeMappingsFromDictionary:[self userMap]];
-    userMapping.identificationAttributes = @[ @"userID" ];
-
-    /* Additional JSON mapping support to sync Likes/Dislikes/Favorites
-     [articleMapping addRelationshipMappingWithSourceKeyPath:@"likes" mapping:[self topicMapping]];
-     [articleMapping addRelationshipMappingWithSourceKeyPath:@"dislikes" mapping:[self topicMapping]];
-     [articleMapping addRelationshipMappingWithSourceKeyPath:@"favorites" mapping:[self topicMapping]];
-     */
-    return userMapping;
-}
-
-+ (RKEntityMapping *)consultantMapping
-{
-    RKEntityMapping *consultantMapping = [RKEntityMapping mappingForEntityForName:@"Consultant" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    NSDictionary *consultantMap = @{
-                                    // TODO: add profile mapping
-                                    };
-    [consultantMapping addAttributeMappingsFromDictionary:[self userMap]];
-    [consultantMapping addAttributeMappingsFromDictionary:consultantMap];
-    consultantMapping.identificationAttributes = @[ @"userID" ];
-    ;
-    
-    return consultantMapping;
-}
-
-# pragma mark - Project Mapping
-
-+ (RKEntityMapping *)taskMapping
-{
-    return PLACEHOLDER;
-}
-
-+ (RKEntityMapping *)feedbackMapping
-{
-    return PLACEHOLDER;
-}
-
-+ (RKEntityMapping *)projectMapping
-{
-    RKEntityMapping *projectMapping = [RKEntityMapping mappingForEntityForName:@"Project" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    NSDictionary *projectMap = @{
-                                 // TODO: add project mapping
-                                 };
-    [projectMapping addAttributeMappingsFromDictionary:projectMap];
-    
-    [projectMapping addRelationshipMappingWithSourceKeyPath:@"tasks" mapping:[self topicMapping]];
-    
-    return projectMapping;
-}
-
-+ (RKEntityMapping *)projectOpportunityMapping
-{
-    RKEntityMapping *projectOpportunityMapping = [RKEntityMapping mappingForEntityForName:@"ProjectOpportunity" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    [projectOpportunityMapping addAttributeMappingsFromDictionary:@{
-                                                                    // TODO: add project opportunity mapping
-                                                                    }];
-    
-    return projectOpportunityMapping;
-}
-
-#pragma mark - Test Mapping using Parse database
-
-+ (NSDictionary *)postParseMap
-{
     NSDictionary *postMap = @{
-                              @"id":                    @"postID",
+                              @"objectId":                    @"entityID",
                               @"post_type":             @"postType",
-                              @"publish_time":          @"publishDate",
+                              @"publish_time":          @"createDate",
                               @"update_time":           @"updateDate",
                               @"view_count":            @"viewCount",
                               @"creator":               @"creator",
@@ -194,29 +76,7 @@ static RKEntityMapping *PLACEHOLDER = nil;
                               @"post.excerpt":          @"excerpt",
                               @"post.guest_content":    @"guestContent"
                               };
-    return postMap;
-}
-
-
-+ (RKEntityMapping *)articleParseMapping
-{
-    RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    NSDictionary *articleMap = @{
-                                 @"article_fields.industry":    @"industryID",
-                                 @"file.file_type":             @"fileType",
-                                 @"file.path":                  @"imgURLString"
-//                                 @"tags":                     @"tags"
-                                 };
-    [articleMapping addAttributeMappingsFromDictionary:[self postParseMap]];
-    [articleMapping addAttributeMappingsFromDictionary: articleMap];
-    articleMapping.identificationAttributes = @[ @"postID" ];
     
-    return articleMapping;
-}
-
-+ (RKEntityMapping *)eventParseMapping
-{
-    RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     NSDictionary *eventMap = @{
                                  @"event_fields.apply.must_apply":      @"mustApply",
                                  @"event_fields.apply.charge_type":     @"chargeType",
@@ -231,44 +91,129 @@ static RKEntityMapping *PLACEHOLDER = nil;
                                  @"event_fields.type":                  @"type",
                                  @"url":                                @"urlString"
                                  };
-    [eventMapping addAttributeMappingsFromDictionary:[self postParseMap]];
+    [eventMapping addAttributeMappingsFromDictionary:postMap];
     [eventMapping addAttributeMappingsFromDictionary: eventMap];
-    eventMapping.identificationAttributes = @[ @"postID" ];
+    eventMapping.identificationAttributes = @[ @"entityID" ];
     ;
     
     return eventMapping;
 }
 
-+ (RKEntityMapping *)userParseMapping
+#pragma mark - User Mapping
+
++ (RKEntityMapping *)userMapping
 {
-    return PLACEHOLDER;
+    RKEntityMapping *userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    NSDictionary *userMap = @{
+                              @"objectId":          @"userID",
+                              @"createdAt":         @"createDate",
+                              @"email":             @"email",
+                              @"sessionToken":      @"token",
+                              @"username":          @"username",
+                              @"updatedAt":         @"updateDate"
+                              };
+    [userMapping addAttributeMappingsFromDictionary: userMap];
+    userMapping.identificationAttributes = @[ @"userID" ];
+    
+    return userMapping;
 }
 
-+ (RKEntityMapping *)consultantParseMapping
+
++ (RKEntityMapping *)profileMapping
 {
-    return PLACEHOLDER;
+    RKEntityMapping *profileMapping = [RKEntityMapping mappingForEntityForName:@"Profile" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    NSDictionary *profileMap = @{
+                                 @"birthday":      @"birthday",
+                                 @"company":       @"company",
+                                 @"createdAt":     @"createDate",
+                                 @"education":     @"education",
+                                 @"first_name":    @"firstName",
+                                 @"gender":        @"gender",
+                                 @"industry":      @"industry",
+                                 @"last_name":     @"lastName",
+                                 @"mobile":        @"mobile",
+                                 @"name":          @"name",
+                                 @"nickname":      @"nickname",
+                                 @"objectId":      @"entityID",
+                                 @"position":      @"position",
+                                 @"profile":       @"profile",
+                                 @"residence":     @"residence",
+                                 @"specialty":     @"specialty",
+                                 @"updatedAt":     @"updateDate"
+                                 };
+    [profileMapping addAttributeMappingsFromDictionary: profileMap];
+    profileMapping.identificationAttributes = @[ @"entityID" ];
+    
+    
+    return profileMapping;
 }
 
-+ (RKEntityMapping *)projectParseMapping
+# pragma mark - Profile Mapping
+
++ (RKEntityMapping *)projectMapping
 {
-    return PLACEHOLDER;
+    RKEntityMapping *projectMapping = [RKEntityMapping mappingForEntityForName:@"Project" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    NSDictionary *projectMap = @{
+                                            @"objectId":            @"entityID",
+                                            @"category":            @"category",
+                                            @"currency_unit":       @"currencyUnit",
+                                            @"end_time.iso":        @"endDate",
+                                            @"industry":            @"industry",
+                                            @"name":                @"name",
+                                            @"price":               @"price",
+                                            @"priority":            @"priority",
+                                            @"project_description": @"projectDescription",
+                                            @"start_time.iso":      @"startDate",
+                                            @"status":              @"status",
+                                            @"status_time":         @"statusTime",
+                                            @"type":                @"type",
+                                            @"createdAt":           @"createDate",
+                                            @"updatedAt":           @"updateDate"
+                                            };
+    [projectMapping addAttributeMappingsFromDictionary: projectMap];
+    projectMapping.identificationAttributes = @[ @"entityID" ];
+    ;
+    
+    return projectMapping;
 }
 
-+ (RKEntityMapping *)projectOpportunityParseMapping
++ (RKEntityMapping *)taskMapping
+{
+    RKEntityMapping *taskMapping = [RKEntityMapping mappingForEntityForName:@"Task" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    NSDictionary *taskMap = @{
+                              @"objectId":            @"entityID",
+                              @"end_time.iso":        @"endDate",
+                              @"name":                @"name",
+                              @"notes":               @"notes",
+                              @"paid":                @"paid",
+                              @"start_time.iso":      @"startDate",
+                              @"status":              @"status",
+                              @"timezone":            @"timezone",
+                              @"createdAt":           @"createDate",
+                              @"updatedAt":           @"updateDate"
+                              };
+    [taskMapping addAttributeMappingsFromDictionary: taskMap];
+    taskMapping.identificationAttributes = @[ @"entityID" ];
+    ;
+    
+    return taskMapping;
+}
+
++ (RKEntityMapping *)projectOpportunityMapping
 {
     RKEntityMapping *projectOpportunityMapping = [RKEntityMapping mappingForEntityForName:@"ProjectOpportunity" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     NSDictionary *projectOpportunityMap = @{
-                               @"id":                           @"opportunityID",
+                               @"id":                           @"entityID",
                                @"content.title":                @"title",
                                @"content.ideal_background":     @"idealBackground",
                                @"content.reference_content":    @"referenceContent",
                                @"content.contacts":             @"contacts",
                                @"content.deadline_time":        @"deadlineDate",
-                               @"publish_time":                 @"publishDate",
+                               @"publish_time":                 @"createDate",
                                @"url":                          @"urlString"
                                };
     [projectOpportunityMapping addAttributeMappingsFromDictionary: projectOpportunityMap];
-    projectOpportunityMapping.identificationAttributes = @[ @"opportunityID" ];
+    projectOpportunityMapping.identificationAttributes = @[ @"entityID" ];
     ;
     
     return projectOpportunityMapping;

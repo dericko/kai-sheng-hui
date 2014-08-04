@@ -8,15 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
-
 #import "KSHUserManager.h"
 
-@interface KSHLoginViewController : UIViewController <UITextFieldDelegate, MBProgressHUDDelegate>
+@protocol LoginViewControllerDelegate;
+
+@interface KSHLoginViewController : UIViewController <UITextFieldDelegate, MBProgressHUDDelegate, UserAuthenticationDelegate>
 {
 	MBProgressHUD *HUD;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) KSHUserManager *userManager;
+
+@property (strong, nonatomic) NSObject<LoginViewControllerDelegate> *delegate;
+
+@end
+
+@protocol LoginViewControllerDelegate <NSObject>
+
+- (void)loginViewControllerDidCancel:(KSHLoginViewController *)loginViewController;
 
 @end
