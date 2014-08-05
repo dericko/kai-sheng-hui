@@ -10,4 +10,6 @@
 #import "KSHUserManager.h"
 
 @interface KSHUserProfileTableViewController : UITableViewController <UserAuthenticationDelegate>
+@property (strong, nonatomic) KSHProfile *profile;
+
 @end

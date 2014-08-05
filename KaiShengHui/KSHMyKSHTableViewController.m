@@ -7,24 +7,19 @@
 //
 
 #import "KSHMyKSHTableViewController.h"
-#import "KSHMyKSHTableViewCell.h"
 #import "KSHUserManager.h"
+#import "KSHUserProfileTableViewController.h"
+#import "KSHDetailIconTableViewCell.h"
 
 @interface KSHMyKSHTableViewController ()
 @property NSArray *myItems;
 @property NSArray *myItemImages;
+
+@property (strong, nonatomic) KSHProfile *profile;
+
 @end
 
 @implementation KSHMyKSHTableViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -34,6 +29,24 @@
     _myItems = [NSArray arrayWithObjects:@"My Projects", @"My Calendar", @"KSH Shop",nil];
     _myItemImages = [NSArray arrayWithObjects:@"project-icon.png", @"event-icon.png", @"coin-icon-blk.png", nil];
 
+    [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    _profile = [KSHUser currentUser].userProfile;
+    [self.tableView reloadData];
+    
+    // Get the current user's profile
+//    [[KSHUserManager sharedManager]
+//     loadProfileForUser:[KSHUser currentUser]
+//     success:^{
+//         _profile = [KSHUser currentUser].userProfile;
+//         [self.tableView reloadData];
+//         NSLog(@"Hello, %@", _profile.name);
+//     } failure:^(NSError *error) {
+//         [KSHMessage displayErrorAlert:@"There was a problem" withSubtitle:[NSString stringWithFormat:@"%@", error]];
+//     }];
 }
 
 #pragma mark - Table view data source
@@ -61,18 +74,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    KSHMyKSHTableViewCell *cell = [KSHMyKSHTableViewCell new];
+    KSHDetailIconTableViewCell *cell = [KSHDetailIconTableViewCell new];
     
     switch (indexPath.section) {
         case 0:
             cell = [tableView dequeueReusableCellWithIdentifier:@"viewProfileCell" forIndexPath:indexPath];
-            // FIXME: use real _user.username once user API is ready
-            ((KSHMyKSHTableViewCell *) cell).titleLabel.text = [KSHUser currentUser].username;
+            cell.titleLabel.text = [KSHUser currentUser].username;
             cell.iconView.image = [UIImage imageNamed:@"myksh-icon.png"];
             break;
         case 1:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"viewMyItemCell" forIndexPath:indexPath];
-            cell.titleLabel.text = [_myItems objectAtIndex:indexPath.row];
+//            cell = [tableView dequeueReusableCellWithIdentifier:@"viewProjects" forIndexPath:indexPath];
+            cell.textLabel.text = [_myItems objectAtIndex:indexPath.row];
             cell.iconView.image = [UIImage imageNamed:[_myItemImages objectAtIndex:indexPath.row]];
             
             // TODO: setup number of items for user item (projects, articles, events, points)
@@ -87,7 +99,7 @@
 {
     switch (indexPath.section) {
         case 0:
-            return 100;
+            return 140;
             break;
         default:
             return 80;
@@ -104,9 +116,10 @@
     // Pass the selected object to the new view controller.
     
     if ([segue.identifier isEqualToString:@"showUserProfile"]) {
-        // Push User object to ProfileViewController
-    } else if ([segue.identifier isEqualToString:@"showMyItem"]) {
-        // Push MyItem object to MyItemViewController
+        KSHUserProfileTableViewController *userProfile = segue.destinationViewController;
+        userProfile.profile = _profile;
+    } else if ([segue.identifier isEqualToString:@"showUserProjects"]) {
+        // Push object to next vc
     }
 }
 

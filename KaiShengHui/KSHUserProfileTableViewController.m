@@ -8,12 +8,11 @@
 
 #import "KSHUserProfileTableViewController.h"
 #import "KSHProfileTableViewCell.h"
-#import "KSHMyKSHTableViewCell.h"
 #import "KSHHomescreenTableViewController.h"
 #import "KSHUserManager.h"
+#import "KSHDetailIconTableViewCell.h"
 
 @interface KSHUserProfileTableViewController ()
-@property (strong, nonatomic) KSHProfile *profile;
 
 @property NSArray *userDetails;
 @end
@@ -23,17 +22,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Get the current user's profile
-    [[KSHUserManager sharedManager]
-     loadProfileForUser:[KSHUser currentUser]
-     success:^{
-         _profile = [KSHUser currentUser].userProfile;
-         [self.tableView reloadData];
-         NSLog(@"Hello, %@", _profile.name);
-     } failure:^(NSError *error) {
-         // failure
-     }]; // TODO: print failure message
     
     // Set up user detail list
     _userDetails = [NSArray arrayWithObjects:@"Name", @"Email", @"Industry", @"Position", @"Specialty",nil];
@@ -84,7 +72,8 @@
         case 0:
             // Username section
             cell = [tableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
-            ((KSHMyKSHTableViewCell *) cell).titleLabel.text = [KSHUser currentUser].username;
+            ((KSHDetailIconTableViewCell *) cell).titleLabel.text = [KSHUser currentUser].username;
+            ((KSHDetailIconTableViewCell *) cell).iconView.image = [UIImage imageNamed:@"myksh-icon.png"];
             break;
         case 1:
             // Profile section
