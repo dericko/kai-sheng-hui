@@ -44,11 +44,6 @@
     // Setup predicates
     _viewArticles = [NSPredicate predicateWithFormat:@"fetchableType == 1"];
     _viewProjectOpportunities = [NSPredicate predicateWithFormat:@"fetchableType == 3"];
-    
-    // Get current user's favorites
-    _allFavorites = [KSHUser currentUser].favoritesSet;
-    NSLog([NSString stringWithFormat:@"All Favorites...%d", [_allFavorites count]]);
-    [self displayArticles];
 }
 
 - (void)viewDidAppear:(BOOL)animated

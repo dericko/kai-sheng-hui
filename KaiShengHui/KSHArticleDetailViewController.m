@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *upvoteButton;
 @property (strong, nonatomic) IBOutlet UIButton *downvoteButton;
 
+@property (strong, nonatomic) KSHDetailToolbarView *toolbarView;
 @property BOOL isFavorite;
 @end
 
@@ -30,20 +31,12 @@
 - (void)viewDidLoad
 {
     // Setup toolbar
-    KSHDetailToolbarView *toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    [toolbarView addResizeButtonForTarget:self.superclass action:@selector(toggleFont)];
-    [toolbarView addShareButtonForTarget:self.superclass action:@selector(share)];
-    [toolbarView addFavoriteButtonForTarget:self favorite:@selector(toggleFavorite)];
-    UIBarButtonItem *toolbar = [[UIBarButtonItem alloc] initWithCustomView:toolbarView];
+    _toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [_toolbarView addResizeButtonForTarget:self.superclass action:@selector(toggleFont)];
+    [_toolbarView addShareButtonForTarget:self.superclass action:@selector(share)];
+    [_toolbarView addFavoriteButtonForTarget:self favorite:@selector(toggleFavorite)];
+    UIBarButtonItem *toolbar = [[UIBarButtonItem alloc] initWithCustomView:_toolbarView];
     [self.navigationItem setRightBarButtonItem:toolbar];
-    
-    // Check if article has been favorited
-    _isFavorite = [[KSHUser currentUser].favoritesSet containsObject:_article];
-    if (_isFavorite) {
-        toolbarView.favoriteButton.selected = YES;
-    } else {
-        toolbarView.favoriteButton.selected = NO;
-    }
     
     // Clean up content for html remnants
     [self cleanUpContent];
@@ -71,9 +64,20 @@
         [self getImage];
     }
     
-    
-    
     [super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Check if article has been favorited and set star
+    _isFavorite = [[KSHUser currentUser].favoritesSet containsObject:_article];
+    if (_isFavorite) {
+        _toolbarView.favoriteButton.selected = YES;
+    } else {
+        _toolbarView.favoriteButton.selected = NO;
+    }
 }
 
 - (void)cleanUpContent
@@ -147,17 +151,19 @@
     if (!_isFavorite) {
         // Add to favorites
         [[KSHUser currentUser].favoritesSet addObject:_article];
+        _isFavorite = YES;
     } else {
         // Remove from favorites
         [[KSHUser currentUser].favoritesSet removeObject:_article];
+        _isFavorite = NO;
     }
     
     // Save managed object context
-    NSError *error = nil;
-    [[KSHUser currentUser].managedObjectContext save:&error];
-    if (error) {
-        NSLog([NSString stringWithFormat:@"%@", [error localizedDescription]]);
-    }
+//    NSError *error = nil;
+//    [[KSHUser currentUser].managedObjectContext save:&error];
+//    if (error) {
+//        NSLog([NSString stringWithFormat:@"%@", [error localizedDescription]]);
+//    }
     NSLog([NSString stringWithFormat:@"Like_count: %d", [[KSHUser currentUser].favoritesSet count]]);
 }
 
