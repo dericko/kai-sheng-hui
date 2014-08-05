@@ -11,8 +11,6 @@
 @interface KSHDetailToolbarView ()
 @property (nonatomic, strong) UIButton *resizeButton;
 @property (nonatomic, strong) UIButton *shareButton;
-@property (nonatomic, strong) UIButton *favoriteButton;
-
 
 @end
 
@@ -51,14 +49,13 @@
 
 }
 
-- (void)addFavoriteButtonForTarget:(id)target favorite:(SEL)favorite unfavorite:(SEL)unfavorite
+- (void)addFavoriteButtonForTarget:(id)target favorite:(SEL)favorite
 {
     _favoriteButton = [[UIButton alloc] initWithFrame:CGRectMake(120.0, 0.0, 30.0, 30.0)];
     [_favoriteButton setImage:[UIImage imageNamed:@"star-deselected-icon.png"] forState:UIControlStateNormal];
     [_favoriteButton setImage:[UIImage imageNamed:@"star-selected-icon.png"] forState:UIControlStateSelected];
     
     [_favoriteButton addTarget:target action:favorite forControlEvents:UIControlEventTouchUpInside];
-    [_favoriteButton addTarget:target action:unfavorite forControlEvents:UIControlEventTouchUpInside];
     [_favoriteButton addTarget:self action:@selector(toggleFavorite) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:_favoriteButton];
@@ -66,12 +63,6 @@
 
 - (void)toggleFavorite
 {
-    if (!_favoriteButton.selected) {
-        // then favorite
-    } else {
-        // then unfavorite
-    }
-    
     _favoriteButton.selected = !_favoriteButton.selected;
 }
 

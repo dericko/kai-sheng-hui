@@ -116,7 +116,7 @@
     // Async request and assign cell image
     // FIXME: Displays most recent image instead of Placeholder while loading
     UIImage *placeholderImage = [UIImage imageNamed:@"ksh-default.jpg"];
-    UIImageView *placeholderImageView = [UIImageView new];
+    UIImageView *placeholderImageView = [[UIImageView alloc] initWithImage:placeholderImage];
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURLString"] description]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

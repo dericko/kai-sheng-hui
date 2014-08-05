@@ -44,13 +44,9 @@ extern const struct KSHFetchableFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* entityID;
+@property (nonatomic, strong) NSString* entityID;
 
 
-
-@property int32_t entityIDValue;
-- (int32_t)entityIDValue;
-- (void)setEntityIDValue:(int32_t)value_;
 
 //- (BOOL)validateEntityID:(id*)value_ error:(NSError**)error_;
 
@@ -84,11 +80,8 @@ extern const struct KSHFetchableFetchedProperties {
 
 
 
-- (NSNumber*)primitiveEntityID;
-- (void)setPrimitiveEntityID:(NSNumber*)value;
-
-- (int32_t)primitiveEntityIDValue;
-- (void)setPrimitiveEntityIDValue:(int32_t)value_;
+- (NSString*)primitiveEntityID;
+- (void)setPrimitiveEntityID:(NSString*)value;
 
 
 

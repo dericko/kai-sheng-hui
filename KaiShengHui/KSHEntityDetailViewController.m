@@ -7,7 +7,7 @@
 //
 
 #import "KSHEntityDetailViewController.h"
-#import "KSHDetailToolbarView.h"
+#import "KSHUser.h"
 
 @interface KSHEntityDetailViewController ()
 @property int fontSize;
@@ -19,17 +19,9 @@
 {
     [super viewDidLoad];
     
-    // Font Button
+    // Set font size
     _fontSize = 16;
     _contentLabel.font = [UIFont systemFontOfSize:_fontSize];
-    KSHDetailToolbarView *toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    [toolbarView addResizeButtonForTarget:self action:@selector(adjustFont)];
-    [toolbarView addShareButtonForTarget:self action:@selector(share)];
-    // FIXME: should change target to [KSHUser currentUser] and link to favorite/unfavorite methods
-    [toolbarView addFavoriteButtonForTarget:self favorite:@selector(favorite) unfavorite:@selector(unfavorite)];
-
-    UIBarButtonItem *toolbar = [[UIBarButtonItem alloc] initWithCustomView:toolbarView];
-    [self.navigationItem setRightBarButtonItem:toolbar];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -46,7 +38,7 @@
     _scrollView.contentSize = self.containerView.frame.size;
 }
 
-- (void)adjustFont
+- (void)toggleFont
 {
     switch (_fontSize) {
         case 16:

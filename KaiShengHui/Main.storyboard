@@ -237,7 +237,7 @@
                                     <segue destination="FnM-eZ-mMN" kind="push" identifier="showUserProfile" id="9kz-zV-Xv0"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="viewProjects" rowHeight="80" id="BgR-RY-AlV" customClass="KSHDetailIconTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="viewProjectsCell" rowHeight="80" id="BgR-RY-AlV" customClass="KSHDetailIconTableViewCell">
                                 <rect key="frame" x="0.0" y="162" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BgR-RY-AlV" id="PoR-ri-Dnu">
@@ -258,13 +258,6 @@
                                                 <constraint firstAttribute="height" constant="30" id="kNl-b2-jsa"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5F-tG-tj1">
-                                            <rect key="frame" x="235" y="29" width="52" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="D1p-5G-h0U" firstAttribute="leading" secondItem="PoR-ri-Dnu" secondAttribute="leading" constant="15" id="MW5-sp-2vL"/>
@@ -272,7 +265,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="detailLabel" destination="O5F-tG-tj1" id="Jjg-Dy-JTq"/>
                                     <outlet property="iconView" destination="D1p-5G-h0U" id="WJR-8X-d3h"/>
                                     <outlet property="titleLabel" destination="iXq-Mu-tD3" id="bC1-CR-v8J"/>
                                     <segue destination="b9w-Cm-Bnn" kind="push" identifier="showUserProjects" id="7rJ-JH-K6n"/>
@@ -825,7 +817,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyItemCell" rowHeight="150" id="ckg-xi-1zE" customClass="KSHContentTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="projectCell" rowHeight="150" id="ckg-xi-1zE" customClass="KSHContentTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ckg-xi-1zE" id="YBV-R0-kSl">
@@ -1874,10 +1866,10 @@
             </objects>
             <point key="canvasLocation" x="2156" y="1685"/>
         </scene>
-        <!--Favorites Table View Controller-->
+        <!--Favorite Table View Controller-->
         <scene sceneID="5oG-62-PZD">
             <objects>
-                <tableViewController storyboardIdentifier="favoritesView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gWl-Zd-D5G" customClass="KSHFavoritesTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="favoritesView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gWl-Zd-D5G" customClass="KSHFavoriteTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="81" sectionHeaderHeight="22" sectionFooterHeight="22" id="IWG-wd-dUD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2186,7 +2178,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="0nh-9a-ebi"/>
-        <segue reference="u0v-9h-crV"/>
+        <segue reference="IGr-pg-rqi"/>
         <segue reference="j4W-fk-wjz"/>
     </inferredMetricsTieBreakers>
 </document>

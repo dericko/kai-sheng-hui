@@ -24,4 +24,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *starButton;
 @property (strong, nonatomic) IBOutlet UIButton *shareButton;
 
+- (void)toggleFont;
+- (void)share;
+- (void)favorite;
+- (void)unfavorite;
+
 @end

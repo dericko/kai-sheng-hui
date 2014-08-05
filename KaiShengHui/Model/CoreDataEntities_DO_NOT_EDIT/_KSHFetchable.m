@@ -41,11 +41,6 @@ const struct KSHFetchableFetchedProperties KSHFetchableFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"entityIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"entityID"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
 
 	return keyPaths;
 }
@@ -62,25 +57,6 @@ const struct KSHFetchableFetchedProperties KSHFetchableFetchedProperties = {
 
 @dynamic entityID;
 
-
-
-- (int32_t)entityIDValue {
-	NSNumber *result = [self entityID];
-	return [result intValue];
-}
-
-- (void)setEntityIDValue:(int32_t)value_ {
-	[self setEntityID:[NSNumber numberWithInt:value_]];
-}
-
-- (int32_t)primitiveEntityIDValue {
-	NSNumber *result = [self primitiveEntityID];
-	return [result intValue];
-}
-
-- (void)setPrimitiveEntityIDValue:(int32_t)value_ {
-	[self setPrimitiveEntityID:[NSNumber numberWithInt:value_]];
-}
 
 
 

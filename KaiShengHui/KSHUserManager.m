@@ -58,7 +58,7 @@ static KSHUserManager *sharedManager = nil;
 {
     [super setupRequestDescriptors];
     
-    [self setPathMatcherForPath:@"/1/classes/Project" forEntity:@"Project" withAttributeID:@"entityID"];
+//    [self setPathMatcherForPath:@"/1/classes/Project" forEntity:@"Project" withAttributeID:@"entityID"];
     [self setPathMatcherForPath:@"/1/classes/Task" forEntity:@"Task" withAttributeID:@"entityID"];
 }
 
@@ -205,11 +205,21 @@ static KSHUserManager *sharedManager = nil;
 {
     // @see https://www.parse.com/docs/rest#queries-relational for request parameter details
     NSDictionary *parameters = @{
-                                 @"where":[NSString stringWithFormat:@"%@%@%@", kProjectParamsHead, user.userID, kProfileParamsTail]
+                                 @"where":[NSString stringWithFormat:@"%@%@%@", kProjectParamsHead, user.userID, kProjectParamsTail]
                                  };
     [self getObjectsAtPath:kProjectPath
                 parameters:parameters
                    success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                       
+                       // Add projects to user's hasProject relationship
+                       NSArray *results = [mappingResult array];
+                       NSLog(@" \n\n Projects \n\n %@  \n\n", results);
+                       for (KSHProject *project in results) {
+                           [user addHasProjectObject:project];
+                           NSLog(@"project_added: %@", project.name);
+                       }
+                       
+                       
                        if (success) {
                            success();
                        }}

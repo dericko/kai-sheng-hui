@@ -8,6 +8,9 @@
 
 #import "KSHArticleDetailViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import "KSHUser.h"
+#import "KSHDetailToolbarView.h"
+
 
 @interface KSHArticleDetailViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *articleTags;
@@ -19,21 +22,29 @@
 @property (strong, nonatomic) IBOutlet UIButton *upvoteButton;
 @property (strong, nonatomic) IBOutlet UIButton *downvoteButton;
 
+@property BOOL isFavorite;
 @end
 
 @implementation KSHArticleDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
-{    
+{
+    // Setup toolbar
+    KSHDetailToolbarView *toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [toolbarView addResizeButtonForTarget:self.superclass action:@selector(toggleFont)];
+    [toolbarView addShareButtonForTarget:self.superclass action:@selector(share)];
+    [toolbarView addFavoriteButtonForTarget:self favorite:@selector(toggleFavorite)];
+    UIBarButtonItem *toolbar = [[UIBarButtonItem alloc] initWithCustomView:toolbarView];
+    [self.navigationItem setRightBarButtonItem:toolbar];
+    
+    // Check if article has been favorited
+    _isFavorite = [[KSHUser currentUser].favoritesSet containsObject:_article];
+    if (_isFavorite) {
+        toolbarView.favoriteButton.selected = YES;
+    } else {
+        toolbarView.favoriteButton.selected = NO;
+    }
+    
     // Clean up content for html remnants
     [self cleanUpContent];
     
@@ -54,7 +65,6 @@
     _articleTags.text = tags;
     _articleSource.text = source;
     _publishDate.text = published;
-    
     if ([_article getImage]) {
         _articleImage.image = [_article getImage];
     } else {
@@ -70,7 +80,6 @@
 {
     // TODO: Use Regex to support full html-to-plaintext cleanup
     // FIXME: This should probably be in the Article class as part of initialization, but ran into bugs since Article is fetched multiple times (and cannot override init becuase of CoreData)
-    NSLog(@"Cleaning up content");
     
     _article.content = [_article.content stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"&rdquo"] withString:@"\""];
     _article.content = [_article.content stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"&ldquo"] withString:@"\""];
@@ -109,9 +118,7 @@
     _downvoteButton.selected = !_downvoteButton.selected;
     _upvoteButton.selected = NO;
 }
-- (IBAction)favoritePressed:(id)sender {
-    self.starButton.selected = !self.starButton.selected;
-}
+
 - (IBAction)sharePressed:(id)sender {
     NSMutableArray *sharingItems = [NSMutableArray new];
     
@@ -133,6 +140,25 @@
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
     [self presentViewController:activityController animated:YES completion:nil];
+}
+
+- (void)toggleFavorite
+{
+    if (!_isFavorite) {
+        // Add to favorites
+        [[KSHUser currentUser].favoritesSet addObject:_article];
+    } else {
+        // Remove from favorites
+        [[KSHUser currentUser].favoritesSet removeObject:_article];
+    }
+    
+    // Save managed object context
+    NSError *error = nil;
+    [[KSHUser currentUser].managedObjectContext save:&error];
+    if (error) {
+        NSLog([NSString stringWithFormat:@"%@", [error localizedDescription]]);
+    }
+    NSLog([NSString stringWithFormat:@"Like_count: %d", [[KSHUser currentUser].favoritesSet count]]);
 }
 
 @end

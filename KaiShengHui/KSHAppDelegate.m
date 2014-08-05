@@ -74,7 +74,7 @@
 {
     // To log all requests and responses, use RKLogLevelDebug
     // To log all calls as well as the content, use RKLogLevelTrace
-    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
     
     // Initialize a Restkit managed object store with our Core Data model
     _managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:[self managedObjectModel]];

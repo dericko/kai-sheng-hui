@@ -126,7 +126,7 @@
     </entity>
     <entity name="Fetchable" representedClassName="KSHFetchable" isAbstract="YES" syncable="YES">
         <attribute name="createDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="entityID" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="entityID" attributeType="String" syncable="YES"/>
         <attribute name="updateDate" optional="YES" attributeType="Date" syncable="YES"/>
         <userInfo>
             <entry key="description" value="The parent class of all fetchable objects from DB or KSH. Use this parent Entity for fetch requests."/>

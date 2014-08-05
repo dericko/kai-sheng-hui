@@ -10,10 +10,12 @@
 
 @interface KSHDetailToolbarView : UIView
 
+@property (nonatomic, strong) UIButton *favoriteButton;
+
 - (void)addResizeButtonForTarget:(id)target action:(SEL)action;
 
 - (void)addShareButtonForTarget:(id)target action:(SEL)action;
 
-- (void)addFavoriteButtonForTarget:(id)target favorite:(SEL)favorite unfavorite:(SEL)unfavorite;
+- (void)addFavoriteButtonForTarget:(id)target favorite:(SEL)favorite;
 
 @end

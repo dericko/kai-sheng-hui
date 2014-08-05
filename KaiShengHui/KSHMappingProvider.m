@@ -21,7 +21,7 @@
     RKEntityMapping *articleMapping = [RKEntityMapping mappingForEntityForName:@"Article" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     
     NSDictionary *postMap = @{
-                              @"id":                @"entityID",
+                              @"objectId":          @"entityID",
                               @"content":           @"content",
                               @"creator":           @"creator",
                               @"editor":            @"editor",
@@ -64,7 +64,7 @@
     RKEntityMapping *eventMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     
     NSDictionary *postMap = @{
-                              @"objectId":                    @"entityID",
+                              @"objectId":              @"entityID",
                               @"post_type":             @"postType",
                               @"publish_time":          @"createDate",
                               @"update_time":           @"updateDate",
@@ -173,7 +173,7 @@
     [projectMapping addAttributeMappingsFromDictionary: projectMap];
     projectMapping.identificationAttributes = @[ @"entityID" ];
     ;
-    
+        
     return projectMapping;
 }
 
@@ -203,7 +203,7 @@
 {
     RKEntityMapping *projectOpportunityMapping = [RKEntityMapping mappingForEntityForName:@"ProjectOpportunity" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     NSDictionary *projectOpportunityMap = @{
-                               @"id":                           @"entityID",
+                               @"objectId":                     @"entityID",
                                @"content.title":                @"title",
                                @"content.ideal_background":     @"idealBackground",
                                @"content.reference_content":    @"referenceContent",

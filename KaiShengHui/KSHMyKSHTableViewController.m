@@ -83,7 +83,7 @@
             cell.iconView.image = [UIImage imageNamed:@"myksh-icon.png"];
             break;
         case 1:
-//            cell = [tableView dequeueReusableCellWithIdentifier:@"viewProjects" forIndexPath:indexPath];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"viewProjectsCell" forIndexPath:indexPath];
             cell.textLabel.text = [_myItems objectAtIndex:indexPath.row];
             cell.iconView.image = [UIImage imageNamed:[_myItemImages objectAtIndex:indexPath.row]];
             
@@ -109,12 +109,8 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
     if ([segue.identifier isEqualToString:@"showUserProfile"]) {
         KSHUserProfileTableViewController *userProfile = segue.destinationViewController;
         userProfile.profile = _profile;

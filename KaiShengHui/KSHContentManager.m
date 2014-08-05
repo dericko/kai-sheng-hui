@@ -68,7 +68,8 @@ static KSHContentManager *sharedManager = nil;
     [self getObjectsAtPath:kArticlePath
                 parameters:parameters
                    success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                       if (success) {
+                       
+                    if (success) {
                            success();
                        }}
                    failure:^(RKObjectRequestOperation *operation, NSError *error) {

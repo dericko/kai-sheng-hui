@@ -67,12 +67,12 @@
 
 - (void)assignCustomClassFields
 {
-    NSAssert(_numberToLoad, @"numberToLoad uninitialized");
+    NSAssert(_numberToLoad, @"numberToLoad uninitialized. @See KSHEntityTableViewController.m");
     NSAssert(_cellIdentifier
-             , @"cellIdentifier uninitialized");
-    NSAssert(_entityName, @"entityName uninitialized");
-    NSAssert(_sortDescriptorKey, @"sortDescriptorKey uninitialized");
-    NSAssert(_segueIdentifier, @"segueIdentifier uninitialized");
+             , @"cellIdentifier uninitialized @See KSHEntityTableViewController.m");
+    NSAssert(_entityName, @"entityName uninitialized @See KSHEntityTableViewController.m");
+    NSAssert(_sortDescriptorKey, @"sortDescriptorKey uninitialized @See KSHEntityTableViewController.m");
+    NSAssert(_segueIdentifier, @"segueIdentifier uninitialized @See KSHEntityTableViewController.m");
 }
 
 -(void)initFooterView
@@ -112,7 +112,6 @@
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     _numberToLoad = [NSNumber numberWithInteger:[sectionInfo numberOfObjects]];
     
-    NSLog(@"--number of rows in section: %d", [sectionInfo numberOfObjects]);
     return _numberToLoad.integerValue;
 }
 

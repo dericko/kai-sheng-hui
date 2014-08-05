@@ -134,8 +134,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Should equal three (2 fetched results sections + 1 top section for menu)
-    NSLog(@"--sections in FR1: %d", [[self.fetchedResults1 sections] count]);
-    NSLog(@"--sections in FR2: %d", [[self.fetchedResults2 sections] count]);
     return [[self.fetchedResults1 sections] count] + [[self.fetchedResults2 sections] count] + 1;
 }
 
@@ -147,14 +145,12 @@
     } else if (section == 1) {
         // Shift fetched results controller by one (should be 0)
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResults1 sections] objectAtIndex:section - 1];
-        NSLog(@"--number of objects=%d for section %d", [sectionInfo numberOfObjects], section);
         // Cap the number of rows at the predined limit of "numberToLoad"
         return ([sectionInfo numberOfObjects] > self.numberToLoad) ? self.numberToLoad : [sectionInfo numberOfObjects];
         
     } else if (section == 2) {
         // Shift fetched results controller by two (should be 0)
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResults2 sections] objectAtIndex:section - 2];
-        NSLog(@"--number of objects=%d for section %d", [sectionInfo numberOfObjects], section);
         // Cap the number of rows at the predined limit of "numberToLoad"
         return ([sectionInfo numberOfObjects] > self.numberToLoad) ? self.numberToLoad : [sectionInfo numberOfObjects];
     }
@@ -168,8 +164,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [UITableViewCell new];
-    
-    NSLog(@"--number of sections: %d", self.tableView.numberOfSections);
     
     switch (indexPath.section) {
         case 0:

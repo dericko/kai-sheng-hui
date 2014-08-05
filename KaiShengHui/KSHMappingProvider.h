@@ -14,9 +14,9 @@
  'KSHMappingProvider' Uses RestKit object mapping to define custom mapping from JSON-formatted network response information to Core Data entities. This class provides factory methods for network response descriptors used by object managers.
  
  Attribute Mapping Dictionary Format: {@"JSONKey" : @"CoreDataPropertyName"}
- Note: Keep track of (orphaned) objects by setting identificationAttributes:
- (e.g. userMapping.identificationAttributes = @[ @"userID" ];)
  
+ NOTE: Mapping is type-sensitive. Be sure to match API types to local Core Data types, as Restkit will try to auto-map some conflicting types rather than throw an error
+ (for example, mapping {(String*)webID -> (Number*)entityID} will result in entityID=0)
  
  Dependencies: RestKit 0.20.0
  @see 'RKObjectMapping'

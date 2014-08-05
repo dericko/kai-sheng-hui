@@ -45,7 +45,7 @@
 - (void)assignCustomClassFields
 {
     self.numberToLoad = @5;
-    self.cellIdentifier = @"ContentCell";
+    self.cellIdentifier = @"projectCell";
     self.entityName = @"Project";
     self.sortDescriptorKey = @"createDate";
     self.segueIdentifier = @"showProjectDetail";
@@ -62,7 +62,7 @@
             if (self.footerView){
                 [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
             }
-            [self.tableView reloadData];
+            [self.tableView beginUpdates];
         } failure:^(NSError *error) {
             // Failure
             [self.refreshControl endRefreshing];
@@ -93,11 +93,15 @@
     [super configureCell:cell atIndexPath:indexPath];
     
     _project = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSLog([NSString stringWithFormat:@"---Project: %@", _project.name]);
     
     // Can typecast to 'cellIdentifer' type specified in Storyboard
     
     ((KSHContentTableViewCell *) cell).titleLabel.text = _project.name;
     ((KSHContentTableViewCell *) cell).descriptionLabel.text = _project.projectDescription;
+    ((KSHContentTableViewCell *) cell).dateLabel.text = [NSString stringWithFormat:@"%@", _project.updateDate];
+//    ((KSHContentTableViewCell *) cell).detailLabel1.text = _project.status;
+//    ((KSHContentTableViewCell *) cell).detailLabel2.text = _project.type;
 }
 
 

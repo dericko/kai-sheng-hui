@@ -33,6 +33,7 @@
     [_splitButtons addRightButtonWithTitle:@"Popular" forTarget:self withAction:@selector(viewPopular)];
     self.navigationItem.titleView = _splitButtons;
     
+    // Set up networking/core data
     _contentManager = [KSHContentManager sharedManager];
     _contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
