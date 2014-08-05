@@ -1,31 +1,18 @@
 //
-//  KSHProjectDetailViewController.m
+//  KSHProjectOpportunityDetailViewController.m
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/23/14.
+//  Created by Derick Olson on 8/5/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import "KSHProjectDetailViewController.h"
-#import "KSHWebViewController.h"
+#import "KSHProjectOpportunityDetailViewController.h"
 
-@interface KSHProjectDetailViewController ()
-
+@interface KSHProjectOpportunityDetailViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *publishDateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *deadlineLabel;
-
 @end
-
-@implementation KSHProjectDetailViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@implementation KSHProjectOpportunityDetailViewController
 
 - (void)viewDidLoad
 {
@@ -39,7 +26,7 @@
     self.contentLabel.text = content;
     self.publishDateLabel.text = publishDate;
     self.deadlineLabel.text = deadline;
-
+    
     [super viewDidLoad];
 }
 
@@ -59,14 +46,6 @@
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
     [self presentViewController:activityController animated:YES completion:nil];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"viewWebpage"]) {
-        KSHWebViewController *destinationViewController = segue.destinationViewController;
-        destinationViewController.url = _projectOpportunity.urlString;
-    }
 }
 
 @end

@@ -415,7 +415,7 @@
             </userInfo>
         </attribute>
         <relationship name="favorites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Favoritable" inverseName="favoritedBy" inverseEntity="Favoritable" syncable="YES"/>
-        <relationship name="hasProject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project" inverseName="ofUser" inverseEntity="Project" syncable="YES"/>
+        <relationship name="hasProject" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Project" inverseName="ofUser" inverseEntity="Project" syncable="YES"/>
         <relationship name="userProfile" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Profile" inverseName="user" inverseEntity="Profile" syncable="YES"/>
     </entity>
     <elements>
@@ -431,6 +431,6 @@
         <element name="Project" positionX="7" positionY="-348" width="128" height="298"/>
         <element name="ProjectOpportunity" positionX="-243" positionY="492" width="128" height="148"/>
         <element name="Task" positionX="-189" positionY="-261" width="128" height="208"/>
-        <element name="User" positionX="16" positionY="117" width="128" height="178"/>
+        <element name="User" positionX="16" positionY="117" width="128" height="180"/>
     </elements>
 </model>

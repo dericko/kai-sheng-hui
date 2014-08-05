@@ -7,9 +7,8 @@
 //
 
 #import "KSHLoginViewController.h"
-
+#import "KSHWebViewController.h"
 #import "KSHUserProfileTableViewController.h"
-#import "KSHUserDefaultsHelper.h"
 
 #define LOGIN_PATH @"INSERT_LOGIN_PATH"
 
@@ -121,8 +120,10 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"registerUser"]) {
+        KSHWebViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.url = @"http://www.iksh.com/consultant/register/initiative";
+    }
 }
 
 #pragma mark - UITextFieldDelegate

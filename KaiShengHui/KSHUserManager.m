@@ -109,17 +109,17 @@ static KSHUserManager *sharedManager = nil;
     
                        // The user object has been added to [RKManagedObjectStore defaultStore] thanks to response descriptor. We can now access the current user with [KSHUser currentUser]
                        
-                       // Clean up userID formatting from mappingResult
-                       NSString *userID = [NSString stringWithFormat:@"%@", [mappingResult.set valueForKey:@"userID"]];
-                       userID = [userID stringByReplacingOccurrencesOfString:@"{" withString:@""];
-                       userID = [userID stringByReplacingOccurrencesOfString:@"(" withString:@""];
-                       userID = [userID stringByReplacingOccurrencesOfString:@")" withString:@""];
-                       userID = [userID stringByReplacingOccurrencesOfString:@"}" withString:@""];
-                       userID = [userID stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                       NSLog(@"--UserID: %@", userID);
+                       // Get the User from the mapping result
+                       KSHUser *currentUser = [mappingResult firstObject];
+                       
+                       // Set up user profile
+                       [self loadProfileForUser:currentUser success:nil failure:^(NSError *error) {
+                           [KSHMessage displayErrorAlert:@"There was a problem logging in" withSubtitle:[NSString stringWithFormat:@"%@", error]];
+                       }];
                        
                        // Persist the userID for later use in NSUserDefaults
-                       [[NSUserDefaults standardUserDefaults] setObject:userID forKey:kCurrentUserIDKey];
+                       NSLog(@"--UserID: %@", currentUser.userID);
+                       [[NSUserDefaults standardUserDefaults] setObject:currentUser.userID forKey:kCurrentUserIDKey];
                        [[NSUserDefaults standardUserDefaults] synchronize];
                        
                        // Inform the delegate

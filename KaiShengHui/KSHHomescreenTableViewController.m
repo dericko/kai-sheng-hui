@@ -10,7 +10,7 @@
 #import "KSHContentTableViewCell.h"
 #import "KSHContentManager.h"
 #import "KSHArticleDetailViewController.h"
-#import "KSHProjectDetailViewController.h"
+#import "KSHProjectOpportunityDetailViewController.h"
 
 @interface KSHHomescreenTableViewController ()
 
@@ -411,7 +411,7 @@
     
     else if ([segue.identifier isEqualToString:@"showProjectOpportunityDetail"]) {
          NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.tableView indexPathForSelectedRow].row inSection:[self.tableView indexPathForSelectedRow].section - 2];
-        KSHProjectDetailViewController *destinationViewController = segue.destinationViewController;
+        KSHProjectOpportunityDetailViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.projectOpportunity = [[self fetchedResults2] objectAtIndexPath:indexPath];
         
     }

@@ -8,8 +8,7 @@
 
 #import "KSHArticleTableViewController.h"
 #import "KSHContentManager.h"
-
-#import "KSHArticleTableViewCell.h"
+#import "KSHContentTableViewCell.h"
 #import "KSHArticleDetailViewController.h"
 #import "KSHSplitButtonView.h"
 
@@ -93,14 +92,14 @@
     _article = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // Can typecast to 'cellIdentifer' type specified in Storyboard
-    [(KSHArticleTableViewCell *) cell setRightUtilityButtons:[self rightButtons]];
+    [(KSHContentTableViewCell *) cell setRightUtilityButtons:[self rightButtons]];
     
-    ((KSHArticleTableViewCell *)cell).titleLabel.text = [[_article valueForKey:@"title"] description];
+    ((KSHContentTableViewCell *)cell).titleLabel.text = [[_article valueForKey:@"title"] description];
     // TODO: get API field for Source
-    ((KSHArticleTableViewCell *)cell).detailLabel1.text = @"www.iksh.com";
+    ((KSHContentTableViewCell *)cell).detailLabel1.text = @"www.iksh.com";
     if (!_article.industryName) [_article setIndustryText];
-    ((KSHArticleTableViewCell *)cell).detailLabel2.text = [[_article valueForKey:@"industryName"] description];;
-    ((KSHArticleTableViewCell *)cell).detailLabel3.text = [[_article valueForKey:@"tags"] description];
+    ((KSHContentTableViewCell *)cell).detailLabel2.text = [[_article valueForKey:@"industryName"] description];;
+    ((KSHContentTableViewCell *)cell).detailLabel3.text = [[_article valueForKey:@"tags"] description];
    
     
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];

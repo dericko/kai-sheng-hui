@@ -1,14 +1,14 @@
 //
-//  KSHMenuTableViewCell.m
+//  KSHDetailIconTableViewCell.m
 //  KaiShengHui
 //
-//  Created by Derick Olson on 7/29/14.
+//  Created by Derick Olson on 8/5/14.
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import "KSHMenuTableViewCell.h"
+#import "KSHDetailIconTableViewCell.h"
 
-@implementation KSHMenuTableViewCell
+@implementation KSHDetailIconTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

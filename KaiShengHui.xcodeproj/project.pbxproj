@@ -45,6 +45,13 @@
 		C135603B19595590005DABED /* KSHObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C135603A19595590005DABED /* KSHObjectManager.m */; };
 		C14C386B198F31A800DD457D /* KSHProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C386A198F31A800DD457D /* KSHProfileTableViewCell.m */; };
 		C14C386E198F5A0700DD457D /* KSHContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C386D198F5A0700DD457D /* KSHContentManager.m */; };
+		C14C3874199078EC00DD457D /* KSHProjectOpportunityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C3873199078EC00DD457D /* KSHProjectOpportunityTableViewController.m */; };
+		C14C3877199079CC00DD457D /* KSHProjectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C3876199079CC00DD457D /* KSHProjectTableViewController.m */; };
+		C14C387A1990843E00DD457D /* KSHProjectOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C38791990843E00DD457D /* KSHProjectOpportunityViewController.m */; };
+		C14C387D199088BF00DD457D /* KSHProjectDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C387C199088BF00DD457D /* KSHProjectDetailTableViewController.m */; };
+		C14C388019908A0D00DD457D /* KSHProjectOpportunityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C387F19908A0D00DD457D /* KSHProjectOpportunityDetailViewController.m */; };
+		C14C388719908DE500DD457D /* KSHTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C388619908DE500DD457D /* KSHTaskDetailViewController.m */; };
+		C14C388D199098EC00DD457D /* KSHDetailIconTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C14C388C199098EC00DD457D /* KSHDetailIconTableViewCell.m */; };
 		C14D49A9197D470300CAA5A5 /* article.json in Resources */ = {isa = PBXBuildFile; fileRef = C14D49A8197D470300CAA5A5 /* article.json */; };
 		C14D49AB197D4AE600CAA5A5 /* KSHMappingProviderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C14D49AA197D4AE600CAA5A5 /* KSHMappingProviderTest.m */; };
 		C14D4A76197E6BBF00CAA5A5 /* _KSHArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = C14D4A42197E6BBF00CAA5A5 /* _KSHArticle.m */; };
@@ -70,10 +77,7 @@
 		C14D4A8E197E6BBF00CAA5A5 /* KSHTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = C14D4A73197E6BBF00CAA5A5 /* KSHTopic.m */; };
 		C14D4A8F197E6BBF00CAA5A5 /* KSHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C14D4A75197E6BBF00CAA5A5 /* KSHUser.m */; };
 		C150B7CE1988FC120069B0DB /* KSHFavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C150B7CD1988FC120069B0DB /* KSHFavoritesTableViewController.m */; };
-		C150B7E71989FCBA0069B0DB /* KSHArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C150B7E21989FCBA0069B0DB /* KSHArticleTableViewCell.m */; };
 		C150B7E81989FCBA0069B0DB /* KSHContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C150B7E41989FCBA0069B0DB /* KSHContentTableViewCell.m */; };
-		C150B7E91989FCBA0069B0DB /* KSHMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C150B7E61989FCBA0069B0DB /* KSHMenuTableViewCell.m */; };
-		C150B7EC1989FCE00069B0DB /* KSHMyKSHTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C150B7EB1989FCE00069B0DB /* KSHMyKSHTableViewCell.m */; };
 		C150B7F11989FCF00069B0DB /* KSHDetailToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C150B7EE1989FCF00069B0DB /* KSHDetailToolbarView.m */; };
 		C150B7F21989FCF00069B0DB /* KSHSplitButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = C150B7F01989FCF00069B0DB /* KSHSplitButtonView.m */; };
 		C150B7F8198A014B0069B0DB /* KSHFavoritable.m in Sources */ = {isa = PBXBuildFile; fileRef = C150B7F5198A014B0069B0DB /* KSHFavoritable.m */; };
@@ -87,11 +91,8 @@
 		C1560938197CE34500FB4677 /* ksh-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1560937197CE34500FB4677 /* ksh-default.jpg */; };
 		C182851A196679210080F2DD /* KSHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C1828519196679210080F2DD /* KSHMessage.m */; };
 		C1CAA141197F8A2D003EA341 /* KSHEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA140197F8A2D003EA341 /* KSHEventTableViewController.m */; };
-		C1CAA144197F8A3D003EA341 /* KSHProjectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA143197F8A3D003EA341 /* KSHProjectTableViewController.m */; };
 		C1CAA14F197F8EF8003EA341 /* KSHEntityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA14E197F8EF8003EA341 /* KSHEntityTableViewController.m */; };
-		C1CAA152197FA173003EA341 /* KSHProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA151197FA173003EA341 /* KSHProjectDetailViewController.m */; };
 		C1CAA156197FA70E003EA341 /* KSHEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA155197FA70E003EA341 /* KSHEventDetailViewController.m */; };
-		C1CAA159197FB505003EA341 /* KSHLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA158197FB505003EA341 /* KSHLandingViewController.m */; };
 		C1E2AC7F196BC70D00B6A7AF /* KSHUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */; };
 		C1EDDECB198202DA004AE85A /* KSHEntityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EDDECA198202DA004AE85A /* KSHEntityDetailViewController.m */; };
 		C1EDDEDB19822C46004AE85A /* KSHSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EDDEDA19822C46004AE85A /* KSHSettingsTableViewController.m */; };
@@ -171,6 +172,20 @@
 		C14C386A198F31A800DD457D /* KSHProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSHProfileTableViewCell.m; path = KaiShengHui/KSHProfileTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		C14C386C198F5A0700DD457D /* KSHContentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHContentManager.h; sourceTree = "<group>"; };
 		C14C386D198F5A0700DD457D /* KSHContentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHContentManager.m; sourceTree = "<group>"; };
+		C14C3872199078EC00DD457D /* KSHProjectOpportunityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHProjectOpportunityTableViewController.h; sourceTree = "<group>"; };
+		C14C3873199078EC00DD457D /* KSHProjectOpportunityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProjectOpportunityTableViewController.m; sourceTree = "<group>"; };
+		C14C3875199079CC00DD457D /* KSHProjectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHProjectTableViewController.h; sourceTree = "<group>"; };
+		C14C3876199079CC00DD457D /* KSHProjectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProjectTableViewController.m; sourceTree = "<group>"; };
+		C14C38781990843E00DD457D /* KSHProjectOpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHProjectOpportunityViewController.h; sourceTree = "<group>"; };
+		C14C38791990843E00DD457D /* KSHProjectOpportunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProjectOpportunityViewController.m; sourceTree = "<group>"; };
+		C14C387B199088BF00DD457D /* KSHProjectDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHProjectDetailTableViewController.h; sourceTree = "<group>"; };
+		C14C387C199088BF00DD457D /* KSHProjectDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProjectDetailTableViewController.m; sourceTree = "<group>"; };
+		C14C387E19908A0D00DD457D /* KSHProjectOpportunityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHProjectOpportunityDetailViewController.h; sourceTree = "<group>"; };
+		C14C387F19908A0D00DD457D /* KSHProjectOpportunityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProjectOpportunityDetailViewController.m; sourceTree = "<group>"; };
+		C14C388519908DE500DD457D /* KSHTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHTaskDetailViewController.h; sourceTree = "<group>"; };
+		C14C388619908DE500DD457D /* KSHTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHTaskDetailViewController.m; sourceTree = "<group>"; };
+		C14C388B199098EC00DD457D /* KSHDetailIconTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSHDetailIconTableViewCell.h; path = KaiShengHui/KSHDetailIconTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		C14C388C199098EC00DD457D /* KSHDetailIconTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSHDetailIconTableViewCell.m; path = KaiShengHui/KSHDetailIconTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		C14D49A8197D470300CAA5A5 /* article.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = article.json; sourceTree = "<group>"; };
 		C14D49AA197D4AE600CAA5A5 /* KSHMappingProviderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMappingProviderTest.m; sourceTree = "<group>"; };
 		C14D4A3B197E645F00CAA5A5 /* KaiShengHui1.0.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KaiShengHui1.0.0.xcdatamodel; sourceTree = "<group>"; };
@@ -220,14 +235,8 @@
 		C14D4A75197E6BBF00CAA5A5 /* KSHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUser.m; sourceTree = "<group>"; };
 		C150B7CC1988FC120069B0DB /* KSHFavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHFavoritesTableViewController.h; sourceTree = "<group>"; };
 		C150B7CD1988FC120069B0DB /* KSHFavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHFavoritesTableViewController.m; sourceTree = "<group>"; };
-		C150B7E11989FCBA0069B0DB /* KSHArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSHArticleTableViewCell.h; path = KaiShengHui/KSHArticleTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		C150B7E21989FCBA0069B0DB /* KSHArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSHArticleTableViewCell.m; path = KaiShengHui/KSHArticleTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		C150B7E31989FCBA0069B0DB /* KSHContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSHContentTableViewCell.h; path = KaiShengHui/KSHContentTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		C150B7E41989FCBA0069B0DB /* KSHContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSHContentTableViewCell.m; path = KaiShengHui/KSHContentTableViewCell.m; sourceTree = SOURCE_ROOT; };
-		C150B7E51989FCBA0069B0DB /* KSHMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSHMenuTableViewCell.h; path = KaiShengHui/KSHMenuTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		C150B7E61989FCBA0069B0DB /* KSHMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSHMenuTableViewCell.m; path = KaiShengHui/KSHMenuTableViewCell.m; sourceTree = SOURCE_ROOT; };
-		C150B7EA1989FCE00069B0DB /* KSHMyKSHTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSHMyKSHTableViewCell.h; path = KaiShengHui/KSHMyKSHTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		C150B7EB1989FCE00069B0DB /* KSHMyKSHTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSHMyKSHTableViewCell.m; path = KaiShengHui/KSHMyKSHTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		C150B7ED1989FCF00069B0DB /* KSHDetailToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSHDetailToolbarView.h; path = KaiShengHui/KSHDetailToolbarView.h; sourceTree = SOURCE_ROOT; };
 		C150B7EE1989FCF00069B0DB /* KSHDetailToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSHDetailToolbarView.m; path = KaiShengHui/KSHDetailToolbarView.m; sourceTree = SOURCE_ROOT; };
 		C150B7EF1989FCF00069B0DB /* KSHSplitButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSHSplitButtonView.h; path = KaiShengHui/KSHSplitButtonView.h; sourceTree = SOURCE_ROOT; };
@@ -253,16 +262,10 @@
 		C1828519196679210080F2DD /* KSHMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMessage.m; sourceTree = "<group>"; };
 		C1CAA13F197F8A2D003EA341 /* KSHEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHEventTableViewController.h; sourceTree = "<group>"; };
 		C1CAA140197F8A2D003EA341 /* KSHEventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHEventTableViewController.m; sourceTree = "<group>"; };
-		C1CAA142197F8A3D003EA341 /* KSHProjectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHProjectTableViewController.h; sourceTree = "<group>"; };
-		C1CAA143197F8A3D003EA341 /* KSHProjectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProjectTableViewController.m; sourceTree = "<group>"; };
 		C1CAA14D197F8EF8003EA341 /* KSHEntityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHEntityTableViewController.h; sourceTree = "<group>"; };
 		C1CAA14E197F8EF8003EA341 /* KSHEntityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHEntityTableViewController.m; sourceTree = "<group>"; };
-		C1CAA150197FA173003EA341 /* KSHProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHProjectDetailViewController.h; sourceTree = "<group>"; };
-		C1CAA151197FA173003EA341 /* KSHProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHProjectDetailViewController.m; sourceTree = "<group>"; };
 		C1CAA154197FA70E003EA341 /* KSHEventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHEventDetailViewController.h; sourceTree = "<group>"; };
 		C1CAA155197FA70E003EA341 /* KSHEventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHEventDetailViewController.m; sourceTree = "<group>"; };
-		C1CAA157197FB505003EA341 /* KSHLandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHLandingViewController.h; sourceTree = "<group>"; };
-		C1CAA158197FB505003EA341 /* KSHLandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHLandingViewController.m; sourceTree = "<group>"; };
 		C1E2AC7D196BC70D00B6A7AF /* KSHUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHUserDefaultsHelper.h; sourceTree = "<group>"; };
 		C1E2AC7E196BC70D00B6A7AF /* KSHUserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHUserDefaultsHelper.m; sourceTree = "<group>"; };
 		C1EDDEC9198202DA004AE85A /* KSHEntityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHEntityDetailViewController.h; sourceTree = "<group>"; };
@@ -429,13 +432,23 @@
 				C1CAA153197FA3B2003EA341 /* Base Classes */,
 				C150B7C81988FB1F0069B0DB /* Home */,
 				C150B7C71988FAF70069B0DB /* Favorites */,
-				C1F6FF9619597DE8006EE5F7 /* Articles */,
-				C1CAA13E197F89F7003EA341 /* Projects */,
-				C1CAA13D197F89E5003EA341 /* Events */,
 				C1ABFE31195C20B5006560E7 /* Login */,
 				C1F6FFA019597E8E006EE5F7 /* MyKSH */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C14C388119908AA900DD457D /* My Projects */ = {
+			isa = PBXGroup;
+			children = (
+				C14C3875199079CC00DD457D /* KSHProjectTableViewController.h */,
+				C14C3876199079CC00DD457D /* KSHProjectTableViewController.m */,
+				C14C387B199088BF00DD457D /* KSHProjectDetailTableViewController.h */,
+				C14C387C199088BF00DD457D /* KSHProjectDetailTableViewController.m */,
+				C14C388519908DE500DD457D /* KSHTaskDetailViewController.h */,
+				C14C388619908DE500DD457D /* KSHTaskDetailViewController.m */,
+			);
+			name = "My Projects";
 			sourceTree = "<group>";
 		};
 		C14D49A7197D468700CAA5A5 /* Fixtures */ = {
@@ -540,6 +553,9 @@
 			children = (
 				C1EDDF1F19875249004AE85A /* KSHHomescreenTableViewController.h */,
 				C1EDDF2019875249004AE85A /* KSHHomescreenTableViewController.m */,
+				C1F6FF9619597DE8006EE5F7 /* Articles */,
+				C1CAA13E197F89F7003EA341 /* ProjectOpportunities */,
+				C1CAA13D197F89E5003EA341 /* Events */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -569,8 +585,6 @@
 			children = (
 				C1F87B9A195D3F0900DD300D /* KSHLoginViewController.h */,
 				C1F87B9B195D3F0900DD300D /* KSHLoginViewController.m */,
-				C1CAA157197FB505003EA341 /* KSHLandingViewController.h */,
-				C1CAA158197FB505003EA341 /* KSHLandingViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -613,15 +627,17 @@
 			name = Events;
 			sourceTree = "<group>";
 		};
-		C1CAA13E197F89F7003EA341 /* Projects */ = {
+		C1CAA13E197F89F7003EA341 /* ProjectOpportunities */ = {
 			isa = PBXGroup;
 			children = (
-				C1CAA142197F8A3D003EA341 /* KSHProjectTableViewController.h */,
-				C1CAA143197F8A3D003EA341 /* KSHProjectTableViewController.m */,
-				C1CAA150197FA173003EA341 /* KSHProjectDetailViewController.h */,
-				C1CAA151197FA173003EA341 /* KSHProjectDetailViewController.m */,
+				C14C3872199078EC00DD457D /* KSHProjectOpportunityTableViewController.h */,
+				C14C3873199078EC00DD457D /* KSHProjectOpportunityTableViewController.m */,
+				C14C38781990843E00DD457D /* KSHProjectOpportunityViewController.h */,
+				C14C38791990843E00DD457D /* KSHProjectOpportunityViewController.m */,
+				C14C387E19908A0D00DD457D /* KSHProjectOpportunityDetailViewController.h */,
+				C14C387F19908A0D00DD457D /* KSHProjectOpportunityDetailViewController.m */,
 			);
-			name = Projects;
+			name = ProjectOpportunities;
 			sourceTree = "<group>";
 		};
 		C1CAA153197FA3B2003EA341 /* Base Classes */ = {
@@ -666,16 +682,12 @@
 		C1EDDF1A198750C3004AE85A /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				C150B7E11989FCBA0069B0DB /* KSHArticleTableViewCell.h */,
-				C150B7E21989FCBA0069B0DB /* KSHArticleTableViewCell.m */,
 				C150B7E31989FCBA0069B0DB /* KSHContentTableViewCell.h */,
 				C150B7E41989FCBA0069B0DB /* KSHContentTableViewCell.m */,
-				C150B7E51989FCBA0069B0DB /* KSHMenuTableViewCell.h */,
-				C150B7E61989FCBA0069B0DB /* KSHMenuTableViewCell.m */,
-				C150B7EA1989FCE00069B0DB /* KSHMyKSHTableViewCell.h */,
-				C150B7EB1989FCE00069B0DB /* KSHMyKSHTableViewCell.m */,
 				C14C3869198F31A800DD457D /* KSHProfileTableViewCell.h */,
 				C14C386A198F31A800DD457D /* KSHProfileTableViewCell.m */,
+				C14C388B199098EC00DD457D /* KSHDetailIconTableViewCell.h */,
+				C14C388C199098EC00DD457D /* KSHDetailIconTableViewCell.m */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -730,6 +742,7 @@
 				C1F87B94195D3EAA00DD300D /* KSHUserProfileTableViewController.m */,
 				C1EDDED919822C46004AE85A /* KSHSettingsTableViewController.h */,
 				C1EDDEDA19822C46004AE85A /* KSHSettingsTableViewController.m */,
+				C14C388119908AA900DD457D /* My Projects */,
 			);
 			name = MyKSH;
 			sourceTree = "<group>";
@@ -907,13 +920,12 @@
 			files = (
 				C14D4A79197E6BBF00CAA5A5 /* _KSHConsultationTask.m in Sources */,
 				C14D4A7B197E6BBF00CAA5A5 /* _KSHFeedback.m in Sources */,
+				C14C3877199079CC00DD457D /* KSHProjectTableViewController.m in Sources */,
 				C14D4A8A197E6BBF00CAA5A5 /* KSHProfile.m in Sources */,
-				C1CAA152197FA173003EA341 /* KSHProjectDetailViewController.m in Sources */,
 				C150B81D198A673A0069B0DB /* KSHAuthenticatedUserViewController.m in Sources */,
 				C150B802198A02140069B0DB /* _KSHPost.m in Sources */,
 				C135600419594FA9005DABED /* KaiShengHui.xcdatamodeld in Sources */,
 				C14D4A80197E6BBF00CAA5A5 /* _KSHTask.m in Sources */,
-				C1CAA144197F8A3D003EA341 /* KSHProjectTableViewController.m in Sources */,
 				C150B7F21989FCF00069B0DB /* KSHSplitButtonView.m in Sources */,
 				C1EDDEDB19822C46004AE85A /* KSHSettingsTableViewController.m in Sources */,
 				C1F87B9C195D3F0900DD300D /* KSHLoginViewController.m in Sources */,
@@ -923,11 +935,13 @@
 				C14D4A8E197E6BBF00CAA5A5 /* KSHTopic.m in Sources */,
 				C150B7FF198A015E0069B0DB /* _KSHFetchable.m in Sources */,
 				C150B7CE1988FC120069B0DB /* KSHFavoritesTableViewController.m in Sources */,
+				C14C388719908DE500DD457D /* KSHTaskDetailViewController.m in Sources */,
 				C1CAA141197F8A2D003EA341 /* KSHEventTableViewController.m in Sources */,
 				C14D4A76197E6BBF00CAA5A5 /* _KSHArticle.m in Sources */,
 				C14D4A7E197E6BBF00CAA5A5 /* _KSHProject.m in Sources */,
 				C1F87B95195D3EAA00DD300D /* KSHUserProfileTableViewController.m in Sources */,
-				C1CAA159197FB505003EA341 /* KSHLandingViewController.m in Sources */,
+				C14C388D199098EC00DD457D /* KSHDetailIconTableViewCell.m in Sources */,
+				C14C3874199078EC00DD457D /* KSHProjectOpportunityTableViewController.m in Sources */,
 				C14D4A88197E6BBF00CAA5A5 /* KSHFeedback.m in Sources */,
 				C14D4A7A197E6BBF00CAA5A5 /* _KSHEvent.m in Sources */,
 				C150B7F8198A014B0069B0DB /* KSHFavoritable.m in Sources */,
@@ -941,7 +955,6 @@
 				C14D4A8F197E6BBF00CAA5A5 /* KSHUser.m in Sources */,
 				C14D4A7D197E6BBF00CAA5A5 /* _KSHProfile.m in Sources */,
 				C182851A196679210080F2DD /* KSHMessage.m in Sources */,
-				C150B7EC1989FCE00069B0DB /* KSHMyKSHTableViewCell.m in Sources */,
 				C14D4A85197E6BBF00CAA5A5 /* KSHConsultationProject.m in Sources */,
 				C14D4A7F197E6BBF00CAA5A5 /* _KSHProjectOpportunity.m in Sources */,
 				C14C386E198F5A0700DD457D /* KSHContentManager.m in Sources */,
@@ -951,17 +964,18 @@
 				C14C386B198F31A800DD457D /* KSHProfileTableViewCell.m in Sources */,
 				C14D4A8D197E6BBF00CAA5A5 /* KSHTask.m in Sources */,
 				C14D4A81197E6BBF00CAA5A5 /* _KSHTopic.m in Sources */,
-				C150B7E91989FCBA0069B0DB /* KSHMenuTableViewCell.m in Sources */,
 				C14D4A8C197E6BBF00CAA5A5 /* KSHProjectOpportunity.m in Sources */,
 				C14D4A78197E6BBF00CAA5A5 /* _KSHConsultationProject.m in Sources */,
 				C150B7F11989FCF00069B0DB /* KSHDetailToolbarView.m in Sources */,
+				C14C387A1990843E00DD457D /* KSHProjectOpportunityViewController.m in Sources */,
 				C150B7FE198A015E0069B0DB /* _KSHFavoritable.m in Sources */,
 				C1EDDEDE198231C5004AE85A /* KSHWebViewController.m in Sources */,
+				C14C388019908A0D00DD457D /* KSHProjectOpportunityDetailViewController.m in Sources */,
 				C1355FFA19594FA9005DABED /* main.m in Sources */,
 				C14D4A83197E6BBF00CAA5A5 /* KSHArticle.m in Sources */,
 				C135603B19595590005DABED /* KSHObjectManager.m in Sources */,
-				C150B7E71989FCBA0069B0DB /* KSHArticleTableViewCell.m in Sources */,
 				C1CAA14F197F8EF8003EA341 /* KSHEntityTableViewController.m in Sources */,
+				C14C387D199088BF00DD457D /* KSHProjectDetailTableViewController.m in Sources */,
 				C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */,
 				C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */,
 				C14D4A86197E6BBF00CAA5A5 /* KSHConsultationTask.m in Sources */,

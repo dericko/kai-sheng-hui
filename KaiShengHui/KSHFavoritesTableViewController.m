@@ -10,7 +10,7 @@
 #import "KSHContentManager.h"
 #import "KSHContentTableViewCell.h"
 #import "KSHArticleDetailViewController.h"
-#import "KSHProjectDetailViewController.h"
+#import "KSHProjectOpportunityDetailViewController.h"
 #import "KSHSplitButtonView.h"
 
 @interface KSHFavoritesTableViewController ()
