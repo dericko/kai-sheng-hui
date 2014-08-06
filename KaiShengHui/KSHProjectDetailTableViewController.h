@@ -6,11 +6,13 @@
 //  Copyright (c) 2014 Capvision. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "KSHEntityTableViewController.h"
 #import "KSHProject.h"
+#import "KSHUserManager.h"
 
-@interface KSHProjectDetailTableViewController : UITableViewController
+@interface KSHProjectDetailTableViewController : KSHEntityTableViewController
 
 @property (nonatomic, strong) KSHProject *project;
+@property (nonatomic, strong) KSHUserManager *userManager;
 
 @end

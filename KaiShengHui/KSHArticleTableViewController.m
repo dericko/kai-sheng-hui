@@ -67,7 +67,7 @@
             if (self.footerView){
                 [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
             }
-            [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
+            [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription] forViewController:self];
         }];
     }
     
@@ -104,32 +104,27 @@
     
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];
     // Check if image has been downloaded
-    if (!_article.imgFile) {
+    if (![_article getImage]) {
         [self setImageAsync: articleImageView atIndexPath:indexPath];
     } else {
-        articleImageView.image = [[self.fetchedResultsController objectAtIndexPath:indexPath] getImage];
+        articleImageView.image = [_article getImage];
     }
 }
 
 - (void)setImageAsync:(UIImageView *)articleImageView atIndexPath:(NSIndexPath *)indexPath
 {
     // Async request and assign cell image
-    // FIXME: Displays most recent image instead of Placeholder while loading
-    UIImage *placeholderImage = [UIImage imageNamed:@"ksh-default.jpg"];
-    UIImageView *placeholderImageView = [[UIImageView alloc] initWithImage:placeholderImage];
-    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.i-ksh.com/files/fileUpload/%@", [[_article valueForKey:@"imgURLString"] description]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"ksh-default.jpg"];
     
     // Use UIImageView+AFNetworking to make request and save image
-    [placeholderImageView
+    [articleImageView
      setImageWithURLRequest:request
      placeholderImage:placeholderImage
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-         articleImageView.image = image;
          [[self.fetchedResultsController objectAtIndexPath:indexPath] setImage:image];
      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-         [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error  localizedDescription]];
          NSLog(@"Error: %@", error);
      }];
 }

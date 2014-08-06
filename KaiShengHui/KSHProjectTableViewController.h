@@ -7,6 +7,7 @@
 //
 
 #import "KSHEntityTableViewController.h"
+#import "KSHUserManager.h"
 
 @interface KSHProjectTableViewController : KSHEntityTableViewController
 

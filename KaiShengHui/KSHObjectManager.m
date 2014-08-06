@@ -66,8 +66,8 @@ static KSHObjectManager *sharedManager = nil;
 
 - (void)setupAPIHeaders
 {
-    [sharedManager.HTTPClient setDefaultHeader:@"X-Parse-Application-Id" value:kAppKey];
-    [sharedManager.HTTPClient setDefaultHeader:@"X-Parse-REST-API-Key" value:kRestAPIKey];
+    [sharedManager.HTTPClient setDefaultHeader:kAppHeader value:kAppKey];
+    [sharedManager.HTTPClient setDefaultHeader:kRESTAPIHeader value:kRestAPIKey];
 }
 
 @end

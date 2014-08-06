@@ -24,18 +24,6 @@
 {
     [self initializeRestkitForCoreData];
     
-    
-//    // Set initial controller depending on login status
-//    NSString *controllerID = [KSHUserDefaultsHelper isUserLoggedIn] ? @"TabBar" : @"LandingPage";
-//    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UIViewController *initViewController = [storyboard instantiateViewControllerWithIdentifier:controllerID];
-//    if ([KSHUserDefaultsHelper isUserLoggedIn]) {
-//        [self.window setRootViewController:initViewController];
-//    } else {
-//        [(UINavigationController *)self.window.rootViewController pushViewController:initViewController animated:NO];
-//    }
-    
     return YES;
 }
 							
@@ -47,6 +35,11 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    NSError *error = nil;
+    [_managedObjectStore.mainQueueManagedObjectContext save:&error];
+    if (error) {
+        NSLog(@"Could not save context: %@", [error localizedDescription]);
+    }
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
@@ -65,7 +58,11 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
     
-    // Restkit automatically saves context when calling success block :)
+    NSError *error = nil;
+    [_managedObjectStore.mainQueueManagedObjectContext save:&error];
+    if (error) {
+        NSLog(@"Could not save context: %@", [error localizedDescription]);
+    }
 }
 
 #pragma mark - Restkit + CoreData
@@ -83,11 +80,11 @@
     // FIXME: need to support migrations when using persistent store - currently requires "Reset Content and Settings" in simulator
     // Set up persistent store for our managed object store
     [_managedObjectStore createPersistentStoreCoordinator];
-    // !!! For Development: use addInMemoryPersistentStore to avoid SQLite migration problem
-//    NSString *storeURL = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"KaiShengHui.sqlite"];
     NSError *error = nil;
+    // !!! For Development: use addInMemoryPersistentStore to avoid SQLite migration problem, use addSQLitePersistenStore for deployment
     NSPersistentStore *persistentStore = [_managedObjectStore addInMemoryPersistentStore:&error];
-//    NSPersistentStore *persistentStore = [_RKManagedObjectStore addSQLitePersistentStoreAtPath:storeURL fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+//    NSString *storeURL = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"KaiShengHui.sqlite"];
+//    NSPersistentStore *persistentStore = [_managedObjectStore addSQLitePersistentStoreAtPath:storeURL fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
     NSAssert(persistentStore, @"Failed to add persistent store: %@", error);
     
     // Managed object context

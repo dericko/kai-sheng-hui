@@ -35,8 +35,8 @@
     _contentManager.managedObjectStore = [RKManagedObjectStore defaultStore];
     self.managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
 
-    // setup toolbar
-    [self setupToolbar];
+    // TODO: setup toolbar (fix search, add help)
+//    [self setupToolbar];
     
     // Set up request
     self.numberToLoad = 3;
@@ -98,7 +98,7 @@
              [self.refreshControl endRefreshing];
              [self controllerDidChangeContent:_fetchedResults1];
          } failure:^(NSError *error) {
-             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
+             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription] forViewController:self];
          }];
         
         // Load project opportunities
@@ -109,7 +109,7 @@
              [self.refreshControl endRefreshing];
              [self controllerDidChangeContent:_fetchedResults2];
          } failure:^(NSError *error) {
-             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
+             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription] forViewController:self];
          }];
     }
 }
@@ -216,7 +216,7 @@
          success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
              articleImageView.image = image;
          } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error  localizedDescription]];
+             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error  localizedDescription] forViewController:self];
              NSLog(@"Error: %@", error);
          }];
 

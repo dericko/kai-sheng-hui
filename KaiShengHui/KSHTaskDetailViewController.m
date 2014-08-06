@@ -9,24 +9,29 @@
 #import "KSHTaskDetailViewController.h"
 
 @interface KSHTaskDetailViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *startDateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *typeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *statusLabel;
+@property (strong, nonatomic) IBOutlet UILabel *industryLabel;
 
 @end
 
 @implementation KSHTaskDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.titleLabel.text = _task.name;
+    self.contentLabel.text = _task.notes;
+    self.contentLabel.font = [UIFont systemFontOfSize:18];
+    
+    self.startDateLabel.text = [NSString stringWithFormat:@"开： %@", _task.startDate];
+    self.endDateLabel.text = [NSString stringWithFormat:@"关： %@", _task.endDate];
+    self.statusLabel.text = [_task getStatusName];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

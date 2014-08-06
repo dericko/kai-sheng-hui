@@ -36,11 +36,11 @@
 
 // !!!: API Key Constants
 // For information on Parse Queries see: https://www.parse.com/docs/rest#queries
+#define kAppHeader @"X-Parse-Application-Id"
 #define kAppKey @"d3RYCmBykmK7gIpg3kvrAqX2MaGvuYQBnepJJH4S"
-#define kClientKey @"6zFbGi95FQbTm8hOJ4WyyqBK8sWBrDVYiDbh6i76"
+#define kRESTAPIHeader @"X-Parse-REST-API-Key"
 #define kRestAPIKey @"EfYIGGw8KDiQLebS2TB6dtIqc6JtJ4SSJvGZKIwO"
-#define kMasterKey @"ftpstW8O70ctxptMhx9RJnYvBDY7JVPRbhmdkcDD"
-
+#define kSessionTokenHeader @"X-Parse-Session-Token"
 
 /**
  'KSHObjectManager' Is a network client that handles initial setup, request descriptors, and response mapping. This class can be subclassed according to request and response behaviour of specific resources.

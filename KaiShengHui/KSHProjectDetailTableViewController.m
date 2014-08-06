@@ -7,13 +7,20 @@
 //
 
 #import "KSHProjectDetailTableViewController.h"
+#import "KSHDetailIconTableViewCell.h"
+#import "KSHContentTableViewCell.h"
+#import "KSHTask.h"
+#import "KSHTaskDetailViewController.h"
 
 @interface KSHProjectDetailTableViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *titleLable;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timeframeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
-@property (strong, nonatomic) IBOutlet UILabel *typeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *priorityLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+@property (strong, nonatomic) KSHTask *task;
 
 @end
 
@@ -24,93 +31,81 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    _titleLable.text = _project.name;
+    _dateLabel.text = [NSString stringWithFormat:@"%@", _project.updateDate];
+    _timeframeLabel.text = [_project getTimeframeName];
+    _statusLabel.text = [_project getStatusName];
+    _priorityLabel.text = [_project getPriorityName];
+    _descriptionLabel.text = _project.projectDescription;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 21)];
+    headerLabel.text = @"Tasks";
+    [[self.tableView headerViewForSection:0] addSubview:headerLabel];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)assignCustomClassFields
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    self.numberToLoad = @5;
+    self.cellIdentifier = @"taskCell";
+    self.entityName = @"Task";
+    self.sortDescriptorKey = @"createDate";
+    self.segueIdentifier = @"showTaskDetail";
     
-    // Configure the cell...
+    [super assignCustomClassFields];
+}
+
+- (void)loadCells
+{
+    if (_userManager) {
+        [_userManager loadTasksForProject:_project
+                                  success:^{
+            // success
+            [self.refreshControl endRefreshing];
+            if (self.footerView){
+                [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
+            }
+            [self.tableView beginUpdates];
+        } failure:^(NSError *error) {
+            // Failure
+            [self.refreshControl endRefreshing];
+            if (self.footerView){
+                [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
+            }
+            [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription] forViewController:self];
+        }];
+    }
     
-    return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - Cell configuration
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    [super configureCell:cell atIndexPath:indexPath];
+    
+    _task = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    // Can typecast to 'cellIdentifer' type specified in Storyboard
+    
+    ((KSHContentTableViewCell *) cell).titleLabel.text = _task.name;
+    ((KSHContentTableViewCell *) cell).detailLabel1.text = [_task getStatusName];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+# pragma mark - Navigation
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.identifier isEqualToString:self.segueIdentifier]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        // send over Project
+        KSHTaskDetailViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.task = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        
+        [destinationViewController setHidesBottomBarWhenPushed:NO];
+    }
 }
-*/
 
 @end

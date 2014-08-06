@@ -18,7 +18,7 @@
  */
 @interface KSHContentManager : KSHObjectManager
 
-//+ (instancetype)sharedManager;
++ (instancetype)sharedManager;
 
 /** Wrapper for a RestKit network request.
  Loads Article JSON from API and executes provided success: and failure: blocks.

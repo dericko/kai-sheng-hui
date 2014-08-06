@@ -50,8 +50,11 @@
 {
     _allFavorites = [KSHUser currentUser].favoritesSet;
     NSLog([NSString stringWithFormat:@"All Favorites...%d", [_allFavorites count]]);
-
-    [self displayArticles];
+    if (_viewArticleMode) {
+        [self viewArticles];
+    } else {
+        [self viewProjectOpportunities];
+    }
 }
 
 - (void)displayArticles
@@ -138,14 +141,14 @@
     [super prepareForSegue:segue sender:sender];
     
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"showArticle"]) {
+    if ([segue.identifier isEqualToString:@"showArticleDetail"]) {
         
         // Pass on the Article object
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         KSHArticleDetailViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.article = [_currentItems objectAtIndex:indexPath.row];
         
-    } else if ([segue.identifier isEqualToString:@"showProjectOpportunity"]) {
+    } else if ([segue.identifier isEqualToString:@"showProjectOpportunityDetail"]) {
         
         // Pass on the Project Opportunity object
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];

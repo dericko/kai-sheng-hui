@@ -7,7 +7,10 @@
 //
 
 #import "KSHEntityDetailViewController.h"
+#import "KSHConsultationTask.h"
 
 @interface KSHTaskDetailViewController : KSHEntityDetailViewController
+
+@property (nonatomic, strong) KSHTask *task;
 
 @end

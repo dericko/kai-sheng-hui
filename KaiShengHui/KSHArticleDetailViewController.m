@@ -32,8 +32,8 @@
 {
     // Setup toolbar
     _toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    [_toolbarView addResizeButtonForTarget:self.superclass action:@selector(toggleFont)];
-    [_toolbarView addShareButtonForTarget:self.superclass action:@selector(share)];
+    [_toolbarView addResizeButtonForTarget:self action:@selector(toggleFont)];
+    [_toolbarView addShareButtonForTarget:self action:@selector(share)];
     [_toolbarView addFavoriteButtonForTarget:self favorite:@selector(toggleFavorite)];
     UIBarButtonItem *toolbar = [[UIBarButtonItem alloc] initWithCustomView:_toolbarView];
     [self.navigationItem setRightBarButtonItem:toolbar];
@@ -106,7 +106,7 @@
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
          _articleImage.image = image;
      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-         [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error  localizedDescription]];
+         [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error  localizedDescription] forViewController:self];
          NSLog(@"Error: %@", error);
      }];
 }

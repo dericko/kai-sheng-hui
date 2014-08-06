@@ -10,6 +10,7 @@
 #import "KSHUser.h"
 #import "KSHProfile.h"
 #import "KSHProject.h"
+#import "KSHTask.h"
 
 extern NSString const *UserDidLoginNotification;
 extern NSString const *UserDidLogoutNotification;

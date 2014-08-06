@@ -9,6 +9,7 @@
 #import "KSHMyKSHTableViewController.h"
 #import "KSHUserManager.h"
 #import "KSHUserProfileTableViewController.h"
+#import "KSHProjectTableViewController.h"
 #import "KSHDetailIconTableViewCell.h"
 
 @interface KSHMyKSHTableViewController ()
@@ -26,8 +27,8 @@
     [super viewDidLoad];
         
     // Setup User items
-    _myItems = [NSArray arrayWithObjects:@"My Projects", @"My Calendar", @"KSH Shop",nil];
-    _myItemImages = [NSArray arrayWithObjects:@"project-icon.png", @"event-icon.png", @"coin-icon-blk.png", nil];
+    _myItems = [NSArray arrayWithObjects:@"我的项目",nil];
+    _myItemImages = [NSArray arrayWithObjects:@"project-icon.png", nil];
 
     [self.tableView reloadData];
 }
@@ -112,10 +113,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showUserProfile"]) {
-        KSHUserProfileTableViewController *userProfile = segue.destinationViewController;
-        userProfile.profile = _profile;
-    } else if ([segue.identifier isEqualToString:@"showUserProjects"]) {
-        // Push object to next vc
+        KSHUserProfileTableViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.profile = _profile;
     }
 }
 

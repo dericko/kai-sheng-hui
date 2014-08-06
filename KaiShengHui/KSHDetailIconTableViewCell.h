@@ -11,5 +11,6 @@
 @interface KSHDetailIconTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *iconView;
+@property (strong, nonatomic) IBOutlet UILabel *detailLabel;
 
 @end

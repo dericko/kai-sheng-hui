@@ -70,7 +70,7 @@
              if (self.footerView){
                  [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
              }
-             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
+             [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription] forViewController:self];
          }];
     }
 }

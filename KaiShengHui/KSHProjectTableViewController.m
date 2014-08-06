@@ -69,7 +69,7 @@
             if (self.footerView){
                 [(UIActivityIndicatorView *)[self.footerView viewWithTag:10] stopAnimating];
             }
-            [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription]];
+            [KSHMessage displayErrorAlert:@"An Error Has Occurred" withSubtitle:[error localizedDescription] forViewController:self];
         }];
     }
     
@@ -93,15 +93,15 @@
     [super configureCell:cell atIndexPath:indexPath];
     
     _project = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSLog([NSString stringWithFormat:@"---Project: %@", _project.name]);
     
     // Can typecast to 'cellIdentifer' type specified in Storyboard
     
     ((KSHContentTableViewCell *) cell).titleLabel.text = _project.name;
     ((KSHContentTableViewCell *) cell).descriptionLabel.text = _project.projectDescription;
-    ((KSHContentTableViewCell *) cell).dateLabel.text = [NSString stringWithFormat:@"%@", _project.updateDate];
-//    ((KSHContentTableViewCell *) cell).detailLabel1.text = _project.status;
-//    ((KSHContentTableViewCell *) cell).detailLabel2.text = _project.type;
+    // Set up tag labels
+    ((KSHContentTableViewCell *) cell).detailLabel1.text = [_project getTimeframeName];
+    ((KSHContentTableViewCell *) cell).detailLabel2.text = [_project getStatusName];
+    ((KSHContentTableViewCell *) cell).detailLabel3.text = [_project getPriorityName];
 }
 
 
@@ -118,6 +118,8 @@
         // send over Project
         KSHProjectDetailTableViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.project = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        destinationViewController.userManager = _userManager;
+        destinationViewController.managedObjectContext = self.managedObjectContext;
     }
 }
 

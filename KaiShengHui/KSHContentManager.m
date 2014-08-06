@@ -7,6 +7,7 @@
 //
 
 #import "KSHContentManager.h"
+#import "KSHArticle.h"
 
 // Singleton
 static KSHContentManager *sharedManager = nil;
@@ -69,15 +70,18 @@ static KSHContentManager *sharedManager = nil;
                 parameters:parameters
                    success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                        
-                    if (success) {
+                       // Success block
+                       if (success) {
                            success();
-                       }}
+                       }
+                   }
                    failure:^(RKObjectRequestOperation *operation, NSError *error) {
                        if (failure) {
                            failure(error);
                        }
                    }];
 }
+
 
 - (void)loadProjectOpportunitiesWithParameters:(NSDictionary *)parameters success:(void (^)(void))success failure:(void (^)(NSError *error))failure
 {

@@ -15,14 +15,14 @@
  */
 @interface KSHMessage : TSMessage
 
-+ (void)displayErrorAlert:(NSString *)title withSubtitle:(NSString *)subtitle;
++ (void)displayErrorAlert:(NSString *)title withSubtitle:(NSString *)subtitle forViewController:(UIViewController *)viewController;
 
-+ (void)displayMessageAlert:(NSString *)title withSubtitle:(NSString *)subtitle;
++ (void)displayMessageAlert:(NSString *)title withSubtitle:(NSString *)subtitle forViewController:(UIViewController *)viewController;
 
-+ (void)displayMessageAlert:(NSString *)title withSubtitle:(NSString *)subtitle withButton:(NSString *)buttonTitle forCallbackBlock:(void(^)(void))callback;
++ (void)displayMessageAlert:(NSString *)title withSubtitle:(NSString *)subtitle withButton:(NSString *)buttonTitle forCallbackBlock:(void(^)(void))callback forViewController:(UIViewController *)viewController;
 
-+ (void)displaySuccessAlert:(NSString *)title withSubtitle:(NSString *)subtitle;
++ (void)displaySuccessAlert:(NSString *)title withSubtitle:(NSString *)subtitle forViewController:(UIViewController *)viewController;
 
-+ (void)displayWarningAlert:(NSString *)title withSubtitle:(NSString *)subtitle;
++ (void)displayWarningAlert:(NSString *)title withSubtitle:(NSString *)subtitle forViewController:(UIViewController *)viewController;
 
 @end

@@ -302,9 +302,9 @@
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="3" defaultValueString="1" syncable="YES">
             <userInfo>
-                <entry key="1" value="In Progress"/>
-                <entry key="2" value="On Hold"/>
-                <entry key="3" value="Complete"/>
+                <entry key="1" value="进行"/>
+                <entry key="2" value="暂停"/>
+                <entry key="3" value="关闭"/>
             </userInfo>
         </attribute>
         <attribute name="statusTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -397,7 +397,7 @@
                 <entry key="source" value="project_task_common"/>
             </userInfo>
         </attribute>
-        <relationship name="ofProject" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="hasTask" inverseEntity="Project" syncable="YES"/>
+        <relationship name="ofProject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="hasTask" inverseEntity="Project" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="KSHUser" syncable="YES">
         <attribute name="createDate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -428,9 +428,9 @@
         <element name="Fetchable" positionX="-387" positionY="117" width="128" height="88"/>
         <element name="Post" positionX="-56" positionY="489" width="128" height="223"/>
         <element name="Profile" positionX="376" positionY="50" width="128" height="28"/>
-        <element name="Project" positionX="7" positionY="-348" width="128" height="298"/>
+        <element name="Project" positionX="7" positionY="-348" width="128" height="300"/>
         <element name="ProjectOpportunity" positionX="-243" positionY="492" width="128" height="148"/>
-        <element name="Task" positionX="-189" positionY="-261" width="128" height="208"/>
+        <element name="Task" positionX="-189" positionY="-261" width="128" height="30"/>
         <element name="User" positionX="16" positionY="117" width="128" height="180"/>
     </elements>
 </model>

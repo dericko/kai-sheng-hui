@@ -31,35 +31,33 @@ static KSHUserManager *sharedManager = nil;
 
 + (instancetype)sharedManager
 {
-    if (sharedManager) {
-        return sharedManager;
-    }
-    
-    // instantiate object manager with base url
-    NSURL *url = [NSURL URLWithString:kBASE_URL];
-    sharedManager = [self managerWithBaseURL:url];
-    
-    // Serialize for JSON
-    sharedManager.requestSerializationMIMEType = RKMIMETypeJSON;
-    
-    sharedManager.managedObjectStore = [RKManagedObjectStore defaultStore];
-    
-    // Setup response descriptors
-    [sharedManager setupResponseDescriptors];
-    
-    // Setup Parse headers
-    [sharedManager.HTTPClient setDefaultHeader:@"X-Parse-Application-Id" value:kAppKey];
-    [sharedManager.HTTPClient setDefaultHeader:@"X-Parse-REST-API-Key" value:kRestAPIKey];
+    // singleton
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedManager = [super sharedManager];
+    });
     
     return sharedManager;
+}
+
++ (void)setUserToken
+{
+    if ([KSHUser currentUser]) {
+        [sharedManager.HTTPClient setDefaultHeader:kSessionTokenHeader value:[KSHUser currentUser].token];
+    }
+}
+
++ (void)removeUserToken
+{
+    [sharedManager.HTTPClient setDefaultHeader:kSessionTokenHeader value:@""];
 }
 
 - (void)setupRequestDescriptors
 {
     [super setupRequestDescriptors];
     
-//    [self setPathMatcherForPath:@"/1/classes/Project" forEntity:@"Project" withAttributeID:@"entityID"];
-    [self setPathMatcherForPath:@"/1/classes/Task" forEntity:@"Task" withAttributeID:@"entityID"];
+    [self setPathMatcherForPath:kProjectPath forEntity:@"Project" withAttributeID:@"entityID"];
+    [self setPathMatcherForPath:kTaskPath forEntity:@"Task" withAttributeID:@"entityID"];
 }
 
 
@@ -114,13 +112,16 @@ static KSHUserManager *sharedManager = nil;
                        
                        // Set up user profile
                        [self loadProfileForUser:currentUser success:nil failure:^(NSError *error) {
-                           [KSHMessage displayErrorAlert:@"There was a problem logging in" withSubtitle:[NSString stringWithFormat:@"%@", error]];
+                           NSLog(@"Error loading profile: %@", [error localizedDescription]);
                        }];
                        
                        // Persist the userID for later use in NSUserDefaults
                        NSLog(@"--UserID: %@", currentUser.userID);
                        [[NSUserDefaults standardUserDefaults] setObject:currentUser.userID forKey:kCurrentUserIDKey];
                        [[NSUserDefaults standardUserDefaults] synchronize];
+                       
+                       // Add User Session Token header
+                       [KSHUserManager setUserToken];
                        
                        // Inform the delegate
                        if ([self.delegate respondsToSelector:@selector(userDidLogin:)]) {
@@ -132,6 +133,11 @@ static KSHUserManager *sharedManager = nil;
                        
                    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
 
+                       // Inform the delegate
+                       if ([self.delegate respondsToSelector:@selector(userDidLogin:)]) {
+                           [self.delegate user:[KSHUser currentUser] didFailToLoginWithError:error];
+                       }
+                       
                        // Notify a failed login
                        [[NSNotificationCenter defaultCenter] postNotificationName:UserLoginFailedNotification object:self];
                    }];
@@ -139,21 +145,12 @@ static KSHUserManager *sharedManager = nil;
 
 - (void)logoutWithDelegate:(NSObject<UserAuthenticationDelegate> *)delegate
 {
-    // Remove user from managed object store
-    NSManagedObjectContext *managedObjectContext = self.managedObjectStore.mainQueueManagedObjectContext;
-    NSError *error = nil;
-    if ([KSHUser currentUser]) {
-        [managedObjectContext deleteObject:[KSHUser currentUser]];
-    }
-    [managedObjectContext save:&error];
-    if (error) {
-        // Handle error
-        NSLog(@"Error saving managed object context after removing currentUser. Error message: %@", error);
-    }
-    
     // Clear the stored credentials
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:kCurrentUserIDKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // Remove User Session Token header
+    [KSHUserManager removeUserToken];
     
     // Inform the delegate
     if ([delegate respondsToSelector:@selector(userDidLogout:)]) {
@@ -186,11 +183,12 @@ static KSHUserManager *sharedManager = nil;
                 parameters:parameters
                    success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                        
-                       // Setup User-Profile relationship
+                       // Setup User<->Profile relationship
                        KSHProfile *profile = [mappingResult firstObject];
                        [user setUserProfile:profile];
+                       [profile setUser:user];
                        
-                       // Run success
+                       // optional success block
                        if (success) {
                            success();
                        }}
@@ -211,15 +209,16 @@ static KSHUserManager *sharedManager = nil;
                 parameters:parameters
                    success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                        
-                       // Add projects to user's hasProject relationship
+                       // Set User<->>Project relationship
                        NSArray *results = [mappingResult array];
-                       NSLog(@" \n\n Projects \n\n %@  \n\n", results);
+                       NSLog(@" \n\n Projects: \n %@  \n\n", results);
                        for (KSHProject *project in results) {
                            [user addHasProjectObject:project];
-                           NSLog(@"project_added: %@", project.name);
+                           [project setOfUser:user];
+                           NSLog(@"project added: %@", project.name);
                        }
                        
-                       
+                       // optional success block
                        if (success) {
                            success();
                        }}
@@ -239,6 +238,16 @@ static KSHUserManager *sharedManager = nil;
     [self getObjectsAtPath:kTaskPath
                 parameters:parameters
                    success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                       
+                       // Set Project<->>Task relationship
+                       NSArray *results = [mappingResult array];
+                       NSLog(@" \n\n Tasks: \n %@  \n\n", results);
+                       for (KSHTask *task in results) {
+                           [project addHasTaskObject:task];
+                           [task setOfProject:project];
+                           NSLog(@"task added: %@", task.name);
+                       }
+
                        if (success) {
                            success();
                        }}
