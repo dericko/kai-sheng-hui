@@ -16,19 +16,15 @@
 @property (strong, nonatomic) IBOutlet UIButton *signInButton;
 @property (strong, nonatomic) IBOutlet UITextField *email;
 @property (strong, nonatomic) IBOutlet UITextField *password;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loginIndicator;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *scrollViewHeightConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *scrollViewTopConstraint;
 @end
 
 @implementation KSHLoginViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -59,20 +55,10 @@
 
 - (IBAction)signInButtonPressed:(id)sender
 {
-    NSLog(@"signin button pressed");
     [self disableSignInButton];
 
     [self login];
     
-//    // The hud will disable all input on the view (use the higest view possible in the view hierarchy)
-//	HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-//	[self.navigationController.view addSubview:HUD];
-//    
-//	// Regiser for HUD callbacks so we can remove it from the window at the right time
-//	HUD.delegate = self;
-//    HUD.labelText = @"Signing In";
-//
-//    [HUD showWhileExecuting:@selector(login) onTarget:self withObject:nil animated:YES];
 }
 
 - (IBAction)cancelButtonPressed:(id)sender
@@ -83,37 +69,49 @@
 
 - (void)disableSignInButton
 {
+    // Hide keyboard
     [self.view endEditing:YES];
 
-    [UIView animateWithDuration:0.5 animations:^{
-        _signInButton.alpha = .5;
-        [_signInButton setEnabled:NO];
-    }];
+    // Animate indicator
+    [_loginIndicator startAnimating];
+    
+    // Disable signin button
+    [_signInButton setEnabled:NO];
+    _signInButton.alpha = .5;
 }
 
 - (void)enableSignInButton
 {
+    // Show keyboard
+    [self.view endEditing:NO];
+    
+    // End indicator animation
+    [_loginIndicator stopAnimating];
+    
+    // Enable signin button
     [_signInButton setEnabled:YES];
     _signInButton.alpha = 1;
 }
 
 - (void)login
 {
+    
     // Check for empty fields
     // TODO: check to determine email vs username
     if ([_email.text isEqualToString:@""] || [_password.text isEqualToString:@""]) {
-        [KSHMessage displayWarningAlert:@"Empty Field" withSubtitle:@"Please check your email or password"];
+        [KSHMessage displayWarningAlert:@"Empty Field" withSubtitle:@"Please fill in your username and password" forViewController:self];
         [self enableSignInButton];
     } else {
         if (_userManager) {
+            [self disableSignInButton];
             
             // Login
             KSHUserManager *userManager = [KSHUserManager sharedManager];
             [userManager loginWithUsername:_email.text password:_password.text delegate:self];
-            
-        }
+            }
     }
 }
+
 
 #pragma mark - Navigation
 
@@ -126,23 +124,27 @@
     }
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - UITextFieldDelegate and actions
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self disableSignInButton];
-    
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    _scrollViewHeightConstraint.constant = 450;
+    _scrollViewTopConstraint.constant = -60;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    _scrollViewHeightConstraint.constant = 568;
+    _scrollViewTopConstraint.constant = 0;
+}
+- (IBAction)didEnterUsername:(id)sender {
+    [_password becomeFirstResponder];
+}
+
+- (IBAction)didEnterPassword:(id)sender {
     [self login];
-
-    return YES;
 }
 
-#pragma mark MBProgressHUDDelegate
-
-- (void)hudWasHidden:(MBProgressHUD *)hud {
-	// Remove HUD from screen when the HUD is hidden
-	[HUD removeFromSuperview];
-	HUD = nil;
-}
 
 #pragma mark - AuthenticatedUserDelegate methods
 
@@ -154,7 +156,8 @@
 
 - (void)user:(KSHUser *)user didFailToLoginWithError:(NSError *)error
 {
-    // show error
+    [self enableSignInButton];
+    [KSHMessage displayErrorAlert:@"There was a problem logging in:" withSubtitle:[error localizedDescription] forViewController:self];
 }
 
 @end

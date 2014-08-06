@@ -88,6 +88,7 @@
 		C150B808198A214E0069B0DB /* KSHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C150B807198A214E0069B0DB /* KSHUserManager.m */; };
 		C150B81D198A673A0069B0DB /* KSHAuthenticatedUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C150B81C198A673A0069B0DB /* KSHAuthenticatedUserViewController.m */; };
 		C1560938197CE34500FB4677 /* ksh-default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1560937197CE34500FB4677 /* ksh-default.jpg */; };
+		C1723CEA1990DB8D00797758 /* capvision-icon-lrg.png in Resources */ = {isa = PBXBuildFile; fileRef = C1723CE91990DB8D00797758 /* capvision-icon-lrg.png */; };
 		C182851A196679210080F2DD /* KSHMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C1828519196679210080F2DD /* KSHMessage.m */; };
 		C1CAA141197F8A2D003EA341 /* KSHEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA140197F8A2D003EA341 /* KSHEventTableViewController.m */; };
 		C1CAA14F197F8EF8003EA341 /* KSHEntityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CAA14E197F8EF8003EA341 /* KSHEntityTableViewController.m */; };
@@ -255,6 +256,7 @@
 		C150B81B198A673A0069B0DB /* KSHAuthenticatedUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHAuthenticatedUserViewController.h; sourceTree = "<group>"; };
 		C150B81C198A673A0069B0DB /* KSHAuthenticatedUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHAuthenticatedUserViewController.m; sourceTree = "<group>"; };
 		C1560937197CE34500FB4677 /* ksh-default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "ksh-default.jpg"; path = "../ksh-default.jpg"; sourceTree = "<group>"; };
+		C1723CE91990DB8D00797758 /* capvision-icon-lrg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capvision-icon-lrg.png"; sourceTree = "<group>"; };
 		C1828518196679210080F2DD /* KSHMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHMessage.h; sourceTree = "<group>"; };
 		C1828519196679210080F2DD /* KSHMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHMessage.m; sourceTree = "<group>"; };
 		C1CAA13F197F8A2D003EA341 /* KSHEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHEventTableViewController.h; sourceTree = "<group>"; };
@@ -652,6 +654,7 @@
 		C1EDDEE81985EC43004AE85A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C1723CE91990DB8D00797758 /* capvision-icon-lrg.png */,
 				C1560937197CE34500FB4677 /* ksh-default.jpg */,
 				C1EDDF2519877456004AE85A /* help-icon.png */,
 				C1EDDF091986280A004AE85A /* arrow-down-icon-blk.png */,
@@ -843,6 +846,7 @@
 				C1EDDF291987A4FC004AE85A /* favorites-icon.png in Resources */,
 				C1EDDF07198625B8004AE85A /* share-icon-blk.png in Resources */,
 				C1EDDF011986256E004AE85A /* coin-icon-wht.png in Resources */,
+				C1723CEA1990DB8D00797758 /* capvision-icon-lrg.png in Resources */,
 				C1EDDF0F1986280A004AE85A /* arrow-up-icon-blk.png in Resources */,
 				C1EDDEEF1985EC43004AE85A /* news-icon.png in Resources */,
 				C1EDDF2A1987A4FC004AE85A /* home-icon.png in Resources */,
@@ -1131,7 +1135,7 @@
 				GCC_PREFIX_HEADER = "KaiShengHui/KaiShengHui-Prefix.pch";
 				INFOPLIST_FILE = "KaiShengHui/KaiShengHui-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "48F08E0F-C676-4AE5-8846-003394FA3DBA";
+				PROVISIONING_PROFILE = "4EBD6AAC-B930-4A00-AE7E-7D6E7BDF0839";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

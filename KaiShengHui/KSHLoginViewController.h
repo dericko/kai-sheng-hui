@@ -12,10 +12,7 @@
 
 @protocol LoginViewControllerDelegate;
 
-@interface KSHLoginViewController : UIViewController <UITextFieldDelegate, MBProgressHUDDelegate, UserAuthenticationDelegate>
-{
-	MBProgressHUD *HUD;
-}
+@interface KSHLoginViewController : UIViewController <UITextFieldDelegate, UserAuthenticationDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) KSHUserManager *userManager;
