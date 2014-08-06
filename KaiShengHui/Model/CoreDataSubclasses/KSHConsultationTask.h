@@ -2,4 +2,7 @@
 
 @interface KSHConsultationTask : _KSHConsultationTask {}
 // Custom logic goes here.
+
+- (NSString *)getInteviewTypeName;
+
 @end

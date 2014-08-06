@@ -17,7 +17,8 @@
 
 - (UIImage *)getImage
 {
-    return [UIImage imageWithData:[self valueForKey:@"imgFile"]];
+    UIImage *image = [UIImage imageWithData:[self valueForKey:@"imgFile"]];
+    return image;
 }
 
 #pragma mark - Override methods
