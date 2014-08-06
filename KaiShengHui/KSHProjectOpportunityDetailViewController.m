@@ -8,17 +8,28 @@
 
 #import "KSHProjectOpportunityDetailViewController.h"
 #import "KSHUser.h"
+#import "KSHDetailToolbarView.h"
 
 @interface KSHProjectOpportunityDetailViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *publishDateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *deadlineLabel;
 
 @property BOOL isFavorite;
+@property (strong, nonatomic) KSHDetailToolbarView *toolbarView;
+
 @end
 @implementation KSHProjectOpportunityDetailViewController
 
 - (void)viewDidLoad
 {
+    // Setup toolbar
+    _toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [_toolbarView addResizeButtonForTarget:self action:@selector(toggleFont)];
+    [_toolbarView addShareButtonForTarget:self action:@selector(share)];
+    [_toolbarView addFavoriteButtonForTarget:self favorite:@selector(toggleFavorite)];
+    UIBarButtonItem *toolbar = [[UIBarButtonItem alloc] initWithCustomView:_toolbarView];
+    [self.navigationItem setRightBarButtonItem:toolbar];
+    
     // Set content fields
     NSString *title = [NSString stringWithFormat:@"%@", _projectOpportunity.title];
     NSString *content = [NSString stringWithFormat:@"理想背景: \n %@ \n\n 关键问题: %@", _projectOpportunity.idealBackground, _projectOpportunity.referenceContent];
@@ -37,12 +48,12 @@
 {
     [super viewDidAppear:animated];
     
-    // Check if article has been favorited and set star
+    // Check if project opportunity has been favorited and set star
     _isFavorite = [[KSHUser currentUser].favoritesSet containsObject:_projectOpportunity];
     if (_isFavorite) {
-        self.starButton.selected = YES;
+        _toolbarView.favoriteButton.selected = YES;
     } else {
-        self.starButton.selected = NO;
+        _toolbarView.favoriteButton.selected = NO;
     }
 }
 
@@ -50,9 +61,8 @@
 
 // FIXME: Make these buttons do something real!
 
-- (IBAction)favoritePressed:(id)sender {
-    self.starButton.selected = !self.starButton.selected;
-    
+- (void)toggleFavorite
+{
     if (!_isFavorite) {
         // Add to favorites
         [[KSHUser currentUser].favoritesSet addObject:_projectOpportunity];
@@ -63,24 +73,8 @@
         _isFavorite = NO;
     }
     
-    // Save managed object context
-    //    NSError *error = nil;
-    //    [[KSHUser currentUser].managedObjectContext save:&error];
-    //    if (error) {
-    //        NSLog([NSString stringWithFormat:@"%@", [error localizedDescription]]);
-    //    }
     NSLog([NSString stringWithFormat:@"Like_count: %d", [[KSHUser currentUser].favoritesSet count]]);
     
-}
-- (IBAction)sharePressed:(id)sender {
-    NSMutableArray *sharingItems = [NSMutableArray new];
-    
-    if (self.contentLabel.text) {
-        [sharingItems addObject:self.contentLabel.text];
-    }
-    
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
-    [self presentViewController:activityController animated:YES completion:nil];
 }
 
 @end

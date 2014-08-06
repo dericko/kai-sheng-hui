@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad
 {
+    
     // Set up selector buttons
     _splitButtons = [[KSHSplitButtonView alloc] initWithFrame:CGRectMake(0, 10.0, 142.0, 24.0)];
     [_splitButtons addLeftButtonWithTitle:@"Newest" forTarget:self withAction:@selector(viewNewest)];
@@ -96,9 +97,9 @@
     
     // Can typecast to 'cellIdentifer' type specified in Storyboard
     
-    ((KSHContentTableViewCell *) cell).titleLabel.text = [[_projectOpportunity valueForKey:@"title"] description];
-    ((KSHContentTableViewCell *) cell).descriptionLabel.text = [[_projectOpportunity valueForKey:@"referenceContent"] description];
-    ((KSHContentTableViewCell *) cell).detailLabel3.text = [[_projectOpportunity valueForKey:@"deadlineDate"] description];
+    ((KSHContentTableViewCell *) cell).titleLabel.text = _projectOpportunity.title;
+    ((KSHContentTableViewCell *) cell).descriptionLabel.text = _projectOpportunity.referenceContent;
+    ((KSHContentTableViewCell *) cell).detailLabel3.text = [NSString stringWithFormat:@"%@",_projectOpportunity.deadlineDate];
 }
 
 

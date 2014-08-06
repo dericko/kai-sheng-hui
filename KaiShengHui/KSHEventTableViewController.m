@@ -97,9 +97,9 @@
     // Can typecast to 'cellIdentifer' type specified in Storyboard
 
     ((KSHContentTableViewCell *) cell).titleLabel.text = [[_event valueForKey:@"title"] description];
-    ((KSHContentTableViewCell *) cell).detailLabel1.text = [[_event valueForKey:@"region"] description];
-    ((KSHContentTableViewCell *) cell).detailLabel2.text = [NSString stringWithFormat:@"%@", [[_event valueForKey:@"startDate"] description]];
-    ((KSHContentTableViewCell *) cell).descriptionLabel.text = [[_event valueForKey:@"excerpt"] description];
+    ((KSHContentTableViewCell *) cell).detailLabel1.text = _event.region;
+    ((KSHContentTableViewCell *) cell).detailLabel2.text = [NSString stringWithFormat:@"%@", _event.startDate];
+    ((KSHContentTableViewCell *) cell).descriptionLabel.text = _event.excerpt;
 }
 
 # pragma mark - Navigation

@@ -113,11 +113,11 @@
         
         // Set up the current article cell
         _article = [_currentItems objectAtIndex:indexPath.row];
-        ((KSHContentTableViewCell *)cell).titleLabel.text = [[_article valueForKey:@"title"] description];
+        ((KSHContentTableViewCell *)cell).titleLabel.text = _article.title;
         ((KSHContentTableViewCell *)cell).detailLabel1.text = @"www.iksh.com";
         if (!_article.industryName) [_article setIndustryText];
-        ((KSHContentTableViewCell *)cell).detailLabel2.text = [[_article valueForKey:@"industryName"] description];;
-        ((KSHContentTableViewCell *)cell).detailLabel3.text = [[_article valueForKey:@"tags"] description];
+        ((KSHContentTableViewCell *)cell).detailLabel2.text = _article.industryName;
+        ((KSHContentTableViewCell *)cell).detailLabel3.text = _article.tags;
         
         UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];
         articleImageView.image = [_article getImage];
@@ -135,6 +135,15 @@
 }
 
 # pragma mark - Navigation
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_viewArticleMode) {
+        [self performSegueWithIdentifier:@"showArticleDetail" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
+    } else {
+        [self performSegueWithIdentifier:@"showProjectOpportunityDetail" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
+    }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
