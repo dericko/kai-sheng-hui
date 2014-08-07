@@ -92,14 +92,14 @@
     _article = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // Can typecast to 'cellIdentifer' type specified in Storyboard
-    [(KSHContentTableViewCell *) cell setRightUtilityButtons:[self rightButtons]];
     
-    ((KSHContentTableViewCell *)cell).titleLabel.text = [[_article valueForKey:@"title"] description];
+    ((KSHContentTableViewCell *)cell).titleLabel.text = _article.title;
     // TODO: get API field for Source
-    ((KSHContentTableViewCell *)cell).detailLabel1.text = @"www.iksh.com";
+    ((KSHContentTableViewCell *)cell).detailLabel1.text = _article.sourceName;
     if (!_article.industryName) [_article setIndustryText];
-    ((KSHContentTableViewCell *)cell).detailLabel2.text = [[_article valueForKey:@"industryName"] description];;
-    ((KSHContentTableViewCell *)cell).detailLabel3.text = [[_article valueForKey:@"tags"] description];
+    ((KSHContentTableViewCell *)cell).detailLabel2.text = _article.industryName;
+    [((KSHContentTableViewCell *)cell).detailLabel2 setTextColor:[KSHColorPicker colorForIndustry:_article.industry]];
+    ((KSHContentTableViewCell *)cell).detailLabel3.text = _article.tags;
    
     
     UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];
@@ -127,20 +127,6 @@
      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
          NSLog(@"Error: %@", error);
      }];
-}
-
-- (NSArray *)rightButtons
-{
-    // Set utility buttons for SWTableViewCell
-    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:@"-"];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.07 green:0.75f blue:0.16f alpha:1.0]
-                                                title:@"+"];
-    
-    return rightUtilityButtons;
 }
 
 # pragma mark - Navigation

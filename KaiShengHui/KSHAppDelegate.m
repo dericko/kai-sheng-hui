@@ -9,7 +9,6 @@
 #import <RestKit/RestKit.h>
 #import "KSHAppDelegate.h"
 #import "KSHArticleTableViewController.h"
-#import "KSHUserDefaultsHelper.h"
 
 @interface KSHAppDelegate ()
 @end
@@ -57,6 +56,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSError *error = nil;
     [_managedObjectStore.mainQueueManagedObjectContext save:&error];

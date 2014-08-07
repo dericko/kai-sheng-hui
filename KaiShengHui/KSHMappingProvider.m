@@ -167,6 +167,7 @@
                                             @"status":              @"status",
                                             @"status_time":         @"statusTime",
                                             @"type":                @"type",
+                                            @"timeframe":           @"timeframe",
                                             @"createdAt":           @"createDate",
                                             @"updatedAt":           @"updateDate"
                                             };

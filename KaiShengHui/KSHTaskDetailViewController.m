@@ -7,6 +7,7 @@
 //
 
 #import "KSHTaskDetailViewController.h"
+#import "KSHColorPicker.h"
 
 @interface KSHTaskDetailViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *startDateLabel;
@@ -27,9 +28,10 @@
     self.contentLabel.text = _task.notes;
     self.contentLabel.font = [UIFont systemFontOfSize:18];
     
-    self.startDateLabel.text = [NSString stringWithFormat:@"开： %@", _task.startDate];
-    self.endDateLabel.text = [NSString stringWithFormat:@"关： %@", _task.endDate];
-    self.statusLabel.text = [_task getStatusName];
+    _startDateLabel.text = [NSString stringWithFormat:@"开： %@", _task.startDate];
+    _endDateLabel.text = [NSString stringWithFormat:@"关： %@", _task.endDate];
+    _statusLabel.text = [_task getStatusName];
+    [_statusLabel setBackgroundColor:[KSHColorPicker colorForStatus:_task.status]];
     
     
 }

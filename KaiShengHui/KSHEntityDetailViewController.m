@@ -74,12 +74,12 @@
 
 - (void)favorite
 {
-    
+    // implement in subclasses
 }
 
 - (void)unfavorite
 {
-    
+    // implement in subclasses
 }
 
 @end

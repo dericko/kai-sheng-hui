@@ -9,6 +9,7 @@
 #import "KSHProjectOpportunityDetailViewController.h"
 #import "KSHUser.h"
 #import "KSHDetailToolbarView.h"
+#import "KSHWebViewController.h"
 
 @interface KSHProjectOpportunityDetailViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *publishDateLabel;
@@ -23,7 +24,7 @@
 - (void)viewDidLoad
 {
     // Setup toolbar
-    _toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    _toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0.0, 0.0, 130.0, 30.0)];
     [_toolbarView addResizeButtonForTarget:self action:@selector(toggleFont)];
     [_toolbarView addShareButtonForTarget:self action:@selector(share)];
     [_toolbarView addFavoriteButtonForTarget:self favorite:@selector(toggleFavorite)];
@@ -57,9 +58,7 @@
     }
 }
 
-# pragma mark - Bottom Bars Buttons
-
-// FIXME: Make these buttons do something real!
+# pragma mark - Toolbar Buttons
 
 - (void)toggleFavorite
 {
@@ -75,6 +74,28 @@
     
     NSLog([NSString stringWithFormat:@"Like_count: %d", [[KSHUser currentUser].favoritesSet count]]);
     
+}
+
+- (void)share
+{
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    
+    if (_projectOpportunity.urlString) {
+        [sharingItems addObject:_projectOpportunity.urlString];
+    }
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+}
+
+# pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"viewWebpage"]) {
+        KSHWebViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.url = _projectOpportunity.urlString;
+    }
 }
 
 @end

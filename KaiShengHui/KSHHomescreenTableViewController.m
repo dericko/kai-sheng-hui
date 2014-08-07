@@ -203,6 +203,9 @@
         _article = [self.fetchedResults1 objectAtIndexPath:indexPath1];
         ((KSHContentTableViewCell *) cell).titleLabel.text = [[_article valueForKey:@"title"] description];
         ((KSHContentTableViewCell *) cell).descriptionLabel.text = [[_article valueForKey:@"excerpt"] description];
+        if (!_article.industryName) [_article setIndustryText];
+        ((KSHContentTableViewCell *)cell).detailLabel1.text = _article.industryName;
+        [((KSHContentTableViewCell *)cell).detailLabel1 setTextColor:[KSHColorPicker colorForIndustry:_article.industry]];
         
         // Set image
         UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];

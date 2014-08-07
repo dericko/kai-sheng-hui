@@ -73,7 +73,7 @@
             // Username section
             cell = [tableView dequeueReusableCellWithIdentifier:@"userCell" forIndexPath:indexPath];
             ((KSHDetailIconTableViewCell *) cell).titleLabel.text = [KSHUser currentUser].username;
-            ((KSHDetailIconTableViewCell *) cell).iconView.image = [UIImage imageNamed:@"myksh-icon.png"];
+            // TODO: Fetch and set user's avatar image (currently set to default)
             break;
         case 1:
             // Profile section

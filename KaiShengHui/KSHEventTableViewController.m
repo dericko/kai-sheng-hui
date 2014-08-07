@@ -98,6 +98,7 @@
 
     ((KSHContentTableViewCell *) cell).titleLabel.text = [[_event valueForKey:@"title"] description];
     ((KSHContentTableViewCell *) cell).detailLabel1.text = _event.region;
+    [((KSHContentTableViewCell *)cell).detailLabel1 setBackgroundColor:[KSHColorPicker colorForLocation:_event.region]];
     ((KSHContentTableViewCell *) cell).detailLabel2.text = [NSString stringWithFormat:@"%@", _event.startDate];
     ((KSHContentTableViewCell *) cell).descriptionLabel.text = _event.excerpt;
 }

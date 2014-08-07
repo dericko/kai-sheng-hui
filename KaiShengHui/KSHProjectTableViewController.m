@@ -100,8 +100,11 @@
     ((KSHContentTableViewCell *) cell).descriptionLabel.text = _project.projectDescription;
     // Set up tag labels
     ((KSHContentTableViewCell *) cell).detailLabel1.text = [_project getTimeframeName];
+    [((KSHContentTableViewCell *) cell).detailLabel1 setBackgroundColor:[KSHColorPicker colorForTimeframe:_project.timeframe]];
     ((KSHContentTableViewCell *) cell).detailLabel2.text = [_project getStatusName];
+    [((KSHContentTableViewCell *) cell).detailLabel2 setBackgroundColor:[KSHColorPicker colorForStatus:_project.status]];
     ((KSHContentTableViewCell *) cell).detailLabel3.text = [_project getPriorityName];
+    [((KSHContentTableViewCell *) cell).detailLabel3 setBackgroundColor:[KSHColorPicker colorForPriority:_project.priority]];
 }
 
 

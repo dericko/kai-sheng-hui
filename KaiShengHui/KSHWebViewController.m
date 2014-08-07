@@ -33,9 +33,12 @@
 - (void)requestWithURL:(NSString *)urlString
 {
     NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url cachePolicy:NSURLCacheStorageNotAllowed timeoutInterval:60];
+    // FIXME: should add HTTP headers to give login access in webview
     NSLog(@"Request with url: %@", url);
     [self.webview loadRequest:requestObj];
+    
+    
 }
 
 @end

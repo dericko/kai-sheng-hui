@@ -8,66 +8,62 @@
 
 #import "KSHEventDetailViewController.h"
 #import "KSHWebViewController.h"
+#import "KSHColorPicker.h"
+#import "KSHDetailToolbarView.h"
+#import "KSHUserManager.h"
 
 @interface KSHEventDetailViewController ()
-
-@property (strong, nonatomic) IBOutlet UILabel *dateLocationLabel;
+@property (strong, nonatomic) IBOutlet UILabel *locationLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *priceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *contactLabel;
 
+@property (strong, nonatomic) KSHDetailToolbarView *toolbarView;
 @end
 
 @implementation KSHEventDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
-    // Set content fields
-    NSString *title = [NSString stringWithFormat:@"%@", _event.title];
-    NSString *content = [NSString stringWithFormat:@"%@", _event.content];
-    // FIXME: Format date properly
-    NSString *dateLocation = [NSString stringWithFormat:@"%@ - %@", _event.startDate, _event.region];
-    NSString *price = [NSString stringWithFormat:@"Price: ￥%@ / 人", _event.memberPrice];
-    NSString *contact = [NSString stringWithFormat:@"%@: %@", _event.contactName, _event.contactEmail];
+    // Setup toolbar
+    _toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0.0, 0.0, 80.0, 30.0)];
+    [_toolbarView addResizeButtonForTarget:self action:@selector(toggleFont)];
+    [_toolbarView addShareButtonForTarget:self action:@selector(share)];
+    UIBarButtonItem *toolbar = [[UIBarButtonItem alloc] initWithCustomView:_toolbarView];
+    [self.navigationItem setRightBarButtonItem:toolbar];
+    
     
     // Assign content fields
-    self.titleLabel.text = title;
-    self.contentLabel.text = content;
-    self.dateLocationLabel.text = dateLocation;
-    self.priceLabel.text = price;
-    self.contactLabel.text = contact;
+    self.titleLabel.text = _event.title;
+    self.contentLabel.text = _event.content;
+    self.dateLabel.text = [NSString stringWithFormat:@"%@",_event.startDate];
+    self.locationLabel.text = _event.region;
+    [self.locationLabel setBackgroundColor:[KSHColorPicker colorForLocation:_event.region]];
+    self.priceLabel.text = [NSString stringWithFormat:@"Price: ￥%@ / 人", _event.memberPrice];
+    self.contactLabel.text = [NSString stringWithFormat:@"%@: %@", _event.contactName, _event.contactEmail];
     
     [super viewDidLoad];
 }
 
-# pragma mark - Bottom Bars Buttons
+# pragma mark - Buttons
 
-// FIXME: Make these buttons do something real!
-- (IBAction)favoritePressed:(id)sender {
-    self.starButton.selected = !self.starButton.selected;
+
+- (IBAction)emailPressed:(id)sender {
 }
 
-- (IBAction)sharePressed:(id)sender {
+- (void)share
+{
     NSMutableArray *sharingItems = [NSMutableArray new];
     
-    if (self.contentLabel.text) {
-        [sharingItems addObject:self.contentLabel.text];
+    if (_event.urlString) {
+        [sharingItems addObject:_event.urlString];
     }
     
     UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
     [self presentViewController:activityController animated:YES completion:nil];
 }
 
-- (IBAction)emailPressed:(id)sender {
-}
+# pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <SWTableViewCell/SWTableViewCell.h>
+#import "KSHColorPicker.h"
 
 @interface KSHContentTableViewCell : SWTableViewCell
 

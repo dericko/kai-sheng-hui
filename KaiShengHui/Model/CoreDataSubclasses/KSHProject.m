@@ -26,7 +26,7 @@
 
 - (NSString *)getPriorityName
 {
-    switch (self.type.integerValue) {
+    switch (self.priority.integerValue) {
         case 1:
             return @"低";
         case 2:
@@ -40,7 +40,7 @@
 
 - (NSString *)getTimeframeName
 {
-    switch (self.type.integerValue) {
+    switch (self.timeframe.integerValue) {
         case 1:
             return @"星期";
         case 2:

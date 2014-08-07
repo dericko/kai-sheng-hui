@@ -308,7 +308,7 @@
             </userInfo>
         </attribute>
         <attribute name="statusTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="timeframe" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeframe" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="hasFeedback" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Feedback" inverseName="ofProject" inverseEntity="Feedback" syncable="YES"/>
         <relationship name="hasTask" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="ofProject" inverseEntity="Task" syncable="YES"/>

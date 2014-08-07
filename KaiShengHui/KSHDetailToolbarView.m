@@ -19,7 +19,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     // Override input frame size
-    self = [super initWithFrame:CGRectMake(0.0, 0.0, 150.0, 30.0)];
+    self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
     }
@@ -31,7 +31,7 @@
     // TODO: Open subview for multiple text sizes
     _resizeButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 5.0, 30.0, 30.0)];
     [_resizeButton setTitle:@"Aa" forState:UIControlStateNormal];
-    [_resizeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_resizeButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     
     [_resizeButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     
@@ -40,7 +40,7 @@
 
 - (void)addShareButtonForTarget:(id)target action:(SEL)action
 {
-    _shareButton = [[UIButton alloc] initWithFrame:CGRectMake(60.0, 0.0, 30.0, 30.0)];
+    _shareButton = [[UIButton alloc] initWithFrame:CGRectMake(50.0, 0.0, 30.0, 30.0)];
     [_shareButton setImage:[UIImage imageNamed:@"share-icon-wht.png"] forState:UIControlStateNormal];
     [_shareButton setImage:[UIImage imageNamed:@"share-icon-blk.png"] forState:UIControlStateSelected];
     
@@ -51,7 +51,7 @@
 
 - (void)addFavoriteButtonForTarget:(id)target favorite:(SEL)favorite
 {
-    _favoriteButton = [[UIButton alloc] initWithFrame:CGRectMake(120.0, 0.0, 30.0, 30.0)];
+    _favoriteButton = [[UIButton alloc] initWithFrame:CGRectMake(100.0, 0.0, 30.0, 30.0)];
     [_favoriteButton setImage:[UIImage imageNamed:@"star-deselected-icon.png"] forState:UIControlStateNormal];
     [_favoriteButton setImage:[UIImage imageNamed:@"star-selected-icon.png"] forState:UIControlStateSelected];
     

@@ -10,7 +10,7 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "KSHUser.h"
 #import "KSHDetailToolbarView.h"
-
+#import "KSHColorPicker.h"
 
 @interface KSHArticleDetailViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *articleTags;
@@ -18,9 +18,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *articleSource;
 @property (nonatomic, strong) IBOutlet UIImageView *articleImage;
 @property (strong, nonatomic) IBOutlet UILabel *publishDate;
-
-@property (strong, nonatomic) IBOutlet UIButton *upvoteButton;
-@property (strong, nonatomic) IBOutlet UIButton *downvoteButton;
 
 @property (strong, nonatomic) KSHDetailToolbarView *toolbarView;
 @property BOOL isFavorite;
@@ -31,7 +28,7 @@
 - (void)viewDidLoad
 {
     // Setup toolbar
-    _toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    _toolbarView = [[KSHDetailToolbarView alloc] initWithFrame:CGRectMake(0.0, 0.0, 130.0, 30.0)];
     [_toolbarView addResizeButtonForTarget:self action:@selector(toggleFont)];
     [_toolbarView addShareButtonForTarget:self action:@selector(share)];
     [_toolbarView addFavoriteButtonForTarget:self favorite:@selector(toggleFavorite)];
@@ -46,15 +43,17 @@
     NSString *content = [NSString stringWithFormat:@"%@", _article.content];
     if (!_article.industryName) [_article setIndustryText];
     NSString *industry = [NSString stringWithFormat:@"%@", _article.industryName];
+    
     NSString *tags = [NSString stringWithFormat:@"%@", _article.tags];
     // TODO: use API to get actual source
-    NSString *source = [NSString stringWithFormat:@"%@", @"www.iksh.com"];
+    NSString *source = [NSString stringWithFormat:@"%@", _article.sourceName];
     NSString *published = [NSString stringWithFormat:@"%@", _article.createDate];
 
     // Set content labels
     self.titleLabel.text = title;
     self.contentLabel.text = content;
     _articleIndustry.text = industry;
+    [_articleIndustry setTextColor:[KSHColorPicker colorForIndustry:_article.industry]];
     _articleTags.text = tags;
     _articleSource.text = source;
     _publishDate.text = published;
@@ -111,40 +110,7 @@
      }];
 }
 
-# pragma mark - Bottom Bars Buttons
-
-// FIXME: Make these buttons do something real!
-- (IBAction)likePressed:(id)sender {
-    _upvoteButton.selected = !_upvoteButton.selected;
-    _downvoteButton.selected = NO;
-}
-- (IBAction)dislikePressed:(id)sender {
-    _downvoteButton.selected = !_downvoteButton.selected;
-    _upvoteButton.selected = NO;
-}
-
-- (IBAction)sharePressed:(id)sender {
-    NSMutableArray *sharingItems = [NSMutableArray new];
-    
-    if (_article.content) {
-        [sharingItems addObject:_article.content];
-    }
-    
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
-    [self presentViewController:activityController animated:YES completion:nil];
-}
-
-- (void)share
-{
-    NSMutableArray *sharingItems = [NSMutableArray new];
-    
-    if (_article.content) {
-        [sharingItems addObject:_article.content];
-    }
-    
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
-    [self presentViewController:activityController animated:YES completion:nil];
-}
+# pragma mark - Toolbar Buttons
 
 - (void)toggleFavorite
 {
@@ -157,13 +123,7 @@
         [[KSHUser currentUser].favoritesSet removeObject:_article];
         _isFavorite = NO;
     }
-    
-    // Save managed object context
-//    NSError *error = nil;
-//    [[KSHUser currentUser].managedObjectContext save:&error];
-//    if (error) {
-//        NSLog([NSString stringWithFormat:@"%@", [error localizedDescription]]);
-//    }
+
     NSLog([NSString stringWithFormat:@"Like_count: %d", [[KSHUser currentUser].favoritesSet count]]);
 }
 

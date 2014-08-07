@@ -38,6 +38,10 @@
     _priorityLabel.text = [_project getPriorityName];
     _descriptionLabel.text = _project.projectDescription;
     
+    [_statusLabel setBackgroundColor:[KSHColorPicker colorForStatus:_project.status]];
+    [_priorityLabel setBackgroundColor:[KSHColorPicker colorForPriority:_project.priority]];
+    [_timeframeLabel setBackgroundColor:[KSHColorPicker colorForTimeframe:_project.timeframe]];
+    
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 21)];
     headerLabel.text = @"Tasks";
     [[self.tableView headerViewForSection:0] addSubview:headerLabel];
@@ -89,6 +93,7 @@
     
     ((KSHContentTableViewCell *) cell).titleLabel.text = _task.name;
     ((KSHContentTableViewCell *) cell).detailLabel1.text = [_task getStatusName];
+    [((KSHContentTableViewCell *) cell).detailLabel1 setBackgroundColor:[KSHColorPicker colorForStatus:_task.status]];
 }
 
 # pragma mark - Navigation

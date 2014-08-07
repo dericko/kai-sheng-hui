@@ -206,9 +206,13 @@ extern const struct KSHProjectFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* timeframe;
+@property (nonatomic, strong) NSNumber* timeframe;
 
 
+
+@property int16_t timeframeValue;
+- (int16_t)timeframeValue;
+- (void)setTimeframeValue:(int16_t)value_;
 
 //- (BOOL)validateTimeframe:(id*)value_ error:(NSError**)error_;
 
@@ -356,8 +360,11 @@ extern const struct KSHProjectFetchedProperties {
 
 
 
-- (NSString*)primitiveTimeframe;
-- (void)setPrimitiveTimeframe:(NSString*)value;
+- (NSNumber*)primitiveTimeframe;
+- (void)setPrimitiveTimeframe:(NSNumber*)value;
+
+- (int16_t)primitiveTimeframeValue;
+- (void)setPrimitiveTimeframeValue:(int16_t)value_;
 
 
 

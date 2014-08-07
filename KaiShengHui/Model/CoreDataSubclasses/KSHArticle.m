@@ -56,7 +56,7 @@
             self.industryName = @"化工工业制造";
             break;
         case 6:
-            self.industryName = @"金融地产,";
+            self.industryName = @"金融地产";
             break;
         case 7:
             self.industryName = @"医疗卫生";

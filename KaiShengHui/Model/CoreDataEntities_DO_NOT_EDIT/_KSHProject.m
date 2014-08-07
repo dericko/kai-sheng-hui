@@ -85,6 +85,11 @@ const struct KSHProjectFetchedProperties KSHProjectFetchedProperties = {
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
+	if ([key isEqualToString:@"timeframeValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"timeframe"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"typeValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"type"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -297,6 +302,25 @@ const struct KSHProjectFetchedProperties KSHProjectFetchedProperties = {
 
 @dynamic timeframe;
 
+
+
+- (int16_t)timeframeValue {
+	NSNumber *result = [self timeframe];
+	return [result shortValue];
+}
+
+- (void)setTimeframeValue:(int16_t)value_ {
+	[self setTimeframe:[NSNumber numberWithShort:value_]];
+}
+
+- (int16_t)primitiveTimeframeValue {
+	NSNumber *result = [self primitiveTimeframe];
+	return [result shortValue];
+}
+
+- (void)setPrimitiveTimeframeValue:(int16_t)value_ {
+	[self setPrimitiveTimeframe:[NSNumber numberWithShort:value_]];
+}
 
 
 

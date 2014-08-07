@@ -28,7 +28,7 @@
         
     // Setup User items
     _myItems = [NSArray arrayWithObjects:@"我的项目",nil];
-    _myItemImages = [NSArray arrayWithObjects:@"project-icon.png", nil];
+    _myItemImages = [NSArray arrayWithObjects:@"project-icon-lrg.png", nil];
 
     [self.tableView reloadData];
 }
@@ -37,17 +37,6 @@
 {
     _profile = [KSHUser currentUser].userProfile;
     [self.tableView reloadData];
-    
-    // Get the current user's profile
-//    [[KSHUserManager sharedManager]
-//     loadProfileForUser:[KSHUser currentUser]
-//     success:^{
-//         _profile = [KSHUser currentUser].userProfile;
-//         [self.tableView reloadData];
-//         NSLog(@"Hello, %@", _profile.name);
-//     } failure:^(NSError *error) {
-//         [KSHMessage displayErrorAlert:@"There was a problem" withSubtitle:[NSString stringWithFormat:@"%@", error]];
-//     }];
 }
 
 #pragma mark - Table view data source
@@ -81,14 +70,10 @@
         case 0:
             cell = [tableView dequeueReusableCellWithIdentifier:@"viewProfileCell" forIndexPath:indexPath];
             cell.titleLabel.text = [KSHUser currentUser].username;
-            cell.iconView.image = [UIImage imageNamed:@"myksh-icon.png"];
             break;
         case 1:
             cell = [tableView dequeueReusableCellWithIdentifier:@"viewProjectsCell" forIndexPath:indexPath];
             cell.textLabel.text = [_myItems objectAtIndex:indexPath.row];
-            cell.iconView.image = [UIImage imageNamed:[_myItemImages objectAtIndex:indexPath.row]];
-            
-            // TODO: setup number of items for user item (projects, articles, events, points)
         default:
             break;
     }
