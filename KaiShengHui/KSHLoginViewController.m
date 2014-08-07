@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Setup view
     [self enableSignInButton];
     
@@ -62,6 +62,7 @@
 }
 
 - (IBAction)cancelButtonPressed:(id)sender
+// Only implement if we add an option to view app without logging in
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     [_delegate loginViewControllerDidCancel:self];
