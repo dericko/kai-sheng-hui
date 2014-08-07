@@ -14,6 +14,7 @@
 #import "KSHArticleDetailViewController.h"
 #import "KSHProjectOpportunityDetailViewController.h"
 #import "KSHUser.h"
+#import "KSHColorPicker.h"
 
 @interface KSHFavoriteTableViewController ()
 
@@ -23,8 +24,8 @@
 
 @property BOOL viewArticleMode;
 @property (nonatomic, strong) NSSet *allFavorites;
-@property (nonatomic, strong) NSPredicate *viewArticles;
-@property (nonatomic, strong) NSPredicate *viewProjectOpportunities;
+@property (nonatomic, strong) NSPredicate *articlePredicate;
+@property (nonatomic, strong) NSPredicate *projectOpportunityPredicate;
 @property (nonatomic, strong) NSMutableOrderedSet *currentItems;
 
 @end
@@ -42,25 +43,28 @@
     self.navigationItem.titleView = _splitButtons;
     
     // Setup predicates
-    _viewArticles = [NSPredicate predicateWithFormat:@"fetchableType == 1"];
-    _viewProjectOpportunities = [NSPredicate predicateWithFormat:@"fetchableType == 3"];
+    _articlePredicate = [NSPredicate predicateWithFormat:@"fetchableType == 1"];
+    _projectOpportunityPredicate = [NSPredicate predicateWithFormat:@"fetchableType == 3"];
+    _viewArticleMode = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:YES];
+    
     _allFavorites = [KSHUser currentUser].favoritesSet;
     NSLog([NSString stringWithFormat:@"All Favorites...%d", [_allFavorites count]]);
     if (_viewArticleMode) {
-        [self viewArticles];
+        [self displayArticles];
     } else {
-        [self viewProjectOpportunities];
+        [self displayProjectOpportunities];
     }
 }
 
 - (void)displayArticles
 {
     _viewArticleMode = YES;
-    _currentItems = [NSMutableOrderedSet orderedSetWithSet:[_allFavorites filteredSetUsingPredicate:_viewArticles]];
+    _currentItems = [NSMutableOrderedSet orderedSetWithSet:[_allFavorites filteredSetUsingPredicate:_articlePredicate]];
     NSLog([NSString stringWithFormat:@"Favorite Articles...%d", [_currentItems count]]);
     [self.tableView reloadData];
 }
@@ -68,7 +72,7 @@
 - (void)displayProjectOpportunities
 {
     _viewArticleMode = NO;
-    _currentItems = [NSMutableOrderedSet orderedSetWithSet:[_allFavorites filteredSetUsingPredicate:_viewProjectOpportunities]];
+    _currentItems = [NSMutableOrderedSet orderedSetWithSet:[_allFavorites filteredSetUsingPredicate:_projectOpportunityPredicate]];
     NSLog([NSString stringWithFormat:@"Favorite Projects...%d", [_currentItems count]]);
     [self.tableView reloadData];
 }
@@ -117,6 +121,7 @@
         ((KSHContentTableViewCell *)cell).detailLabel1.text = @"www.iksh.com";
         if (!_article.industryName) [_article setIndustryText];
         ((KSHContentTableViewCell *)cell).detailLabel2.text = _article.industryName;
+        [((KSHContentTableViewCell *)cell).detailLabel2 setTextColor:[KSHColorPicker colorForIndustry:_article.industry]];
         ((KSHContentTableViewCell *)cell).detailLabel3.text = _article.tags;
         
         UIImageView *articleImageView   = (UIImageView *) [cell viewWithTag:100];
