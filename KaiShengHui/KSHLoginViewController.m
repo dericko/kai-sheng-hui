@@ -76,6 +76,7 @@
     [_loginIndicator startAnimating];
     
     // Disable signin button
+    [_signInButton.titleLabel setHidden:YES];
     [_signInButton setEnabled:NO];
     _signInButton.alpha = .5;
 }
@@ -89,6 +90,7 @@
     [_loginIndicator stopAnimating];
     
     // Enable signin button
+    [_signInButton.titleLabel setHidden:NO];
     [_signInButton setEnabled:YES];
     _signInButton.alpha = 1;
 }

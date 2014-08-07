@@ -93,7 +93,7 @@
     
     ((KSHContentTableViewCell *) cell).titleLabel.text = _task.name;
     ((KSHContentTableViewCell *) cell).detailLabel1.text = [_task getStatusName];
-    [((KSHContentTableViewCell *) cell).detailLabel1 setBackgroundColor:[KSHColorPicker colorForStatus:_task.status]];
+    [((KSHContentTableViewCell *) cell).detailLabel1 setBackgroundColor:[KSHColorPicker colorForTaskStatus:_task.status]];
 }
 
 # pragma mark - Navigation

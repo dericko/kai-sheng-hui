@@ -22,8 +22,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
-        _darkTheme = [UIColor blueColor];
+        self.backgroundColor = [UIColor clearColor];
+        _darkTheme = [UIColor colorWithHue:0.60 saturation:1.0 brightness:1.0 alpha:1.0];
         _lightTheme = [UIColor whiteColor];
     }
     return self;
@@ -55,7 +55,7 @@
     [_rightButton setTitle:title forState:UIControlStateNormal];
     [_rightButton setTitleColor:_darkTheme forState:UIControlStateNormal];
     [_rightButton setTitleColor:_lightTheme forState:UIControlStateSelected];
-    [_rightButton setBackgroundColor:_lightTheme];
+    [_rightButton setBackgroundColor:[UIColor clearColor]];
     [_rightButton setSelected:NO];
     
     [_rightButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
@@ -71,7 +71,7 @@
         [_leftButton setSelected:YES];
         [_leftButton setBackgroundColor:_darkTheme];
         [_rightButton setSelected:NO];
-        [_rightButton setBackgroundColor:_lightTheme];
+        [_rightButton setBackgroundColor:[UIColor clearColor]];
     }
 }
 
@@ -81,7 +81,7 @@
         [_rightButton setSelected:YES];
         [_rightButton setBackgroundColor:_darkTheme];
         [_leftButton setSelected:NO];
-        [_leftButton setBackgroundColor:_lightTheme];
+        [_leftButton setBackgroundColor:[UIColor clearColor]];
     }
 }
 

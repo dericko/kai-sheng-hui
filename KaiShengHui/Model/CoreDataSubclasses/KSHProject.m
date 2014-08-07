@@ -42,11 +42,11 @@
 {
     switch (self.timeframe.integerValue) {
         case 1:
-            return @"星期";
+            return @"一个星期";
         case 2:
-            return @"月";
+            return @"一个月";
         case 3:
-            return @"月多";
+            return @"一个月多";
         default:
             return @"不知道";
     }

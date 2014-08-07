@@ -64,7 +64,7 @@ static CGFloat alpha = 1.0;
     switch (priority.integerValue) {
         case 1:
             hue = .17;
-            alpha = 0.7;
+            alpha = 0.6;
             break;
         case 2:
             hue = .08;
@@ -143,7 +143,7 @@ static CGFloat alpha = 1.0;
             hue = .45;
             break;
         case 3: // yellow
-            hue = .15;
+            hue = .17;
             break;
         case 4: // orange
             hue = .08;

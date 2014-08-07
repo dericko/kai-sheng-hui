@@ -31,6 +31,7 @@
     // TODO: Open subview for multiple text sizes
     _resizeButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, 5.0, 30.0, 30.0)];
     [_resizeButton setTitle:@"Aa" forState:UIControlStateNormal];
+    _resizeButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [_resizeButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     
     [_resizeButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];

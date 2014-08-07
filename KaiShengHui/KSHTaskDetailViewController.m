@@ -31,7 +31,7 @@
     _startDateLabel.text = [NSString stringWithFormat:@"开： %@", _task.startDate];
     _endDateLabel.text = [NSString stringWithFormat:@"关： %@", _task.endDate];
     _statusLabel.text = [_task getStatusName];
-    [_statusLabel setBackgroundColor:[KSHColorPicker colorForStatus:_task.status]];
+    [_statusLabel setBackgroundColor:[KSHColorPicker colorForTaskStatus:_task.status]];
     
     
 }

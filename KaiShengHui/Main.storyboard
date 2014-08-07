@@ -438,7 +438,7 @@
                                                         <rect key="frame" x="148" y="96" width="152" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <color key="textColor" red="0.030343824469999999" green="0.34288643629999999" blue="0.79203204719999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -790,7 +790,7 @@
             </objects>
             <point key="canvasLocation" x="3312" y="3995"/>
         </scene>
-        <!--Project Detail Table View Controller-->
+        <!--Project Detail Table View Controller - 项目-->
         <scene sceneID="Fin-ub-BZ8">
             <objects>
                 <tableViewController id="PmU-Cj-KAE" customClass="KSHProjectDetailTableViewController" sceneMemberID="viewController">
@@ -901,7 +901,7 @@
                             <outlet property="delegate" destination="PmU-Cj-KAE" id="KJP-Oj-Bn5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="AuT-tT-05E"/>
+                    <navigationItem key="navigationItem" title="项目" id="AuT-tT-05E"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -1226,8 +1226,8 @@
                                             <constraint firstAttribute="height" constant="171" id="u5m-k2-mxi"/>
                                         </constraints>
                                     </imageView>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7Jl-CQ-qWR">
-                                        <rect key="frame" x="246" y="436" width="37" height="37"/>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="7Jl-CQ-qWR">
+                                        <rect key="frame" x="150" y="445" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -1918,7 +1918,7 @@
             </objects>
             <point key="canvasLocation" x="2156" y="2450"/>
         </scene>
-        <!--Task Detail View Controller-->
+        <!--Task Detail View Controller - Task-->
         <scene sceneID="2gn-cp-vMM">
             <objects>
                 <viewController id="ddB-jV-RH6" customClass="KSHTaskDetailViewController" sceneMemberID="viewController">
@@ -1964,7 +1964,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Myg-wJ-wmj">
-                                                        <rect key="frame" x="10" y="5" width="75" height="16"/>
+                                                        <rect key="frame" x="225" y="7" width="75" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -1972,7 +1972,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Industry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="m8X-Cy-m1W">
-                                                        <rect key="frame" x="225" y="5" width="75" height="16"/>
+                                                        <rect key="frame" x="122" y="7" width="75" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -1980,7 +1980,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="状态" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="522-3O-xqE">
-                                                        <rect key="frame" x="123" y="5" width="75" height="16"/>
+                                                        <rect key="frame" x="20" y="7" width="75" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -2046,7 +2046,9 @@
                             <constraint firstAttribute="bottom" secondItem="gk2-VX-HhX" secondAttribute="bottom" id="txo-NH-4nA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PuM-dv-Ie6"/>
+                    <navigationItem key="navigationItem" title="Task" id="PuM-dv-Ie6">
+                        <barButtonItem key="backBarButtonItem" title="项目" id="BOz-3j-bxA"/>
+                    </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bottomAreaHeightConstraint" destination="LQl-LM-OF8" id="FAv-pR-vrX"/>
