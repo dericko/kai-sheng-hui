@@ -25,11 +25,11 @@
 		C111FECA196D50B40043E983 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C111FEC9196D50B40043E983 /* Main.storyboard */; };
 		C111FECF196D97FC0043E983 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C111FECE196D97FC0043E983 /* CoreText.framework */; };
 		C111FED5196E31A10043E983 /* KSHArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C111FED4196E31A10043E983 /* KSHArticleDetailViewController.m */; };
-		C11CA5F319931A3B00623FBF /* KSHColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C11CA5F219931A3B00623FBF /* KSHColorPicker.m */; };
 		C11CA5F71993668500623FBF /* event-icon-lrg.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CA5F41993668500623FBF /* event-icon-lrg.png */; };
 		C11CA5F81993668500623FBF /* news-icon-lrg.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CA5F51993668500623FBF /* news-icon-lrg.png */; };
 		C11CA5F91993668500623FBF /* project-icon-lrg.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CA5F61993668500623FBF /* project-icon-lrg.png */; };
 		C11CA5FB1993678F00623FBF /* myksh-icon-lrg.png in Resources */ = {isa = PBXBuildFile; fileRef = C11CA5FA1993678F00623FBF /* myksh-icon-lrg.png */; };
+		C11CA5FE1993826B00623FBF /* KSHColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = C11CA5FD1993826B00623FBF /* KSHColorPicker.m */; };
 		C134459319738CDC003940CE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C134459219738CDC003940CE /* README.md */; };
 		C1355FEC19594FA9005DABED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FEB19594FA9005DABED /* Foundation.framework */; };
 		C1355FEE19594FA9005DABED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1355FED19594FA9005DABED /* CoreGraphics.framework */; };
@@ -146,12 +146,12 @@
 		C111FECE196D97FC0043E983 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		C111FED3196E31A10043E983 /* KSHArticleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHArticleDetailViewController.h; sourceTree = "<group>"; };
 		C111FED4196E31A10043E983 /* KSHArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHArticleDetailViewController.m; sourceTree = "<group>"; };
-		C11CA5F119931A3B00623FBF /* KSHColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSHColorPicker.h; path = Model/KSHColorPicker.h; sourceTree = "<group>"; };
-		C11CA5F219931A3B00623FBF /* KSHColorPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSHColorPicker.m; path = Model/KSHColorPicker.m; sourceTree = "<group>"; };
 		C11CA5F41993668500623FBF /* event-icon-lrg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event-icon-lrg.png"; sourceTree = "<group>"; };
 		C11CA5F51993668500623FBF /* news-icon-lrg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "news-icon-lrg.png"; sourceTree = "<group>"; };
 		C11CA5F61993668500623FBF /* project-icon-lrg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "project-icon-lrg.png"; sourceTree = "<group>"; };
 		C11CA5FA1993678F00623FBF /* myksh-icon-lrg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myksh-icon-lrg.png"; sourceTree = "<group>"; };
+		C11CA5FC1993826B00623FBF /* KSHColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSHColorPicker.h; sourceTree = "<group>"; };
+		C11CA5FD1993826B00623FBF /* KSHColorPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSHColorPicker.m; sourceTree = "<group>"; };
 		C134459219738CDC003940CE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		C1355FE819594FA9005DABED /* KaiShengHui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaiShengHui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1355FEB19594FA9005DABED /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -565,8 +565,8 @@
 			children = (
 				C1828518196679210080F2DD /* KSHMessage.h */,
 				C1828519196679210080F2DD /* KSHMessage.m */,
-				C11CA5F119931A3B00623FBF /* KSHColorPicker.h */,
-				C11CA5F219931A3B00623FBF /* KSHColorPicker.m */,
+				C11CA5FC1993826B00623FBF /* KSHColorPicker.h */,
+				C11CA5FD1993826B00623FBF /* KSHColorPicker.m */,
 			);
 			name = Helpers;
 			path = ..;
@@ -977,7 +977,7 @@
 				C14D4A83197E6BBF00CAA5A5 /* KSHArticle.m in Sources */,
 				C135603B19595590005DABED /* KSHObjectManager.m in Sources */,
 				C1CAA14F197F8EF8003EA341 /* KSHEntityTableViewController.m in Sources */,
-				C11CA5F319931A3B00623FBF /* KSHColorPicker.m in Sources */,
+				C11CA5FE1993826B00623FBF /* KSHColorPicker.m in Sources */,
 				C14C387D199088BF00DD457D /* KSHProjectDetailTableViewController.m in Sources */,
 				C1355FFE19594FA9005DABED /* KSHAppDelegate.m in Sources */,
 				C1F6FF9919597E0E006EE5F7 /* KSHArticleTableViewController.m in Sources */,
