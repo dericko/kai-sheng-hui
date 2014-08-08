@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MBProgressHUD/MBProgressHUD.h>
 #import "KSHUserManager.h"
 
 @protocol LoginViewControllerDelegate;

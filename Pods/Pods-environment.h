@@ -18,24 +18,6 @@
 #define COCOAPODS_VERSION_MINOR_HexColors 2
 #define COCOAPODS_VERSION_PATCH_HexColors 1
 
-// MBProgressHUD
-#define COCOAPODS_POD_AVAILABLE_MBProgressHUD
-#define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
-#define COCOAPODS_VERSION_MINOR_MBProgressHUD 8
-#define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
-
-// MagicalRecord
-#define COCOAPODS_POD_AVAILABLE_MagicalRecord
-#define COCOAPODS_VERSION_MAJOR_MagicalRecord 2
-#define COCOAPODS_VERSION_MINOR_MagicalRecord 2
-#define COCOAPODS_VERSION_PATCH_MagicalRecord 0
-
-// MagicalRecord/Core
-#define COCOAPODS_POD_AVAILABLE_MagicalRecord_Core
-#define COCOAPODS_VERSION_MAJOR_MagicalRecord_Core 2
-#define COCOAPODS_VERSION_MINOR_MagicalRecord_Core 2
-#define COCOAPODS_VERSION_PATCH_MagicalRecord_Core 0
-
 // RestKit
 #define COCOAPODS_POD_AVAILABLE_RestKit
 #define COCOAPODS_VERSION_MAJOR_RestKit 0
@@ -83,18 +65,6 @@
 #define COCOAPODS_VERSION_MAJOR_SOCKit 1
 #define COCOAPODS_VERSION_MINOR_SOCKit 1
 #define COCOAPODS_VERSION_PATCH_SOCKit 0
-
-// SSKeychain
-#define COCOAPODS_POD_AVAILABLE_SSKeychain
-#define COCOAPODS_VERSION_MAJOR_SSKeychain 1
-#define COCOAPODS_VERSION_MINOR_SSKeychain 2
-#define COCOAPODS_VERSION_PATCH_SSKeychain 2
-
-// SWTableViewCell
-#define COCOAPODS_POD_AVAILABLE_SWTableViewCell
-#define COCOAPODS_VERSION_MAJOR_SWTableViewCell 0
-#define COCOAPODS_VERSION_MINOR_SWTableViewCell 3
-#define COCOAPODS_VERSION_PATCH_SWTableViewCell 0
 
 // TSMessages
 #define COCOAPODS_POD_AVAILABLE_TSMessages

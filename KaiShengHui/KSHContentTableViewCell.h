@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SWTableViewCell/SWTableViewCell.h>
 #import "KSHColorPicker.h"
 
-@interface KSHContentTableViewCell : SWTableViewCell
+@interface KSHContentTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;

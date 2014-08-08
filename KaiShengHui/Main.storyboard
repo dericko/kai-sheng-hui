@@ -1933,8 +1933,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="u0v-9h-crV"/>
+        <segue reference="9Ec-fu-8LW"/>
         <segue reference="0nh-9a-ebi"/>
-        <segue reference="j4W-fk-wjz"/>
-        <segue reference="0fo-f1-MBy"/>
     </inferredMetricsTieBreakers>
 </document>
